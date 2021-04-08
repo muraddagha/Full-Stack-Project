@@ -1,0 +1,9 @@
+C:\Users\Jarvis\source\repos\FinalProjectAPI\DataService\bin\Debug\netcoreapp3.1\DataService.deps.json
+C:\Users\Jarvis\source\repos\FinalProjectAPI\DataService\bin\Debug\netcoreapp3.1\DataService.dll
+C:\Users\Jarvis\source\repos\FinalProjectAPI\DataService\bin\Debug\netcoreapp3.1\DataService.pdb
+C:\Users\Jarvis\source\repos\FinalProjectAPI\DataService\obj\Debug\netcoreapp3.1\DataService.csprojAssemblyReference.cache
+C:\Users\Jarvis\source\repos\FinalProjectAPI\DataService\obj\Debug\netcoreapp3.1\DataService.AssemblyInfoInputs.cache
+C:\Users\Jarvis\source\repos\FinalProjectAPI\DataService\obj\Debug\netcoreapp3.1\DataService.AssemblyInfo.cs
+C:\Users\Jarvis\source\repos\FinalProjectAPI\DataService\obj\Debug\netcoreapp3.1\DataService.csproj.CoreCompileInputs.cache
+C:\Users\Jarvis\source\repos\FinalProjectAPI\DataService\obj\Debug\netcoreapp3.1\DataService.dll
+C:\Users\Jarvis\source\repos\FinalProjectAPI\DataService\obj\Debug\netcoreapp3.1\DataService.pdb
