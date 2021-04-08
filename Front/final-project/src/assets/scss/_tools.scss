@@ -1,5 +1,51 @@
+// section {
+//   margin-top: 20px;
+// }
+body {
+  font-family: "Jost", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-weight: 400;
+}
+.btn-pink {
+  text-decoration: none;
+  color: white;
+  background-color: $color-pink-second;
+  border-radius: 4px;
+  text-decoration: none;
+  padding: 10px 34px;
+  &:hover {
+    color: #fd1c5e;
+    background: transparent;
+    border: 1px solid;
+  }
+}
 .btn-pink-small {
+  text-decoration: none;
   color: $color-pink-second !important;
   font-size: 14px !important;
   font-weight: 500 !important;
+}
+
+//responsive
+@media only screen and (min-width: 1400px) {
+  .container {
+    min-width: 1440px !important;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .container {
+    max-width: 1440px !important;
+  }
+}
+
+@media only screen and (max-width: 468px) {
+  .btn-pink {
+    padding: 10px 22px !important;
+  }
+}
+@media only screen and (max-width: 365px) {
+  .btn-pink {
+    padding: 0 !important;
+  }
 }

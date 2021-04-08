@@ -16,6 +16,9 @@ export class HeaderComponent implements OnInit {
   public toggle: boolean = false;
   public category: boolean = false;
   public departments: IDepartment[] = [];
+  public isCollapsed = false;
+
+
 
   constructor(private elem: ElementRef, private apiService: ApiService) {
     this.getDepartments();
@@ -44,7 +47,7 @@ export class HeaderComponent implements OnInit {
     this.toggle = !this.toggle;
   }
   ngAfterViewInit(): void {
-    this.addDropActive()
+    // this.addDropActive()
   }
   public categoryBtn(): void {
     this.category = !this.category;

@@ -204,45 +204,61 @@
             <ul>
                 <li><a href="#">Home</a></li>
                 <li class="dropdown">
-                    <a class="drop-btn" href="">
+                    <a class="drop-btn" type="button" data-bs-toggle="collapse" data-bs-target="#big-dropdown"
+                        aria-expanded="false" aria-controls="collapseExample" style="cursor: pointer;">
                         <a href="#"> New Arrivals </a>
                         <fa-icon [icon]="chevron"></fa-icon>
                     </a>
-                    <ul class="drop-menu">
-                        <li class="sub-dropdown">
+                    <ul class="collapse drop-menu" id="big-dropdown">
+                        <li class="sub-dropdown" data-bs-toggle="collapse" data-bs-target="#sub-dropdown1"
+                            aria-expanded="false" aria-controls="collapseExample">
                             <a href="">Laptops & Computers</a>
                             <fa-icon [icon]="chevron"></fa-icon>
-                            <ul class="sub-drop-menu">
+                            <ul class="collapse sub-drop-menu" id="sub-dropdown1">
                                 <li><a href="">Computers</a></li>
                                 <li><a href="">Computers</a></li>
                                 <li><a href="">Computers</a></li>
                                 <li><a href="">Computers</a></li>
                             </ul>
                         </li>
-                        <li class="sub-dropdown">
+                        <!-- <li *ngFor="let department of departments;index as i" class="sub-dropdown"
+                        data-toggle="collapse" attr.data-target="#subdrop{{department.id}}" aria-expanded="false"
+                        aria-controls="collapseExample">
+                        <a href="">{{department.name}}</a>
+                        <fa-icon [icon]="chevron"></fa-icon>
+                        <ul class="collapse sub-drop-menu" id="subdrop{{department.id}}">
+                            <li *ngFor="let category of department.categories">
+                                <a href="">{{category.name}}</a>
+                            </li>
+                        </ul>
+                    </li> -->
+                        <li class="sub-dropdown" data-bs-toggle="collapse" data-bs-target="#sub-dropdown2"
+                            aria-expanded="false" aria-controls="collapseExample">
                             <a href="">Laptops & Computers</a>
                             <fa-icon [icon]="chevron"></fa-icon>
-                            <ul class="sub-drop-menu">
+                            <ul class="collapse sub-drop-menu" id="sub-dropdown2">
                                 <li><a href="">Computers</a></li>
                                 <li><a href="">Computers</a></li>
                                 <li><a href="">Computers</a></li>
                                 <li><a href="">Computers</a></li>
                             </ul>
                         </li>
-                        <li class="sub-dropdown">
+                        <li class="sub-dropdown" data-bs-toggle="collapse" data-bs-target="#sub-dropdown3"
+                            aria-expanded="false" aria-controls="collapseExample">
                             <a href="">Laptops & Computers</a>
                             <fa-icon [icon]="chevron"></fa-icon>
-                            <ul class="sub-drop-menu">
+                            <ul class="collapse sub-drop-menu" id="sub-dropdown3">
                                 <li><a href="">Computers</a></li>
                                 <li><a href="">Computers</a></li>
                                 <li><a href="">Computers</a></li>
                                 <li><a href="">Computers</a></li>
                             </ul>
                         </li>
-                        <li class="sub-dropdown">
+                        <li class="sub-dropdown" data-bs-toggle="collapse" data-bs-target="#sub-dropdown4"
+                            aria-expanded="false" aria-controls="collapseExample">
                             <a href="">Laptops & Computers</a>
                             <fa-icon [icon]="chevron"></fa-icon>
-                            <ul class="sub-drop-menu">
+                            <ul class="collapse sub-drop-menu" id="sub-dropdown4">
                                 <li><a href="">Computers</a></li>
                                 <li><a href="">Computers</a></li>
                                 <li><a href="">Computers</a></li>
@@ -254,13 +270,14 @@
                 <li><a href="#">Trending</a></li>
                 <li><a href="#">Hot Deals</a></li>
                 <li class="dropdown">
-                    <a class="drop-btn" href="#">
+                    <a class="drop-btn" type="button" data-bs-toggle="collapse" data-bs-target="#pages-drop"
+                        aria-expanded="false" aria-controls="collapseExample" href="#">
                         <a href="#"> Pages</a>
 
                         <fa-icon [icon]="chevron"></fa-icon>
                     </a>
 
-                    <ul class="drop-menu">
+                    <ul class="collapse drop-menu" id="pages-drop">
                         <li><a href="">Laptops & Computers</a></li>
                         <li><a href="">Laptops & Computers</a></li>
                         <li><a href="">Laptops & Computers</a></li>

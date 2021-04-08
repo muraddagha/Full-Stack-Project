@@ -1,0 +1,126 @@
+@import "/src/assets/scss/variables";
+.product {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid $color-border;
+  &:hover {
+    .img-area {
+      img {
+        transform: scale(1.1);
+      }
+      .icons-area {
+        transform: translate(-50%, -50%) scale(1);
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+    .content {
+      padding: 10px 0 85px 0;
+    }
+    .add-cart-area {
+      transform: translateY(0);
+    }
+  }
+  .img-area {
+    margin: 20px;
+    overflow: hidden;
+    position: relative;
+    img {
+      max-width: 100%;
+      transition: 0.5s;
+      transform: scale(1);
+    }
+    .icons-area {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      position: absolute;
+      z-index: 999;
+      top: 53%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.1);
+      background-color: white;
+      list-style: none;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.5s;
+      li {
+        &:hover {
+          border: $color-pink-second;
+          a {
+            color: white;
+            background-color: $color-pink-second;
+            border-color: $color-pink-second;
+          }
+        }
+        a {
+          text-decoration: none;
+          color: #090b17;
+          width: 40px;
+          height: 40px;
+          display: inline-block;
+          line-height: 40px;
+          background: #fff;
+          text-align: center;
+          border: 1px solid $color-border;
+          transition: 0.2s;
+        }
+      }
+    }
+  }
+  .content {
+    padding: 30px 0 63px 0;
+    transition: 0.3s;
+    .star-area {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      li {
+        margin-right: 5px;
+        fa-icon {
+          color: #ffc107;
+        }
+      }
+    }
+    p {
+      color: #676e8b;
+      font-weight: 400;
+      display: block;
+      margin: 6px;
+    }
+    h6 {
+      a {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 25px;
+        text-decoration: none;
+        color: #090b17;
+      }
+    }
+    .price {
+      color: $color-pink-second;
+      font-weight: 500;
+      font-size: 16px;
+    }
+  }
+  .add-cart-area {
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: $color-pink-second;
+    display: block;
+    width: 100%;
+    color: white;
+    padding: 14px 0;
+    font-size: 14px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(50px);
+    transition: 0.3s;
+  }
+}

@@ -1,1 +1,128 @@
-<p>home works!</p>
+<section id="shop-collection">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div style="background-color: #fdc1c1;" class="big-shop-collection">
+                    <div class="collection-content">
+                        <h6>DEALS AND PROMOTIONS</h6>
+                        <h1>Keep your feet <br> Cool comfy.</h1>
+                        <div class="price">
+                            <del class="old-price">$325.00</del>
+                            <span class="new-price">$299<sup>.99</sup></span>
+                        </div>
+                        <a [routerLink]="['/app/product']" class="btn btn-pink">Shop Now</a>
+                    </div>
+                    <div class="collection-product">
+                        <img src="/assets/icons/img1.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="small-collection-area">
+                    <div style="background-color: #fdf7e3;" class="small-shop-collection colect-1">
+                        <div class="small-collection-content">
+                            <h3>SMART SPEAKER FOR <br>
+                                MUSIC LOVERS</h3>
+                            <div class="price d-flex align-items-center">
+                                From
+                                <span class="ms-1 new-price">$39 <sup>.99</sup></span>
+                            </div>
+                            <a [routerLink]="['/app/product']" class="btn-pink-small">Shop Now »</a>
+                        </div>
+                        <div class="small-collection-product">
+                            <img src="/assets/icons/img1.png" alt="">
+                        </div>
+                    </div>
+                    <div style="background-color: #f4f7fe;" class="small-shop-collection collect-2">
+                        <div class="small-collection-content">
+                            <h3>SMART SPEAKER FOR <br>
+                                MUSIC LOVERS</h3>
+                            <div class="price d-flex align-items-center">
+                                From
+                                <span class="ms-1 new-price">$39 <sup>.99</sup></span>
+                            </div>
+                            <a [routerLink]="['/app/product']" class="btn-pink-small">Shop Now »</a>
+                        </div>
+                        <div class="small-collection-product">
+                            <img src="/assets/icons/img1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="categories-slider">
+    <div class="categories-slider-area">
+        <h3>Explore Popular Categories</h3>
+        <div class="container">
+            <owl-carousel-o [options]="options">
+                <ng-template carouselSlide>
+                    <div class="categories-slider-item">
+                        <div class="category-img">
+                            <img src="/assets/icons/cat1.png" alt="">
+                        </div>
+                        <h6>Televisons</h6>
+                        <span>24 Products</span>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="categories-slider-item">
+                        <div class="category-img">
+                            <img src="/assets/icons/cat1.png" alt="">
+                        </div>
+                        <h6>Televisons</h6>
+                        <span>24 Products</span>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="categories-slider-item">
+                        <div class="category-img">
+                            <img src="/assets/icons/cat1.png" alt="">
+                        </div>
+                        <h6>Televisons</h6>
+                        <span>24 Products</span>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="categories-slider-item">
+                        <div class="category-img">
+                            <img src="/assets/icons/cat1.png" alt="">
+                        </div>
+                        <h6>Televisons</h6>
+                        <span>24 Products</span>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="categories-slider-item">
+                        <div class="category-img">
+                            <img src="/assets/icons/cat1.png" alt="">
+                        </div>
+                        <h6>Televisons</h6>
+                        <span>24 Products</span>
+                    </div>
+                </ng-template>
+
+            </owl-carousel-o>
+
+        </div>
+    </div>
+</section>
+<section id="new-arrivals" class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <app-single-product></app-single-product>
+            </div>
+            <div class="col-lg-3">
+                <app-single-product></app-single-product>
+            </div>
+            <div class="col-lg-3">
+                <app-single-product></app-single-product>
+            </div>
+            <div class="col-lg-3">
+                <app-single-product></app-single-product>
+            </div>
+        </div>
+    </div>
+</section>
