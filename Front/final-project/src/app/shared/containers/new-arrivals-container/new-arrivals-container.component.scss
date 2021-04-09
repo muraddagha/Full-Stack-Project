@@ -1,0 +1,48 @@
+@import "/src/assets/scss/variables";
+#new-arrivals {
+  overflow: hidden;
+  .tab-buttons {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-right: 100px;
+    margin-bottom: 30px;
+    .nav-item {
+      .active {
+        color: $color-pink-second !important;
+      }
+    }
+    li:not(:last-child) {
+      margin-right: 40px;
+    }
+    li {
+      a {
+        font-size: 14px;
+        font-weight: 500;
+        color: #676e8b;
+        padding: 4px 0 0 0;
+        text-decoration: none;
+      }
+    }
+  }
+  .tab-pane {
+    height: 0;
+    display: block;
+  }
+  .active {
+    height: auto;
+  }
+}
+
+//responsive
+@media only screen and (max-width: 992px) {
+  .tab-buttons {
+    margin: 27px 0 !important;
+    justify-content: initial !important;
+    li {
+      margin-right: 20px !important;
+    }
+  }
+}

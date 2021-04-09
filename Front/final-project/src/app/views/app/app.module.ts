@@ -19,6 +19,7 @@ import { HotDealsComponent } from './hot-deals/hot-deals.component';
 import { NewArrivalsComponent } from './new-arrivals/new-arrivals.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { ContainersModule } from 'src/app/shared/containers/containers.module';
 
 
 
@@ -43,7 +44,8 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
     AppRoutingModule,
     LayoutModule,
     CarouselModule,
-    ComponentsModule
+    ComponentsModule,
+    ContainersModule
   ]
 })
 export class AppModule { }

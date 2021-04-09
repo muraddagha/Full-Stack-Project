@@ -1,31 +1,7 @@
 @import "/src/assets/scss/variables";
 #shop-collection {
   padding-bottom: 20px;
-  .price {
-    margin-bottom: 35px;
-    .old-price {
-      font-size: 16px;
-      font-weight: 400;
-      color: #090b17;
-      text-decoration: line-through;
-      display: inline-block;
-      margin-right: 15px;
-    }
-    .new-price {
-      font-size: 36px;
-      font-weight: 700;
-      color: $color-pink-second;
-      margin-bottom: 0;
-      position: relative;
-      sup {
-        font-size: 16px;
-        font-weight: 500;
-        position: absolute;
-        right: -37px;
-        top: 13px;
-      }
-    }
-  }
+
   .big-shop-collection {
     background-color: #fdc1c1;
     display: flex;
@@ -177,6 +153,31 @@
     }
   }
 }
+.price {
+  margin-bottom: 35px;
+  .old-price {
+    font-size: 16px;
+    font-weight: 400;
+    color: #090b17;
+    text-decoration: line-through;
+    display: inline-block;
+    margin-right: 15px;
+  }
+  .new-price {
+    font-size: 36px;
+    font-weight: 700;
+    color: $color-pink-second;
+    margin-bottom: 0;
+    position: relative;
+    sup {
+      font-size: 16px;
+      font-weight: 500;
+      position: absolute;
+      right: -37px;
+      top: 13px;
+    }
+  }
+}
 
 //responsive
 @media only screen and (max-width: 1295px) {
@@ -194,10 +195,10 @@
     h6 {
       font-size: 12px !important;
     }
-    .price {
-      span {
-        font-size: 30px !important;
-      }
+  }
+  .price {
+    span {
+      font-size: 30px !important;
     }
   }
 }
@@ -217,11 +218,11 @@
       h1 {
         font-size: 27px !important;
       }
-      .price {
-        span {
-          font-size: 28px !important;
-        }
-      }
+    }
+  }
+  .price {
+    span {
+      font-size: 28px !important;
     }
   }
 }
@@ -231,14 +232,14 @@
       h1 {
         font-size: 22px !important;
       }
-      .price {
-        span {
-          font-size: 26px !important;
-        }
-      }
     }
     .collection-product {
       margin-right: 12px !important;
+    }
+  }
+  .price {
+    span {
+      font-size: 26px !important;
     }
   }
 }
