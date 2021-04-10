@@ -1,0 +1,46 @@
+@import "/src/assets/scss/variables";
+.blog {
+  margin-top: 30px;
+  &:hover {
+    .img-area {
+      a {
+        img {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+  .img-area {
+    overflow: hidden;
+    a {
+      img {
+        max-width: 100%;
+        transition: 0.3s;
+        transform: scale(1);
+      }
+    }
+  }
+  .blog-content {
+    margin: 0 10px;
+    .date {
+      font-size: 14px;
+      font-weight: 400;
+      display: block;
+      margin: 27px 0 5px 0;
+      color: #676e8b;
+    }
+    h3 {
+      a {
+        text-decoration: none;
+        color: black;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 1.45;
+        transition: 0.3s;
+        &:hover {
+          color: $color-pink-second;
+        }
+      }
+    }
+  }
+}

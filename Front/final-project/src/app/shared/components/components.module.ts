@@ -5,6 +5,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { CountdownComponent } from './countdown/countdown.component';
 import { OfferComponent } from './offer/offer.component';
+import { BlogComponent } from './blog/blog.component';
+import { SubscribeBannerComponent } from './subscribe-banner/subscribe-banner.component';
+import { AdsBannerComponent } from './ads-banner/ads-banner.component';
 
 
 
@@ -13,6 +16,9 @@ import { OfferComponent } from './offer/offer.component';
     SingleProductComponent,
     CountdownComponent,
     OfferComponent,
+    BlogComponent,
+    SubscribeBannerComponent,
+    AdsBannerComponent,
   ],
   imports: [
     CommonModule,
@@ -22,7 +28,10 @@ import { OfferComponent } from './offer/offer.component';
   exports: [
     SingleProductComponent,
     CountdownComponent,
-    OfferComponent
+    OfferComponent,
+    BlogComponent,
+    SubscribeBannerComponent,
+    AdsBannerComponent
   ]
 })
 export class ComponentsModule { }
