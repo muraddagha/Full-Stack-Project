@@ -23,7 +23,6 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "bootstrap": "^5.0.0-beta3",
-    "ngx-countdown": "^11.0.3",
     "ngx-owl-carousel-o": "^5.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

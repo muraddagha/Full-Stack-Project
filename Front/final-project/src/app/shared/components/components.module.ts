@@ -4,13 +4,15 @@ import { SingleProductComponent } from './single-product/single-product.componen
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { CountdownComponent } from './countdown/countdown.component';
+import { OfferComponent } from './offer/offer.component';
 
 
 
 @NgModule({
   declarations: [
     SingleProductComponent,
-    CountdownComponent
+    CountdownComponent,
+    OfferComponent,
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { CountdownComponent } from './countdown/countdown.component';
   ],
   exports: [
     SingleProductComponent,
-    CountdownComponent
+    CountdownComponent,
+    OfferComponent
   ]
 })
 export class ComponentsModule { }

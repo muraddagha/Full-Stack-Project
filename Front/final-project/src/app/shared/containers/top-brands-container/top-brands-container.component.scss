@@ -1,0 +1,27 @@
+#top-brands {
+  .title-area {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    display: grid;
+    grid-gap: 70px;
+    grid-template-columns: 160px auto;
+    .main-title {
+      font-size: 29px;
+    }
+    .border-dash {
+      border-top: 1px dashed #ebebeb;
+    }
+  }
+  .brand {
+    text-align: center;
+    margin-bottom: 60px;
+    img {
+      width: auto;
+      display: inline-block;
+    }
+  }
+  .bottom-border {
+    border-bottom: 1px solid #ebebeb;
+  }
+}

@@ -1,0 +1,26 @@
+.offer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  .icon {
+    img {
+      max-width: 100%;
+    }
+    margin-right: 20px;
+  }
+  .offer-content {
+    h4 {
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+    p {
+      font-size: 14px;
+      font-weight: 400;
+      color: #676e8b;
+      margin-bottom: 0;
+    }
+  }
+}

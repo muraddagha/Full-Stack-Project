@@ -4,12 +4,16 @@ import { NewArrivalsContainerComponent } from './new-arrivals-container/new-arri
 import { ComponentsModule } from '../components/components.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ProductsSliderContainerComponent } from './products-slider-container/products-slider-container.component';
+import { TopBrandsContainerComponent } from './top-brands-container/top-brands-container.component';
 
 
 
 @NgModule({
   declarations: [
-    NewArrivalsContainerComponent
+    NewArrivalsContainerComponent,
+    ProductsSliderContainerComponent,
+    TopBrandsContainerComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +22,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule
   ],
   exports: [
-    NewArrivalsContainerComponent
+    NewArrivalsContainerComponent,
+    ProductsSliderContainerComponent,
+    TopBrandsContainerComponent
   ]
 })
 export class ContainersModule { }

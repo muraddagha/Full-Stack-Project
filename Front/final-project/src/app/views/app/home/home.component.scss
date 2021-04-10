@@ -190,6 +190,41 @@
     }
   }
 }
+#small-banner {
+  .small-banner-content {
+    background-position: 0 0;
+    background-size: cover;
+    padding: 53px 20px 54px 120px;
+    background-repeat: no-repeat;
+    .small-banner-text {
+      max-width: 300px;
+      .sub-title {
+        font-weight: 600;
+        font-size: 14px;
+        color: $color-pink-second;
+        text-transform: uppercase;
+      }
+      .big-title {
+        font-size: 30px;
+        margin: 5px 0 16px 0;
+        font-weight: 600;
+        line-height: 1.33;
+      }
+      p {
+        color: #090b17 !important;
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        span {
+          color: $color-pink-second;
+        }
+      }
+    }
+  }
+}
+#offers {
+  padding: 100px 0 65px 0;
+}
 .price {
   margin-bottom: 35px;
   .old-price {
@@ -292,6 +327,20 @@
       font-size: 28px !important;
     }
   }
+  .small-banner-content {
+    padding: 15px 0 2px 20px !important;
+    .small-banner-text {
+      .sub-title {
+        font-size: 12px !important;
+      }
+      .big-title {
+        font-size: 23px !important;
+      }
+      p {
+        font-size: 12px !important;
+      }
+    }
+  }
 }
 @media only screen and(max-width:660px) {
   .deal-content {
@@ -325,6 +374,10 @@
         max-height: 300px !important;
       }
     }
+  }
+  #offers {
+    padding: 44px !important;
+    padding-left: 10px !important;
   }
 }
 @media only screen and (max-width: 568px) {
