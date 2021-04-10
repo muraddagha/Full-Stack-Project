@@ -1,0 +1,74 @@
+@import "/src/assets/scss/variables";
+.deals-countdown {
+  h4 {
+    color: $color-pink-second;
+    border-top: 1px solid rgba(112, 112, 112, 0.1);
+    padding-top: 32px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+  .deals-count {
+    display: flex;
+    align-items: center;
+    .single-count {
+      margin-right: 60px;
+      countdown {
+        span {
+          font-size: 40px;
+          font-weight: 700;
+          align-items: center;
+          position: relative;
+          display: block;
+          color: #090b17;
+          display: flex;
+        }
+      }
+      span {
+        font-size: 40px;
+        font-weight: 700;
+        align-items: center;
+        position: relative;
+        display: block;
+        color: #090b17;
+        display: flex;
+      }
+      .count-title {
+        font-size: 14px;
+        font-weight: 500;
+        color: #676e8b;
+        text-transform: uppercase;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media only screen and(max-width:660px) {
+  .deals-countdown {
+    h4 {
+      font-size: 12px !important;
+      padding-top: 14px !important;
+      margin-bottom: 5px !important;
+    }
+  }
+  .single-count {
+    margin-right: 5px !important;
+    span:not(.count-title) {
+      font-size: 30px !important;
+    }
+    .count-title {
+      font-size: 10px !important;
+    }
+  }
+}
+@media only screen and(max-width:568px) {
+  .deals-countdown {
+    text-align: center !important;
+    .deals-count {
+      justify-content: center !important;
+      padding-bottom: 10px !important;
+    }
+  }
+}

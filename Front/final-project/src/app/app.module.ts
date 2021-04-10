@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { CountdownModule } from 'ngx-countdown';
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FontAwesomeModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    CountdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

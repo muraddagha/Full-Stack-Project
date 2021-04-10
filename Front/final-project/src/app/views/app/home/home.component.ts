@@ -31,7 +31,10 @@ export class HomeComponent implements OnInit {
     nav: false,
   };
 
-  constructor() { }
+
+  constructor() {
+
+  }
 
   ngOnInit(): void {
   }

@@ -20,6 +20,7 @@ import { NewArrivalsComponent } from './new-arrivals/new-arrivals.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { ContainersModule } from 'src/app/shared/containers/containers.module';
+import { CountdownModule } from 'ngx-countdown';
 
 
 
@@ -45,7 +46,8 @@ import { ContainersModule } from 'src/app/shared/containers/containers.module';
     LayoutModule,
     CarouselModule,
     ComponentsModule,
-    ContainersModule
+    ContainersModule,
+    CountdownModule
   ]
 })
 export class AppModule { }
