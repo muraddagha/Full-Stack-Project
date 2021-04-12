@@ -1,291 +1,298 @@
 <header>
-    <section class="header-navbar mt-4 ">
-        <div class="container">
-            <div class="row mx-auto">
-                <div class="col-xl-3 col-lg-2 col-md-3 col-6">
-                    <div class="logo d-flex align-items-center">
-                        <a href="#" [ngClass]="{'clicked':toggle}" (click)="menuBtn($event)" class="menu-btn me-2">
+    <section id="header-navbar">
+        <div class="header-top mt-4">
+            <div class="container">
+                <div class="row mx-auto">
+                    <div class="col-xl-3 col-lg-2 col-md-3 col-6">
+                        <div class="logo d-flex align-items-center">
+                            <a href="#" [ngClass]="{'clicked':toggle}" (click)="menuBtn($event)" class="menu-btn me-2">
+                                <span class="menu-icon-bar"></span>
+                                <span class="menu-icon-bar"></span>
+                                <span class="menu-icon-bar"></span>
+                            </a>
+                            <a [routerLink]="['']"><img src="/assets/icons/logo.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-10 col-md-9 col-6">
+                        <div class="header-right-side d-flex justify-content-around">
+                            <div class="call-us-search d-flex">
+                                <div class="call-us-content">
+                                    <div class="icon">
+                                        <img src="/assets/icons/headset.svg" alt="">
+                                    </div>
+                                    <div class="number">
+                                        <p>CALL US</p>
+                                        <h4>+88 0184 1136251</h4>
+                                    </div>
+                                </div>
+                                <div class="search-box-area navbar-search-box">
+                                    <div class="search-box d-flex">
+                                        <div class="search-btn">
+                                            <i class="ti ti-search"></i>
+                                        </div>
+                                        <input type="text" placeholder="Search for course, skills and Videos">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="header-actions d-flex ">
+                                <a [routerLink]="['/app/account']">
+                                    <img src="/assets/icons/man.svg" alt="">
+                                </a>
+                                <a id="hide-icon" [routerLink]="['/app/wishlist']">
+                                    <div class="icon">
+                                        <img src="/assets/icons/hert.svg" alt="">
+                                        <span class="count">2</span>
+                                    </div>
+
+                                </a>
+                                <a [routerLink]="['/app/cart']">
+                                    <div class="icon">
+                                        <img src="/assets/icons/cart.svg" alt="">
+                                        <span class="count">2</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-navigation">
+            <div class="container">
+                <div class="header-menu-area my-2">
+                    <div class="menu-area d-flex justify-content-between">
+                        <div class="logo align-items-center">
+                            <a [routerLink]="['']"><img src="/assets/icons/logo.png" alt=""></a>
+                        </div>
+                        <div class="all-categories">
+                            <div (click)="categoryBtn()" class="menu-btn-all-categories d-flex align-items-center">
+                                <span class="menu-btn category-btn me-1">
+                                    <span class="menu-icon-bar"></span>
+                                    <span class="menu-icon-bar"></span>
+                                    <span class="menu-icon-bar"></span>
+                                </span>
+                                <span> All Categories</span>
+                                <fa-icon class="chevron" [icon]="chevron"></fa-icon>
+                            </div>
+                            <div [ngClass]="{'categories-active':category}" class="categories-dropdown">
+                                <ul>
+                                    <li *ngFor="let department of departments">
+                                        <span>
+                                            {{department.name}}
+                                            <fa-icon [icon]="chevronR"></fa-icon>
+                                        </span>
+                                        <ul *ngIf="department.categories.length>0" class="categories-sub-menu">
+                                            <li *ngFor="let category of department.categories">
+                                                <a [routerLink]="['/app/product',category.id]">
+                                                    {{category.name}}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="menu-content">
+                            <ul class="d-flex">
+                                <li><a class="active-menu" [routerLink]="['']">Home</a></li>
+                                <li>
+                                    <a [routerLink]="['/app/new-arrivals']">
+                                        New Arrivals
+                                        <fa-icon class="chevron" [icon]="chevron"></fa-icon>
+                                    </a>
+                                    <div class="sub-menu content-menu-dropdown">
+                                        <ul>
+                                            <li>
+                                                <h6><a href=""> Laptops & Compters </a></h6>
+                                            </li>
+                                            <li>
+                                                <a href="">Desktop Computers</a>
+                                            </li>
+                                            <li>
+                                                <a href="">Desktop Computers</a>
+                                            </li>
+                                            <li>
+                                                <a href="">Desktop Computers</a>
+                                            </li>
+                                        </ul>
+                                        <ul>
+                                            <li>
+                                                <h6><a href=""> Computers </a></h6>
+                                            </li>
+                                            <li>
+                                                <a href="">Desktop Computers</a>
+                                            </li>
+                                            <li>
+                                                <a href="">Desktop Computers</a>
+                                            </li>
+                                            <li>
+                                                <a href="">Desktop Computers</a>
+                                            </li>
+                                        </ul>
+                                        <ul>
+                                            <li>
+                                                <h6><a href=""> Phones </a></h6>
+                                            </li>
+                                            <li>
+                                                <a href="">Desktop Computers</a>
+                                            </li>
+                                            <li>
+                                                <a href="">Desktop Computers</a>
+                                            </li>
+                                            <li>
+                                                <a href="">Desktop Computers</a>
+                                            </li>
+                                        </ul>
+                                        <ul>
+                                            <li>
+                                                <h6><a href=""> Music Phones </a></h6>
+                                            </li>
+                                            <li>
+                                                <a href="">Desktop Computers</a>
+                                            </li>
+                                            <li>
+                                                <a href="">Desktop Computers</a>
+                                            </li>
+                                            <li>
+                                                <a href="">Desktop Computers</a>
+                                            </li>
+                                        </ul>
+                                        <ul class="img-area">
+                                            <li>
+                                                <h5>PREMIUM SUPPLEMENTS</h5>
+                                            </li>
+                                            <li>
+                                                <h4>Wooden Minimalistic <br>
+                                                    Chairs for Home.</h4>
+                                            </li>
+                                            <li><a class="btn-pink-small" href="">Shop Now »</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li><a [routerLink]="['/app/trending']">Trending</a></li>
+                                <li><a [routerLink]="['/app/hot-deals']"> Hot Deals </a></li>
+                                <li>
+                                    <a href="">
+                                        Pages
+                                        <fa-icon class="chevron" [icon]="chevron"></fa-icon>
+                                    </a>
+                                    <ul class="sub-menu menu-dropdown-small">
+                                        <li><a href="">About</a></li>
+                                        <li><a href="">About</a></li>
+                                        <li><a href="">About</a></li>
+                                    </ul>
+                                </li>
+                                <li><a [routerLink]="['/app/contact']">Contact</a></li>
+                            </ul>
+                        </div>
+                        <span class="ads">Clearance <span>Up to 30% Off</span></span>
+                        <a href="#" [ngClass]="{'clicked':toggle}" (click)="menuBtn($event)" class="menu-btn">
                             <span class="menu-icon-bar"></span>
                             <span class="menu-icon-bar"></span>
                             <span class="menu-icon-bar"></span>
                         </a>
-                        <a [routerLink]="['']"><img src="/assets/icons/logo.png" alt=""></a>
+
+                    </div>
+                    <div class="search-box-main-top">
+                        <div class="search-box-area">
+                            <div class="search-box d-flex">
+                                <div class="search-btn">
+                                    <i class="ti ti-search"></i>
+                                </div>
+                                <input type="text" placeholder="Search for course, skills and Videos">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-xl-9 col-lg-10 col-md-9 col-6">
-                    <div class="header-right-side d-flex justify-content-around">
-                        <div class="call-us-search d-flex">
-                            <div class="call-us-content">
-                                <div class="icon">
-                                    <img src="/assets/icons/headset.svg" alt="">
-                                </div>
-                                <div class="number">
-                                    <p>CALL US</p>
-                                    <h4>+88 0184 1136251</h4>
-                                </div>
-                            </div>
-                            <div class="search-box-area navbar-search-box">
-                                <div class="search-box d-flex">
-                                    <div class="search-btn">
-                                        <i class="ti ti-search"></i>
-                                    </div>
-                                    <input type="text" placeholder="Search for course, skills and Videos">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="header-actions d-flex ">
-                            <a [routerLink]="['/app/account']">
-                                <img src="/assets/icons/man.svg" alt="">
+                <div [ngClass]="{'mobile-active':toggle}" class="mobile-menu">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li class="dropdown">
+                            <a class="drop-btn" type="button" data-bs-toggle="collapse" data-bs-target="#big-dropdown"
+                                aria-expanded="false" aria-controls="collapseExample" style="cursor: pointer;">
+                                <a href="#"> New Arrivals </a>
+                                <fa-icon [icon]="chevron"></fa-icon>
                             </a>
-                            <a id="hide-icon" [routerLink]="['/app/wishlist']">
-                                <div class="icon">
-                                    <img src="/assets/icons/hert.svg" alt="">
-                                    <span class="count">2</span>
-                                </div>
+                            <ul class="collapse drop-menu" id="big-dropdown">
+                                <li class="sub-dropdown" data-bs-toggle="collapse" data-bs-target="#sub-dropdown1"
+                                    aria-expanded="false" aria-controls="collapseExample">
+                                    <a href="">Laptops & Computers</a>
+                                    <fa-icon [icon]="chevron"></fa-icon>
+                                    <ul class="collapse sub-drop-menu" id="sub-dropdown1">
+                                        <li><a href="">Computers</a></li>
+                                        <li><a href="">Computers</a></li>
+                                        <li><a href="">Computers</a></li>
+                                        <li><a href="">Computers</a></li>
+                                    </ul>
+                                </li>
+                                <!-- <li *ngFor="let department of departments;index as i" class="sub-dropdown"
+                                data-toggle="collapse" attr.data-target="#subdrop{{department.id}}" aria-expanded="false"
+                                aria-controls="collapseExample">
+                                <a href="">{{department.name}}</a>
+                                <fa-icon [icon]="chevron"></fa-icon>
+                                <ul class="collapse sub-drop-menu" id="subdrop{{department.id}}">
+                                    <li *ngFor="let category of department.categories">
+                                        <a href="">{{category.name}}</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                                <li class="sub-dropdown" data-bs-toggle="collapse" data-bs-target="#sub-dropdown2"
+                                    aria-expanded="false" aria-controls="collapseExample">
+                                    <a href="">Laptops & Computers</a>
+                                    <fa-icon [icon]="chevron"></fa-icon>
+                                    <ul class="collapse sub-drop-menu" id="sub-dropdown2">
+                                        <li><a href="">Computers</a></li>
+                                        <li><a href="">Computers</a></li>
+                                        <li><a href="">Computers</a></li>
+                                        <li><a href="">Computers</a></li>
+                                    </ul>
+                                </li>
+                                <li class="sub-dropdown" data-bs-toggle="collapse" data-bs-target="#sub-dropdown3"
+                                    aria-expanded="false" aria-controls="collapseExample">
+                                    <a href="">Laptops & Computers</a>
+                                    <fa-icon [icon]="chevron"></fa-icon>
+                                    <ul class="collapse sub-drop-menu" id="sub-dropdown3">
+                                        <li><a href="">Computers</a></li>
+                                        <li><a href="">Computers</a></li>
+                                        <li><a href="">Computers</a></li>
+                                        <li><a href="">Computers</a></li>
+                                    </ul>
+                                </li>
+                                <li class="sub-dropdown" data-bs-toggle="collapse" data-bs-target="#sub-dropdown4"
+                                    aria-expanded="false" aria-controls="collapseExample">
+                                    <a href="">Laptops & Computers</a>
+                                    <fa-icon [icon]="chevron"></fa-icon>
+                                    <ul class="collapse sub-drop-menu" id="sub-dropdown4">
+                                        <li><a href="">Computers</a></li>
+                                        <li><a href="">Computers</a></li>
+                                        <li><a href="">Computers</a></li>
+                                        <li><a href="">Computers</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Trending</a></li>
+                        <li><a href="#">Hot Deals</a></li>
+                        <li class="dropdown">
+                            <a class="drop-btn" type="button" data-bs-toggle="collapse" data-bs-target="#pages-drop"
+                                aria-expanded="false" aria-controls="collapseExample" href="#">
+                                <a href="#"> Pages</a>
 
+                                <fa-icon [icon]="chevron"></fa-icon>
                             </a>
-                            <a [routerLink]="['/app/cart']">
-                                <div class="icon">
-                                    <img src="/assets/icons/cart.svg" alt="">
-                                    <span class="count">2</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
 
+                            <ul class="collapse drop-menu" id="pages-drop">
+                                <li><a href="">Laptops & Computers</a></li>
+                                <li><a href="">Laptops & Computers</a></li>
+                                <li><a href="">Laptops & Computers</a></li>
+                                <li><a href="">Laptops & Computers</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
-    <div class="container">
-        <div class="header-menu-area my-2">
-            <div class="menu-area d-flex justify-content-between">
-                <div class="all-categories">
-                    <div (click)="categoryBtn()" class="menu-btn-all-categories d-flex align-items-center">
-                        <span class="menu-btn category-btn me-1">
-                            <span class="menu-icon-bar"></span>
-                            <span class="menu-icon-bar"></span>
-                            <span class="menu-icon-bar"></span>
-                        </span>
-                        <span> All Categories</span>
-                        <fa-icon class="chevron" [icon]="chevron"></fa-icon>
-                    </div>
-                    <div [ngClass]="{'categories-active':category}" class="categories-dropdown">
-                        <ul>
-                            <li *ngFor="let department of departments">
-                                <span>
-                                    {{department.name}}
-                                    <fa-icon [icon]="chevronR"></fa-icon>
-                                </span>
-                                <ul *ngIf="department.categories.length>0" class="categories-sub-menu">
-                                    <li *ngFor="let category of department.categories">
-                                        <a [routerLink]="['/app/product',category.id]">
-                                            {{category.name}}
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="menu-content">
-                    <ul class="d-flex">
-                        <li><a class="active-menu" [routerLink]="['']">Home</a></li>
-                        <li>
-                            <a [routerLink]="['/app/new-arrivals']">
-                                New Arrivals
-                                <fa-icon class="chevron" [icon]="chevron"></fa-icon>
-                            </a>
-                            <div class="sub-menu content-menu-dropdown">
-                                <ul>
-                                    <li>
-                                        <h6><a href=""> Laptops & Compters </a></h6>
-                                    </li>
-                                    <li>
-                                        <a href="">Desktop Computers</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Desktop Computers</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Desktop Computers</a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <h6><a href=""> Computers </a></h6>
-                                    </li>
-                                    <li>
-                                        <a href="">Desktop Computers</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Desktop Computers</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Desktop Computers</a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <h6><a href=""> Phones </a></h6>
-                                    </li>
-                                    <li>
-                                        <a href="">Desktop Computers</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Desktop Computers</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Desktop Computers</a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <h6><a href=""> Music Phones </a></h6>
-                                    </li>
-                                    <li>
-                                        <a href="">Desktop Computers</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Desktop Computers</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Desktop Computers</a>
-                                    </li>
-                                </ul>
-                                <ul class="img-area">
-                                    <li>
-                                        <h5>PREMIUM SUPPLEMENTS</h5>
-                                    </li>
-                                    <li>
-                                        <h4>Wooden Minimalistic <br>
-                                            Chairs for Home.</h4>
-                                    </li>
-                                    <li><a class="btn-pink-small" href="">Shop Now »</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a [routerLink]="['/app/trending']">Trending</a></li>
-                        <li><a [routerLink]="['/app/hot-deals']"> Hot Deals </a></li>
-                        <li>
-                            <a href="">
-                                Pages
-                                <fa-icon class="chevron" [icon]="chevron"></fa-icon>
-                            </a>
-                            <ul class="sub-menu menu-dropdown-small">
-                                <li><a href="">About</a></li>
-                                <li><a href="">About</a></li>
-                                <li><a href="">About</a></li>
-                            </ul>
-                        </li>
-                        <li><a [routerLink]="['/app/contact']">Contact</a></li>
-                    </ul>
-                </div>
-                <span class="ads">Clearance <span>Up to 30% Off</span></span>
-                <a href="#" [ngClass]="{'clicked':toggle}" (click)="menuBtn($event)" class="menu-btn">
-                    <span class="menu-icon-bar"></span>
-                    <span class="menu-icon-bar"></span>
-                    <span class="menu-icon-bar"></span>
-                </a>
-
-            </div>
-            <div class="search-box-main-top">
-                <div class="search-box-area">
-                    <div class="search-box d-flex">
-                        <div class="search-btn">
-                            <i class="ti ti-search"></i>
-                        </div>
-                        <input type="text" placeholder="Search for course, skills and Videos">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div [ngClass]="{'mobile-active':toggle}" class="mobile-menu">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li class="dropdown">
-                    <a class="drop-btn" type="button" data-bs-toggle="collapse" data-bs-target="#big-dropdown"
-                        aria-expanded="false" aria-controls="collapseExample" style="cursor: pointer;">
-                        <a href="#"> New Arrivals </a>
-                        <fa-icon [icon]="chevron"></fa-icon>
-                    </a>
-                    <ul class="collapse drop-menu" id="big-dropdown">
-                        <li class="sub-dropdown" data-bs-toggle="collapse" data-bs-target="#sub-dropdown1"
-                            aria-expanded="false" aria-controls="collapseExample">
-                            <a href="">Laptops & Computers</a>
-                            <fa-icon [icon]="chevron"></fa-icon>
-                            <ul class="collapse sub-drop-menu" id="sub-dropdown1">
-                                <li><a href="">Computers</a></li>
-                                <li><a href="">Computers</a></li>
-                                <li><a href="">Computers</a></li>
-                                <li><a href="">Computers</a></li>
-                            </ul>
-                        </li>
-                        <!-- <li *ngFor="let department of departments;index as i" class="sub-dropdown"
-                        data-toggle="collapse" attr.data-target="#subdrop{{department.id}}" aria-expanded="false"
-                        aria-controls="collapseExample">
-                        <a href="">{{department.name}}</a>
-                        <fa-icon [icon]="chevron"></fa-icon>
-                        <ul class="collapse sub-drop-menu" id="subdrop{{department.id}}">
-                            <li *ngFor="let category of department.categories">
-                                <a href="">{{category.name}}</a>
-                            </li>
-                        </ul>
-                    </li> -->
-                        <li class="sub-dropdown" data-bs-toggle="collapse" data-bs-target="#sub-dropdown2"
-                            aria-expanded="false" aria-controls="collapseExample">
-                            <a href="">Laptops & Computers</a>
-                            <fa-icon [icon]="chevron"></fa-icon>
-                            <ul class="collapse sub-drop-menu" id="sub-dropdown2">
-                                <li><a href="">Computers</a></li>
-                                <li><a href="">Computers</a></li>
-                                <li><a href="">Computers</a></li>
-                                <li><a href="">Computers</a></li>
-                            </ul>
-                        </li>
-                        <li class="sub-dropdown" data-bs-toggle="collapse" data-bs-target="#sub-dropdown3"
-                            aria-expanded="false" aria-controls="collapseExample">
-                            <a href="">Laptops & Computers</a>
-                            <fa-icon [icon]="chevron"></fa-icon>
-                            <ul class="collapse sub-drop-menu" id="sub-dropdown3">
-                                <li><a href="">Computers</a></li>
-                                <li><a href="">Computers</a></li>
-                                <li><a href="">Computers</a></li>
-                                <li><a href="">Computers</a></li>
-                            </ul>
-                        </li>
-                        <li class="sub-dropdown" data-bs-toggle="collapse" data-bs-target="#sub-dropdown4"
-                            aria-expanded="false" aria-controls="collapseExample">
-                            <a href="">Laptops & Computers</a>
-                            <fa-icon [icon]="chevron"></fa-icon>
-                            <ul class="collapse sub-drop-menu" id="sub-dropdown4">
-                                <li><a href="">Computers</a></li>
-                                <li><a href="">Computers</a></li>
-                                <li><a href="">Computers</a></li>
-                                <li><a href="">Computers</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="#">Trending</a></li>
-                <li><a href="#">Hot Deals</a></li>
-                <li class="dropdown">
-                    <a class="drop-btn" type="button" data-bs-toggle="collapse" data-bs-target="#pages-drop"
-                        aria-expanded="false" aria-controls="collapseExample" href="#">
-                        <a href="#"> Pages</a>
-
-                        <fa-icon [icon]="chevron"></fa-icon>
-                    </a>
-
-                    <ul class="collapse drop-menu" id="pages-drop">
-                        <li><a href="">Laptops & Computers</a></li>
-                        <li><a href="">Laptops & Computers</a></li>
-                        <li><a href="">Laptops & Computers</a></li>
-                        <li><a href="">Laptops & Computers</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
-    </div>
 </header>

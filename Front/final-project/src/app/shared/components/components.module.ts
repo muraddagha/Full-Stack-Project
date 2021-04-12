@@ -8,6 +8,7 @@ import { OfferComponent } from './offer/offer.component';
 import { BlogComponent } from './blog/blog.component';
 import { SubscribeBannerComponent } from './subscribe-banner/subscribe-banner.component';
 import { AdsBannerComponent } from './ads-banner/ads-banner.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 
 
@@ -19,6 +20,7 @@ import { AdsBannerComponent } from './ads-banner/ads-banner.component';
     BlogComponent,
     SubscribeBannerComponent,
     AdsBannerComponent,
+    BreadcrumbComponent,
   ],
   imports: [
     CommonModule,

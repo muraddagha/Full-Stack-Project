@@ -13,7 +13,7 @@ import { TopBrandsContainerComponent } from './top-brands-container/top-brands-c
   declarations: [
     NewArrivalsContainerComponent,
     ProductsSliderContainerComponent,
-    TopBrandsContainerComponent
+    TopBrandsContainerComponent,
   ],
   imports: [
     CommonModule,
@@ -24,7 +24,7 @@ import { TopBrandsContainerComponent } from './top-brands-container/top-brands-c
   exports: [
     NewArrivalsContainerComponent,
     ProductsSliderContainerComponent,
-    TopBrandsContainerComponent
+    TopBrandsContainerComponent,
   ]
 })
 export class ContainersModule { }

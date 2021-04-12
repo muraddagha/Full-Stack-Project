@@ -47,7 +47,23 @@ export class HeaderComponent implements OnInit {
     this.toggle = !this.toggle;
   }
   ngAfterViewInit(): void {
+
     // this.addDropActive()
+
+
+
+    this.fixedNavbar();
+  }
+  private fixedNavbar(): void {
+    let header = this.elem.nativeElement.querySelector("#header-navbar");
+    window.addEventListener("scroll", (e) => {
+      if (window.scrollY > 403) {
+        header.classList.add("header-fixed")
+      }
+      else if (window.scrollY < 366) {
+        header.classList.remove("header-fixed")
+      }
+    })
   }
   public categoryBtn(): void {
     this.category = !this.category;

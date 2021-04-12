@@ -9,7 +9,7 @@ ul {
   margin: 0;
   padding: 0;
 }
-.header-navbar {
+.header-top {
   border-bottom: 1.5px solid $color-border;
   padding-bottom: 20px;
   .logo {
@@ -79,18 +79,25 @@ ul {
     }
   }
 }
+
 .header-menu-area {
   .menu-area {
     align-items: center;
     padding-top: 20px;
+    padding-bottom: 26px;
+    .logo {
+      display: none !important;
+    }
     .all-categories {
       font-size: 16px;
       font-weight: 500;
       width: 25%;
       position: relative;
-      padding-bottom: 26px;
       .menu-btn-all-categories {
         cursor: pointer;
+        .category-btn {
+          margin-bottom: 3px;
+        }
         span:nth-child(2) {
           margin-right: 20px;
         }
@@ -175,7 +182,6 @@ ul {
         li {
           margin-left: 25px;
           position: relative;
-          padding-bottom: 26px;
           &:hover {
             .sub-menu {
               opacity: 1;
@@ -202,6 +208,7 @@ ul {
             visibility: hidden;
             transition: 0.5s;
             width: 690px;
+            z-index: 999;
             ul {
               flex: 33.33%;
               padding-right: 50px;
@@ -317,13 +324,39 @@ ul {
       font-weight: 500;
       color: #687083;
       width: 20%;
-      padding-bottom: 26px;
       span {
         color: $color-pink;
       }
     }
     .menu-btn:not(.category-btn) {
       display: none;
+    }
+  }
+}
+.header-fixed {
+  position: fixed;
+  top: 0;
+  background-color: white;
+  width: 100%;
+  margin: 0 !important;
+  z-index: 9999;
+  box-shadow: 0px 3px 16px 0px rgb(0 0 0 / 3%);
+  left: 0;
+  top: -72px;
+  transform: translateY(72px);
+  transition: transform 500ms ease, background 500ms ease;
+  .header-top {
+    display: none !important;
+  }
+  .header-menu-area {
+    margin: 0 !important;
+    .menu-area {
+      .logo {
+        display: flex !important;
+      }
+      .ads {
+        display: none !important;
+      }
     }
   }
 }
@@ -422,7 +455,6 @@ ul {
   transform: scaleY(1);
   // height: auto;
 }
-
 .menu-btn {
   // display: none;
   flex-direction: column;
@@ -561,10 +593,27 @@ ul {
     }
   }
 }
+.header-fixed {
+  .header-menu-area {
+    .menu-area {
+      .logo {
+        display: none !important;
+      }
+    }
+    .search-box-main-top {
+      display: none !important;
+    }
+  }
+}
 
 @media only screen and (max-width: 768px) {
+  .header-fixed {
+    .header-top {
+      display: block !important;
+    }
+  }
   .menu-btn {
-    display: flex;
+    display: flex !important;
   }
   .menu-area {
     display: none !important;

@@ -1,0 +1,62 @@
+#ads {
+  padding-top: 50px;
+  padding-bottom: 55px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  .big-banner-content {
+    text-align: center;
+    background-image: url("/assets/icons/big-banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right center;
+    color: #ffff;
+    padding: 16px 29px;
+    margin-right: 15px;
+    h4 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      padding: 0;
+      margin: 5px;
+    }
+    p {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .small-banner-content {
+    background-image: url("/assets/icons/banner2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right center;
+    color: #ffff;
+    padding: 16px 29px;
+    h4 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      padding: 0;
+      margin: 5px;
+    }
+    p {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0;
+      padding: 0;
+      margin-left: 5px;
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .big-banner-content {
+    background-position: center center !important;
+  }
+}
+@media only screen and(max-width:768px) {
+  .big-banner-content {
+    margin-right: 0 !important;
+    margin-bottom: 30px;
+  }
+}

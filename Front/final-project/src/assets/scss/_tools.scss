@@ -7,6 +7,9 @@ body {
   font-style: normal;
   font-weight: 400;
 }
+a {
+  outline: none;
+}
 .btn-pink {
   text-decoration: none;
   color: white;
@@ -42,6 +45,12 @@ body {
 @media only screen and (min-width: 1200px) {
   .container {
     max-width: 1440px !important;
+  }
+}
+@media only screen and(max-width:992px) {
+  .main-title {
+    text-align: center !important;
+    margin-bottom: 10px !important;
   }
 }
 

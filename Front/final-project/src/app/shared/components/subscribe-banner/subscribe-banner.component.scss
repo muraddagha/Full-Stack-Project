@@ -1,7 +1,138 @@
 @import "/src/assets/scss/variables";
-.banner {
-  background-image: url("/assets/icons/subbanner.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
+#subscribe-banner {
+  margin-top: 30px;
+  margin-bottom: 100px;
+  .banner {
+    background-image: url("/assets/icons/subbanner.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    padding: 40px 70px 34px 90px;
+    &::before {
+      content: "";
+      position: absolute;
+      right: 10px;
+      background: #fff;
+      bottom: 10px;
+      z-index: -1;
+      left: 10px;
+      top: 10px;
+    }
+    .banner-content {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      .title-area {
+        h4 {
+          font-size: 22px;
+          font-weight: 700;
+          line-height: 1.45;
+          text-align: right;
+          span {
+            color: $color-pink-second;
+          }
+        }
+      }
+      .text-area {
+        position: relative;
+        padding-left: 30px;
+        margin-left: 30px;
+        &::before {
+          position: absolute;
+          left: 0;
+          top: 0;
+          content: "";
+          height: 63px;
+          width: 4px;
+          background: #f5f5f5;
+        }
+        p {
+          font-size: 16px;
+          font-weight: 400;
+          color: #676e8b;
+          line-height: 32px;
+          margin-bottom: 0;
+          span {
+            font-weight: 600;
+          }
+          span:not(:last-child) {
+            color: $color-pink-second;
+          }
+        }
+      }
+    }
+    .banner-subscribe {
+      padding-right: 30px;
+      form {
+        display: flex;
+        align-items: center;
+        .subscribe {
+          background: #fff;
+          color: #090b17;
+          font-weight: 400;
+          padding-left: 20px;
+          border-radius: 5px 0 5px 0;
+          height: 50px;
+          border: 1px solid #ced4da;
+          font-family: "Jost", sans-serif;
+          font-size: 14px;
+          width: 100%;
+          &:focus {
+            outline: #80bdff;
+          }
+        }
+        .btn-pink {
+          padding: 12px 25px;
+          &:hover {
+            color: white !important;
+            background-color: $color-pink-second !important;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and(max-width:992px) {
+  .banner-content {
+    justify-content: center !important;
+    .title-area {
+      h4 {
+        text-align: center !important;
+      }
+    }
+    .text-area {
+      border-top: 4px solid #f5f5f5 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      text-align: center !important;
+      &::before {
+        content: none !important;
+      }
+      p {
+        margin-top: 5px;
+      }
+    }
+  }
+}
+@media only screen and(max-width:576px) {
+  .banner-subscribe {
+    form {
+      flex-wrap: wrap !important;
+      .subscribe {
+        width: 100% !important;
+      }
+      .btn-pink {
+        width: 100% !important;
+      }
+    }
+  }
+}
+@media only screen and(max-width:500px) {
+  .banner {
+    padding: 56px 20px 48px 38px !important;
+  }
 }
