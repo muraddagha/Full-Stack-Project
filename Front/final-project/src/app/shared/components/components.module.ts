@@ -33,7 +33,8 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     OfferComponent,
     BlogComponent,
     SubscribeBannerComponent,
-    AdsBannerComponent
+    AdsBannerComponent,
+    BreadcrumbComponent
   ]
 })
 export class ComponentsModule { }
