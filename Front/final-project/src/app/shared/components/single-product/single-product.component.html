@@ -20,24 +20,13 @@
         </ul>
     </div>
     <div class="content">
-        <ul class="star-area">
-            <li>
-                <fa-icon [icon]="star"></fa-icon>
-            </li>
-            <li>
-                <fa-icon [icon]="star"></fa-icon>
-            </li>
-            <li>
-                <fa-icon [icon]="star"></fa-icon>
-            </li>
-            <li>
-                <fa-icon [icon]="star"></fa-icon>
-            </li>
-            <li>
-                <fa-icon [icon]="star"></fa-icon>
-            </li>
-
-        </ul>
+        <div class="star">
+            <fa-icon [icon]="star"></fa-icon>
+            <fa-icon class="unrated" [icon]="star"></fa-icon>
+            <fa-icon class="unrated" [icon]="star"></fa-icon>
+            <fa-icon class="unrated" [icon]="star"></fa-icon>
+            <fa-icon class="unrated" [icon]="star"></fa-icon>
+        </div>
         <p>Interior Design</p>
         <h6>
             <a [routerLink]="['/app/product']">Living Room Re-imagined</a>

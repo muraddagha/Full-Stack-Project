@@ -1,0 +1,299 @@
+@import "/src/assets/scss/variables";
+.title {
+  margin-bottom: 15px;
+  span {
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+.filter-area {
+  border: 1px solid $color-border;
+  padding: 25px 30px 30px 30px;
+  form {
+    .filter-box {
+      .filter-title {
+        font-size: 18px;
+        font-weight: 600;
+        border-bottom: 1px solid #f1f1f1;
+        margin-bottom: 18px;
+        padding-bottom: 11px;
+        display: block;
+      }
+      ul {
+        margin-bottom: 35px;
+        padding: 0;
+        list-style: none;
+        li {
+          margin-bottom: 12px;
+          &:last-child {
+            margin-bottom: 0 !important;
+          }
+          label {
+            position: relative;
+            margin: 0;
+            align-items: center;
+            display: flex;
+            cursor: pointer;
+            input[type="checkbox"] {
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              opacity: 0;
+              visibility: hidden;
+            }
+            input[type="checkbox"]:checked ~ .checkmark {
+              background-color: $color-pink-second;
+              transition: 0.3s;
+              &::after {
+                width: 100%;
+                height: 100%;
+                border: 0;
+                transition: 0.3s;
+                transform: scale(0);
+              }
+              &::before {
+                content: "\e64c";
+                font-family: "themify";
+                position: absolute;
+                display: block;
+                top: 0px;
+                left: 3px;
+                text-indent: 1px;
+                color: #828bb2;
+                background-color: transparent;
+                border: 0px;
+                -webkit-transform: rotate(8deg);
+                -moz-transform: rotate(8deg);
+                -ms-transform: rotate(8deg);
+                -o-transform: rotate(8deg);
+                transform: rotate(8deg);
+                font-size: 10px;
+                font-weight: 600;
+                line-height: 18px;
+                z-index: 99;
+                color: #fff;
+                transition: 0.3s;
+              }
+            }
+            .checkmark {
+              margin-right: 10px;
+              position: relative;
+              width: 18px;
+              height: 18px;
+              top: 0;
+              left: 0;
+              display: block;
+              cursor: pointer;
+              line-height: 18px;
+              flex: 18px 0 0;
+              border-radius: 3px;
+              &::after {
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                content: "";
+                width: 18px;
+                height: 18px;
+                background: transparent;
+                border-radius: 3px;
+                border: 1px solid #e9e7f7;
+                transition: 0.3s;
+                transform: scale(1);
+              }
+            }
+            .input-name {
+              font-size: 14px;
+              font-weight: 500;
+              font-family: "Jost", sans-serif;
+              color: #656565;
+              margin-bottom: 0;
+            }
+          }
+          .star {
+            fa-icon {
+              font-size: 15px;
+              color: #ffc107;
+              margin-right: 4px;
+            }
+            span {
+              font-size: 14px;
+              font-weight: 500;
+              color: #656565;
+              margin-left: 11px;
+            }
+          }
+        }
+      }
+      .filter-color-area {
+        flex-wrap: wrap;
+        li {
+          width: 16.666667%;
+          .color-filter {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            input[type="radio"] {
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              opacity: 0;
+              visibility: hidden;
+            }
+            input[type="radio"]:checked ~ .checkmark-color {
+              border-color: $color-pink-second;
+            }
+            .checkmark-color {
+              position: relative;
+              width: 35px;
+              height: 35px;
+              top: 0;
+              left: 0;
+              display: block;
+              cursor: pointer;
+              line-height: 18px;
+              flex: 35px 0 0;
+              border-radius: 50%;
+              border: 1px solid #f1f1f1;
+              &::before {
+                content: "";
+                position: absolute;
+                width: 25px;
+                height: 25px;
+                background: #fd1c5e;
+                border-radius: 50%;
+                left: 4px;
+                top: 4px;
+              }
+              &::after {
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                content: "";
+                width: 35px;
+                height: 35px;
+                background: transparent;
+                border-radius: 50%;
+                transition: 0.3s;
+                transform: scale(1);
+              }
+            }
+            input[type="radio"]:checked ~ .checkmark-color.black {
+              border-color: #000000;
+            }
+            input[type="radio"]:checked ~ .checkmark-color.blue {
+              border-color: #1f73be;
+            }
+            input[type="radio"]:checked ~ .checkmark-color.gray {
+              border-color: #d6d6d6;
+            }
+            input[type="radio"]:checked ~ .checkmark-color.green {
+              border-color: #81d742;
+            }
+            input[type="radio"]:checked ~ .checkmark-color.brown {
+              border-color: #dd9a32;
+            }
+            input[type="radio"]:checked ~ .checkmark-color.purple {
+              border-color: #8224e2;
+            }
+            input[type="radio"]:checked ~ .checkmark-color.yellow {
+              border-color: #eeee22;
+            }
+
+            .checkmark-color.black {
+              &::before {
+                background: #000000;
+              }
+            }
+            .checkmark-color.blue {
+              &::before {
+                background: #1f73be;
+              }
+            }
+            .checkmark-color.gray {
+              &::before {
+                background: #d6d6d6;
+              }
+            }
+            .checkmark-color.green {
+              &::before {
+                background: #81d742;
+              }
+            }
+            .checkmark-color.brown {
+              &::before {
+                background: #dd9a32;
+              }
+            }
+            .checkmark-color.purple {
+              &::before {
+                background: #8224e2;
+              }
+            }
+            .checkmark-color.yellow {
+              &::before {
+                background: #eeee22;
+              }
+            }
+          }
+        }
+      }
+      ::ng-deep {
+        .range-slider {
+          margin-bottom: 20px;
+          .ng5-slider {
+            .ng5-slider-bar {
+              background: #f1f1f1;
+              height: 6px;
+            }
+            .ng5-slider-bubble {
+              display: none;
+            }
+            .ng5-slider-selection {
+              background-color: $color-pink-second;
+              height: 6px;
+            }
+            .ng5-slider-pointer {
+              width: 12px;
+              height: 12px;
+              border-radius: 50%;
+              border: 1px solid #fd1c5e !important;
+              background: #fff !important;
+              top: -3px;
+              &:focus {
+                outline: none;
+              }
+              &::after {
+                display: none;
+              }
+            }
+            .ng5-slider-tick {
+              border: 1px solid #fd1c5e !important;
+            }
+          }
+        }
+      }
+    }
+    .price-range {
+      margin-left: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #656565;
+      span {
+        color: $color-pink-second;
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+    .btn-pink {
+      padding: 6px 20px !important;
+    }
+  }
+}

@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php -->
+<html class="no-js" lang="zxx"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>InfixVuci</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/img/favicon.png">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="./fil_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./fil_files/owl.carousel.min.css">
+    <link rel="stylesheet" href="./fil_files/magnific-popup.css">
+    <link rel="stylesheet" href="./fil_files/fontawesome.css">
+    <link rel="stylesheet" href="./fil_files/themify-icons.css">
+    <link rel="stylesheet" href="./fil_files/flaticon.css">
+    <link rel="stylesheet" href="./fil_files/nice-select.css">
+    <link rel="stylesheet" href="./fil_files/gijgo.min.css">
+    <link rel="stylesheet" href="./fil_files/jquery-ui.css">
+    <link rel="stylesheet" href="./fil_files/animate.min.css">
+    <link rel="stylesheet" href="./fil_files/slicknav.css"> 
+    <link rel="stylesheet" href="./fil_files/style.css">
+
+<script type="text/javascript" charset="UTF-8" src="./fil_files/common.js.download"></script><script type="text/javascript" charset="UTF-8" src="./fil_files/util.js.download"></script></head>
+
+<body>    <!-- HEADER::START -->
+    <header>
+        <div id="sticky-header" class="header_area">
+            <div class="header_top_area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="header__wrapper">
+                                <!-- header__left__start  -->
+                                <div class="header__left d-flex align-items-center">
+                                    <div class="logo_img">
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/index.php">
+                                            <img src="./fil_files/logo.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- header__left__start  -->
+
+                                <!-- header__right_start  -->
+                                <div class="header__right d-flex">
+                                    <div class="category_search d-flex">
+                                        <!-- phone_number  -->
+                                        <div class="phone_number d-flex align-item-center">
+                                            <div class="icon">
+                                                <img src="./fil_files/headset.svg" alt="">
+                                            </div>
+                                            <div class="number_content">
+                                                <span>CALL US</span>
+                                                <h4>+88 0184 1136251</h4>
+                                            </div>
+                                        </div>
+                                        <div class="input-group theme_search_field ">
+                                            <div class="input-group-prepend">
+                                                <button class="btn" type="button" id="button-addon1"> <i class="ti-search"></i> </button>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="Search for course, skills and Videos">
+                                        </div>
+                                    </div>
+                                    <div class="notification_wrapper d-flex align-items-center">
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" data-toggle="modal" data-target="#login_form" class="single_notify">
+                                            <img src="./fil_files/man.svg" alt="">
+                                        </a>
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/wishlist.php" class="single_notify notify_wish">
+                                            <img src="./fil_files/hert.svg" alt="">
+                                            <span class="notify_count">2</span>
+                                        </a>
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/cart.php" class="single_notify">
+                                            <img src="./fil_files/cart.svg" alt="">
+                                            <span class="notify_count">2</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- header__right_end  -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- main_header_area  -->
+            <div class="main_header_area">
+                <div class="container">
+                    <div class="row">
+                         <div class="col-xl-11">
+                             <div class="shop_header_wrapper d-flex align-items-center">
+                                <div class="menu_logo">
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/index.php">
+                                            <img src="./fil_files/logo.png" alt="">
+                                        </a>
+                                    </div>
+                                 <div class="dropdown show category_menu">
+                                    <a class="Categories_togler">
+                                        All Categories 
+                                        <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                    <ul class="dropdown_menu catdropdown_menu">
+                                        <li><a class="dropdown-item has_arrow"><i class="ti-desktop"></i> Laptops &amp; Computers</a>
+                                            <!-- 2nd level  --> 
+                                            <ul class="submenu_list">
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Components</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Networking</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Monitors</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Desktop Computers</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item has_arrow" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"><i class="ti-camera"></i> Home Enternteinment</a>
+                                            <ul class="submenu_list">
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Components</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Networking</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Monitors</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Desktop Computers</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item has_arrow" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"><i class="ti-game"></i>  Music Headphones</a>
+                                            <ul class="submenu_list">
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Components</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Networking</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Monitors</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Desktop Computers</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item has_arrow" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"><i class="ti-brush-alt"></i>  Music Headphones</a>
+                                            <ul class="submenu_list">
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Components</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Networking</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Monitors</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Desktop Computers</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item has_arrow"><i class="ti-desktop"></i> Laptops &amp; Computers</a>
+                                            <!-- 2nd level  --> 
+                                            <ul class="submenu_list">
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Components</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Networking</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Monitors</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Desktop Computers</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item has_arrow" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"><i class="ti-camera"></i> Home Enternteinment</a>
+                                            <ul class="submenu_list">
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Components</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Networking</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Monitors</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Desktop Computers</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item has_arrow" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"><i class="ti-game"></i>  Music Headphones</a>
+                                            <ul class="submenu_list">
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Components</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Networking</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Monitors</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Desktop Computers</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item has_arrow" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"><i class="ti-brush-alt"></i>  Music Headphones</a>
+                                            <ul class="submenu_list">
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Components</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Networking</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Monitors</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Desktop Computers</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item has_arrow" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"><i class="ti-brush-alt"></i>  Music Headphones</a>
+                                            <ul class="submenu_list">
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Components</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Networking</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Monitors</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Desktop Computers</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item has_arrow"><i class="ti-desktop"></i> Laptops &amp; Computers</a>
+                                            <!-- 2nd level  --> 
+                                            <ul class="submenu_list">
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Components</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Networking</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Monitors</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Desktop Computers</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item has_arrow"><i class="ti-desktop"></i> Laptops &amp; Computers</a>
+                                            <!-- 2nd level  --> 
+                                            <ul class="submenu_list">
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Components</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Networking</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Computer Monitors</a></li>
+                                                <li><a class="dropdown-item" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Desktop Computers</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                 <!-- main_menu_start  -->
+                                <div class="main_menu  d-none d-lg-block">
+                                    <nav>
+                                        <ul id="mobile-menu">
+                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/index.php">Home</a></li>
+                                            <li class="submenu_active"><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">New Arrivals</a>
+                                                <!-- mega_width_menu  -->
+                                                <ul class="submenu mega_width_menu">
+                                                    <!-- single_menu  -->
+                                                    <li>
+                                                        <a class="mega_metu_title" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">Laptops &amp; Computers</a>
+                                                        <ul>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Desktop Computers</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Computer Accessories</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Computer Components</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Networking</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Computer Monitors</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <!-- single_menu  -->
+                                                    <li>
+                                                        <a class="mega_metu_title" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">Home Enternteinment</a>
+                                                        <ul>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Desktop Computers</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Computer Accessories</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Computer Components</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Networking</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Computer Monitors</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <!-- single_menu  -->
+                                                    <li>
+                                                        <a class="mega_metu_title" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">Music Headphones</a>
+                                                        <ul>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Desktop Computers</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Computer Accessories</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Computer Components</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Networking</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Computer Monitors</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <!-- single_menu  -->
+                                                    <li>
+                                                        <a class="mega_metu_title" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">Music Headphones</a>
+                                                        <ul>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Desktop Computers</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Computer Accessories</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Computer Components</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Networking</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" class="active">Computer Monitors</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <!-- single_menu  -->
+                                                    <li class="img_menu">
+                                                        <ul>
+                                                            <li>
+                                                                <h6>PREMIUM SUPPLEMENTS</h6>
+                                                            </li>
+                                                            <li>
+                                                            <h4>Wooden Minimalistic <br>
+                                                                Chairs for Home.</h4>
+                                                            </li>
+                                                            <li>
+                                                                <a class="shop_now active" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Shop Now »</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                                <!--/ mega_width_menu -->
+                                            </li>
+                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product2.php">Trending</a></li>
+                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product3.php"> Hot Deals</a></li>
+                                            <li class="submenu_active"><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">Pages <i class="ti-angle-down"></i> </a>
+                                                <ul class=" submenu">
+                                                    <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/about.php">About</a></li>
+                                                    <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/error_404.php">Error Page</a></li>
+                                                    <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/career.php">Career</a></li>
+                                                    <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/login.php">login</a></li>
+                                                    <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/faq.php">Faq</a></li>
+                                                    <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/cart.php">cart</a></li>
+                                                    <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/blog.php">blog</a></li>
+                                                    <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/my_account.php">My Account</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/contact.php">Contact</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!-- main_menu_start  -->
+                                <div class="offer_tag d-flex align-items-center">
+                                    <img src="./fil_files/offer.svg" alt="">
+                                    <p>Clearance <a> Up to 30% Off</a></p>
+                                </div>
+                                <div class="input-group theme_search_field ">
+                                    <div class="input-group-prepend">
+                                        <button class="btn" type="button"> <i class="ti-search"></i> </button>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Search for course, skills and Videos">
+                                </div>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"><div class="slicknav_menu"><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed" style="outline: none;"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><ul class="slicknav_nav slicknav_hidden" style="display: none;" aria-hidden="true" role="menu">
+                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/index.php" role="menuitem" tabindex="-1">Home</a></li>
+                                            <li class="slicknav_collapsed slicknav_parent"><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" tabindex="-1">New Arrivals</a>
+                                                <!-- mega_width_menu  -->
+                                                <span class="slicknav_arrow"><i class="ti-angle-down"></i></span></a><ul class="submenu mega_width_menu slicknav_hidden" role="menu" style="display: none;" aria-hidden="true">
+                                                    <!-- single_menu  -->
+                                                    <li class="slicknav_collapsed slicknav_parent"><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;">
+                                                        <a class="mega_metu_title" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" tabindex="-1">Laptops &amp; Computers</a>
+                                                        <span class="slicknav_arrow"><i class="ti-angle-down"></i></span></a><ul role="menu" aria-hidden="true" class="slicknav_hidden" style="display: none;">
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Desktop Computers</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Computer Accessories</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Computer Components</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Networking</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Computer Monitors</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <!-- single_menu  -->
+                                                    <li class="slicknav_collapsed slicknav_parent"><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;">
+                                                        <a class="mega_metu_title" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" tabindex="-1">Home Enternteinment</a>
+                                                        <span class="slicknav_arrow"><i class="ti-angle-down"></i></span></a><ul role="menu" aria-hidden="true" class="slicknav_hidden" style="display: none;">
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Desktop Computers</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Computer Accessories</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Computer Components</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Networking</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Computer Monitors</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <!-- single_menu  -->
+                                                    <li class="slicknav_collapsed slicknav_parent"><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;">
+                                                        <a class="mega_metu_title" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" tabindex="-1">Music Headphones</a>
+                                                        <span class="slicknav_arrow"><i class="ti-angle-down"></i></span></a><ul role="menu" aria-hidden="true" class="slicknav_hidden" style="display: none;">
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Desktop Computers</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Computer Accessories</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Computer Components</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Networking</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Computer Monitors</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <!-- single_menu  -->
+                                                    <li class="slicknav_collapsed slicknav_parent"><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;">
+                                                        <a class="mega_metu_title" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" tabindex="-1">Music Headphones</a>
+                                                        <span class="slicknav_arrow"><i class="ti-angle-down"></i></span></a><ul role="menu" aria-hidden="true" class="slicknav_hidden" style="display: none;">
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Desktop Computers</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Computer Accessories</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Computer Components</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Networking</a></li>
+                                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Computer Monitors</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <!-- single_menu  -->
+                                                    <li class="img_menu slicknav_collapsed slicknav_parent"><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;">
+                                                        <span class="slicknav_arrow"><i class="ti-angle-down"></i></span></a><ul role="menu" aria-hidden="true" class="slicknav_hidden" style="display: none;">
+                                                            <li>
+                                                                <h6>PREMIUM SUPPLEMENTS</h6>
+                                                            </li>
+                                                            <li>
+                                                            <h4>Wooden Minimalistic <br>
+                                                                Chairs for Home.</h4>
+                                                            </li>
+                                                            <li>
+                                                                <a class="shop_now" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php" role="menuitem" tabindex="-1">Shop Now »</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                                <!--/ mega_width_menu -->
+                                            </li>
+                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product2.php" role="menuitem" tabindex="-1">Trending</a></li>
+                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product3.php" role="menuitem" tabindex="-1"> Hot Deals</a></li>
+                                            <li class="submenu_active slicknav_collapsed slicknav_parent"><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row" style="outline: none;"><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" tabindex="-1">Pages <i class="ti-angle-down"></i> </a>
+                                                <span class="slicknav_arrow"><i class="ti-angle-down"></i></span></a><ul class="submenu slicknav_hidden" role="menu" style="display: none;" aria-hidden="true">
+                                                    <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/about.php" role="menuitem" tabindex="-1">About</a></li>
+                                                    <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/error_404.php" role="menuitem" tabindex="-1">Error Page</a></li>
+                                                    <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/career.php" role="menuitem" tabindex="-1">Career</a></li>
+                                                    <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/login.php" role="menuitem" tabindex="-1">login</a></li>
+                                                    <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/faq.php" role="menuitem" tabindex="-1">Faq</a></li>
+                                                    <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/cart.php" role="menuitem" tabindex="-1">cart</a></li>
+                                                    <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/blog.php" role="menuitem" tabindex="-1">blog</a></li>
+                                                    <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/my_account.php" role="menuitem" tabindex="-1">My Account</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/contact.php" role="menuitem" tabindex="-1">Contact</a></li>
+                                        </ul></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--/ HEADER::END -->
+<div class="breadcrumb_area">
+    <div class="container">
+        <div class="breadcrumb_iner bradcam_bg_1">
+            <div class="bradcam_text">
+                <div class="row justify-content-end">
+                    <div class="col-lg-6">
+                        <h3>New Arrivals</h3>
+                        <p><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/index.php">Home </a>/ New Arrivals</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- prodcuts_area ::start  -->
+<div class="prodcuts_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-xl-3">
+                <div class="product_category_chose mb_50 mt_10">
+                    <div class="course_title mb_30 d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19.5" height="13" viewBox="0 0 19.5 13">
+                            <g id="filter-icon" transform="translate(28)">
+                                <rect id="Rectangle_1" data-name="Rectangle 1" width="19.5" height="2" rx="1" transform="translate(-28)" fill="#fd1c5e"></rect>
+                                <rect id="Rectangle_2" data-name="Rectangle 2" width="15.5" height="2" rx="1" transform="translate(-26 5.5)" fill="#fd1c5e"></rect>
+                                <rect id="Rectangle_3" data-name="Rectangle 3" width="5" height="2" rx="1" transform="translate(-20.75 11)" fill="#fd1c5e"></rect>
+                            </g>
+                        </svg>
+                        <h5 class="font_16 f_w_600 mb-0">Filter Category</h5>
+                    </div>
+                    <div class="course_category_inner">
+                        <div class="single_pro_categry">
+                            <h4 class="font_18 f_w_600">
+                                Product categories
+                            </h4>
+                            <ul class="Check_sidebar mb_35">
+                                <li>
+                                    <label class="primary_checkbox d-flex">
+                                        <input type="checkbox">
+                                        <span class="checkmark mr_10"></span>
+                                        <span class="label_name">Beauty &amp; Health</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="primary_checkbox d-flex">
+                                        <input type="checkbox">
+                                        <span class="checkmark mr_10"></span>
+                                        <span class="label_name">Clothing</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="primary_checkbox d-flex">
+                                        <input type="checkbox">
+                                        <span class="checkmark mr_10"></span>
+                                        <span class="label_name">Electronics &amp; Computers</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="primary_checkbox d-flex">
+                                        <input type="checkbox">
+                                        <span class="checkmark mr_10"></span>
+                                        <span class="label_name">Food &amp; Grocery</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="primary_checkbox d-flex">
+                                        <input type="checkbox">
+                                        <span class="checkmark mr_10"></span>
+                                        <span class="label_name">Furniture</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="primary_checkbox d-flex">
+                                        <input type="checkbox">
+                                        <span class="checkmark mr_10"></span>
+                                        <span class="label_name">Garden &amp; Kitchen</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="single_pro_categry">
+                            <h4 class="font_18 f_w_700">
+                            Filter by Brands
+                            </h4>
+                            <ul class="Check_sidebar mb_35">
+                                <li>
+                                    <label class="primary_checkbox d-flex">
+                                        <input type="checkbox">
+                                        <span class="checkmark mr_10"></span>
+                                        <span class="label_name">La Re Ve</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="primary_checkbox d-flex">
+                                        <input type="checkbox">
+                                        <span class="checkmark mr_10"></span>
+                                        <span class="label_name">Easy Fashion</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="primary_checkbox d-flex">
+                                        <input type="checkbox">
+                                        <span class="checkmark mr_10"></span>
+                                        <span class="label_name">Yellow</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="primary_checkbox d-flex">
+                                        <input type="checkbox">
+                                        <span class="checkmark mr_10"></span>
+                                        <span class="label_name">Estasy</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="primary_checkbox d-flex">
+                                        <input type="checkbox">
+                                        <span class="checkmark mr_10"></span>
+                                        <span class="label_name">Unileaver</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="single_pro_categry">
+                            <h4 class="font_18 f_w_700">
+                            Filter by Size
+                            </h4>
+                            <ul class="Check_sidebar mb_35">
+                                <li>
+                                    <label class="primary_checkbox d-flex">
+                                        <input type="checkbox">
+                                        <span class="checkmark mr_10"></span>
+                                        <span class="label_name">M</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="primary_checkbox d-flex">
+                                        <input type="checkbox">
+                                        <span class="checkmark mr_10"></span>
+                                        <span class="label_name">L</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="primary_checkbox d-flex">
+                                        <input type="checkbox">
+                                        <span class="checkmark mr_10"></span>
+                                        <span class="label_name">Xl</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="primary_checkbox d-flex">
+                                        <input type="checkbox">
+                                        <span class="checkmark mr_10"></span>
+                                        <span class="label_name">XXl</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="primary_checkbox d-flex">
+                                        <input type="checkbox">
+                                        <span class="checkmark mr_10"></span>
+                                        <span class="label_name">XXXL</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="single_pro_categry">
+                            <h4 class="font_18 f_w_700">
+                            Filter by Rating
+                            </h4>
+                            <ul class="rating_lists mb_35">
+                                <li>
+                                    <div class="ratings">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ratings">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star unrated"></i>
+                                        <span>And Up</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ratings">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star unrated"></i>
+                                        <i class="fas fa-star unrated"></i>
+                                        <span>And Up</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ratings">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star unrated"></i>
+                                        <i class="fas fa-star unrated"></i>
+                                        <i class="fas fa-star unrated"></i>
+                                        <span>And Up</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ratings">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star unrated"></i>
+                                        <i class="fas fa-star unrated"></i>
+                                        <i class="fas fa-star unrated"></i>
+                                        <i class="fas fa-star unrated"></i>
+                                        <span>And Up</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="single_pro_categry">
+                            <h4 class="font_18 f_w_700">
+                                Filter by Colors
+                            </h4>
+                            <div class="color_filter">
+                                <div class="single_coulorFilter">
+                                    <label class="round_checkbox black_check d-flex">
+                                        <input name="color_filt" type="radio">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="single_coulorFilter">
+                                    <label class="round_checkbox blue_check d-flex">
+                                        <input name="color_filt" type="radio">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="single_coulorFilter">
+                                    <label class="round_checkbox gray_check d-flex">
+                                        <input name="color_filt" type="radio">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="single_coulorFilter">
+                                    <label class="round_checkbox paste_check d-flex">
+                                        <input name="color_filt" type="radio">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="single_coulorFilter">
+                                    <label class="round_checkbox brouwn_check d-flex">
+                                        <input name="color_filt" type="radio">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="single_coulorFilter">
+                                    <label class="round_checkbox violate_check d-flex">
+                                        <input name="color_filt" type="radio">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="single_coulorFilter red_check">
+                                    <label class="round_checkbox d-flex">
+                                        <input name="color_filt" type="radio">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="single_coulorFilter">
+                                    <label class="round_checkbox yellow_check d-flex">
+                                        <input name="color_filt" type="radio">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_pro_categry">
+                            <h4 class="font_18 f_w_700">
+                            Filter by Price
+                            </h4>
+                            <div class="filter_wrapper">
+                                <div id="slider-range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 15%; width: 45%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 15%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 60%;"></span></div>
+                                <div class="d-flex align-items-center prise_line">
+                                    <button class="theme_btn small_btn2">Filter</button>
+                                    <span>Price: </span><input type="text" id="amount" readonly="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-xl-9">
+                <div class="row ">
+                    <div class="col-12">
+                        <div class="box_header d-flex flex-wrap align-items-center justify-content-between">
+                            <h5 class="font_16 f_w_500">Showing 1–12 of 40 Results</h5>
+                            <div class="box_header_right">
+                                <div class="short_select d-flex align-items-center">
+                                    <div class="prduct_showing_style">
+
+                                    </div>
+                                    <select class="small_select" style="display: none;">
+                                        <option data-display="Default Shorting">Default Shorting</option>
+                                        <option value="1">Prise</option>
+                                        <option value="2">Date</option>
+                                    </select><div class="nice-select small_select" tabindex="0"><span class="current">Default Shorting</span><ul class="list"><li data-value="Default Shorting" data-display="Default Shorting" class="option selected">Default Shorting</li><li data-value="1" class="option">Prise</li><li data-value="2" class="option">Date</li></ul></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters grid_shorting_style mb_50">
+                    <div class="col-xl-4 col-md-6">
+                        <div class="product_wized">
+                            <div class="thumb">
+                                <img src="./fil_files/1.png" alt="">
+                                <div class="product_action">
+                                    <div class="product_action_inner">
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-heart"></i>
+                                        </a>
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-control-shuffle"></i>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#theme_modal">
+                                            <i class="ti-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product_wized_body">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="mute_text d-block font_12 f_w_400">Interior Design</span>
+                                <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product_details.php">
+                                    <h4 class="font_18 f_w_700">Living Room Re-imagined</h4>
+                                </a>
+                                <p class="font_16  theme_text f_w_500">$180.00</p>
+                            </div>
+                            <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" class="add_to_cart">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6">
+                        <div class="product_wized">
+                            <div class="thumb">
+                                <img src="./fil_files/2.png" alt="">
+                                <div class="product_action">
+                                    <div class="product_action_inner">
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-heart"></i>
+                                        </a>
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-control-shuffle"></i>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#theme_modal">
+                                            <i class="ti-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product_wized_body">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="mute_text d-block font_12 f_w_400">Interior Design</span>
+                                <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product_details.php">
+                                    <h4 class="font_18 f_w_700">Living Room Re-imagined</h4>
+                                </a>
+                                <p class="font_16  theme_text f_w_500">$180.00</p>
+                            </div>
+                            <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" class="add_to_cart">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6">
+                        <div class="product_wized">
+                            <div class="thumb">
+                                <img src="./fil_files/3.png" alt="">
+                                <div class="product_action">
+                                    <div class="product_action_inner">
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-heart"></i>
+                                        </a>
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-control-shuffle"></i>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#theme_modal">
+                                            <i class="ti-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product_wized_body">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="mute_text d-block font_12 f_w_400">Interior Design</span>
+                                <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product_details.php">
+                                    <h4 class="font_18 f_w_700">Living Room Re-imagined</h4>
+                                </a>
+                                <p class="font_16  theme_text f_w_500">$180.00</p>
+                            </div>
+                            <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" class="add_to_cart">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6">
+                        <div class="product_wized">
+                            <div class="thumb">
+                                <img src="./fil_files/5.jpg" alt="">
+                                <div class="product_action">
+                                    <div class="product_action_inner">
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-heart"></i>
+                                        </a>
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-control-shuffle"></i>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#theme_modal">
+                                                <i class="ti-eye"></i>
+                                            </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product_wized_body">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="mute_text d-block font_12 f_w_400">Interior Design</span>
+                                <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product_details.php">
+                                    <h4 class="font_18 f_w_700">Living Room Re-imagined</h4>
+                                </a>
+                                <p class="font_16  theme_text f_w_500">$180.00</p>
+                            </div>
+                            <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" class="add_to_cart">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6">
+                        <div class="product_wized">
+                            <div class="thumb">
+                                <img src="./fil_files/6.jpg" alt="">
+                                <div class="product_action">
+                                    <div class="product_action_inner">
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-heart"></i>
+                                        </a>
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-control-shuffle"></i>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#theme_modal">
+                                                <i class="ti-eye"></i>
+                                            </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product_wized_body">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="mute_text d-block font_12 f_w_400">Interior Design</span>
+                                <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product_details.php">
+                                    <h4 class="font_18 f_w_700">Living Room Re-imagined</h4>
+                                </a>
+                                <p class="font_16  theme_text f_w_500">$180.00</p>
+                            </div>
+                            <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" class="add_to_cart">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6">
+                        <div class="product_wized">
+                            <div class="thumb">
+                                <img src="./fil_files/7.jpg" alt="">
+                                <div class="product_action">
+                                    <div class="product_action_inner">
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-heart"></i>
+                                        </a>
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product_details.php">
+                                            <i class="ti-control-shuffle"></i>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#theme_modal">
+                                                <i class="ti-eye"></i>
+                                            </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product_wized_body">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="mute_text d-block font_12 f_w_400">Interior Design</span>
+                                <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product_details.php">
+                                    <h4 class="font_18 f_w_700">Living Room Re-imagined</h4>
+                                </a>
+                                <p class="font_16  theme_text f_w_500">$180.00</p>
+                            </div>
+                            <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" class="add_to_cart">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6">
+                        <div class="product_wized">
+                            <div class="thumb">
+                                <img src="./fil_files/1.png" alt="">
+                                <div class="product_action">
+                                    <div class="product_action_inner">
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-heart"></i>
+                                        </a>
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-control-shuffle"></i>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#theme_modal">
+                                                <i class="ti-eye"></i>
+                                            </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product_wized_body">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="mute_text d-block font_12 f_w_400">Interior Design</span>
+                                <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product_details.php">
+                                    <h4 class="font_18 f_w_700">Living Room Re-imagined</h4>
+                                </a>
+                                <p class="font_16  theme_text f_w_500">$180.00</p>
+                            </div>
+                            <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" class="add_to_cart">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6">
+                        <div class="product_wized">
+                            <div class="thumb">
+                                <img src="./fil_files/2.png" alt="">
+                                <div class="product_action">
+                                    <div class="product_action_inner">
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-heart"></i>
+                                        </a>
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-control-shuffle"></i>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#theme_modal">
+                                            <i class="ti-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product_wized_body">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="mute_text d-block font_12 f_w_400">Interior Design</span>
+                                <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product_details.php">
+                                    <h4 class="font_18 f_w_700">Living Room Re-imagined</h4>
+                                </a>
+                                <p class="font_16  theme_text f_w_500">$180.00</p>
+                            </div>
+                            <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" class="add_to_cart">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6">
+                        <div class="product_wized">
+                            <div class="thumb">
+                                <img src="./fil_files/3.png" alt="">
+                                <div class="product_action">
+                                    <div class="product_action_inner">
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-heart"></i>
+                                        </a>
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-control-shuffle"></i>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#theme_modal">
+                                                <i class="ti-eye"></i>
+                                            </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product_wized_body">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="mute_text d-block font_12 f_w_400">Interior Design</span>
+                                <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product_details.phproduct_details.php">
+                                    <h4 class="font_18 f_w_700">Living Room Re-imagined</h4>
+                                </a>
+                                <p class="font_16  theme_text f_w_500">$180.00</p>
+                            </div>
+                            <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" class="add_to_cart">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6">
+                        <div class="product_wized">
+                            <div class="thumb">
+                                <img src="./fil_files/5.jpg" alt="">
+                                <div class="product_action">
+                                    <div class="product_action_inner">
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-heart"></i>
+                                        </a>
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-control-shuffle"></i>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#theme_modal">
+                                            <i class="ti-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product_wized_body">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="mute_text d-block font_12 f_w_400">Interior Design</span>
+                                <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product_details.php">
+                                    <h4 class="font_18 f_w_700">Living Room Re-imagined</h4>
+                                </a>
+                                <p class="font_16  theme_text f_w_500">$180.00</p>
+                            </div>
+                            <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" class="add_to_cart">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6">
+                        <div class="product_wized">
+                            <div class="thumb">
+                                <img src="./fil_files/6.jpg" alt="">
+                                <div class="product_action">
+                                    <div class="product_action_inner">
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-heart"></i>
+                                        </a>
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-control-shuffle"></i>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#theme_modal">
+                                            <i class="ti-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product_wized_body">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="mute_text d-block font_12 f_w_400">Interior Design</span>
+                                <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product_details.php">
+                                    <h4 class="font_18 f_w_700">Living Room Re-imagined</h4>
+                                </a>
+                                <p class="font_16  theme_text f_w_500">$180.00</p>
+                            </div>
+                            <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" class="add_to_cart">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6">
+                        <div class="product_wized">
+                            <div class="thumb">
+                                <img src="./fil_files/7.jpg" alt="">
+                                <div class="product_action">
+                                    <div class="product_action_inner">
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-heart"></i>
+                                        </a>
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                            <i class="ti-control-shuffle"></i>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#theme_modal">
+                                            <i class="ti-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product_wized_body">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="mute_text d-block font_12 f_w_400">Interior Design</span>
+                                <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product_details.php">
+                                    <h4 class="font_18 f_w_700">Living Room Re-imagined</h4>
+                                </a>
+                                <p class="font_16  theme_text f_w_500">$180.00</p>
+                            </div>
+                            <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" class="add_to_cart">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="pagination_lists">
+                            <li><a class="active" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">1</a></li>
+                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">2</a></li>
+                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">3</a></li>
+                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">4</a></li>
+                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">5</a></li>
+                            <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"> <i class="fas fa-chevron-right"></i> </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- prodcuts_area ::end  -->
+<div class="cta_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="cta_inner">
+                    <div class="cta_inner_text">
+                        <h4><span>New Deals</span>
+                        Start Daily at 12pm e.t.</h4>
+                        <div class="cta_text">
+                            <p>Get  <span class="text-uppercase theme_text f_w_600">FREE SHIPPING* &amp; 5% rewards </span> on <br>
+                            every order with <span class="f_w_600">InfixVuci Theme</span> rewards program</p>
+                        </div>
+                    </div>
+                    <div class="cta_inner_subscribe">
+                        <div class="subcribe-form theme_mailChimp" id="mc_embed_signup">
+                            <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscription relative" novalidate="true">
+                                <input name="EMAIL" class="form-control" placeholder="Type e-mail  address here" onfocus="this.placeholder = &#39;&#39;" onblur="this.placeholder = &#39;Type e-mail  address here&#39;" required="" type="email">
+                                <div style="position: absolute; left: -5000px;">
+                                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                                </div>
+                                <button class="">Subscribe</button>
+                                <div class="info"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- FOOTER::START  -->
+    <footer>
+        <div class="footer_top_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="footer_product">
+                            <div class="footer_product_left text-center">
+                                <h4>Best Wireless Speaker</h4>
+                                <span>For Perfect Home</span>
+                            </div>
+                            <div class="footer_product_right">
+                                <h4>Apple MacBook Pro</h4>
+                                <span>A touch of Genius</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_footer_wrap">
+            <div class="container">
+                 <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="footer_widget">
+                            <div class="footer_logo">
+                                <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                    <img src="./fil_files/logo2.png" alt="">
+                                </a>
+                            </div>
+                            <div class="address_list">
+                                <p> <span>Address:</span> No 40 Baria Sreet 133/2 NewYork 
+                                City, Newyork, United States.</p>
+                                <p><span>Call Us:</span> (+084) 123.456.789</p>
+                                <p><span>Email:</span> contactinfo@InfixVuci.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3  col-md-6">
+                        <div class="footer_widget">
+                            <div class="footer_title">
+                                <h3>QUICK MENU</h3>
+                            </div>
+                            <ul class="footer_links">
+                                <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">TV &amp; Video</a></li>
+                                <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Home Audio &amp; Theatre</a></li>
+                                <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Camera, Photo &amp; Video</a></li>
+                                <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Cell Phones &amp; Accessories</a></li>
+                                <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php">Headphones</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3  col-md-6">
+                        <div class="footer_widget">
+                            <div class="footer_title">
+                                <h3>INFOMATION</h3>
+                            </div>
+                            <ul class="footer_links">
+                                <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/about.php">About Us</a></li>
+                                <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">Brands</a></li>
+                                <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">Gift Vouchers</a></li>
+                                <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">Site Map</a></li>
+                                <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">Accessories</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2  col-md-6">
+                        <div class="footer_widget">
+                            <div class="footer_title">
+                                <h3>MY ACCOUNT</h3>
+                            </div>
+                            <ul class="footer_links">
+                                <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/my_account.php">My Account</a></li>
+                                <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/my_order.php">Order History</a></li>
+                                <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">Wish List</a></li>
+                                <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/order_details.php">Order Details</a></li>
+                                <li><a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">Wishlist</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright_area">
+            <div class="container">
+                <div class="footer_border"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="copy_right_text">
+                            <p>© 2021 <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">InfixVuci</a>. All rights reserved. Made By <a href="https://codecanyon.net/user/codethemes/portfolio">CodeThemes</a>.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="payment_imgs ">
+                            <img src="./fil_files/payment_img.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER::END  -->
+
+
+    <!-- shoping_cart::start  -->
+    <div class="shoping_wrapper">
+        <div class="dark_overlay"></div>
+        <div class="shoping_cart">
+            <div class="shoping_cart_inner">
+                <div class="cart_header d-flex justify-content-between">
+                    <h4>Shoping Cart</h4>
+                    <div class="chart_close">
+                        <i class="ti-close"></i>
+                    </div>
+                </div>
+                <div class="single_cart">
+                    <div class="thumb">
+                        <img src="./fil_files/1(1).png" alt="">
+                    </div>
+                    <div class="cart_content">
+                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                            <h5>The Unbundled University</h5>
+                        </a>
+                        <p>2 <span class="multy_icon">x</span> <span class="prise">$4200.00</span> </p>
+                    </div>
+                </div>
+                <div class="single_cart">
+                    <div class="thumb">
+                        <img src="./fil_files/1(1).png" alt="">
+                    </div>
+                    <div class="cart_content">
+                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                            <h5>The Unbundled University</h5>
+                        </a>
+                        <p>2 <span class="multy_icon">x</span> <span class="prise">$4200.00</span> </p>
+                    </div>
+                </div>
+                <div class="single_cart">
+                    <div class="thumb">
+                        <img src="./fil_files/1(1).png" alt="">
+                    </div>
+                    <div class="cart_content">
+                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                            <h5>The Unbundled University</h5>
+                        </a>
+                        <p>2 <span class="multy_icon">x</span> <span class="prise">$4200.00</span> </p>
+                    </div>
+                </div>
+                <div class="single_cart">
+                    <div class="thumb">
+                        <img src="./fil_files/1(1).png" alt="">
+                    </div>
+                    <div class="cart_content">
+                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                            <h5>The Unbundled University</h5>
+                        </a>
+                        <p>2 <span class="multy_icon">x</span> <span class="prise">$4200.00</span> </p>
+                    </div>
+                </div>
+            </div>
+            <div class="view_checkout_btn d-flex justify-content-end mb_30">
+                <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/cart.php" class="theme_btn small_btn3 mr_10">View cart</a>
+                <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/checkout.php" class="theme_btn small_btn3">Checkout</a>
+            </div>
+        </div>
+    </div>
+    <!-- shoping_cart::end  -->
+
+    <!-- product_quick_view::strat  -->
+    <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#theme_modal">
+  Launch demo modal
+</button> -->
+
+    <!-- Modal::start  -->
+    <div class="modal fade theme_modal" id="theme_modal" tabindex="-1" role="dialog" aria-labelledby="theme_modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="product_quick_view ">
+                    <button type="button" class="close_modal_icon" data-dismiss="modal">
+                        <i class="ti-close"></i>
+                    </button>
+                        <div class="product_details_img"></div>
+                        <div class="product_details_wrapper">
+                            <div class="product_content_details mb_30">
+                                <span class="theme_btn green_btn cursor_default ">In Stock</span>
+                                <h3>Wichita Hydraulic Table</h3>
+                                <div class="product_ratings">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span> (6 customer reviews)</span>
+                                </div>
+                                <p class="details_text">Ut ratione qui sunt officiis quo cum ut. Quas aliquam cum ipsam facerequaerat Et et aut quibusdam deleniti nisi sunt rerum. Consequatur molestiae address in molestias eius unde facere est architecto.</p>
+                                <div class="product_info">
+                                    <div class="single_pro_varient">
+                                        <span class="font_14 f_w_600 theme_text3  text-uppercase">Color:</span>
+                                        <div class="color_List d-flex">
+                                            <label class="round_checkbox blue_check  d-flex">
+                                                <input name="color_filt" type="radio">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <label class="round_checkbox paste_check  d-flex">
+                                                <input name="color_filt" type="radio">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <label class="round_checkbox violate_check  d-flex">
+                                                <input name="color_filt" type="radio">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="single_pro_varient">
+                                        <span class="font_14 f_w_600 theme_text3  text-uppercase">Size    :</span>
+                                        <ul class="product_size">
+                                            <li>M</li>
+                                            <li>L</li>
+                                            <li>Xl</li>
+                                        </ul>
+                                    </div>
+                                    <div class="single_pro_varient">
+                                        <span class="font_14 f_w_600 theme_text3  text-uppercase">QTY:</span>
+                                        <div class="product_number_count" data-target="amount-1">
+                                            <span class="count_single_item inumber_decrement"> <i class="ti-minus"></i></span>
+                                            <input id="amount-1" class="count_single_item input-number" type="text" value="1">
+                                            <span class="count_single_item number_increment"> <i class="ti-plus"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="add_wishCard">
+                                        <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" data-dismiss="modal" class="theme_btn mr_15 add_to_cart">Add to Cart</a>
+                                        <a class="add_wish_list" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/wishlist.php"> <i class="far fa-heart"></i> Add to Wishlist</a>
+                                    </div>
+                                </div>
+                                <div class="pro_branding_info">
+                                    <div class="single_branding">
+                                        <span>Category<span>:</span></span>
+                                        <p>Beds, Decoration</p>
+                                    </div>
+                                    <div class="single_branding">
+                                        <span>SKU<span>:</span></span>
+                                        <p>60983</p>
+                                    </div>
+                                    <div class="single_branding">
+                                        <span>Brand <span>:</span></span>
+                                        <p>Salink</p>
+                                    </div>
+                                    <div class="single_branding">
+                                        <span>Share<span>:</span></span>
+                                        <ul class="social_links">
+                                            <li><a class="fab fa-facebook-f facebook_bg" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"></a></li>
+                                            <li><a class="fab fa-twitter twitter_bg" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"></a></li>
+                                            <li><a class="fab fa-linkedin-in linkedin_bg" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal::end  -->
+    
+    <!-- product_quick_view::end -->
+
+    <!-- login_form:start -->
+    <div class="modal fade login_modal" id="login_form" tabindex="-1" role="dialog" aria-labelledby="login_form" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div data-dismiss="modal" class="close_modal">
+                        <i class="ti-close"></i>
+                    </div>
+                    <!-- infix_login_area::start  -->
+                    <div class="infix_login_area p-0">
+                        <div class="login_area_inner">
+                            <h4>Welcome back, Please login
+                                to your account </h4>
+                            <div class="login_with_links">
+                                <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"> <i class="fab fa-google"></i> Login with google</a>
+                                <a class="Facebook_bg" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"> <i class="ti-facebook"></i>Login with Facebook</a>
+                                <a class="twitter_bg" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"> <i class="ti-twitter-alt"></i> Login with google</a>
+                            </div>
+                            <p class="sign_up_text mb_40">Or login with Email Address</p>
+                            <form action="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="input-group custom_group_field mb_35">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <img src="./fil_files/email.svg" alt="">
+                                                </span>
+                                            </div>
+                                            <input type="email" class="form-control" placeholder="E.g. example@gmail.com" aria-label="E.g. example@gmail.com">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-group custom_group_field ">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <img src="./fil_files/pass.svg" alt="">
+                                                </span>
+                                            </div>
+                                            <input type="password" class="form-control" placeholder="Enter Password" aria-label="Enter Password">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="remember_pass mb_35">
+                                            <label class="primary_checkbox d-flex">
+                                                <input checked="" type="checkbox">
+                                                <span class="checkmark mr_15"></span>
+                                                <span class="label_name">Remember Me</span>
+                                            </label>
+                                            <a class="forgot_pass" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">Forgot Password</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="theme_btn w-100 text-center">Sign In</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="sign_up_text">Don’t have an account? <a data-toggle="modal" data-dismiss="modal" data-target="#resister_form" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">Sing Up</a></p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- infix_login_area::end  -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- login_form:end  -->
+
+    <!-- resister_form:start  -->
+    <div class="modal fade login_modal" id="resister_form" tabindex="-1" role="dialog" aria-labelledby="login_form" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                <div data-dismiss="modal" class="close_modal">
+                    <i class="ti-close"></i>
+                </div>
+                <!-- infix_login_area::start  -->
+                    <div class="infix_login_area">
+                        <div class="login_area_inner">
+                            <h4>Welcome! Create an 
+                                account within a minute.</h4>
+                            <div class="login_with_links">
+                                <a href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"> <i class="fab fa-google"></i> Login with google</a>
+                                <a class="Facebook_bg" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"> <i class="ti-facebook"></i>Login with Facebook</a>
+                                <a class="twitter_bg" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"> <i class="ti-twitter-alt"></i> Login with google</a>
+                            </div>
+                            <p class="sign_up_text mb_20 pb-1">Or Register with Email Address</p>
+                            <form action="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <input name="name" placeholder="Enter Name" onfocus="this.placeholder = &#39;&#39;" onblur="this.placeholder = &#39;Enter Name&#39;" class="primary_line_input mb_20" required="" type="text">
+
+                                        <input name="email" placeholder="Type e-mail address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = &#39;&#39;" onblur="this.placeholder = &#39;Type e-mail address&#39;" class="primary_line_input mb_10" required="" type="email">
+                                        <input name="password" placeholder="Enter password" onfocus="this.placeholder = &#39;&#39;" onblur="this.placeholder = &#39;Enter password&#39;" class="primary_line_input mb_10" required="" type="password">
+                                        <input name="password" placeholder="Re-enter password" onfocus="this.placeholder = &#39;&#39;" onblur="this.placeholder = &#39;Re-enter password&#39;" class="primary_line_input mb_10" required="" type="password">
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="remember_pass mb_35 justify-content-start">
+                                            <label class="primary_checkbox d-flex ">
+                                                <input checked="" type="checkbox">
+                                                <span class="checkmark mr_15"></span>
+                                            </label>
+                                            <p class="font_14 f_w_500 mb-0">By signing up, you agree to <a class="theme_text text_underline" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#"> Terms of Service</a> and <a class="theme_text text_underline" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">Privacy Policy.</a></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="theme_btn w-100 text-center">Sign Up</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="sign_up_text">Already have an account? <a data-toggle="modal" data-dismiss="modal" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#" data-target="#login_form">login</a></p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- infix_login_area::end  -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- resister_form:end  -->
+    
+    <!-- UP_ICON  -->
+    <div id="back-top" style="display: none;">
+        <a title="Go to Top" href="http://uxseven.com/html/codethemes/ecommerce/infixvuci/product.php#">
+            <i class="ti-angle-up"></i>
+        </a>
+    </div>
+    <!--/ UP_ICON -->
+
+    <!--ALL JS SCRIPTS -->
+    <script src="./fil_files/jquery-3.4.1.min.js.download"></script>
+    <script src="./fil_files/popper.min.js.download"></script>
+    <script src="./fil_files/bootstrap.min.js.download"></script>
+    
+    <script src="./fil_files/owl.carousel.min.js.download"></script>
+    <script src="./fil_files/isotope.pkgd.min.js.download"></script>
+    <script src="./fil_files/waypoints.min.js.download"></script>
+    <script src="./fil_files/jquery.counterup.min.js.download"></script>
+    <script src="./fil_files/imagesloaded.pkgd.min.js.download"></script>
+    <script src="./fil_files/wow.min.js.download"></script>
+    <script src="./fil_files/nice-select.min.js.download"></script>
+    <script src="./fil_files/barfiller.js.download"></script>
+    <script src="./fil_files/jquery.slicknav.js.download"></script>
+    <script src="./fil_files/jquery.magnific-popup.min.js.download"></script>
+    <script src="./fil_files/jquery.ajaxchimp.min.js.download"></script>
+    <script src="./fil_files/parallax.js.download"></script>
+     <script src="./fil_files/gijgo.min.js.download"></script>
+     <!-- query-ui -->
+             <script src="./fil_files/query-ui.js.download"></script>
+                
+    <script src="./fil_files/jquery.countdown.min.js.download"></script>
+    <script src="./fil_files/mail-script.js.download"></script>
+    <script src="./fil_files/js"></script>
+    <script src="./fil_files/map.js.download"></script>
+    <!-- MAIN JS   -->
+    <script src="./fil_files/main.js.download"></script>
+
+
+
+</body></html>

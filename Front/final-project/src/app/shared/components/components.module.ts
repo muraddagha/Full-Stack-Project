@@ -9,6 +9,10 @@ import { BlogComponent } from './blog/blog.component';
 import { SubscribeBannerComponent } from './subscribe-banner/subscribe-banner.component';
 import { AdsBannerComponent } from './ads-banner/ads-banner.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { FilterComponent } from './filter/filter.component';
+import { Ng5SliderModule } from 'ng5-slider';
+import { FormsModule } from '@angular/forms';
+import { PaginationComponent } from './pagination/pagination.component';
 
 
 
@@ -21,11 +25,15 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     SubscribeBannerComponent,
     AdsBannerComponent,
     BreadcrumbComponent,
+    FilterComponent,
+    PaginationComponent,
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
-    RouterModule
+    RouterModule,
+    Ng5SliderModule,
+    FormsModule
   ],
   exports: [
     SingleProductComponent,
@@ -34,7 +42,9 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     BlogComponent,
     SubscribeBannerComponent,
     AdsBannerComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    FilterComponent,
+    PaginationComponent
   ]
 })
 export class ComponentsModule { }

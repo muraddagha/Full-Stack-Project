@@ -11,7 +11,6 @@ a {
   outline: none;
 }
 .btn-pink {
-  text-decoration: none;
   color: white;
   background-color: $color-pink-second;
   border-radius: 4px;
@@ -21,6 +20,9 @@ a {
     color: #fd1c5e;
     background: transparent;
     border: 1px solid;
+  }
+  &:focus {
+    outline: none !important;
   }
 }
 .btn-pink-small {
@@ -35,7 +37,16 @@ a {
   color: #090b17;
   margin-bottom: 0;
 }
-
+.star {
+  display: flex;
+  fa-icon {
+    color: $color-star;
+    margin-right: 5px;
+  }
+  .unrated {
+    color: #f1f1f1 !important;
+  }
+}
 //responsive
 @media only screen and (min-width: 1400px) {
   .container {

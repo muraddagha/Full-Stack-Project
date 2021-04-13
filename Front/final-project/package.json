@@ -23,6 +23,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "bootstrap": "^5.0.0-beta3",
+    "ng5-slider": "^1.2.6",
     "ngx-owl-carousel-o": "^5.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
