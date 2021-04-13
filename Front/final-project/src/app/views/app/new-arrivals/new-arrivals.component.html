@@ -1,14 +1,39 @@
 <app-breadcrumb></app-breadcrumb>
 <section id="product-list" class="my-5 pt-5">
     <div class="container">
-        <div class="row">
+        <div class="row align-items-baseline">
             <div class="col-xl-3 col-lg-4 col-md-12">
                 <app-filter></app-filter>
             </div>
             <div class="col-lg-8">
-                product-list
+                <div class="list-header">
+                    <h4>
+                        Showing 1–12 of 40 Results
+                    </h4>
+                    <div class="selectbox">
+                        <ng-select [(ngModel)]="selectedSimpleItem">>
+                            <ng-option selected>Default Shorting</ng-option>
+                            <ng-option>Price</ng-option>
+                            <ng-option>Date</ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+                <div class="products-area">
+                    <div class="row">
+                        <div class="col-xl-4 col-md-6">
+                            <app-single-product></app-single-product>
+                        </div>
+                        <div class="col-xl-4 col-md-6">
+                            <app-single-product></app-single-product>
+                        </div>
+                        <div class="col-xl-4 col-md-6">
+                            <app-single-product></app-single-product>
+                        </div>
+                    </div>
+                </div>
+                <app-pagination></app-pagination>
             </div>
         </div>
     </div>
+
 </section>
-<app-subscribe-banner></app-subscribe-banner>

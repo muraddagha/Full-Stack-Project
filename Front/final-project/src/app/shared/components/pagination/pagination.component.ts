@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-pagination',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit {
+  right = faChevronRight;
 
   constructor() { }
 

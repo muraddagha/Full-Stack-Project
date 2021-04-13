@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,6 +48,8 @@ import { ContainersModule } from 'src/app/shared/containers/containers.module';
     CarouselModule,
     ComponentsModule,
     ContainersModule,
+    FormsModule,
+    NgSelectModule
   ]
 })
 export class AppModule { }

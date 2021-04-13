@@ -1,1 +1,117 @@
-<p>cart works!</p>
+<app-breadcrumb></app-breadcrumb>
+<section id="shopping-cart">
+    <div class="container">
+        <div class="row">
+            <div class="offset-1 col-xl-10">
+                <div class="table-product-area">
+                    <h4 class="title">Səbət</h4>
+                    <table class="table cart-item-list">
+                        <thead>
+                            <tr>
+                                <th>Məhsul</th>
+                                <th>Qiymət</th>
+                                <th>Miqdar</th>
+                                <th>Cəm</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="product-area d-flex align-items-center">
+                                        <a href="#" class="close_icon">
+                                            <svg id="icon3" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                viewBox="0 0 16 16">
+                                                <path data-name="Path 174" d="M0,0H16V16H0Z" fill="none"></path>
+                                                <path data-name="Path 175"
+                                                    d="M14.95,6l-1-1L9.975,8.973,6,5,5,6,8.973,9.975,5,13.948l1,1,3.973-3.973,3.973,3.973,1-1L10.977,9.975Z"
+                                                    transform="translate(-1.975 -1.975)" fill="#fb1159"></path>
+                                            </svg>
+                                        </a>
+                                        <div class="product-img">
+                                            <img src="/assets/icons/testp.png" alt="">
+                                        </div>
+
+                                        <span> Xbox 360 Joystick</span>
+                                    </div>
+                                </td>
+                                <td class="product-price ">
+                                    150 ₼
+                                </td>
+                                <td>
+                                    <div class="quantity">
+                                        <a href="#" class="minus single-item-count"><i class="ti ti-minus"></i></a>
+                                        <input id="quantity-input" class="single-item-count" type="text" value="1">
+                                        <a href="#" class="plus single-item-count"><i class="ti ti-plus"></i></a>
+                                    </div>
+                                </td>
+                                <td class="total-price">
+                                    150 ₼
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="product-area d-flex align-items-center">
+                                        <a href="#" class="close_icon">
+                                            <svg id="icon3" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                viewBox="0 0 16 16">
+                                                <path data-name="Path 174" d="M0,0H16V16H0Z" fill="none"></path>
+                                                <path data-name="Path 175"
+                                                    d="M14.95,6l-1-1L9.975,8.973,6,5,5,6,8.973,9.975,5,13.948l1,1,3.973-3.973,3.973,3.973,1-1L10.977,9.975Z"
+                                                    transform="translate(-1.975 -1.975)" fill="#fb1159"></path>
+                                            </svg>
+                                        </a>
+                                        <div class="product-img">
+                                            <img src="/assets/icons/testp.png" alt="">
+                                        </div>
+
+                                        <span> Xbox 360 Joystick</span>
+                                    </div>
+                                </td>
+                                <td class="product-price ">
+                                    150 ₼
+                                </td>
+                                <td>
+                                    <div class="quantity">
+                                        <a href="#" class="minus single-item-count"><i class="ti ti-minus"></i></a>
+                                        <input id="quantity-input" class="single-item-count" type="text" value="1">
+                                        <a href="#" class="plus single-item-count"><i class="ti ti-plus"></i></a>
+                                    </div>
+                                </td>
+                                <td class="total-price">
+                                    150 ₼
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <div class="cupon">
+                                        <form action="#">
+                                            <input type="text" placeholder="Kupon Kodu">
+                                            <button class="btn btn-pink">Kupon Təsdiqi</button>
+                                        </form>
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td class="text-center">
+                                    <a [routerLink]="['']" class="btn btn-pink">Alış-verişə davam edin</a>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="table-total-sum-area">
+                    <h4 class="title">Səbət Cəmi</h4>
+                    <table class="table total-table">
+                        <tr>
+                            <td>Cəm</td>
+                            <td>$12,000.00</td>
+                        </tr>
+                    </table>
+                    <button class="btn btn-pink">Sifarişi Göndər</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

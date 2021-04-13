@@ -1,0 +1,32 @@
+@import "/src/assets/scss/variables";
+ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
+    margin-left: 10px;
+    a {
+      text-decoration: none;
+      width: 40px;
+      height: 40px;
+      display: inline-block;
+      text-align: center;
+      line-height: 40px;
+      transition: 0.3s;
+      font-size: 16px;
+      color: #656565;
+      font-weight: 600;
+      border: 1px solid #ebebeb;
+      border-radius: 5px;
+      &:hover {
+        background-color: $color-pink-second;
+        color: white;
+      }
+    }
+    .active {
+      background-color: $color-pink-second;
+      color: white;
+    }
+  }
+}

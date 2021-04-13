@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-arrivals.component.scss']
 })
 export class NewArrivalsComponent implements OnInit {
-
+  selectedSimpleItem = 'Default Shorting';
   constructor() { }
 
   ngOnInit(): void {
