@@ -1,4 +1,5 @@
 using DataService.Data;
+using DataService.Services;
 using DataService.Services.ShoppingServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -59,6 +60,8 @@ namespace FinalProjectAPI
                    options.UseSqlServer(Configuration.GetConnectionString("Default"),
                    x => x.MigrationsAssembly("DataService")), ServiceLifetime.Transient, ServiceLifetime.Singleton);
 
+            services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton<IAdminService, AdminService>();
             services.AddTransient<IDepartmentService,DepartmentService>();
         }
 

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DataService.Data.Entities;
+using FinalProjectAPI.Resource.AuthResource;
 using FinalProjectAPI.Resource.Category;
 using FinalProjectAPI.Resource.Department;
 using System;
@@ -13,6 +14,14 @@ namespace FinalProjectAPI.Infrastructure.Mapping
     {
         public MappingProfile()
         {
+            //User
+            CreateMap<User, UserResource>();
+            CreateMap<UserRegisterResource, User>();
+
+            //Admin
+            CreateMap<Admin, AdminResource>();
+
+            //Shopping
             CreateMap<Department, DepartmentResource>();
             CreateMap<Category, CategoryResource>();
         }
