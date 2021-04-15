@@ -10,6 +10,8 @@ import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './product/product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CreateProductComponent } from './product/create-product/create-product.component';
+import { UpdateProductComponent } from './product/update-product/update-product.component';
 
 
 
@@ -22,6 +24,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     DepartmentComponent,
     CategoryComponent,
     ProductComponent,
+    CreateProductComponent,
+    UpdateProductComponent,
 
   ],
   imports: [

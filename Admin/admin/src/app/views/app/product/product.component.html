@@ -1,1 +1,43 @@
-<p>product works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <a [routerLink]="['/app/product/create-product']" class="btn btn-success">
+                Məhsul yarat
+            </a>
+            <h4 class="text-center mb-4">Məhsullar</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Adı</th>
+                        <th>Id</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr
+                        *ngFor="let product of products | paginate: { itemsPerPage: 10, currentPage: page,totalItems:totalCount }">
+                        <td>{{product.icon}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.id}}</td>
+                        <td class="d-flex justify-content-between align-items-center">
+                            <span *ngIf="department.softDeleted" class="badge badge-danger">Deaktiv</span>
+                            <span *ngIf="!department.softDeleted" class="badge badge-success">Aktiv</span>
+                            <span class="settings">
+                                <a (click)="updateDepartment($event,department)" data-toggle="modal"
+                                    data-target="#update" class="btn btn-warning rounded-circle mr-3" href="#">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a (click)="removeDepartment($event,department.id)"
+                                    class="btn btn-danger rounded-circle" href="#">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </span>
+
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- <pagination-controls (pageChange)="page = $event" previousLabel="Əvvəlki" nextLabel="Növbəti"></pagination-controls> -->
+</div>

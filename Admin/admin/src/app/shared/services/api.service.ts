@@ -49,4 +49,21 @@ export class ApiService {
   }
   //#endregion
 
+
+  //#region Product
+  public getProducts(): Observable<any> {
+    return this.http.get<any>(environment.apiUrl + `product`)
+  }
+  public createProduct(data: any) {
+    return this.http.post(environment.apiUrl + `product/create`, data)
+  }
+  public updateProduct(id: any, data: any) {
+    return this.http.put(environment.apiUrl + `product/${id}`, data)
+  }
+  public removeProduct(id: any) {
+    return this.http.delete(environment.apiUrl + `product/${id}`)
+  }
+  //#endregion
+
+
 }
