@@ -46,14 +46,8 @@ namespace FinalProjectAPI.Controllers.V1
             if (!ModelState.IsValid) return BadRequest(ModelState);
             try
             {
-                var department = new Department()
-                {
-                    Name = resource.Name,
-                    Icon = resource.Icon,
-                    AddedBy=resource.AddedBy
-                };
-                await _departmentService.CreateDepartment(department);
-
+                var departmentInput = _mapper.Map<CreateDepartmentResource, Department>(resource);
+                var department = await _departmentService.CreateDepartment(departmentInput);
                 return Ok(new { message = "Şöbə yaradıldı" });
             }
             catch (HttpException e)
@@ -71,12 +65,8 @@ namespace FinalProjectAPI.Controllers.V1
 
             try
             {
-                var department = await _departmentService.GetDepartmentById(id);
-                department.Name = resource.Name;
-                department.Icon = resource.Icon;
-                department.SoftDeleted = resource.SoftDeleted;
-                department.ModifiedBy = resource.ModifiedBy;
-                await _departmentService.UpdateDepartment(department);
+                var department = _mapper.Map<UpdateDepartmentResource, Department>(resource);
+                await _departmentService.UpdateDepartment(id, department);
                 return Ok(new { message = "Şöbə yeniləndi" });
             }
             catch (HttpException e)

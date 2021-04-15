@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace DataService.Data.Entities
+namespace FinalProjectAPI.Resource.Product
 {
-   public class Product:BaseEntity
+    public class UpdateProductResource
     {
         [Required]
         public int CategoryId { get; set; }
@@ -34,13 +37,11 @@ namespace DataService.Data.Entities
         public bool IsTrend { get; set; }
         public bool IsTopSell { get; set; }
         public bool IsHotDeal { get; set; }
-        public Category Category { get; set; }
-        public Brand Brand { get; set; }
-        public ICollection<ProductPhoto> Photos { get; set; }
-        public ICollection<ProductOption> Options { get; set; }
-        public ICollection<ProductDiscount> Discounts  { get; set; }
-        public ICollection<ProductReview> Reviews { get; set; }
-        public ICollection<Favoruite> Favoruites { get; set; }
 
+        [Required]
+        [MaxLength(50)]
+        public string ModifiedBy { get; set; }
+
+        public bool SoftDeleted { get;set; }
     }
 }

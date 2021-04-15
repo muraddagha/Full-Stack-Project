@@ -15,7 +15,7 @@ namespace DataService.Services.ShoppingServices
         Task<IEnumerable<Department>> GetDepartmentsWithCategory();
         Task<IEnumerable<Department>> GetDepartments();
         Task<Department> CreateDepartment(Department department);
-        Task UpdateDepartment(Department department);
+        Task UpdateDepartment(int id,Department department);
         Task RemoveDepartment(int id);
         Task<Department> GetDepartmentById(int id);
     }
@@ -64,9 +64,14 @@ namespace DataService.Services.ShoppingServices
 
         }
 
-        public async Task UpdateDepartment(Department department)
+        public async Task UpdateDepartment(int id,Department department)
         {
-            department.ModifiedDate = DateTime.Now;
+            var updateDepartment = await GetDepartmentById(id);
+            updateDepartment.Name = department.Name;
+            updateDepartment.Icon = department.Icon;
+            updateDepartment.SoftDeleted = department.SoftDeleted;
+            updateDepartment.ModifiedBy = department.ModifiedBy;
+            updateDepartment.ModifiedDate = DateTime.Now;
             await _context.SaveChangesAsync();
         }
     }

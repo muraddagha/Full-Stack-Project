@@ -41,14 +41,8 @@ namespace FinalProjectAPI.Controllers.V1
 
             try
             {
-                var category = new Category()
-                {
-                    Name = resource.Name,
-                    DepartmentId = resource.DepartmentId,
-                    IsPopular = resource.IsPopular,
-                    AddedBy = resource.AddedBy
-
-                };
+                var categoryInput = _mapper.Map<CreateCategoryResource, Category>(resource);
+                var category = await _categoryService.CreateCategory(categoryInput);
                 await _categoryService.CreateCategory(category);
 
                 return Ok(new { message = "Kateqoriya yaradıldı" });
@@ -67,15 +61,8 @@ namespace FinalProjectAPI.Controllers.V1
             if (!ModelState.IsValid) return BadRequest(ModelState);
             try
             {
-                var category = await _categoryService.GetCategoryById(id);
-                category.Name = resource.Name;
-                category.DepartmentId = resource.DepartmentId;
-                category.IsPopular = resource.IsPopular;
-                category.SoftDeleted = resource.SoftDeleted;
-                category.ModifiedBy = resource.ModifiedBy;
-
-                await _categoryService.UpdateCategory(category);
-
+                var category = _mapper.Map<UpdateCategoryResource, Category>(resource);
+                await _categoryService.UpdateCategory(id, category);
                 return Ok(new { message = "Kateqoriya yeniləndi" });
 
             }

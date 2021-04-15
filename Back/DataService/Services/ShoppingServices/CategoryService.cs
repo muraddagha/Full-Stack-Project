@@ -16,7 +16,7 @@ namespace DataService.Services.ShoppingServices
         Task<Category> GetCategoryById(int id);
         Task<int> GetCategoryCount();
         Task<Category> CreateCategory(Category category);
-        Task UpdateCategory(Category category);
+        Task UpdateCategory(int id,Category category);
         Task RemoveCategory(int id);
     }
 
@@ -61,9 +61,16 @@ namespace DataService.Services.ShoppingServices
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateCategory(Category category)
+        public async Task UpdateCategory(int id,Category category)
         {
-            category.ModifiedDate = DateTime.Now;
+            var updateCategory = await GetCategoryById(id);
+            updateCategory.Name = category.Name;
+            updateCategory.DepartmentId = category.DepartmentId;
+            updateCategory.IsPopular = category.IsPopular;
+            updateCategory.SoftDeleted = category.SoftDeleted;
+            updateCategory.ModifiedBy = category.ModifiedBy;
+            updateCategory.ModifiedDate = DateTime.Now;
+
             await _context.SaveChangesAsync();
         }
     }
