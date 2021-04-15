@@ -13,7 +13,8 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./department.component.scss']
 })
 export class DepartmentComponent implements OnInit {
-
+  public totalCount: number;
+  page: number = 1;
   public submitted: boolean = false;
   public createForm: FormGroup;
   public updateForm: FormGroup;
@@ -111,6 +112,7 @@ export class DepartmentComponent implements OnInit {
   private getDepartments(): void {
     this.apiService.getDepartments().subscribe(res => {
       this.departments = res.departments;
+      this.totalCount = res.departments.length
     }),
       err => {
         switch (err.status) {
@@ -134,15 +136,16 @@ export class DepartmentComponent implements OnInit {
   }
   public removeDepartment($event, id: any) {
     $event.preventDefault();
-    this.apiService.removeDepartment(id).subscribe(res => {
-      console.log(res);
-    }, err => {
+    if (confirm("Əminsinizmi?")) {
+      this.apiService.removeDepartment(id).subscribe(res => {
+        console.log(res);
+      }, err => {
 
-    }, () => {
-      this.notifier.notify("error", "Şöbə deaktiv edildi")
-      this.getDepartments();
-    })
-
+      }, () => {
+        this.notifier.notify("error", "Şöbə deaktiv edildi")
+        this.getDepartments();
+      })
+    }
   }
 
 }

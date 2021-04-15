@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NotifierModule } from 'angular-notifier';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { NotifierModule } from 'angular-notifier';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NotifierModule
+    NotifierModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

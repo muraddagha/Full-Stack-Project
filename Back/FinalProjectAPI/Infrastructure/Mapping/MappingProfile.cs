@@ -23,6 +23,7 @@ namespace FinalProjectAPI.Infrastructure.Mapping
 
             //Shopping
             CreateMap<Department, DepartmentResource>();
+            CreateMap<Department, AdminDepartmentResource>();
             CreateMap<Category, CategoryResource>();
         }
     }

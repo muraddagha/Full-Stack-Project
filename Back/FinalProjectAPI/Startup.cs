@@ -46,9 +46,10 @@ namespace FinalProjectAPI
                 options.AddPolicy(name: AllowSpecificOrigins,
                                   builder =>
                                   {
-                                      builder.AllowAnyOrigin().WithOrigins("http://localhost:4200")
-                                                           .AllowAnyMethod()
-                                                           .AllowAnyHeader();
+                                      builder.AllowAnyOrigin().WithOrigins("http://localhost:4200",
+                                                                           "http://localhost:4210")
+                                                              .AllowAnyMethod()
+                                                              .AllowAnyHeader();
 
                                   });
             });
@@ -63,6 +64,7 @@ namespace FinalProjectAPI
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<IAdminService, AdminService>();
             services.AddTransient<IDepartmentService,DepartmentService>();
+            services.AddTransient<ICategoryService,CategoryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

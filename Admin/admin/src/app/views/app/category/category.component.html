@@ -1,1 +1,173 @@
-<p>category works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <button class="btn btn-success" data-toggle="modal" data-target="#create">
+                Kateqoriya yarat
+            </button>
+            <h4 class="text-center">Şöbələr</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Şöbəsi</th>
+                        <th>Adı</th>
+                        <th>Populyar?</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let category of categories | paginate: { itemsPerPage: 10, currentPage: page,totalItems:totalCount }">
+                        <td>{{category.id}}</td>
+                        <td>{{category.department.name}}</td>
+                        <td>{{category.name}}</td>
+                        <td><span *ngIf="category.isPopular" class="badge badge-info">Aktiv</span>
+                            <span *ngIf="!category.isPopular" class="badge badge-danger">Deaktiv</span>
+                        </td>
+                        <td class="d-flex justify-content-between align-items-center">
+                            <span *ngIf="category.softDeleted" class="badge badge-danger">Deaktiv</span>
+                            <span *ngIf="!category.softDeleted" class="badge badge-success">Aktiv</span>
+                            <span class="settings">
+                                <a (click)="updateCategory($event,category)" data-toggle="modal" data-target="#update"
+                                    class="btn btn-warning rounded-circle mr-3" href="#">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a (click)="removeCategory($event,category.id)" class="btn btn-danger rounded-circle"
+                                    href="#">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <pagination-controls (pageChange)="page = $event" previousLabel="Əvvəlki" nextLabel="Növbəti"></pagination-controls>
+</div>
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Kateqoriya Yarat</h5>
+                <button type="button" class="close-create close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="createForm" (ngSubmit)="create()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.name.errors }">Kateqoriya adı <span
+                                class="text-danger">*</span></label>
+                        <input name="name" formControlName="name" type="text" class="form-control"
+                            placeholder="Kateqoriya adı">
+                        <div *ngIf="submitted && f.name.errors" class="text-danger">
+                            <div *ngIf="f.name.errors.required">Kateqoriya adı boş ola bilməz</div>
+                            <div *ngIf="f.name.errors.maxLenght">Kateqoriya adı maksimum 100 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.departmentId.errors }">Şöbə <span
+                                class="text-danger">*</span> </label>
+                        <select name="departmentId" formControlName="departmentId" class="form-control">
+                            <option *ngFor="let department of departments" value="{{department.id}}"
+                                [selected]="department.id">{{department.name}}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.departmentId.errors" class="text-danger">
+                            <div *ngIf="f.departmentId.errors.required">Şöbə boş ola bilməz</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Populyardır?</label>
+                        <select name="isPopular" formControlName="isPopular" class="form-control">
+                            <option value="false">Deaktiv</option>
+                            <option value="true">Aktiv</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.addedBy.errors }">Adınız <span
+                                class="text-danger">*</span></label>
+                        <input name="addedBy" formControlName="addedBy" type="text" class="form-control">
+                        <div *ngIf="submitted && f.addedBy.errors" class="text-danger">
+                            <div *ngIf="f.addedBy.errors.required">Adınız boş ola bilməz</div>
+                            <div *ngIf="f.addedBy.errors.maxLenght">Adınız maksimum 100 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Yarat</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Şöbəni Yenilə</h5>
+                <button type="button" class="close-update close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="updateForm" (ngSubmit)="update()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.name.errors }">Kateqoriya adı <span
+                                class="text-danger">*</span></label>
+                        <input name="name" formControlName="name" type="text" class="form-control"
+                            placeholder="Kateqoriya">
+                        <div *ngIf="submitted && u.name.errors" class="text-danger">
+                            <div *ngIf="u.name.errors.required">Kateqoriya adı boş ola bilməz</div>
+                            <div *ngIf="u.name.errors.maxLenght">Kateqoriya adı maksimum 100 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.departmentId.errors }">Şöbə <span
+                                class="text-danger">*</span> </label>
+                        <select name="departmentId" formControlName="departmentId" class="form-control">
+                            <option *ngFor="let department of departments" value="{{department.id}}">
+                                {{department.name}}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.departmentId.errors" class="text-danger">
+                            <div *ngIf="f.departmentId.errors.required">Şöbə boş ola bilməz</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Populyar ? </label>
+                        <select name="isPopular" formControlName="isPopular" class="form-control">
+                            <option value="false">Deaktiv</option>
+                            <option value="true">Aktiv</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Status </label>
+                        <select name="softDeleted" formControlName="softDeleted" class="form-control">
+                            <option value="false">Aktiv</option>
+                            <option value="true">Deaktiv</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.modifiedBy.errors }">Adınız <span
+                                class="text-danger">*</span></label>
+                        <input name="modifiedBy" formControlName="modifiedBy" type="text" class="form-control">
+                        <div *ngIf="submitted && u.modifiedBy.errors" class="text-danger">
+                            <div *ngIf="u.modifiedBy.errors.required">Adınız boş ola bilməz</div>
+                            <div *ngIf="u.modifiedBy.errors.maxLenght">Adınız maksimum 100 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-warning w-100">Yenilə</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
