@@ -1,0 +1,142 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <button class="btn btn-success" data-toggle="modal" data-target="#create">
+                Şöbə yarat
+            </button>
+            <h4 class="text-center">Şöbələr</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>İkon</th>
+                        <th>Adı</th>
+                        <th>Id</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let department of departments">
+                        <td>{{department.icon}}</td>
+                        <td>{{department.name}}</td>
+                        <td>{{department.id}}</td>
+                        <td class="d-flex justify-content-between align-items-center">
+                            <span *ngIf="department.softDeleted" class="badge badge-danger">Deaktiv</span>
+                            <span *ngIf="!department.softDeleted" class="badge badge-success">Aktiv</span>
+                            <span class="settings">
+                                <a (click)="updateDepartment($event,department)" data-toggle="modal"
+                                    data-target="#update" class="btn btn-warning rounded-circle mr-3" href="#">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a (click)="removeDepartment($event,department.id)"
+                                    class="btn btn-danger rounded-circle" href="#">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </span>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Şöbə Yarat</h5>
+                <button type="button" class="close-create close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="createForm" (ngSubmit)="create()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.name.errors }">Şöbə adı <span
+                                class="text-danger">*</span></label>
+                        <input name="name" formControlName="name" type="text" class="form-control"
+                            placeholder="Şöbə adı">
+                        <div *ngIf="submitted && f.name.errors" class="text-danger">
+                            <div *ngIf="f.name.errors.required">Şöbə adı boş ola bilməz</div>
+                            <div *ngIf="f.name.errors.maxLenght">Şöbə adı maksimum 100 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.icon.errors }">İkon </label>
+                        <input name="icon" formControlName="icon" type="text" class="form-control" placeholder="İkon">
+                        <div *ngIf="submitted && f.icon.errors" class="text-danger">
+                            <div *ngIf="f.icon.errors.maxLenght">İkon maksimum 150 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.addedBy.errors }">Adınız <span
+                                class="text-danger">*</span></label>
+                        <input name="addedBy" formControlName="addedBy" type="text" class="form-control">
+                        <div *ngIf="submitted && f.addedBy.errors" class="text-danger">
+                            <div *ngIf="f.addedBy.errors.required">Adınız boş ola bilməz</div>
+                            <div *ngIf="f.addedBy.errors.maxLenght">Adınız maksimum 100 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Yarat</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Şöbəni Yenilə</h5>
+                <button type="button" class="close-update close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="updateForm" (ngSubmit)="update()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.name.errors }">Şöbə adı <span
+                                class="text-danger">*</span></label>
+                        <input name="name" formControlName="name" type="text" class="form-control"
+                            placeholder="Şöbə adı">
+                        <div *ngIf="submitted && u.name.errors" class="text-danger">
+                            <div *ngIf="u.name.errors.required">Şöbə adı boş ola bilməz</div>
+                            <div *ngIf="u.name.errors.maxLenght">Şöbə adı maksimum 100 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.icon.errors }">İkon </label>
+                        <input name="icon" formControlName="icon" type="text" class="form-control" placeholder="İkon">
+                        <div *ngIf="submitted && u.icon.errors" class="text-danger">
+                            <div *ngIf="u.icon.errors.maxLenght">İkon maksimum 150 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Status </label>
+                        <select name="softDeleted" formControlName="softDeleted" class="form-control">
+                            <option value="false">Aktiv</option>
+                            <option value="true">Deaktiv</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.modifiedBy.errors }">Adınız <span
+                                class="text-danger">*</span></label>
+                        <input name="modifiedBy" formControlName="modifiedBy" type="text" class="form-control">
+                        <div *ngIf="submitted && u.modifiedBy.errors" class="text-danger">
+                            <div *ngIf="u.modifiedBy.errors.required">Adınız boş ola bilməz</div>
+                            <div *ngIf="u.modifiedBy.errors.maxLenght">Adınız maksimum 100 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-warning w-100">Yenilə</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -79,7 +79,10 @@
                                 <ul>
                                     <li *ngFor="let department of departments">
                                         <span>
-                                            {{department.name}}
+                                            <span>
+                                                <i class="{{department.icon}} me-3"></i>
+                                                {{department.name}}
+                                            </span>
                                             <fa-icon [icon]="chevronR"></fa-icon>
                                         </span>
                                         <ul *ngIf="department.categories.length>0" class="categories-sub-menu">

@@ -15,15 +15,24 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Xoş Gəldin!</h1>
                                 </div>
-                                <form class="user">
+                                <form [formGroup]="loginForm" (ngSubmit)="login()" class="user">
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user"
+                                        <input [ngClass]="{ 'is-invalid': submitted && f.email.errors }" type="email"
+                                            class="form-control form-control-user" formControlName="email" name="email"
                                             id="exampleInputEmail" aria-describedby="emailHelp"
                                             placeholder="Enter Email Address...">
+                                        <div *ngIf="submitted && f.email.errors" class="text-danger">
+                                            <div *ngIf="f.email.errors.required">E-poçt boş ola bilməz</div>
+                                            <div *ngIf="f.email.errors.email">E-poçt düzgün yazılmayıb</div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
+                                        <input [ngClass]="{ 'is-invalid': submitted && f.email.errors }" type="password"
+                                            class="form-control form-control-user" id="exampleInputPassword"
+                                            name="password" formControlName="password" placeholder="Password">
+                                        <div *ngIf="submitted && f.password.errors" class="text-danger">
+                                            <div *ngIf="f.password.errors.required">Şifrə boş ola bilməz</div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
@@ -32,9 +41,9 @@
                                                 Me</label>
                                         </div>
                                     </div>
-                                    <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">
                                         Daxil Ol
-                                    </a>
+                                    </button>
                                 </form>
                                 <hr>
                                 <div class="text-center">
