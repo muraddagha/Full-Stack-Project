@@ -1,6 +1,7 @@
 using DataService.Data;
 using DataService.Services;
 using DataService.Services.ShoppingServices;
+using FinalProjectAPI.Libs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -61,11 +62,13 @@ namespace FinalProjectAPI
                    options.UseSqlServer(Configuration.GetConnectionString("Default"),
                    x => x.MigrationsAssembly("DataService")), ServiceLifetime.Transient, ServiceLifetime.Singleton);
 
+            services.AddTransient<IFileManager, FileManager>();
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<IAdminService, AdminService>();
             services.AddTransient<IDepartmentService,DepartmentService>();
             services.AddTransient<ICategoryService,CategoryService>();
             services.AddTransient<IProductService,ProductService>();
+            services.AddTransient<ICloudinaryService,CloudinaryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

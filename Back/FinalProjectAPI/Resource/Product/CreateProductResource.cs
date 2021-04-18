@@ -38,8 +38,10 @@ namespace FinalProjectAPI.Resource.Product
         public bool IsTopSell { get; set; }
         public bool IsHotDeal { get; set; }
 
-        [Required]
         [MaxLength(50)]
         public string AddedBy { get; set; }
+
+        [Required]
+        public ICollection<ProductPhotoResource> Photos { get; set; }
     }
 }

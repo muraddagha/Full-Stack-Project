@@ -70,3 +70,5 @@ C:\Users\Jarvis\source\repos\FinalProjectAPI\FinalProjectAPI\bin\Debug\net5.0\Mi
 C:\Users\Jarvis\source\repos\FinalProjectAPI\FinalProjectAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Jarvis\source\repos\FinalProjectAPI\FinalProjectAPI\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\Users\Jarvis\source\repos\FinalProjectAPI\FinalProjectAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Versioning.dll
+C:\Users\Jarvis\source\repos\FinalProjectAPI\FinalProjectAPI\bin\Debug\net5.0\CloudinaryDotNet.dll
+C:\Users\Jarvis\source\repos\FinalProjectAPI\FinalProjectAPI\bin\Debug\net5.0\Microsoft.Extensions.WebEncoders.dll

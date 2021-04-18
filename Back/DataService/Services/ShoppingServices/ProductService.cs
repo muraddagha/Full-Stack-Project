@@ -40,14 +40,15 @@ namespace DataService.Services.ShoppingServices
         public async Task<Product> CreateProduct(Product product)
         {
             product.AddedDate = DateTime.Now;
-            await _context.AddAsync(product);
+            await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
             return product;
         }
 
         public async Task<IEnumerable<Product>> GetAllProducts()
         {
-            return await _context.Products.Include("Photos")
+            return await _context.Products.Include("Category")
+                                           .Include("Photos")
                                            .Include("Options.ProductOptionItems")
                                            .Include("Discounts.Discount")
                                            .Include("Reviews")

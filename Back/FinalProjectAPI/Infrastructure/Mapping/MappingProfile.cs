@@ -23,9 +23,10 @@ namespace FinalProjectAPI.Infrastructure.Mapping
             CreateMap<Admin, AdminResource>();
 
             //Product
-            CreateMap<Product, AdminProductResource>()
-                                     .ForMember(d => d.Photos, opt => opt.MapFrom(src => src.Photos.OrderBy(p => p.OrderBy).Select(p => p.Img)));
-            CreateMap<AdminProductResource, Product>();
+            CreateMap<Product, AdminProductResource>();
+                                                //.ForMember(d => d.Photos, opt => opt.MapFrom(src => src.Photos.OrderBy(p => p.OrderBy).Select(p => p.Img)));
+            CreateMap<CreateProductResource, Product>();
+            CreateMap<ProductPhoto, ProductPhotoResource>();
             CreateMap<UpdateProductResource, Product>();
 
             //Categroy

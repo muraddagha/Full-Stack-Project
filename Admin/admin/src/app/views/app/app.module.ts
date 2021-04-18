@@ -16,7 +16,6 @@ import { UpdateProductComponent } from './product/update-product/update-product.
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +33,7 @@ import { UpdateProductComponent } from './product/update-product/update-product.
     LayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ]
 })
 export class AppModule { }

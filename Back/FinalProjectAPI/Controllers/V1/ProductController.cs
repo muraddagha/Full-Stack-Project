@@ -1,7 +1,9 @@
 ﻿using DataService.Data.Entities;
 using DataService.Enums;
 using DataService.Infrastructure.Exceptions;
+using DataService.Services;
 using DataService.Services.ShoppingServices;
+using FinalProjectAPI.Libs;
 using FinalProjectAPI.Resource.Product;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,10 +18,15 @@ namespace FinalProjectAPI.Controllers.V1
     public class ProductController : BaseController
     {
         private readonly IProductService _productService;
+        private readonly ICloudinaryService _cloudinaryService;
+        private readonly IFileManager _fileManager;
 
-        public ProductController(IProductService productService)
+
+        public ProductController(IProductService productService, ICloudinaryService cloudinaryService,IFileManager fileManager)
         {
             _productService = productService;
+            _cloudinaryService = cloudinaryService;
+            _fileManager = fileManager;
         }
 
         [HttpGet]
@@ -29,8 +36,7 @@ namespace FinalProjectAPI.Controllers.V1
         {
             var products = await _productService.GetAllProducts();
             var productResource = _mapper.Map<IEnumerable<Product>, IEnumerable<AdminProductResource>>(products);
-            var count = await _productService.GetProductsCount();
-            return Ok(new { products = products ,count=count});
+            return Ok(new { products = productResource });
         }
 
         [HttpPost]
@@ -43,9 +49,7 @@ namespace FinalProjectAPI.Controllers.V1
             {
                 var productInput = _mapper.Map<CreateProductResource, Product>(resource);
                 var product = await _productService.CreateProduct(productInput);
-                await _productService.CreateProduct(product);
-
-                return Ok(new { message="Məhsul yaradıldı"});
+                return Ok(new { product=product});
             }
             catch (HttpException e)
             {
@@ -91,9 +95,24 @@ namespace FinalProjectAPI.Controllers.V1
         [HttpPost]
         [Route("Upload")]
 
-        public async Task<IActionResult> UploadPhoto(IFormFile file)
+        public  IActionResult UploadPhoto(IFormFile file)
         {
-            return Ok();
+            var fileName = _fileManager.Upload(file);
+            var publicId = _cloudinaryService.Store(fileName);
+            _fileManager.Delete(fileName);
+
+            return Ok(new {
+                fileName = publicId,
+                src = _cloudinaryService.BuildUrl(publicId)
+            });
+        }
+
+        [HttpDelete]
+        [Route("Remove")]
+        public IActionResult RemoveUploadedPhoto([FromQuery] string name)
+        {
+            _cloudinaryService.Delete(name);
+            return Ok(new {message = "Şəkil silindi" });
         }
 
         [HttpGet]

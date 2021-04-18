@@ -1,0 +1,16 @@
+.photos {
+  margin-top: 10px;
+  display: flex;
+  .img {
+    margin-right: 15px;
+    img {
+      max-width: 120px;
+      max-height: 100px;
+    }
+    a {
+      i {
+        color: red;
+      }
+    }
+  }
+}

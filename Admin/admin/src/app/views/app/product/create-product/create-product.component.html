@@ -14,7 +14,7 @@
         </div>
         <div class="form-group">
             <label>Brend </label>
-            <input name="brandId" formControlName="brandId" type="text" class="form-control" placeholder="İkon">
+            <input name="brandId" formControlName="brandId" type="text" class="form-control">
         </div>
         <div class="form-group">
             <label [ngClass]="{ 'is-invalid': submitted && f.name.errors }">Məhsul adı <span
@@ -90,9 +90,25 @@
             </select>
         </div>
         <div class="form-group">
-            <label [ngClass]="{ 'is-invalid': submitted && f.addedBy.errors }">Şəkil <span
+            <label for="files" type="button" class="btn btn-secondary mr-2">Şəkillər yüklə</label>
+            <label [ngClass]="{ 'is-invalid': submitted && f.addedBy.errors }"> <span
                     class="text-danger">*</span></label>
-            <input name="photo" formControlName="photo" type="file" class="form-control">
+            <input id="files" (change)="upload($event)" type="file" class="d-none" accept="image/*">
+
+            <div *ngIf="uploadImg.length>0" class="photos">
+                <div *ngFor="let img of uploadImg;let i=index" class="img">
+                    <div *ngFor="let photos of photoss.controls;let j=index" formArrayName="photos">
+                        <div [formGroup]="photoss.controls[j]">
+                            <input type="hidden" name="img" formControlName="img">
+                            <input type="hidden" name="orderBy" formControlName="orderBy">
+                        </div>
+                    </div>
+                    <img src="{{img.src}}" alt="uploaded-photo">
+                    <a href="#" (click)="removePhoto($event,img.fileName,i)">
+                        <i class=" ml-1 fas fa-trash"></i>
+                    </a>
+                </div>
+            </div>
             <div *ngIf="submitted && f.addedBy.errors" class="text-danger">
                 <div *ngIf="f.addedBy.errors.required">Şəkil boş ola bilməz</div>
             </div>
