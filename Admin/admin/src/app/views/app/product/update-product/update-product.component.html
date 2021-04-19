@@ -1,1 +1,119 @@
-<p>update-product works!</p>
+<div class="container">
+    <form [formGroup]="updateForm" (ngSubmit)="update()">
+        <div class="form-group">
+            <label [ngClass]="{ 'is-invalid': submitted && f.categoryId.errors }">Kateqoriya <span
+                    class="text-danger">*</span> </label>
+            <select name="categoryId" formControlName="categoryId" class="form-control">
+                <option *ngFor="let category of categories" value="{{category.id}}">
+                    {{category.name}}
+                </option>
+            </select>
+            <div *ngIf="submitted && f.categoryId.errors" class="text-danger">
+                <div *ngIf="f.categoryId.errors.required">Kateqoriya boş ola bilməz</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Brend <span class="text-danger">*</span> </label>
+            <select name="categoryId" formControlName="brandId" class="form-control">
+                <option *ngFor="let brand of brands" value="{{brand.id}}">
+                    {{brand.name}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label [ngClass]="{ 'is-invalid': submitted && f.name.errors }">Məhsul adı <span
+                    class="text-danger">*</span></label>
+            <input name="name" formControlName="name" type="text" class="form-control">
+            <div *ngIf="submitted && f.name.errors" class="text-danger">
+                <div *ngIf="f.name.errors.required">Məhsul boş ola bilməz</div>
+                <div *ngIf="f.name.errors.maxLenght">Məhsul adı maksimum 50 xarakter olmalıdır</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label [ngClass]="{ 'is-invalid': submitted && f.description.errors }">Məhsul təsviri <span
+                    class="text-danger">*</span></label>
+            <input name="description" formControlName="description" type="text" class="form-control">
+            <div *ngIf="submitted && f.description.errors" class="text-danger">
+                <div *ngIf="f.description.errors.required">Məhsul təsviri boş ola bilməz</div>
+                <div *ngIf="f.description.errors.maxLenght">Məhsul təsviri maksimum 50 xarakter olmalıdır</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label [ngClass]="{ 'is-invalid': submitted && f.price.errors }">Qiymət<span
+                    class="text-danger">*</span></label>
+            <input name="price" formControlName="price" type="text" class="form-control">
+            <div *ngIf="submitted && f.price.errors" class="text-danger">
+                <div *ngIf="f.price.errors.required">Qiymət</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label [ngClass]="{ 'is-invalid': submitted && f.sku.errors }">Sku<span class="text-danger">*</span></label>
+            <input name="sku" formControlName="sku" type="text" class="form-control">
+            <div *ngIf="submitted && f.sku.errors" class="text-danger">
+                <div *ngIf="f.sku.errors.required">Sku boş ola bilməz</div>
+                <div *ngIf="f.sku.errors.maxLenght">Sku təsviri maksimum 50 xarakter olmalıdır</div>
+            </div>
+        </div>
+        <div class="d-flex align-items-baseline">
+            <div class="form-group mr-2">
+                <select name="inStock" formControlName="inStock" class="form-control form-control-sm">
+                    <option value="true">Stokda</option>
+                    <option value="false">Bitib</option>
+                </select>
+            </div>
+            <div class="form-group mr-2">
+                <select name="isFeatured" formControlName="isFeatured" class="form-control form-control-sm">
+                    <option value="true">Featured</option>
+                    <option value="false">NotFeatured</option>
+                </select>
+            </div>
+            <div class="form-group mr-2">
+                <select name="isTrend" formControlName="isTrend" class="form-control form-control-sm">
+                    <option value="true">Trend</option>
+                    <option value="false">NotTrend</option>
+                </select>
+            </div>
+            <div class="form-group mr-2">
+                <select name="isTopSell" formControlName="isTopSell" class="form-control form-control-sm">
+                    <option value="true">Top Sell</option>
+                    <option value="false">Not Top Sell</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select name="isHotDeal" formControlName="isHotDeal" class="form-control form-control-sm">
+                    <option value="true">Hot Deal</option>
+                    <option value="false">Not Hot Deal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select name="softDeleted" formControlName="softDeleted" class="form-control form-control-sm">
+                    <option value="false">Aktiv</option>
+                    <option value="true">Deaktiv</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group mt-2">
+            <label for="files" type="button" class="btn btn-secondary mr-2">Şəkil yüklə</label>
+            <input id="files" (change)="upload($event)" type="file" class="d-none" accept="image/*">
+
+            <div class="photos">
+                <div *ngFor="let photo of product?.photos" class="img">
+                    <img src="{{photo.img}}" alt="">
+                    <a href="#" (click)="removePhoto($event,photo?.fileName,photo?.id,i)">
+                        <i class=" ml-1 fas fa-trash"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label [ngClass]="{ 'is-invalid': submitted && f.modifiedBy.errors }">Adınız <span
+                    class="text-danger">*</span></label>
+            <input name="modifiedBy" formControlName="modifiedBy" type="text" class="form-control">
+            <div *ngIf="submitted && f.modifiedBy.errors" class="text-danger">
+                <div *ngIf="f.modifiedBy.errors.required">Adınız boş ola bilməz</div>
+                <div *ngIf="f.modifiedBy.errors.maxLenght">Adınız maksimum 100 xarakter olmalıdır</div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Yenilə</button>
+    </form>
+</div>

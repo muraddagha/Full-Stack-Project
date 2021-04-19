@@ -28,9 +28,6 @@ namespace FinalProjectAPI.Resource.Product
         [MaxLength(100)]
         public string Sku { get; set; }
 
-        //[Required]
-        //public double StarCount { get; set; }
-
         [Required]
         public bool InStock { get; set; }
         public bool IsFeatured { get; set; }
@@ -41,7 +38,8 @@ namespace FinalProjectAPI.Resource.Product
         [MaxLength(50)]
         public string AddedBy { get; set; }
 
-        [Required]
-        public ICollection<ProductPhotoResource> Photos { get; set; }
+        //[Required]
+        //public ICollection<ProductPhotoResource> Photos { get; set; }
+        //public ICollection<ProductOptionResource> Options { get; set; }
     }
 }

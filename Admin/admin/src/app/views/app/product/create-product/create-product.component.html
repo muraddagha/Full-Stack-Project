@@ -4,7 +4,7 @@
             <label [ngClass]="{ 'is-invalid': submitted && f.categoryId.errors }">Kateqoriya <span
                     class="text-danger">*</span> </label>
             <select name="categoryId" formControlName="categoryId" class="form-control">
-                <option *ngFor="let category of categories" value="{{category.id}}" [selected]="category.id">
+                <option *ngFor="let category of categories" value="{{category.id}}">
                     {{category.name}}
                 </option>
             </select>
@@ -13,8 +13,12 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Brend </label>
-            <input name="brandId" formControlName="brandId" type="text" class="form-control">
+            <label>Brend <span class="text-danger">*</span> </label>
+            <select name="categoryId" formControlName="brandId" class="form-control">
+                <option *ngFor="let brand of brands" value="{{brand.id}}">
+                    {{brand.name}}
+                </option>
+            </select>
         </div>
         <div class="form-group">
             <label [ngClass]="{ 'is-invalid': submitted && f.name.errors }">Məhsul adı <span
@@ -50,47 +54,40 @@
                 <div *ngIf="f.sku.errors.maxLenght">Sku təsviri maksimum 50 xarakter olmalıdır</div>
             </div>
         </div>
-        <div class="form-group">
-            <label [ngClass]="{ 'is-invalid': submitted && f.inStock.errors }">Stok<span
-                    class="text-danger">*</span></label>
-            <select name="inStock" formControlName="inStock" class="form-control">
-                <option value="true">Stokda</option>
-                <option value="false">Bitib</option>
-            </select>
-            <div *ngIf="submitted && f.inStock.errors" class="text-danger">
-                <div *ngIf="f.inStock.errors.required">Boş ola bilməz</div>
+        <div class="d-flex align-items-baseline">
+            <div class="form-group mr-2">
+                <select name="inStock" formControlName="inStock" class="form-control form-control-sm">
+                    <option value="true">Stokda</option>
+                    <option value="false">Bitib</option>
+                </select>
+            </div>
+            <div class="form-group mr-2">
+                <select name="isFeatured" formControlName="isFeatured" class="form-control form-control-sm">
+                    <option value="true">Featured</option>
+                    <option value="false">NotFeatured</option>
+                </select>
+            </div>
+            <div class="form-group mr-2">
+                <select name="isTrend" formControlName="isTrend" class="form-control form-control-sm">
+                    <option value="true">Trend</option>
+                    <option value="false">NotTrend</option>
+                </select>
+            </div>
+            <div class="form-group mr-2">
+                <select name="isTopSell" formControlName="isTopSell" class="form-control form-control-sm">
+                    <option value="true">Top Sell</option>
+                    <option value="false">Not Top Sell</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select name="isHotDeal" formControlName="isHotDeal" class="form-control form-control-sm">
+                    <option value="true">Hot Deal</option>
+                    <option value="false">Not Hot Deal</option>
+                </select>
             </div>
         </div>
-        <div class="form-group">
-            <label>Featured?</label>
-            <select name="isFeatured" formControlName="isFeatured" class="form-control">
-                <option value="false">Deaktiv</option>
-                <option value="true">Aktiv</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Trend?</label>
-            <select name="isTrend" formControlName="isTrend" class="form-control">
-                <option value="false">Deaktiv</option>
-                <option value="true">Aktiv</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Çox satılan?</label>
-            <select name="isTopSell" formControlName="isTopSell" class="form-control">
-                <option value="false">Deaktiv</option>
-                <option value="true">Aktiv</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Ən yaxşı təklif?</label>
-            <select name="isHotDeal" formControlName="isHotDeal" class="form-control">
-                <option value="false">Deaktiv</option>
-                <option value="true">Aktiv</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="files" type="button" class="btn btn-secondary mr-2">Şəkillər yüklə</label>
+        <div class="form-group mt-4">
+            <label for="files" type="button" class="btn btn-secondary mr-2">Şəkil yüklə</label>
             <label [ngClass]="{ 'is-invalid': submitted && f.addedBy.errors }"> <span
                     class="text-danger">*</span></label>
             <input id="files" (change)="upload($event)" type="file" class="d-none" accept="image/*">
@@ -113,6 +110,7 @@
                 <div *ngIf="f.addedBy.errors.required">Şəkil boş ola bilməz</div>
             </div>
         </div>
+
         <div class="form-group">
             <label [ngClass]="{ 'is-invalid': submitted && f.addedBy.errors }">Adınız <span
                     class="text-danger">*</span></label>

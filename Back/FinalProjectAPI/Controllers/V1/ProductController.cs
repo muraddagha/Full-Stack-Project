@@ -39,6 +39,16 @@ namespace FinalProjectAPI.Controllers.V1
             return Ok(new { products = productResource });
         }
 
+        [HttpGet]
+        [Route("{id}")]
+
+        public async Task<IActionResult> GetProductById([FromRoute] int id)
+        {
+            var product = await _productService.GetProductById(id);
+            var productResource = _mapper.Map<Product, ProductResource>(product);
+            return Ok(productResource);
+        }
+
         [HttpPost]
         [Route("Create")]
 
@@ -95,11 +105,24 @@ namespace FinalProjectAPI.Controllers.V1
         [HttpPost]
         [Route("Upload")]
 
-        public  IActionResult UploadPhoto(IFormFile file)
+        public  IActionResult UploadPhoto(IFormFile file,[FromQuery] int? productId,[FromQuery] int? orderBy)
         {
             var fileName = _fileManager.Upload(file);
             var publicId = _cloudinaryService.Store(fileName);
             _fileManager.Delete(fileName);
+
+            if (productId != null)
+            {
+                ProductPhoto productPhoto = new ProductPhoto()
+                {
+                    AddedDate = DateTime.Now,
+                    Img = _cloudinaryService.BuildUrl(publicId),
+                    FileName = publicId,
+                    ProductId = (int)productId,
+                    OrderBy = (int)orderBy
+                };
+                _productService.AddPhoto(productPhoto);
+            }
 
             return Ok(new {
                 fileName = publicId,
@@ -109,8 +132,12 @@ namespace FinalProjectAPI.Controllers.V1
 
         [HttpDelete]
         [Route("Remove")]
-        public IActionResult RemoveUploadedPhoto([FromQuery] string name)
+        public IActionResult RemoveUploadedPhoto([FromQuery] string name,[FromQuery] int? id)
         {
+            if (id != null)
+            {
+                _productService.RemovePhotoById(id);
+            }
             _cloudinaryService.Delete(name);
             return Ok(new {message = "Şəkil silindi" });
         }

@@ -7,7 +7,7 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 const routes: Routes = [
   { path: "", component: ProductComponent },
   { path: "create-product", component: CreateProductComponent },
-  { path: "update-product", component: UpdateProductComponent }
+  { path: "update-product/:id", component: UpdateProductComponent }
 
 ];
 

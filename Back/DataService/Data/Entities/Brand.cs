@@ -9,7 +9,7 @@ namespace DataService.Data.Entities
         public string Name { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [MaxLength(200)]
         public string Logo { get; set; }
     }
 }

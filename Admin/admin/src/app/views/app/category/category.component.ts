@@ -73,7 +73,6 @@ export class CategoryComponent implements OnInit {
       softDeleted: category["softDeleted"]
     })
   }
-
   public create(): void {
     this.submitted = true;
     console.log(this.f);

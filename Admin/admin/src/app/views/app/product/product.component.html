@@ -10,25 +10,45 @@
                     <tr>
                         <th>Şəkil</th>
                         <th>Adı</th>
-                        <th>Id</th>
+                        <th>Qiymət</th>
                         <th>Sku</th>
+                        <th>Stok</th>
                         <th>Status</th>
+                        <th class="text-center">Ayarlar</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let product of products">
+                    <tr
+                        *ngFor="let product of products | paginate: { itemsPerPage: 10, currentPage: page,totalItems:totalCount }">
                         <td class="img"><img src="{{product.photos[0].img}}" alt=""></td>
-                        <td>{{product.name}}</td>
-                        <td>{{product.id}}</td>
+                        <td>
+                            <a href="#" data-toggle="modal" data-target="#details" class="text-dark">
+                                {{product.name}}
+                            </a>
+                        </td>
+                        <td>{{product.price}} ₼</td>
                         <td>{{product.sku}}</td>
+                        <td>
+                            <span *ngIf="product.inStock" class="badge badge-info">Stokda</span>
+                            <span *ngIf="!product.inStock" class="badge badge-danger">Bitib</span>
+                        </td>
                         <td class="d-flex justify-content-between align-items-center">
                             <span *ngIf="product.softDeleted" class="badge badge-danger">Deaktiv</span>
                             <span *ngIf="!product.softDeleted" class="badge badge-success">Aktiv</span>
+                        </td>
+                        <td>
                             <span class="settings">
-                                <a data-target="#update" class="btn btn-warning rounded-circle mr-3" href="#">
+                                <a (click)="option($event,product)" href="#"
+                                    class="btn btn-secondary rounded-circle mr-3" href="#" data-toggle="modal"
+                                    data-target="#options">
+                                    <i class="fas fa-filter"></i>
+                                </a>
+                                <a [routerLink]="['/app/product/update-product',product.id]"
+                                    class="btn btn-warning rounded-circle mr-3" href="#">
                                     <i class="far fa-edit"></i>
                                 </a>
-                                <a class="btn btn-danger rounded-circle" href="#">
+                                <a (click)="removeProduct($event,product.id)" class="btn btn-danger rounded-circle"
+                                    href="#">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </span>
@@ -38,5 +58,77 @@
             </table>
         </div>
     </div>
-    <!-- <pagination-controls (pageChange)="page = $event" previousLabel="Əvvəlki" nextLabel="Növbəti"></pagination-controls> -->
+    <pagination-controls (pageChange)="page = $event" previousLabel="Əvvəlki" nextLabel="Növbəti"></pagination-controls>
+</div>
+
+<div class="modal fade" id="details" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Şöbəni Yenilə</h5>
+                <button type="button" class="close-update close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="options" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Seçimlər</h5>
+                <button type="button" class="close-create close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="optionForm" (ngSubmit)="optionUpdate()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.title.errors }">Başlıq <span
+                                class="text-danger">*</span></label>
+                        <input name="title" formControlName="title" type="text" class="form-control">
+                        <div *ngIf="submitted && f.title.errors" class="text-danger">
+                            <div *ngIf="f.title.errors.required">Başlıq boş ola bilməz</div>
+                            <div *ngIf="f.title.errors.maxLenght">Başlıq maksimum 100 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.type.errors }">Növ <span
+                                class="text-danger">*</span> </label>
+                        <select name="type" formControlName="type" class="form-control">
+                            <option value="0">Rəng</option>
+                            <option value="1">Ölçü</option>
+                            <option value="2">Yaddaş</option>
+                        </select>
+                        <div *ngIf="submitted && f.type.errors" class="text-danger">
+                            <div *ngIf="f.type.errors.required">Növ boş ola bilməz</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div *ngFor="let option of options.controls;let i=index" formArrayName="productOptionItems">
+                            <div [formGroup]="options.controls[i]">
+                                <label>Adı</label>
+                                <input type="text" name="name" formControlName="name" class="form-control">
+                                <label>Dəyər</label>
+                                <input type="text" name="value" formControlName="value" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.addedBy.errors }">Adınız <span
+                                class="text-danger">*</span></label>
+                        <input name="addedBy" formControlName="addedBy" type="text" class="form-control">
+                        <div *ngIf="submitted && f.addedBy.errors" class="text-danger">
+                            <div *ngIf="f.addedBy.errors.required">Adınız boş ola bilməz</div>
+                            <div *ngIf="f.addedBy.errors.maxLenght">Adınız maksimum 100 xarakter olmalıdır</div>
+                        </div>
+                    </div> -->
+                    <button type="submit" class="btn btn-success w-100">Yarat</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

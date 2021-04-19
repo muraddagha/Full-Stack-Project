@@ -39,9 +39,10 @@ namespace FinalProjectAPI.Resource.Product
         public bool IsHotDeal { get; set; }
 
         [Required]
+        public bool SoftDeleted { get; set; }
+
+        [Required]
         [MaxLength(50)]
         public string ModifiedBy { get; set; }
-
-        public bool SoftDeleted { get;set; }
     }
 }

@@ -11,6 +11,9 @@ namespace DataService.Data.Entities
         [MaxLength(200)]
         public string Img { get; set; }
 
+        [MaxLength(200)]
+        public string FileName { get; set; }
+
         [Required]
         public int OrderBy { get; set; }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
+import { IBrand } from 'src/app/shared/models/brand/brand.model';
 import { ICategory } from 'src/app/shared/models/category.model';
 import { IUploadImage } from 'src/app/shared/models/upload-image.model';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -17,8 +18,9 @@ export class CreateProductComponent implements OnInit {
   public submitted: boolean = false;
   public adminName: string;
   public categories: ICategory[] = [];
+  public brands: IBrand[] = [];
   public uploadImg: IUploadImage[] = [];
-  public order = 1;
+  public order = 0;
   constructor(private formBuilder: FormBuilder,
     private apiService: ApiService,
     private authService: AuthService,
@@ -31,6 +33,7 @@ export class CreateProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategories();
+    this.getBrands();
     this.generateForm();
     this.photoss.removeAt(0)
   }
@@ -51,9 +54,17 @@ export class CreateProductComponent implements OnInit {
       isTrend: ["false"],
       isTopSell: ["false"],
       isHotDeal: ["false"],
-      photos: new FormArray([new FormGroup({
-        img: new FormControl(''),
-        orderBy: new FormControl('')
+      // photos: new FormArray([new FormGroup({
+      //   img: new FormControl(''),
+      //   orderBy: new FormControl('')
+      // })]),
+      options: new FormArray([new FormGroup({
+        title: new FormControl(''),
+        type: new FormControl(''),
+        productOptionItems: new FormArray([new FormGroup({
+          name: new FormControl(''),
+          value: new FormControl('')
+        })]),
       })]),
       addedBy: [this.adminName, [Validators.required, Validators.maxLength(50)]]
     })
@@ -109,7 +120,11 @@ export class CreateProductComponent implements OnInit {
       this.categories = res.categories;
     })
   }
-
+  private getBrands(): void {
+    this.apiService.getBrands().subscribe(res => {
+      this.brands = res.brands;
+    })
+  }
   private uploadPhoto(data: any): void {
     this.apiService.uploadPhoto(data).subscribe(res => {
       this.uploadImg.push(res);

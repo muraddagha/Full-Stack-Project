@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IAdmin } from '../models/admin/admin.model';
+import { IProduct } from '../models/product/product.model';
+import { IBrandResponse } from '../models/response/brand-response.model';
 import { ICategoryResponse } from '../models/response/category-response.model';
 import { IDepartmentResponse } from '../models/response/department-response.model';
 import { IProductResponse } from '../models/response/product-response.model';
@@ -56,6 +58,9 @@ export class ApiService {
   public getProducts(): Observable<IProductResponse> {
     return this.http.get<IProductResponse>(environment.apiUrl + `product/all`)
   }
+  public getProductById(id): Observable<IProduct> {
+    return this.http.get<IProduct>(environment.apiUrl + `product/${id}`)
+  }
   public createProduct(data: any) {
     return this.http.post(environment.apiUrl + `product/create`, data)
   }
@@ -66,13 +71,27 @@ export class ApiService {
     return this.http.delete(environment.apiUrl + `product/${id}`)
   }
 
-  public uploadPhoto(formData) {
-    return this.http.post<any>(environment.apiUrl + `product/upload`, formData)
+  public uploadPhoto(formData, productId?, orderBy?) {
+    if (productId != null) {
+      return this.http.post<any>(environment.apiUrl + `product/upload?productId=${productId}&orderBy=${orderBy}`, formData)
+    } else {
+      return this.http.post<any>(environment.apiUrl + `product/upload`, formData)
+    }
   }
-  public removeUploadPhoto(name: any) {
-    return this.http.delete(environment.apiUrl + `product/remove?name=${name}`)
+  public removeUploadPhoto(name: any, id?: any) {
+    if (id != null) {
+      return this.http.delete(environment.apiUrl + `product/remove?name=${name}&id=${id}`)
+    } else {
+      return this.http.delete(environment.apiUrl + `product/remove?name=${name}`)
+    }
   }
   //#endregion
 
+
+  //#region Brand
+  public getBrands(): Observable<IBrandResponse> {
+    return this.http.get<IBrandResponse>(environment.apiUrl + `brand`)
+  }
+  //#endregion
 
 }

@@ -1,5 +1,6 @@
 using DataService.Data;
 using DataService.Services;
+using DataService.Services.ContentServices;
 using DataService.Services.ShoppingServices;
 using FinalProjectAPI.Libs;
 using Microsoft.AspNetCore.Builder;
@@ -69,6 +70,7 @@ namespace FinalProjectAPI
             services.AddTransient<ICategoryService,CategoryService>();
             services.AddTransient<IProductService,ProductService>();
             services.AddTransient<ICloudinaryService,CloudinaryService>();
+            services.AddTransient<IBrandService,BrandService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

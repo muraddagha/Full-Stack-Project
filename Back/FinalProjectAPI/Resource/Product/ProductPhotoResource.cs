@@ -7,8 +7,9 @@ namespace FinalProjectAPI.Resource.Product
 {
     public class ProductPhotoResource
     {
-        //public int ProductId { get; set; }
+        public int Id { get; set; }
         public string Img { get; set; }
+        public string FileName { get; set; }
         public int OrderBy { get; set; }
     }
 }

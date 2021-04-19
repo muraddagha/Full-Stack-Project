@@ -26,8 +26,9 @@ namespace DataService.Services.ShoppingServices
         Task RemoveProduct(int id);
         void ProductListBy(IEnumerable<Product> products, ProductListing order);
         Task<int> GetProductsCount();
-
-   }
+        void RemovePhotoById(int? id);
+        void AddPhoto(ProductPhoto productPhoto);
+    }
 
     public class ProductService : IProductService
     {
@@ -37,6 +38,13 @@ namespace DataService.Services.ShoppingServices
         {
             _context = context;
         }
+
+        public void AddPhoto(ProductPhoto productPhoto)
+        {
+            _context.ProductPhotos.Add(productPhoto);
+            _context.SaveChanges();
+        }
+
         public async Task<Product> CreateProduct(Product product)
         {
             product.AddedDate = DateTime.Now;
@@ -51,7 +59,6 @@ namespace DataService.Services.ShoppingServices
                                            .Include("Photos")
                                            .Include("Options.ProductOptionItems")
                                            .Include("Discounts.Discount")
-                                           .Include("Reviews")
                                            .ToListAsync();
 
         }
@@ -91,7 +98,12 @@ namespace DataService.Services.ShoppingServices
 
         public async Task<Product> GetProductById(int id)
         {
-            var product = await _context.Products.FindAsync(id);
+            var product = await _context.Products.Include("Category")
+                                                  .Include("Photos")
+                                                  .Include("Brand")
+                                                  .Include("Options.ProductOptionItems")
+                                                  .Include("Discounts.Discount")
+                                                  .FirstOrDefaultAsync(p=>p.Id==id);
 
             if (product == null) throw new HttpException(404, "Məhsul tapılmadı");
 
@@ -156,12 +168,20 @@ namespace DataService.Services.ShoppingServices
             };
         }
 
+        public void RemovePhotoById(int? id)
+        {
+            ProductPhoto productPhoto=  _context.ProductPhotos.Find(id);
+            _context.ProductPhotos.Remove(productPhoto);
+             _context.SaveChanges();
+        }
+
         public async Task RemoveProduct(int id)
         {
             var product = await GetProductById(id);
             product.SoftDeleted = true;
             await _context.SaveChangesAsync();
         }
+
 
         public async Task UpdateProduct(int id,Product product)
         {
