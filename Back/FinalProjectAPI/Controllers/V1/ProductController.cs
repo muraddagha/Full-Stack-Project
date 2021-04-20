@@ -20,13 +20,16 @@ namespace FinalProjectAPI.Controllers.V1
         private readonly IProductService _productService;
         private readonly ICloudinaryService _cloudinaryService;
         private readonly IFileManager _fileManager;
+        private readonly IOptionService _optionService;
 
 
-        public ProductController(IProductService productService, ICloudinaryService cloudinaryService,IFileManager fileManager)
+        public ProductController(IProductService productService, ICloudinaryService cloudinaryService,
+                                 IFileManager fileManager,IOptionService optionService)
         {
             _productService = productService;
             _cloudinaryService = cloudinaryService;
             _fileManager = fileManager;
+            _optionService = optionService;
         }
 
         [HttpGet]

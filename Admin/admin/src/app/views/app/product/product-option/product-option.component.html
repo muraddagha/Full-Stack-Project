@@ -1,0 +1,217 @@
+<div class="container">
+    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#createOption">
+        <i class="fas fa-plus"></i>
+    </a>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <h6 class="text-center">Seçim</h6>
+                <ul *ngFor="let option of options" class="list-group">
+                    <li class="list-group-item mb-1 d-flex justify-content-between" *ngIf="option.type==0">
+                        Rəng
+                        <div class="d-flex">
+                            <a (click)="updateOptionValue(option)" class="btn btn-secondary rounded-circle mr-3"
+                                href="#" data-toggle="modal" data-target="#updateOption">
+                                <i class="far fa-edit"></i>
+                            </a>
+                            <a (click)="removeOption($event,option.id)" class="btn btn-danger rounded-circle" href="#">
+                                <i class="fas fa-minus"></i>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="list-group-item mb-1 d-flex justify-content-between" *ngIf="option.type==1">
+                        Ölçü
+                        <div class="d-flex">
+                            <a (click)="updateOptionValue(option)" class="btn btn-secondary rounded-circle mr-3"
+                                href="#" data-toggle="modal" data-target="#updateOption">
+                                <i class="far fa-edit"></i>
+                            </a>
+                            <a (click)="removeOption($event,option.id)" class="btn btn-danger rounded-circle" href="#">
+                                <i class="fas fa-minus"></i>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="list-group-item mb-1 d-flex justify-content-between" *ngIf="option.type==2">
+                        Yaddaş
+                        <div class="d-flex">
+                            <a (click)="updateOptionValue(option)" class="btn btn-secondary rounded-circle mr-3"
+                                href="#" data-toggle="modal" data-target="#updateOption">
+                                <i class="far fa-edit"></i>
+                            </a>
+                            <a (click)="removeOption($event,option.id)" class="btn btn-danger rounded-circle" href="#">
+                                <i class="fas fa-minus"></i>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <h6 class="text-center">Dəyər</h6>
+                <ng-container *ngFor="let option of options">
+                    <ul *ngFor="let item of option.productOptionItems">
+                        <li class="list-group-item mb-1 d-flex justify-content-between">
+                            {{item.name}}
+                            <div class="d-flex">
+                                <a (click)="updateOptionItemValue(item)" class="btn btn-secondary rounded-circle mr-3"
+                                    href="#" data-toggle="modal" data-target="#updateOptionItem">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a (click)="removeOptionItem($event,item.id)" class="btn btn-danger rounded-circle"
+                                    href="#">
+                                    <i class="fas fa-minus"></i>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="list-group-item mb-1 d-flex justify-content-between">
+                            {{item.value}}
+                        </li>
+                    </ul>
+                </ng-container>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="modal fade" id="createOption" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Yeni seçim</h5>
+                <button type="button" class="close-update close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5 class="text-center">Seçim</h5>
+                <form [formGroup]="createOptionForm" (ngSubmit)="createOption()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.title.errors }">Başlıq <span
+                                class="text-danger">*</span></label>
+                        <input name="title" formControlName="title" type="text" class="form-control"
+                            placeholder="Başlıq">
+                        <div *ngIf="submitted && f.title.errors" class="text-danger">
+                            <div *ngIf="f.title.errors.required">Başlıq boş ola bilməz</div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="form-group">
+                            <select name="type" formControlName="type" class="form-control form-control-sm">
+                                <option value="0">Rəng</option>
+                                <option value="1">Ölçü</option>
+                                <option value="2">Yaddaş</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 mb-3">Yarat</button>
+                </form>
+                <h5 class="text-center">Dəyər</h5>
+                <form [formGroup]="createOptionItemForm" (ngSubmit)="createOptionItem()">
+                    <div *ngIf="options.length>0" class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submittedItem && u.productOptionId.errors }">Seçim <span
+                                class="text-danger">*</span></label>
+                        <select name="productOptionId" formControlName="productOptionId" class="form-control">
+                            <option *ngFor="let option of options" value="{{option.id}}">
+                                {{option.title}}
+                            </option>
+                        </select>
+                        <div *ngIf="submittedItem && u.productOptionId.errors" class="text-danger">
+                            <div *ngIf="u.productOptionId.errors.required">Seçim boş ola bilməz</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submittedItem && u.name.errors }">Ad <span
+                                class="text-danger">*</span></label>
+                        <input name="name" formControlName="name" type="text" class="form-control" placeholder="Ad">
+                        <div *ngIf="submittedItem && u.name.errors" class="text-danger">
+                            <div *ngIf="u.name.errors.required">Ad boş ola bilməz</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submittedItem && u.value.errors }">Dəyər <span
+                                class="text-danger">*</span></label>
+                        <input name="value" formControlName="value" type="text" class="form-control"
+                            placeholder="Başlıq">
+                        <div *ngIf="submittedItem && u.value.errors" class="text-danger">
+                            <div *ngIf="u.value.errors.required">Başlıq boş ola bilməz</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Yarat</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="updateOption" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Yenilə</h5>
+                <button type="button" class="close-update-option close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="updateOptionForm" (ngSubmit)="updateOption()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': upOptionSubmitted && updateOptionF.title.errors }">Başlıq
+                            <span class="text-danger">*</span></label>
+                        <input name="title" formControlName="title" type="text" class="form-control"
+                            placeholder="Başlıq">
+                        <div *ngIf="upOptionSubmitted && updateOptionF.title.errors" class="text-danger">
+                            <div *ngIf="updateOptionF.title.errors.required">Başlıq boş ola bilməz</div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="form-group">
+                            <select name="type" formControlName="type" class="form-control form-control-sm">
+                                <option value="0">Rəng</option>
+                                <option value="1">Ölçü</option>
+                                <option value="2">Yaddaş</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 mb-3">Yenilə</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="updateOptionItem" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Yenilə</h5>
+                <button type="button" class="close-update-item close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="updateOptionItemForm" (ngSubmit)="updateOptionItem()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': upItemSubmitted && updateItemF.name.errors }">Ad <span
+                                class="text-danger">*</span></label>
+                        <input name="name" formControlName="name" type="text" class="form-control" placeholder="Ad">
+                        <div *ngIf="upItemSubmitted && updateItemF.name.errors" class="text-danger">
+                            <div *ngIf="updateItemF.name.errors.required">Ad boş ola bilməz</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': upItemSubmitted && updateItemF.value.errors }">Dəyər <span
+                                class="text-danger">*</span></label>
+                        <input name="value" formControlName="value" type="text" class="form-control"
+                            placeholder="Başlıq">
+                        <div *ngIf="upItemSubmitted && updateItemF.value.errors" class="text-danger">
+                            <div *ngIf="updateItemF.value.errors.required">Başlıq boş ola bilməz</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Yenilə</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

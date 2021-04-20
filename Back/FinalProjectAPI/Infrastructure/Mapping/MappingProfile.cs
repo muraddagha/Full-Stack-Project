@@ -38,6 +38,10 @@ namespace FinalProjectAPI.Infrastructure.Mapping
             CreateMap<ProductOption, ProductOptionResource>();
             CreateMap<ProductOptionItem, ProductOptionItemResource>();
             CreateMap<Discount, DiscountResource>();
+            CreateMap<CreateOptionResource, ProductOption>();
+            CreateMap<CreateOptionItemResource, ProductOptionItem>();
+            CreateMap<UpdateOptionResource, ProductOption>();
+            CreateMap<UpdateOptionItemResource, ProductOptionItem>();
 
             //Categroy
             CreateMap<Category, CategoryResource>();

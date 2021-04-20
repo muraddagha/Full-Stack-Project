@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router, Event, NavigationStart, ActivationEnd, ActivationStart } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
+import { IOption } from 'src/app/shared/models/product/product-option.model';
 import { IProduct } from 'src/app/shared/models/product/product.model';
 import { ApiService } from 'src/app/shared/services/api.service';
 
@@ -16,6 +17,7 @@ export class ProductComponent implements OnInit {
   page: number = 1;
   public products: IProduct[] = [];
   public optionForm: FormGroup;
+  public productOptions: IOption[] = []
   public submitted: boolean = false
 
   constructor(private apiService: ApiService,
@@ -37,6 +39,7 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.getproducts();
     this.generateUpdateForm();
+    this.options.removeAt(0)
   }
 
   generateUpdateForm() {
@@ -52,6 +55,12 @@ export class ProductComponent implements OnInit {
   }
   get f() {
     return this.optionForm.controls;
+  }
+  private addOptionItem(name, value): FormGroup {
+    return this.formBuilder.group({
+      name: name,
+      value: value,
+    })
   }
 
   get options() {
@@ -83,10 +92,14 @@ export class ProductComponent implements OnInit {
   }
   option($event, product: IProduct) {
     $event.preventDefault();
+    this.productOptions = product.options
     this.optionForm.patchValue({
       title: product.options.map(a => a.title),
       type: product.options.map(a => a.type),
     })
+    // let name = product.options.map(a => a.productOptionItems.map(a => a.name));
+    // let value = product.options.map(a => a.productOptionItems.map(a => a.value));
+    // this.options.push(this.addOptionItem(name, value))
   }
   optionUpdate(): void {
   }

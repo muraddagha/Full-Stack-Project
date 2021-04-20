@@ -54,17 +54,9 @@ export class CreateProductComponent implements OnInit {
       isTrend: ["false"],
       isTopSell: ["false"],
       isHotDeal: ["false"],
-      // photos: new FormArray([new FormGroup({
-      //   img: new FormControl(''),
-      //   orderBy: new FormControl('')
-      // })]),
-      options: new FormArray([new FormGroup({
-        title: new FormControl(''),
-        type: new FormControl(''),
-        productOptionItems: new FormArray([new FormGroup({
-          name: new FormControl(''),
-          value: new FormControl('')
-        })]),
+      photos: new FormArray([new FormGroup({
+        img: new FormControl(''),
+        orderBy: new FormControl('')
       })]),
       addedBy: [this.adminName, [Validators.required, Validators.maxLength(50)]]
     })

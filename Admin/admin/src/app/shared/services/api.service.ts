@@ -7,6 +7,7 @@ import { IProduct } from '../models/product/product.model';
 import { IBrandResponse } from '../models/response/brand-response.model';
 import { ICategoryResponse } from '../models/response/category-response.model';
 import { IDepartmentResponse } from '../models/response/department-response.model';
+import { IOptionResponse } from '../models/response/product-option-response.model';
 import { IProductResponse } from '../models/response/product-response.model';
 
 
@@ -84,6 +85,30 @@ export class ApiService {
     } else {
       return this.http.delete(environment.apiUrl + `product/remove?name=${name}`)
     }
+  }
+  //#endregion
+
+  //#region  Option
+  public getProductOptions(id): Observable<IOptionResponse> {
+    return this.http.get<IOptionResponse>(environment.apiUrl + `option/${id}`)
+  }
+  public createOption(data: any) {
+    return this.http.post(environment.apiUrl + `option/create/option`, data)
+  }
+  public createOptionItem(data: any) {
+    return this.http.post(environment.apiUrl + `option/create/optionItem`, data)
+  }
+  public UpdateOption(id, data: any) {
+    return this.http.put(environment.apiUrl + `option/${id}`, data)
+  }
+  public UpdateOptionItem(data: any, id) {
+    return this.http.put(environment.apiUrl + `option/item/${id}`, data)
+  }
+  public RemoveOption(id) {
+    return this.http.delete(environment.apiUrl + `option/${id}`,)
+  }
+  public RemoveOptionItem(id) {
+    return this.http.delete(environment.apiUrl + `option/item/${id}`,)
   }
   //#endregion
 

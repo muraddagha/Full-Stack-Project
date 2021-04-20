@@ -91,7 +91,6 @@ export class CategoryComponent implements OnInit {
       })
   }
   public update(): void {
-
     this.submitted = true;
     console.log(this.updateForm.value);
 
