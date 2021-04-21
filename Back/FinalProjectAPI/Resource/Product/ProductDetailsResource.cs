@@ -23,7 +23,7 @@ namespace FinalProjectAPI.Resource.Product
         public ICollection<ProductOptionResource> Options { get; set; }
         public ICollection<DiscountResource> Discounts { get; set; }
         public CategoryResource Category { get; set; }
-        public ICollection<ProductPhotoResource> Photos { get; set; }
+        public ICollection<string> Photos { get; set; }
 
     }
 }

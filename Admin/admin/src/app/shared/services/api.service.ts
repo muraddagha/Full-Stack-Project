@@ -9,6 +9,7 @@ import { ICategoryResponse } from '../models/response/category-response.model';
 import { IDepartmentResponse } from '../models/response/department-response.model';
 import { IOptionResponse } from '../models/response/product-option-response.model';
 import { IProductResponse } from '../models/response/product-response.model';
+import { IShopCollectionResponse } from '../models/response/shop-collection-response.model';
 
 
 @Injectable({
@@ -119,4 +120,18 @@ export class ApiService {
   }
   //#endregion
 
+  //#region ShopCollection
+  public getShopCollections(): Observable<IShopCollectionResponse> {
+    return this.http.get<IShopCollectionResponse>(environment.apiUrl + `shopCollection/all`)
+  }
+  public createShopCollection(data: any) {
+    return this.http.post(environment.apiUrl + `shopCollection/create`, data)
+  }
+  public updateShopCollection(id: any, data: any) {
+    return this.http.put(environment.apiUrl + `shopCollection/${id}`, data)
+  }
+  public removeShopCollection(id: any) {
+    return this.http.delete(environment.apiUrl + `shopCollection/${id}`)
+  }
+  //#endregion
 }

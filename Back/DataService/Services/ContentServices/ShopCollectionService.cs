@@ -12,7 +12,8 @@ namespace DataService.Services.ContentServices
 {
     public interface IShopCollectionService
     {
-        Task<IEnumerable<ShopCollection>> GetShopCollections();
+        Task<IEnumerable<ShopCollection>> GetShopCollectionsAll();
+        Task<IEnumerable<ShopCollection>> GetShopCollections(int limit);
         Task<ShopCollection> GetShopCollectionById(int id);
         Task<ShopCollection> CreateShopCollection(ShopCollection shopCollection);
         Task UpdateShopCollection(int id, ShopCollection shopCollection);
@@ -41,9 +42,18 @@ namespace DataService.Services.ContentServices
             return shopCollection;
         }
 
-        public async Task<IEnumerable<ShopCollection>> GetShopCollections()
+        public async Task<IEnumerable<ShopCollection>> GetShopCollections(int limit)
         {
-            return await _context.ShopCollections.ToListAsync();
+            return await _context.ShopCollections.Include("Product.Photos")
+                                                 .Where(s=>!s.SoftDeleted)
+                                                 .Take(limit)
+                                                 .ToListAsync();
+        }
+
+        public async Task<IEnumerable<ShopCollection>> GetShopCollectionsAll()
+        {
+            return await _context.ShopCollections.Include("Product.Photos")
+                                                 .ToListAsync();
         }
 
         public async Task RemoveShopCollection(int id)
@@ -58,6 +68,7 @@ namespace DataService.Services.ContentServices
             var updateShopCollection = await GetShopCollectionById(id);
             updateShopCollection.OrderBy = shopCollection.OrderBy;
             updateShopCollection.Subtitle = shopCollection.Subtitle;
+            updateShopCollection.Title = shopCollection.Title;
             updateShopCollection.BackgroundColor = shopCollection.BackgroundColor;
             updateShopCollection.BtnText = shopCollection.BtnText;
             updateShopCollection.BtnUrl = shopCollection.BtnUrl;

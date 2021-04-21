@@ -25,10 +25,21 @@ namespace FinalProjectAPI.Controllers.V1
         [HttpGet]
         [Route("All")]
         [TypeFilter(typeof(AdminAuth))]
-        public async Task<IActionResult> GetshopCollections()
+        public async Task<IActionResult> GetshopCollectionsAll()
         {
-            var shopCollections = await _shopCollectionService.GetShopCollections();
+            var shopCollections = await _shopCollectionService.GetShopCollectionsAll();
             var shopCollectionsResource = _mapper.Map<IEnumerable<ShopCollection>, IEnumerable<AdminShopCollectionResource>>(shopCollections);
+            return Ok(new { shopCollections = shopCollectionsResource });
+
+        }
+
+        [HttpGet]
+        [Route("")]
+
+        public async Task<IActionResult> GetshopCollections([FromQuery] int limit)
+        {
+            var shopCollections = await _shopCollectionService.GetShopCollections(limit);
+            var shopCollectionsResource = _mapper.Map<IEnumerable<ShopCollection>, IEnumerable<ShopCollectionResource>>(shopCollections);
             return Ok(new { shopCollections = shopCollectionsResource });
 
         }

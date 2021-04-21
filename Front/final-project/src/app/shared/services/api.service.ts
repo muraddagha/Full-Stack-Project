@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IDepartmentResponse } from '../models/response/department-response.model';
 import { IProductResponse } from '../models/response/product-response.model';
+import { IShopCollectionResponse } from '../models/response/shop-collection-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,13 @@ export class ApiService {
 
   public getTopSellingProducts(limit: number, order: number): Observable<IProductResponse> {
     return this.http.get<IProductResponse>(environment.apiUrl + `product/top-sell?limit=${limit}&order=${order}`)
+  }
+
+  //#endregion
+
+  //#region Content
+  public getShopCollections(limit: number): Observable<IShopCollectionResponse> {
+    return this.http.get<IShopCollectionResponse>(environment.apiUrl + `shopCollection?limit=${limit}`)
   }
   //#endregion
 }

@@ -20,7 +20,7 @@
                 <tbody>
                     <tr
                         *ngFor="let product of products | paginate: { itemsPerPage: 10, currentPage: page,totalItems:totalCount }">
-                        <td class="img"><img src="{{product.photos[0].img}}" alt=""></td>
+                        <td><img src="{{product.photos[0].img}}" alt=""></td>
                         <td>
                             <a href="#" data-toggle="modal" data-target="#details" class="text-dark">
                                 {{product.name}}

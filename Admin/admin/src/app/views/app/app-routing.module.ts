@@ -5,6 +5,7 @@ import { CategoryComponent } from './category/category.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DepartmentComponent } from './department/department.component';
 import { ProductComponent } from './product/product.component';
+import { ShopCollectionComponent } from './shop-collection/shop-collection.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,8 @@ const routes: Routes = [
       { path: 'category', component: CategoryComponent },
       { path: 'department', component: DepartmentComponent },
       { path: 'product', loadChildren: () => import('./product/product.module').then(m => m.ProductModule) },
+      { path: 'shop-collection', component: ShopCollectionComponent },
+
     ]
   }
 ];

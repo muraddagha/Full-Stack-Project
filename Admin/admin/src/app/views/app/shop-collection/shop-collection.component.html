@@ -1,0 +1,234 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <button class="btn btn-success" data-toggle="modal" data-target="#create">
+                Kolleksiya Yarat
+            </button>
+            <h4 class="text-center">Kolleksiyalar</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Məhsul</th>
+                        <th>Id</th>
+                        <th>Başlıq</th>
+                        <th>Fon rəngi</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let collection of shopCollections | paginate: { itemsPerPage: 10, currentPage: page,totalItems:totalCount }">
+                        <td>
+                            <img src="{{collection.product.photos[0]}}" alt="">
+                        </td>
+                        <td>
+                            {{collection.product.name}}
+                        </td>
+                        <td>{{collection.id}}</td>
+                        <td>{{collection.title}}</td>
+                        <td>{{collection.backgroundColor}}</td>
+                        <td class="d-flex justify-content-between align-items-center">
+                            <span *ngIf="collection.softDeleted" class="badge badge-danger">Deaktiv</span>
+                            <span *ngIf="!collection.softDeleted" class="badge badge-success">Aktiv</span>
+                            <span class="settings">
+                                <a (click)="updateCategory(collection)" data-toggle="modal" data-target="#update"
+                                    class="btn btn-warning rounded-circle mr-3" href="#">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a (click)="removeCollection($event,collection.id)"
+                                    class="btn btn-danger rounded-circle" href="#">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <pagination-controls (pageChange)="page = $event" previousLabel="Əvvəlki" nextLabel="Növbəti"></pagination-controls>
+</div>
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Kolleksiya Yarat</h5>
+                <button type="button" class="close-create close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="createForm" (ngSubmit)="create()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.productId.errors }">Kolleksiya Məhsulu <span
+                                class="text-danger">*</span> </label>
+                        <select name="productId" formControlName="productId" class="form-control">
+                            <option *ngFor="let product of products" value="{{product.id}}" [selected]="product.id">
+                                {{product.name}}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.productId.errors" class="text-danger">
+                            <div *ngIf="f.productId.errors.required">Kolleksiya məhsulu boş ola bilməz</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.orderBy.errors }">Sırası <span
+                                class="text-danger">*</span></label>
+                        <input name="orderBy" formControlName="orderBy" type="text" class="form-control">
+                        <div *ngIf="submitted && f.orderBy.errors" class="text-danger">
+                            <div *ngIf="f.orderBy.errors.required">Kolleksiya sırası adı boş ola bilməz</div>
+                            <div *ngIf="f.orderBy.errors.maxLenght">Kolleksiya sırası maksimum 50 xarakter olmalıdır
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.subtitle.errors }">Yarımbaşlıq</label>
+                        <input name="subtitle" formControlName="subtitle" type="text" class="form-control">
+                        <div *ngIf="submitted && f.subtitle.errors" class="text-danger">
+                            <div *ngIf="f.subtitle.errors.maxLenght">Yarımbaşlıq maksimum 100 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.title.errors }">Başlıq <span
+                                class="text-danger">*</span></label>
+                        <input name="title" formControlName="title" type="text" class="form-control">
+                        <div *ngIf="submitted && f.title.errors" class="text-danger">
+                            <div *ngIf="f.title.errors.required">Başlıq boş ola bilməz</div>
+                            <div *ngIf="f.title.errors.maxLenght">Başlıq maksimum 200 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.backgroundColor.errors }">Fon rəngi <span
+                                class="text-danger">*</span></label>
+                        <input name="backgroundColor" formControlName="backgroundColor" type="text"
+                            class="form-control">
+                        <div *ngIf="submitted && f.backgroundColor.errors" class="text-danger">
+                            <div *ngIf="f.backgroundColor.errors.required">Fon rəngi boş ola bilməz</div>
+                            <div *ngIf="f.backgroundColor.errors.maxLenght">Fon rəngi maksimum 50 xarakter olmalıdır
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.btnText.errors }">Button yazısı <span
+                                class="text-danger">*</span></label>
+                        <input name="btnText" formControlName="btnText" type="text" class="form-control">
+                        <div *ngIf="submitted && f.btnText.errors" class="text-danger">
+                            <div *ngIf="f.btnText.errors.required">Button yazısı boş ola bilməz</div>
+                            <div *ngIf="f.btnText.errors.maxLenght">Button yazısı maksimum 50 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.btnUrl.errors }">Button linki <span
+                                class="text-danger">*</span></label>
+                        <input name="btnUrl" formControlName="btnUrl" type="text" class="form-control">
+                        <div *ngIf="submitted && f.btnUrl.errors" class="text-danger">
+                            <div *ngIf="f.btnUrl.errors.required">Button linki boş ola bilməz</div>
+                            <div *ngIf="f.btnUrl.errors.maxLenght">Button linki maksimum 50 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Yarat</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Şöbəni Yenilə</h5>
+                <button type="button" class="close-update close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="updateForm" (ngSubmit)="update()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.productId.errors }">Kolleksiya Məhsulu <span
+                                class="text-danger">*</span> </label>
+                        <select name="productId" formControlName="productId" class="form-control">
+                            <option *ngFor="let product of products" value="{{product.id}}" [selected]="product.id">
+                                {{product.name}}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && u.productId.errors" class="text-danger">
+                            <div *ngIf="u.productId.errors.required">Kolleksiya məhsulu boş ola bilməz</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.orderBy.errors }">Sırası <span
+                                class="text-danger">*</span></label>
+                        <input name="orderBy" formControlName="orderBy" type="text" class="form-control">
+                        <div *ngIf="submitted && u.orderBy.errors" class="text-danger">
+                            <div *ngIf="u.orderBy.errors.required">Kolleksiya sırası adı boş ola bilməz</div>
+                            <div *ngIf="u.orderBy.errors.maxLenght">Kolleksiya sırası maksimum 50 xarakter olmalıdır
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.subtitle.errors }">Yarımbaşlıq <span
+                                class="text-danger">*</span></label>
+                        <input name="subtitle" formControlName="subtitle" type="text" class="form-control">
+                        <div *ngIf="submitted && u.subtitle.errors" class="text-danger">
+                            <div *ngIf="u.subtitle.errors.maxLenght">Yarımbaşlıq maksimum 100 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.title.errors }">Başlıq <span
+                                class="text-danger">*</span></label>
+                        <input name="title" formControlName="title" type="text" class="form-control">
+                        <div *ngIf="submitted && u.title.errors" class="text-danger">
+                            <div *ngIf="u.title.errors.required">Başlıq boş ola bilməz</div>
+                            <div *ngIf="u.subtitle.errors.maxLenght">Başlıq maksimum 200 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.backgroundColor.errors }">Fon rəngi <span
+                                class="text-danger">*</span></label>
+                        <input name="backgroundColor" formControlName="backgroundColor" type="text"
+                            class="form-control">
+                        <div *ngIf="submitted && u.backgroundColor.errors" class="text-danger">
+                            <div *ngIf="u.backgroundColor.errors.required">Fon rəngi boş ola bilməz</div>
+                            <div *ngIf="u.subtitle.errors.maxLenght">Fon rəngi maksimum 50 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.btnText.errors }">Button yazısı <span
+                                class="text-danger">*</span></label>
+                        <input name="btnText" formControlName="btnText" type="text" class="form-control">
+                        <div *ngIf="submitted && u.btnText.errors" class="text-danger">
+                            <div *ngIf="u.btnText.errors.required">Button yazısı boş ola bilməz</div>
+                            <div *ngIf="u.btnText.errors.maxLenght">Button yazısı maksimum 50 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.btnUrl.errors }">Button linki <span
+                                class="text-danger">*</span></label>
+                        <input name="btnUrl" formControlName="btnUrl" type="text" class="form-control">
+                        <div *ngIf="submitted && u.btnUrl.errors" class="text-danger">
+                            <div *ngIf="u.btnUrl.errors.required">Button linki boş ola bilməz</div>
+                            <div *ngIf="u.btnUrl.errors.maxLenght">Button linki maksimum 50 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select name="softDeleted" formControlName="softDeleted" class="form-control form-control-sm">
+                            <option value="false">Aktiv</option>
+                            <option value="true">Deaktiv</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Yenilə</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

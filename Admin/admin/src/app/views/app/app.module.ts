@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CreateProductComponent } from './product/create-product/create-product.component';
 import { UpdateProductComponent } from './product/update-product/update-product.component';
+import { ShopCollectionComponent } from './shop-collection/shop-collection.component';
 
 
 
@@ -25,6 +26,7 @@ import { UpdateProductComponent } from './product/update-product/update-product.
     ProductComponent,
     CreateProductComponent,
     UpdateProductComponent,
+    ShopCollectionComponent,
 
   ],
   imports: [

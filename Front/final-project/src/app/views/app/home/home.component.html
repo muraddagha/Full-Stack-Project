@@ -2,49 +2,50 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-                <div style="background-color: #fdc1c1;" class="big-shop-collection">
+                <div [ngStyle]='{"background-color": collections[0]?.backgroundColor}' class="big-shop-collection">
                     <div class="collection-content">
-                        <h6>DEALS AND PROMOTIONS</h6>
-                        <h1>Keep your feet <br> Cool comfy.</h1>
+                        <h6>{{collections[0]?.subtitle}}</h6>
+                        <h1>{{collections[0]?.title}}</h1>
                         <div class="price">
-                            <del class="old-price">$325.00</del>
+                            <del class="old-price">{{collections[0]?.product.price}}</del>
                             <span class="new-price">$299<sup>.99</sup></span>
                         </div>
-                        <a [routerLink]="['/app/product']" class="btn btn-pink">Shop Now</a>
+                        <a [routerLink]="['/app/product',collections[0]?.product.id]"
+                            class="btn btn-pink">{{collections[0]?.btnText}}</a>
                     </div>
                     <div class="collection-product">
-                        <img src="/assets/icons/img1.png" alt="">
+                        <img src="{{collections[0]?.product.photos[0]}}" alt="">
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="small-collection-area">
-                    <div style="background-color: #fdf7e3;" class="small-shop-collection colect-1">
+                    <div [ngStyle]='{"background-color": collections[1]?.backgroundColor}'
+                        class="small-shop-collection colect-1">
                         <div class="small-collection-content">
-                            <h3>SMART SPEAKER FOR <br>
-                                MUSIC LOVERS</h3>
+                            <h3>{{collections[1]?.title}}</h3>
                             <div class="price d-flex align-items-center">
-                                From
-                                <span class="ms-1 new-price">$39 <sup>.99</sup></span>
+                                <span class="ms-1 new-price">{{collections[1]?.product.price}} <sup>.99</sup></span>
                             </div>
-                            <a [routerLink]="['/app/product']" class="btn-pink-small">Shop Now »</a>
+                            <a [routerLink]="['/app/product',collections[1]?.product.id]"
+                                class="btn-pink-small">{{collections[1]?.btnText}} »</a>
                         </div>
                         <div class="small-collection-product">
-                            <img src="/assets/icons/img1.png" alt="">
+                            <img class="mw-200" src="{{collections[1]?.product.photos[0]}}" alt="">
                         </div>
                     </div>
-                    <div style="background-color: #f4f7fe;" class="small-shop-collection collect-2">
+                    <div [ngStyle]='{"background-color": collections[2]?.backgroundColor}'
+                        class="small-shop-collection collect-2">
                         <div class="small-collection-content">
-                            <h3>SMART SPEAKER FOR <br>
-                                MUSIC LOVERS</h3>
+                            <h3>{{collections[2]?.title}}</h3>
                             <div class="price d-flex align-items-center">
-                                From
-                                <span class="ms-1 new-price">$39 <sup>.99</sup></span>
+                                <span class="ms-1 new-price">{{collections[2]?.product.price}} <sup>.99</sup></span>
                             </div>
-                            <a [routerLink]="['/app/product']" class="btn-pink-small">Shop Now »</a>
+                            <a [routerLink]="['/app/product',collections[2]?.product.id]"
+                                class="btn-pink-small">{{collections[2]?.btnText}} »</a>
                         </div>
                         <div class="small-collection-product">
-                            <img src="/assets/icons/img1.png" alt="">
+                            <img class="mw-200" src="{{collections[2]?.product.photos[0]}}" alt="">
                         </div>
                     </div>
                 </div>

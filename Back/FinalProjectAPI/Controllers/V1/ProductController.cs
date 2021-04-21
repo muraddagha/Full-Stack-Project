@@ -47,7 +47,7 @@ namespace FinalProjectAPI.Controllers.V1
         public async Task<IActionResult> GetProductById([FromRoute] int id)
         {
             var product = await _productService.GetProductById(id);
-            var productResource = _mapper.Map<Product, ProductResource>(product);
+            var productResource = _mapper.Map<Product, AdminProductResource>(product);
             return Ok(productResource);
         }
 

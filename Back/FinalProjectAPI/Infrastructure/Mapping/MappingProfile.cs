@@ -65,6 +65,7 @@ namespace FinalProjectAPI.Infrastructure.Mapping
 
 
             //ShopCollection
+            CreateMap<ShopCollection, ShopCollectionResource>();
             CreateMap<ShopCollection, AdminShopCollectionResource>();
             CreateMap<CreateShopCollectionResource, ShopCollection>();
             CreateMap<UpdateShopCollectionResource, ShopCollection>();
