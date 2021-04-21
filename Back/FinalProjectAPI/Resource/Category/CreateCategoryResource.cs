@@ -16,8 +16,5 @@ namespace FinalProjectAPI.Resource.Category
         public string Name { get; set; }
 
         public bool IsPopular { get; set; }
-
-        [MaxLength(50)]
-        public string AddedBy { get; set; }
     }
 }

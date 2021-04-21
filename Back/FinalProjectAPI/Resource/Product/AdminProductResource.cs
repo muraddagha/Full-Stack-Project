@@ -15,11 +15,6 @@ namespace FinalProjectAPI.Resource.Product
         public bool InStock { get; set; }
         public bool SoftDeleted { get; set; }
         public CategoryResource Category { get; set; }
-        public ICollection<ProductPhotoResource> Photos { get; set; }
-        public ICollection<ProductOptionResource> Options { get; set; }
-
-        //public ICollection<ProductDiscount> Discounts { get; set; }
-        //public ICollection<ProductReview> Reviews { get; set; }
-
+        public ICollection<AdminProductPhotoResource> Photos { get; set; }
     }
 }

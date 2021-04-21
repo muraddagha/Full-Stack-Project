@@ -19,7 +19,7 @@ namespace DataService.Services.ShoppingServices
         Task<IEnumerable<Product>> GetTopSellingProducts(int limit, ProductListing order);
         Task<IEnumerable<Product>> GetTrendProducts(int limit, ProductListing order);
         Task<IEnumerable<Product>> GetHotDealProducts(int limit, ProductListing order);
-        Task<IEnumerable<Product>> GetNewArrivalsProducts(int limit, ProductListing order);
+        Task<IEnumerable<Product>> GetNewArrivalsProducts(int limit, int departmentId);
         Task<Product> GetProductById(int id);
         Task<Product> CreateProduct(Product product);
         Task UpdateProduct(int id,Product product);
@@ -66,6 +66,7 @@ namespace DataService.Services.ShoppingServices
         public async Task<IEnumerable<Product>> GetFeaturedProducts(int limit, ProductListing order)
         {
             var products= _context.Products.Include("Photos")
+                                            .Include("Category")
                                            .Include("Discounts.Discount")
                                            .Where(p => p.IsFeatured);
 
@@ -84,15 +85,15 @@ namespace DataService.Services.ShoppingServices
             return await products.Take(limit).ToListAsync();
         }
 
-        public async Task<IEnumerable<Product>> GetNewArrivalsProducts(int limit, ProductListing order)
+        public async Task<IEnumerable<Product>> GetNewArrivalsProducts(int limit,int departmentId)
         {
-            //var date = DateTime.Now.AddDays(-10);
             var products = _context.Products.Include("Photos")
+                                            .Include("Category")
                                             .Include("Discounts.Discount")
-                                            .Where(p => p.IsHotDeal)
-                                            .Where(p => p.AddedDate < DateTime.Now.AddDays(-10));
+                                            .Where(p=>p.Category.DepartmentId==departmentId)
+                                            .Where(p => p.AddedDate > DateTime.Now.AddDays(-7));
 
-            ProductListBy(products, order);
+            //ProductListBy(products, order);
             return await products.Take(limit).ToListAsync();
         }
 
@@ -133,6 +134,7 @@ namespace DataService.Services.ShoppingServices
         public async Task<IEnumerable<Product>> GetTopSellingProducts(int limit, ProductListing order)
         {
             var products = _context.Products.Include("Photos")
+                                            .Include("Category")
                                             .Include("Discounts.Discount")
                                             .Where(p => p.IsTopSell);
 

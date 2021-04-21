@@ -4,21 +4,16 @@
     </h4>
     <div class="slider-area">
         <owl-carousel-o [options]="options">
-            <ng-template carouselSlide>
-                <app-single-product></app-single-product>
-            </ng-template>
-            <ng-template carouselSlide>
-                <app-single-product></app-single-product>
-            </ng-template>
-            <ng-template carouselSlide>
-                <app-single-product></app-single-product>
-            </ng-template>
-            <ng-template carouselSlide>
-                <app-single-product></app-single-product>
-            </ng-template>
-            <ng-template carouselSlide>
-                <app-single-product></app-single-product>
-            </ng-template>
+            <ng-container *ngIf="featured">
+                <ng-template carouselSlide *ngFor="let featured of featuredProducts">
+                    <app-single-product [product]="featured"></app-single-product>
+                </ng-template>
+            </ng-container>
+            <ng-container *ngIf="topSell">
+                <ng-template carouselSlide *ngFor="let topSell of topSellProducts">
+                    <app-single-product [product]="topSell"></app-single-product>
+                </ng-template>
+            </ng-container>
         </owl-carousel-o>
     </div>
 </div>

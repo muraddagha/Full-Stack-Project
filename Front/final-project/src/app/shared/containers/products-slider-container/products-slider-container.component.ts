@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { IProduct } from '../../models/product/product.model';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-products-slider-container',
@@ -8,6 +10,10 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class ProductsSliderContainerComponent implements OnInit {
   @Input() title;
+  @Input() featured: boolean = false;
+  @Input() topSell: boolean = false;
+  public featuredProducts: IProduct[] = [];
+  public topSellProducts: IProduct[] = [];
   options: OwlOptions = {
     loop: true,
     items: 4,
@@ -34,9 +40,25 @@ export class ProductsSliderContainerComponent implements OnInit {
       }
     },
   };
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.getFeaturedProducts();
+    this.getTopSellingProducts();
   }
+
+  public getFeaturedProducts(): void {
+    this.apiService.getFeaturedProducts(10, 1).subscribe(res => {
+      this.featuredProducts = res.products
+    })
+  }
+
+  public getTopSellingProducts(): void {
+    this.apiService.getTopSellingProducts(10, 1).subscribe(res => {
+      this.topSellProducts = res.products
+    })
+  }
+
+
 
 }

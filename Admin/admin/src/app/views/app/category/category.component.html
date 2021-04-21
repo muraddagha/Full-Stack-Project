@@ -91,15 +91,6 @@
                             <option value="true">Aktiv</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label [ngClass]="{ 'is-invalid': submitted && f.addedBy.errors }">Adınız <span
-                                class="text-danger">*</span></label>
-                        <input name="addedBy" formControlName="addedBy" type="text" class="form-control">
-                        <div *ngIf="submitted && f.addedBy.errors" class="text-danger">
-                            <div *ngIf="f.addedBy.errors.required">Adınız boş ola bilməz</div>
-                            <div *ngIf="f.addedBy.errors.maxLenght">Adınız maksimum 100 xarakter olmalıdır</div>
-                        </div>
-                    </div>
                     <button type="submit" class="btn btn-success w-100">Yarat</button>
                 </form>
             </div>
@@ -155,15 +146,6 @@
                             <option value="false">Aktiv</option>
                             <option value="true">Deaktiv</option>
                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label [ngClass]="{ 'is-invalid': submitted && u.modifiedBy.errors }">Adınız <span
-                                class="text-danger">*</span></label>
-                        <input name="modifiedBy" formControlName="modifiedBy" type="text" class="form-control">
-                        <div *ngIf="submitted && u.modifiedBy.errors" class="text-danger">
-                            <div *ngIf="u.modifiedBy.errors.required">Adınız boş ola bilməz</div>
-                            <div *ngIf="u.modifiedBy.errors.maxLenght">Adınız maksimum 100 xarakter olmalıdır</div>
-                        </div>
                     </div>
                     <button type="submit" class="btn btn-warning w-100">Yenilə</button>
                 </form>

@@ -23,7 +23,6 @@ export class CategoryComponent implements OnInit {
   public submitted = false;
   public departments: IDepartment[] = [];
   constructor(private apiService: ApiService,
-    private authService: AuthService,
     private formBuilder: FormBuilder,
     private notifier: NotifierService,
     private element: ElementRef) { }
@@ -32,9 +31,6 @@ export class CategoryComponent implements OnInit {
   ngOnInit(): void {
     this.getCategories();
     this.getDepartments();
-    this.authService.currentAdmin.subscribe(res => {
-      this.adminName = res.fullname;
-    })
     this.generateCreateForm();
     this.generateUpdateForm();
   }
@@ -50,7 +46,6 @@ export class CategoryComponent implements OnInit {
       name: ["", [Validators.required, Validators.maxLength(50)]],
       departmentId: ["", [Validators.required]],
       isPopular: ["false"],
-      addedBy: [this.adminName, [Validators.required, Validators.maxLength(50)]]
     })
   }
 
@@ -60,7 +55,6 @@ export class CategoryComponent implements OnInit {
       departmentId: ["", [Validators.required]],
       isPopular: ["false"],
       softDeleted: [""],
-      modifiedBy: [this.adminName, [Validators.required, Validators.maxLength(50)]]
     })
   }
 
@@ -92,7 +86,6 @@ export class CategoryComponent implements OnInit {
   }
   public update(): void {
     this.submitted = true;
-    console.log(this.updateForm.value);
 
     if (this.updateForm.invalid) return;
 
@@ -131,7 +124,6 @@ export class CategoryComponent implements OnInit {
       })
     }
   }
-
   public getDepartments(): void {
     this.apiService.getDepartments().subscribe(res => {
       this.departments = res.departments;

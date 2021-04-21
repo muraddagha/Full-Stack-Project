@@ -4,8 +4,9 @@ namespace DataService.Data.Entities
 {
    public class ShopCollection:BaseEntity
     {
+        public int? ProductId { get; set; }
         [Required]
-        public int ProdcutId { get; set; }
+        public int OrderBy { get; set; }
 
         [MaxLength(100)]
         public string Subtitle { get; set; }
@@ -27,6 +28,5 @@ namespace DataService.Data.Entities
         public string BtnUrl { get; set; }
 
         public Product Product { get; set; }
-
     }
 }

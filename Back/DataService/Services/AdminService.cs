@@ -13,6 +13,7 @@ namespace DataService.Services
     public interface IAdminService
     {
         Task<Admin> Login(string email, string password);
+        Task<Admin> CheckToken(string token);
         //Task<Admin> Register(Admin admin);
     }
     public class AdminService : IAdminService
@@ -23,6 +24,12 @@ namespace DataService.Services
         {
             _context = context;
         }
+
+        public async Task<Admin> CheckToken(string token)
+        {
+            return await _context.Admins.FirstOrDefaultAsync(u => u.Token == token);
+        }
+
         public async Task<Admin> Login(string email, string password)
         {
             var admin = await _context.Admins.FirstOrDefaultAsync(a => a.Email == email);

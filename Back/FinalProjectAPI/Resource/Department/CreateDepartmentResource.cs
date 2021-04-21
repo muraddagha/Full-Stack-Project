@@ -14,8 +14,5 @@ namespace FinalProjectAPI.Resource.Department
 
         [MaxLength(150)]
         public string Icon { get; set; }
-
-        [MaxLength(50)]
-        public string AddedBy { get; set; }
     }
 }

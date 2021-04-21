@@ -1,6 +1,7 @@
 ﻿using DataService.Data.Entities;
 using DataService.Infrastructure.Exceptions;
 using DataService.Services.ShoppingServices;
+using FinalProjectAPI.Infrastructure.Filters;
 using FinalProjectAPI.Resource.Department;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -41,12 +42,15 @@ namespace FinalProjectAPI.Controllers.V1
 
         [HttpPost]
         [Route("Create")]
+        [TypeFilter(typeof(AdminAuth))]
+
         public async Task<IActionResult> CreateDepartment([FromBody] CreateDepartmentResource resource)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
             try
             {
                 var departmentInput = _mapper.Map<CreateDepartmentResource, Department>(resource);
+                departmentInput.AddedBy = _admin.Fullname;
                 var department = await _departmentService.CreateDepartment(departmentInput);
                 return Ok(new { message = "Şöbə yaradıldı" });
             }
@@ -58,6 +62,8 @@ namespace FinalProjectAPI.Controllers.V1
     
         [HttpPut]
         [Route("{id}")]
+        [TypeFilter(typeof(AdminAuth))]
+
 
         public async Task<IActionResult> UpdateDepartment([FromRoute]int id,[FromBody] UpdateDepartmentResource resource)
         {
@@ -66,6 +72,7 @@ namespace FinalProjectAPI.Controllers.V1
             try
             {
                 var department = _mapper.Map<UpdateDepartmentResource, Department>(resource);
+                department.ModifiedBy = _admin.Fullname;
                 await _departmentService.UpdateDepartment(id, department);
                 return Ok(new { message = "Şöbə yeniləndi" });
             }
@@ -78,6 +85,7 @@ namespace FinalProjectAPI.Controllers.V1
 
         [HttpDelete]
         [Route("{id}")]
+        [TypeFilter(typeof(AdminAuth))]
         public async Task<IActionResult> RemoveDepartment([FromRoute] int id)
         {
             try

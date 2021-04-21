@@ -3,6 +3,7 @@ using DataService.Enums;
 using DataService.Infrastructure.Exceptions;
 using DataService.Services;
 using DataService.Services.ShoppingServices;
+using FinalProjectAPI.Infrastructure.Filters;
 using FinalProjectAPI.Libs;
 using FinalProjectAPI.Resource.Product;
 using Microsoft.AspNetCore.Http;
@@ -20,16 +21,14 @@ namespace FinalProjectAPI.Controllers.V1
         private readonly IProductService _productService;
         private readonly ICloudinaryService _cloudinaryService;
         private readonly IFileManager _fileManager;
-        private readonly IOptionService _optionService;
 
 
         public ProductController(IProductService productService, ICloudinaryService cloudinaryService,
-                                 IFileManager fileManager,IOptionService optionService)
+                                 IFileManager fileManager)
         {
             _productService = productService;
             _cloudinaryService = cloudinaryService;
             _fileManager = fileManager;
-            _optionService = optionService;
         }
 
         [HttpGet]
@@ -54,6 +53,7 @@ namespace FinalProjectAPI.Controllers.V1
 
         [HttpPost]
         [Route("Create")]
+        [TypeFilter(typeof(AdminAuth))]
 
         public async Task<IActionResult> CreateProduct([FromBody] CreateProductResource resource)
         {
@@ -61,6 +61,7 @@ namespace FinalProjectAPI.Controllers.V1
             try
             {
                 var productInput = _mapper.Map<CreateProductResource, Product>(resource);
+                productInput.AddedBy = _admin.Fullname;
                 var product = await _productService.CreateProduct(productInput);
                 return Ok(new { product=product});
             }
@@ -72,6 +73,7 @@ namespace FinalProjectAPI.Controllers.V1
 
         [HttpPut]
         [Route("{id}")]
+        [TypeFilter(typeof(AdminAuth))]
         public async Task<IActionResult> UpdateProduct([FromRoute] int id,[FromBody] UpdateProductResource resource)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -79,6 +81,7 @@ namespace FinalProjectAPI.Controllers.V1
             try
             {
                 var product = _mapper.Map<UpdateProductResource, Product>(resource);
+                product.ModifiedBy = _admin.Fullname;
                 await _productService.UpdateProduct(id, product);
                 return Ok(new { message = "Məhsul yeniləndi" });
             }
@@ -90,6 +93,7 @@ namespace FinalProjectAPI.Controllers.V1
 
         [HttpDelete]
         [Route("{id}")]
+        [TypeFilter(typeof(AdminAuth))]
 
         public async Task<IActionResult> RemoveProduct([FromRoute] int id)
         {
@@ -107,8 +111,10 @@ namespace FinalProjectAPI.Controllers.V1
 
         [HttpPost]
         [Route("Upload")]
+        [TypeFilter(typeof(AdminAuth))]
 
-        public  IActionResult UploadPhoto(IFormFile file,[FromQuery] int? productId,[FromQuery] int? orderBy)
+
+        public IActionResult UploadPhoto(IFormFile file,[FromQuery] int? productId,[FromQuery] int? orderBy)
         {
             var fileName = _fileManager.Upload(file);
             var publicId = _cloudinaryService.Store(fileName);
@@ -135,6 +141,8 @@ namespace FinalProjectAPI.Controllers.V1
 
         [HttpDelete]
         [Route("Remove")]
+        [TypeFilter(typeof(AdminAuth))]
+
         public IActionResult RemoveUploadedPhoto([FromQuery] string name,[FromQuery] int? id)
         {
             if (id != null)
@@ -150,7 +158,30 @@ namespace FinalProjectAPI.Controllers.V1
         public async Task<IActionResult> GetFeaturedProducts([FromQuery] int limit,[FromQuery] ProductListing order)
         {
             var products = await _productService.GetFeaturedProducts(limit, order);
-            return Ok(products);
+            var productResource = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
+            return Ok(new { products = productResource });
         }
+
+        [HttpGet]
+        [Route("Top-sell")]
+        public async Task<IActionResult> GetTopSellingProducts([FromQuery] int limit, [FromQuery] ProductListing order)
+        {
+            var products = await _productService.GetTopSellingProducts(limit, order);
+            var productResource = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
+            return Ok(new { products = productResource });
+        }
+
+
+        [HttpGet]
+        [Route("new-arrivals")]
+
+        public async Task<IActionResult> GetNewArrivalsProducts([FromQuery] int limit,[FromQuery]int departmentId)
+        {
+            var products = await _productService.GetNewArrivalsProducts(limit, departmentId);
+            var productResource = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
+            return Ok(new { products=productResource });
+        }
+
+
     }
 }

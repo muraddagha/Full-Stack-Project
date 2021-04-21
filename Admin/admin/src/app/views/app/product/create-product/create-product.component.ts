@@ -23,12 +23,8 @@ export class CreateProductComponent implements OnInit {
   public order = 0;
   constructor(private formBuilder: FormBuilder,
     private apiService: ApiService,
-    private authService: AuthService,
     private notifier: NotifierService,
     private router: Router) {
-    this.authService.currentAdmin.subscribe(res => {
-      this.adminName = res.fullname;
-    })
   }
 
   ngOnInit(): void {
@@ -58,7 +54,6 @@ export class CreateProductComponent implements OnInit {
         img: new FormControl(''),
         orderBy: new FormControl('')
       })]),
-      addedBy: [this.adminName, [Validators.required, Validators.maxLength(50)]]
     })
   }
 

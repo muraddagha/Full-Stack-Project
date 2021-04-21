@@ -24,10 +24,11 @@
   }
   .img-area {
     margin: 20px;
-    overflow: hidden;
+    // overflow: hidden;
     position: relative;
     img {
-      max-width: 100%;
+      min-height: 200px;
+      max-width: 200px;
       transition: 0.5s;
       transform: scale(1);
       width: auto;

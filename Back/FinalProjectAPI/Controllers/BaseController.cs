@@ -12,7 +12,7 @@ namespace FinalProjectAPI.Controllers
     {
         protected IMapper _mapper => HttpContext.RequestServices.GetService<IMapper>();
         protected User _user => RouteData.Values["User"] as User;
-        //protected User _admin => RouteData.Values["Admin"] as Admin;
+        protected Admin _admin => RouteData.Values["Admin"] as Admin;
 
     }
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { IProduct } from '../../models/product/product.model';
 
 
 @Component({
@@ -9,6 +10,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 })
 export class SingleProductComponent implements OnInit {
   star = faStar;
+  @Input() product: IProduct;
 
   constructor() { }
 

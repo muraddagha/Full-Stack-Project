@@ -25,13 +25,9 @@ export class UpdateProductComponent implements OnInit {
   public order: any = 1;
   constructor(private formBuilder: FormBuilder,
     private apiService: ApiService,
-    private authService: AuthService,
     private notifier: NotifierService,
     private router: Router,
     private activeRoute: ActivatedRoute) {
-    this.authService.currentAdmin.subscribe(res => {
-      this.adminName = res.fullname;
-    })
   }
 
   ngOnInit(): void {
@@ -58,7 +54,6 @@ export class UpdateProductComponent implements OnInit {
       isTopSell: [""],
       isHotDeal: [""],
       softDeleted: [""],
-      modifiedBy: [this.adminName, [Validators.required, Validators.maxLength(50)]]
     })
   }
 
@@ -112,8 +107,6 @@ export class UpdateProductComponent implements OnInit {
     let id = this.activeRoute.snapshot.paramMap.get('id');
     this.apiService.getProductById(id).subscribe(res => {
       this.product = res;
-      console.log(res);
-
       this.updateForm.patchValue({
         categoryId: res.category.id,
         brandId: res.brand.id,

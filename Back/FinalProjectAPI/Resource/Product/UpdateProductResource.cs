@@ -40,9 +40,5 @@ namespace FinalProjectAPI.Resource.Product
 
         [Required]
         public bool SoftDeleted { get; set; }
-
-        [Required]
-        [MaxLength(50)]
-        public string ModifiedBy { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { IProduct } from '../../models/product/product.model';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-new-arrivals-container',
@@ -34,10 +36,49 @@ export class NewArrivalsContainerComponent implements OnInit {
       }
     },
   };
+  public phones: IProduct[] = [];
+  public laptops: IProduct[] = [];
+  public tvs: IProduct[] = [];
 
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef,
+    private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.getPhones();
+    this.getLaptops();
+    this.getTvs();
+  }
+
+  public getPhones(): void {
+    this.apiService.getNewArrivalsProduct(10, 1).subscribe(res => {
+      this.phones = res.products;
+
+    }, err => {
+
+    },
+      () => {
+
+      })
+  }
+  public getLaptops(): void {
+    this.apiService.getNewArrivalsProduct(10, 4).subscribe(res => {
+      this.laptops = res.products;
+    }, err => {
+
+    },
+      () => {
+
+      })
+  }
+  public getTvs(): void {
+    this.apiService.getNewArrivalsProduct(10, 2).subscribe(res => {
+      this.tvs = res.products;
+    }, err => {
+
+    },
+      () => {
+
+      })
   }
 }

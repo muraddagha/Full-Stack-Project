@@ -24,11 +24,7 @@ export class DepartmentComponent implements OnInit {
   constructor(private apiService: ApiService,
     private notifier: NotifierService,
     private formBuilder: FormBuilder,
-    private authService: AuthService,
     private element: ElementRef) {
-    this.authService.currentAdmin.subscribe(admin => {
-      this.admin = admin;
-    })
     this.getDepartments();
   }
 
@@ -48,7 +44,6 @@ export class DepartmentComponent implements OnInit {
     this.createForm = this.formBuilder.group({
       name: ["", [Validators.required, Validators.maxLength(100)]],
       icon: ["", [Validators.maxLength(150)]],
-      addedBy: [this.admin.fullname, [Validators.required, Validators.maxLength(50)]]
     })
   }
   private generateUpdateForm() {
@@ -56,7 +51,6 @@ export class DepartmentComponent implements OnInit {
       name: ["", [Validators.required, Validators.maxLength(100)]],
       icon: ["", [Validators.maxLength(150)]],
       softDeleted: [""],
-      modifiedBy: [this.admin.fullname, [Validators.required, Validators.maxLength(50)]]
     })
   }
   public updateDepartment($event, department: IDepartment) {

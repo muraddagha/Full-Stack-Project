@@ -1,6 +1,7 @@
 ﻿using DataService.Data.Entities;
 using DataService.Infrastructure.Exceptions;
 using DataService.Services.ShoppingServices;
+using FinalProjectAPI.Infrastructure.Filters;
 using FinalProjectAPI.Resource.Product;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace FinalProjectAPI.Controllers.V1
 {
-   
+    [TypeFilter(typeof(AdminAuth))]
     [ApiVersion("1.0")]
     public class OptionController : BaseController
     {
@@ -31,6 +32,7 @@ namespace FinalProjectAPI.Controllers.V1
             try
             {
                 var optionInput = _mapper.Map<CreateOptionResource, ProductOption>(resource);
+                optionInput.AddedBy = _admin.Fullname;
                 var option = await _optionService.CreateOption(optionInput);
                 return Ok(new { message = "Seçim yaradıldı" });
 
@@ -51,6 +53,7 @@ namespace FinalProjectAPI.Controllers.V1
             try
             {
                 var optionInput = _mapper.Map<CreateOptionItemResource, ProductOptionItem>(resource);
+                optionInput.AddedBy = _admin.Fullname;
                 var option = await _optionService.CreateOptionItem(optionInput);
                 return Ok(new { message = "Seçim dəyəri yaradıldı" });
 
@@ -81,6 +84,7 @@ namespace FinalProjectAPI.Controllers.V1
             try
             {
                 var option = _mapper.Map<UpdateOptionResource, ProductOption>(resource);
+                option.ModifiedBy = _admin.Fullname;
                 await _optionService.UpdateOption(id, option);
                 return Ok(new { message = "Seçim yeniləndi" });
             }
@@ -99,6 +103,7 @@ namespace FinalProjectAPI.Controllers.V1
             try
             {
                 var option = _mapper.Map<UpdateOptionItemResource, ProductOptionItem>(resource);
+                option.ModifiedBy = _admin.Fullname;
                 await _optionService.UpdateOptionItem(id, option);
                 return Ok(new { message = "Dəyər yeniləndi" });
             }

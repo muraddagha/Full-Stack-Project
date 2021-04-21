@@ -1,6 +1,7 @@
 ﻿using DataService.Data.Entities;
 using DataService.Infrastructure.Exceptions;
 using DataService.Services.ShoppingServices;
+using FinalProjectAPI.Infrastructure.Filters;
 using FinalProjectAPI.Resource.Category;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,8 @@ namespace FinalProjectAPI.Controllers.V1
 
         [HttpPost]
         [Route("Create")]
+        [TypeFilter(typeof(AdminAuth))]
+
 
         public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryResource resource)
         {
@@ -42,6 +45,7 @@ namespace FinalProjectAPI.Controllers.V1
             try
             {
                 var categoryInput = _mapper.Map<CreateCategoryResource, Category>(resource);
+                categoryInput.AddedBy = _admin.Fullname;
                 var category = await _categoryService.CreateCategory(categoryInput);
                 await _categoryService.CreateCategory(category);
 
@@ -55,6 +59,8 @@ namespace FinalProjectAPI.Controllers.V1
 
         [HttpPut]
         [Route("{id}")]
+        [TypeFilter(typeof(AdminAuth))]
+
 
         public async Task<IActionResult> UpdateCategory([FromRoute] int id,[FromBody] UpdateCategoryResource resource)
         {
@@ -62,6 +68,7 @@ namespace FinalProjectAPI.Controllers.V1
             try
             {
                 var category = _mapper.Map<UpdateCategoryResource, Category>(resource);
+                category.ModifiedBy = _admin.Fullname;
                 await _categoryService.UpdateCategory(id, category);
                 return Ok(new { message = "Kateqoriya yeniləndi" });
 
@@ -74,6 +81,8 @@ namespace FinalProjectAPI.Controllers.V1
 
         [HttpDelete]
         [Route("{id}")]
+        [TypeFilter(typeof(AdminAuth))]
+
 
         public async Task<IActionResult> RemoveCategory([FromRoute] int id)
         {

@@ -79,16 +79,18 @@ export class ProductComponent implements OnInit {
   }
   removeProduct($event, id): void {
     $event.preventDefault();
-    this.apiService.removeProduct(id).subscribe(res => {
-
-    },
-      err => {
+    if (confirm("Əminsiniz?")) {
+      this.apiService.removeProduct(id).subscribe(res => {
 
       },
-      () => {
-        this.notifier.notify("success", "Məhsul silindi")
-        this.getproducts();
-      })
+        err => {
+
+        },
+        () => {
+          this.notifier.notify("success", "Məhsul silindi")
+          this.getproducts();
+        })
+    }
   }
   option($event, product: IProduct) {
     $event.preventDefault();
@@ -97,11 +99,6 @@ export class ProductComponent implements OnInit {
       title: product.options.map(a => a.title),
       type: product.options.map(a => a.type),
     })
-    // let name = product.options.map(a => a.productOptionItems.map(a => a.name));
-    // let value = product.options.map(a => a.productOptionItems.map(a => a.value));
-    // this.options.push(this.addOptionItem(name, value))
-  }
-  optionUpdate(): void {
   }
 
 }

@@ -1,6 +1,6 @@
 <div class="product">
     <div class="img-area">
-        <img src="/assets/icons/testp.png" alt="">
+        <img [src]="product?.photos[0]" alt="">
         <ul class="icons-area">
             <li>
                 <a [routerLink]="['/app/wishlist']">
@@ -27,11 +27,11 @@
             <fa-icon class="unrated" [icon]="star"></fa-icon>
             <fa-icon class="unrated" [icon]="star"></fa-icon>
         </div>
-        <p>Interior Design</p>
+        <p>{{product?.category.name}}</p>
         <h6>
-            <a [routerLink]="['/app/product']">Living Room Re-imagined</a>
+            <a [routerLink]="['/app/product']">{{product?.name}}</a>
         </h6>
-        <span class="price">$180.00</span>
+        <span class="price">{{product?.price}} ₼</span>
     </div>
-    <a class="add-cart-area" href="#">Add To Cart</a>
+    <a class="add-cart-area" href="#">Səbətə At</a>
 </div>

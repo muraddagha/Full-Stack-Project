@@ -18,8 +18,5 @@ namespace FinalProjectAPI.Resource.Category
         public bool IsPopular { get; set; }
 
         public bool SoftDeleted { get; set; }
-
-        [MaxLength(50)]
-        public string ModifiedBy { get; set; }
     }
 }

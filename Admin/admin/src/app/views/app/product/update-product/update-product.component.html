@@ -105,15 +105,6 @@
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <label [ngClass]="{ 'is-invalid': submitted && f.modifiedBy.errors }">Adınız <span
-                    class="text-danger">*</span></label>
-            <input name="modifiedBy" formControlName="modifiedBy" type="text" class="form-control">
-            <div *ngIf="submitted && f.modifiedBy.errors" class="text-danger">
-                <div *ngIf="f.modifiedBy.errors.required">Adınız boş ola bilməz</div>
-                <div *ngIf="f.modifiedBy.errors.maxLenght">Adınız maksimum 100 xarakter olmalıdır</div>
-            </div>
-        </div>
         <button type="submit" class="btn btn-success w-100">Yenilə</button>
     </form>
 </div>
