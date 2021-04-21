@@ -5,6 +5,7 @@ using FinalProjectAPI.Resource.Brand;
 using FinalProjectAPI.Resource.Category;
 using FinalProjectAPI.Resource.Department;
 using FinalProjectAPI.Resource.Product;
+using FinalProjectAPI.Resource.ShopCollection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,6 +61,13 @@ namespace FinalProjectAPI.Infrastructure.Mapping
 
             //Brand
             CreateMap<Brand, BrandResource>();
+
+
+
+            //ShopCollection
+            CreateMap<ShopCollection, AdminShopCollectionResource>();
+            CreateMap<CreateShopCollectionResource, ShopCollection>();
+            CreateMap<UpdateShopCollectionResource, ShopCollection>();
         }
     }
 }

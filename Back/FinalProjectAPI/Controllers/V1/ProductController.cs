@@ -63,7 +63,7 @@ namespace FinalProjectAPI.Controllers.V1
                 var productInput = _mapper.Map<CreateProductResource, Product>(resource);
                 productInput.AddedBy = _admin.Fullname;
                 var product = await _productService.CreateProduct(productInput);
-                return Ok(new { product=product});
+                return Ok(new { message="Məhsul yaradıldı"});
             }
             catch (HttpException e)
             {

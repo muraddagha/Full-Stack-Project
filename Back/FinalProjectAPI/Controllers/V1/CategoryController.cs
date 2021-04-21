@@ -47,7 +47,6 @@ namespace FinalProjectAPI.Controllers.V1
                 var categoryInput = _mapper.Map<CreateCategoryResource, Category>(resource);
                 categoryInput.AddedBy = _admin.Fullname;
                 var category = await _categoryService.CreateCategory(categoryInput);
-                await _categoryService.CreateCategory(category);
 
                 return Ok(new { message = "Kateqoriya yaradıldı" });
             }

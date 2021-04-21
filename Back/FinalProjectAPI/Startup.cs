@@ -72,6 +72,7 @@ namespace FinalProjectAPI
             services.AddTransient<ICloudinaryService,CloudinaryService>();
             services.AddTransient<IBrandService,BrandService>();
             services.AddTransient<IOptionService,OptionService>();
+            services.AddTransient<IShopCollectionService,ShopCollectionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
