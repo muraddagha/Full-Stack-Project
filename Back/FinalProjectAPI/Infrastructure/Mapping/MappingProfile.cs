@@ -3,6 +3,7 @@ using DataService.Data.Entities;
 using FinalProjectAPI.Resource.AuthResource;
 using FinalProjectAPI.Resource.Brand;
 using FinalProjectAPI.Resource.Category;
+using FinalProjectAPI.Resource.DealOfDays;
 using FinalProjectAPI.Resource.Department;
 using FinalProjectAPI.Resource.Product;
 using FinalProjectAPI.Resource.ShopCollection;
@@ -61,14 +62,21 @@ namespace FinalProjectAPI.Infrastructure.Mapping
 
             //Brand
             CreateMap<Brand, BrandResource>();
-
-
+            CreateMap<Brand, AdminBrandResource>();
+            CreateMap<CreateBrandResource, Brand>();
+            CreateMap<UpdateBrandResource, Brand>();
 
             //ShopCollection
             CreateMap<ShopCollection, ShopCollectionResource>();
             CreateMap<ShopCollection, AdminShopCollectionResource>();
             CreateMap<CreateShopCollectionResource, ShopCollection>();
             CreateMap<UpdateShopCollectionResource, ShopCollection>();
+
+            //DealOfDay
+            CreateMap<DealOfDay, DealOfDaysResource>();
+            CreateMap<DealOfDay, AdminDealOfDaysResource>();
+            CreateMap<CreateDealOfDaysResource, DealOfDay>();
+            CreateMap<UpdateDealOfDaysResource, DealOfDay>();
         }
     }
 }

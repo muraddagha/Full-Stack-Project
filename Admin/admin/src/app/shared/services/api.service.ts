@@ -116,7 +116,31 @@ export class ApiService {
 
   //#region Brand
   public getBrands(): Observable<IBrandResponse> {
-    return this.http.get<IBrandResponse>(environment.apiUrl + `brand`)
+    return this.http.get<IBrandResponse>(environment.apiUrl + `brand/all`)
+  }
+  public createBrand(data: any) {
+    return this.http.post(environment.apiUrl + `brand/create`, data)
+  }
+  public updateBrand(id: any, data: any) {
+    return this.http.put(environment.apiUrl + `brand/${id}`, data)
+  }
+  public removeBrand(id: any) {
+    return this.http.delete(environment.apiUrl + `brand/${id}`)
+  }
+  //#endregion
+
+  //#region DealOfDay
+  public getDealOfDays(): Observable<IBrandResponse> {
+    return this.http.get<IBrandResponse>(environment.apiUrl + `dealOfDay/all`)
+  }
+  public createDealOfDay(data: any) {
+    return this.http.post(environment.apiUrl + `dealOfDay/create`, data)
+  }
+  public updateDealOfDay(id: any, data: any) {
+    return this.http.put(environment.apiUrl + `dealOfDay/${id}`, data)
+  }
+  public removeDealOfDay(id: any) {
+    return this.http.delete(environment.apiUrl + `dealOfDay/${id}`)
   }
   //#endregion
 

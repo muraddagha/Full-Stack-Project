@@ -99,7 +99,7 @@ namespace FinalProjectAPI.Controllers.V1
             try
             {
                 await _shopCollectionService.RemoveShopCollection(id);
-                return Ok(new { message = "Kolles silindi" });
+                return Ok(new { message = "Kolleksiya silindi" });
             }
             catch (HttpException e)
             {

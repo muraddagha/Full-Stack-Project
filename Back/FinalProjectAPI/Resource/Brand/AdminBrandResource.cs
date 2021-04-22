@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace FinalProjectAPI.Resource.Brand
 {
-    public class BrandResource
+    public class AdminBrandResource
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Logo { get; set; }
+        public bool SoftDeleted { get; set; }
     }
 }

@@ -13,6 +13,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CreateProductComponent } from './product/create-product/create-product.component';
 import { UpdateProductComponent } from './product/update-product/update-product.component';
 import { ShopCollectionComponent } from './shop-collection/shop-collection.component';
+import { BrandComponent } from './brand/brand.component';
+import { DealOfDayComponent } from './deal-of-day/deal-of-day.component';
+import { SettingsComponent } from './settings/settings.component';
+import { SocialLinksComponent } from './social-links/social-links.component';
 
 
 
@@ -27,6 +31,10 @@ import { ShopCollectionComponent } from './shop-collection/shop-collection.compo
     CreateProductComponent,
     UpdateProductComponent,
     ShopCollectionComponent,
+    BrandComponent,
+    DealOfDayComponent,
+    SettingsComponent,
+    SocialLinksComponent,
 
   ],
   imports: [

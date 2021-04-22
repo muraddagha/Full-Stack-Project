@@ -4,9 +4,7 @@ namespace DataService.Data.Entities
 {
     public class DealOfDay:BaseEntity
     {
-        [Required]
-        public int ProdcutId { get; set; }
-
+        public int? ProductId { get; set; }
         [MaxLength(100)]
         public string Subtitle { get; set; }
 
