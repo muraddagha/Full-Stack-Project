@@ -101,7 +101,6 @@ export class CreateProductComponent implements OnInit {
       this.photoss.removeAt(i)
     })
   }
-
   private getCategories(): void {
     this.apiService.getCategories().subscribe(res => {
       this.categories = res.categories;

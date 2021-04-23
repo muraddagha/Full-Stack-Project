@@ -16,6 +16,9 @@ namespace FinalProjectAPI.Resource.Brand
         [MaxLength(200)]
         public string Logo { get; set; }
 
+        [MaxLength(200)]
+        public string FileName { get; set; }
+
         public bool SoftDeleted { get; set; }
     }
 }

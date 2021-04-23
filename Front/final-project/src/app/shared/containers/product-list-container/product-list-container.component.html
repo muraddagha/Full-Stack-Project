@@ -1,0 +1,36 @@
+<section id="product-list" class="my-5 pt-5">
+    <div class="container">
+        <div class="row align-items-baseline">
+            <div class="col-xl-3 col-lg-4 col-md-12">
+                <app-filter></app-filter>
+            </div>
+            <div class="col-lg-8">
+                <div class="list-header">
+                    <h4>
+                        Göstəriləcək məhsul sayı {{products.length}}
+                    </h4>
+                    <div class="selectbox">
+                        <ng-select [(ngModel)]="selectedSimpleItem">>
+                            <ng-option selected>Varsaylan</ng-option>
+                            <ng-option>Qiymət</ng-option>
+                            <ng-option>Tarix</ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+                <div class="products-area">
+                    <div class="row">
+                        <div class="col-xl-4 col-md-6"
+                            *ngFor="let product of products  | paginate: { itemsPerPage: 9, currentPage: page,totalItems:products.length}">
+                            <app-single-product [product]="product"></app-single-product>
+                        </div>
+                    </div>
+                </div>
+                <pagination-controls (pageChange)="page = $event" previousLabel="Əvvəlki" nextLabel="Növbəti">
+                </pagination-controls>
+
+                <!-- <app-pagination></app-pagination> -->
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -20,14 +20,11 @@
         </ul>
     </div>
     <div class="content">
-        <div class="star">
-            <fa-icon [icon]="star"></fa-icon>
-            <fa-icon class="unrated" [icon]="star"></fa-icon>
-            <fa-icon class="unrated" [icon]="star"></fa-icon>
-            <fa-icon class="unrated" [icon]="star"></fa-icon>
-            <fa-icon class="unrated" [icon]="star"></fa-icon>
+        <div class="star mb-2">
+            <i *ngFor="let star of starCount(product.starCount)" class="fas fa-star"></i>
+            <i *ngFor="let star of unratedStarCount(product.starCount)" class="fas fa-star unrated"></i>
         </div>
-        <p>{{product?.category.name}}</p>
+        <p *ngIf="product?.category!=null">{{product?.category.name}}</p>
         <h6>
             <a [routerLink]="['/app/product']">{{product?.name}}</a>
         </h6>

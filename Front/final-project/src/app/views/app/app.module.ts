@@ -49,7 +49,8 @@ import { ContainersModule } from 'src/app/shared/containers/containers.module';
     ComponentsModule,
     ContainersModule,
     FormsModule,
-    NgSelectModule
+    NgSelectModule,
+
   ]
 })
 export class AppModule { }

@@ -7,6 +7,7 @@ export interface IProduct {
     id: number;
     name: string;
     price: number;
+    starCount: number;
     sku: string;
     description: string;
     inStock: boolean;

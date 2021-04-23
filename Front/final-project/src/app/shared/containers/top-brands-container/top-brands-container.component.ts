@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { IBrand } from '../../models/brand.model';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-top-brands-container',
@@ -30,9 +32,16 @@ export class TopBrandsContainerComponent implements OnInit {
       }
     },
   };
-  constructor() { }
+  public brands: IBrand[] = [];
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.getBrands();
+  }
+  private getBrands(): void {
+    this.apiService.getBrands(6).subscribe(res => {
+      this.brands = res.brands;
+    })
   }
 
 }

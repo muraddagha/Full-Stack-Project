@@ -51,6 +51,16 @@ namespace FinalProjectAPI.Controllers.V1
             return Ok(productResource);
         }
 
+        [HttpGet]
+        [Route("")]
+
+        public async Task<IActionResult> GetProductsByCategoryId([FromQuery] int categoryId, [FromQuery] int limit,[FromQuery] ProductListing order)
+        {
+            var products = await _productService.GetProductsByCategoryId(categoryId, limit,order);
+            var productsResource = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
+            return Ok(new { products=productsResource});
+        }
+
         [HttpPost]
         [Route("Create")]
         [TypeFilter(typeof(AdminAuth))]
@@ -173,13 +183,23 @@ namespace FinalProjectAPI.Controllers.V1
 
 
         [HttpGet]
-        [Route("new-arrivals")]
+        [Route("new-arrivalsByDepartment")]
 
-        public async Task<IActionResult> GetNewArrivalsProducts([FromQuery] int limit,[FromQuery]int departmentId)
+        public async Task<IActionResult> GetNewArrivalsProductsByDepartmentId([FromQuery] int limit,[FromQuery]int departmentId)
         {
-            var products = await _productService.GetNewArrivalsProducts(limit, departmentId);
+            var products = await _productService.GetNewArrivalsProductsByDepartmentId(limit, departmentId);
             var productResource = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
             return Ok(new { products=productResource });
+        }
+
+        [HttpGet]
+        [Route("new-arrivals")]
+
+        public async Task<IActionResult> GetNewArrivalsProducts([FromQuery] int limit,[FromQuery] ProductListing order)
+        {
+            var products = await _productService.GetNewArrivalsProducts(limit,order);
+            var productResource = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
+            return Ok(new { products = productResource });
         }
 
 

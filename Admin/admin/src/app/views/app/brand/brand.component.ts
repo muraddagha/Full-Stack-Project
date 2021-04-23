@@ -14,6 +14,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class BrandComponent implements OnInit {
 
   public brands: IBrand[] = [];
+  public brand: IBrand;
   public uploadImg: IUploadImage[] = [];
   public totalCount: number;
   page: number = 1;
@@ -43,6 +44,7 @@ export class BrandComponent implements OnInit {
     this.createForm = this.formBuilder.group({
       name: ["", [Validators.required, Validators.maxLength(50)]],
       logo: ["", [Validators.required, Validators.maxLength(100)]],
+      fileName: ["", [Validators.maxLength(200)]],
     })
   }
 
@@ -50,16 +52,19 @@ export class BrandComponent implements OnInit {
     this.updateForm = this.formBuilder.group({
       name: ["", [Validators.required]],
       softDeleted: ["",],
+      logo: ["", [Validators.required, Validators.maxLength(100)]],
+      fileName: ["", [Validators.maxLength(200)]],
     })
   }
   public updateBrand(brand: IBrand) {
     this.brandId = brand.id;
+    this.brand = brand;
     this.updateForm.patchValue({
       name: brand["name"],
       softDeleted: brand["softDeleted"],
-      logo: brand["logo"]
+      logo: brand["logo"],
+      fileName: brand["fileName"]
     })
-
   }
   public create(): void {
     this.submitted = true;
@@ -80,9 +85,11 @@ export class BrandComponent implements OnInit {
   }
   public update(): void {
     this.submitted = true;
+    console.log(this.updateForm.value);
+
     if (this.updateForm.invalid) return;
 
-    this.apiService.updateShopCollection(this.brandId, this.updateForm.value).subscribe(res => {
+    this.apiService.updateBrand(this.brandId, this.updateForm.value).subscribe(res => {
     },
       err => {
         console.log(err);
@@ -91,7 +98,7 @@ export class BrandComponent implements OnInit {
       },
       () => {
         this.element.nativeElement.querySelector(".close-update").click();
-        this.notifier.notify("success", "Kolleksiya yeniləndi")
+        this.notifier.notify("success", "Brend yeniləndi")
         this.getBrands();
         this.submitted = false;
         this.updateForm.reset();
@@ -136,16 +143,34 @@ export class BrandComponent implements OnInit {
       })
     }
   }
-
   private uploadPhoto(data: any): void {
     this.apiService.uploadPhoto(data).subscribe(res => {
       this.uploadImg.push(res);
       this.createForm.patchValue({
-        logo: res["src"]
+        logo: res["src"],
+        fileName: res["fileName"]
+      })
+      this.updateForm.patchValue({
+        logo: res["src"],
+        fileName: res["fileName"]
       })
     },
       error => {
+      }, () => { })
+  }
+  public removeBrandLogo($event, brand: IBrand) {
+    $event.preventDefault();
+    if (confirm("Əminsinizmi?")) {
+      this.apiService.removeBrandLogo(brand.fileName, brand.id,).subscribe(res => {
+      }, err => {
+
+      }, () => {
+        this.getBrands();
+        this.brand.logo = "";
+        this.brand.fileName = "";
+        console.log(brand.logo.length);
       })
+    }
   }
 
 }

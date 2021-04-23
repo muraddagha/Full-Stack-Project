@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace FinalProjectAPI.Resource.Category
 {
-    public class CategoryResource
+    public class AdminCategoryResource
     {
         public int Id { get; set; }
         public int DepartmentId { get; set; }
         public bool IsPopular { get; set; }
+        public bool SoftDeleted { get; set; }
         public string Name { get; set; }
         public AdminDepartmentResource Department { get; set; }
     }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IAdmin } from '../models/admin/admin.model';
+import { IBrand } from '../models/brand/brand.model';
 import { IProduct } from '../models/product/product.model';
 import { IBrandResponse } from '../models/response/brand-response.model';
 import { ICategoryResponse } from '../models/response/category-response.model';
@@ -126,6 +127,13 @@ export class ApiService {
   }
   public removeBrand(id: any) {
     return this.http.delete(environment.apiUrl + `brand/${id}`)
+  }
+  public removeBrandLogo(name: string, id: any) {
+    if (id != null) {
+      return this.http.delete(environment.apiUrl + `brand/removeLogo?name=${name}&id=${id}`)
+    } else {
+      return this.http.delete(environment.apiUrl + `brand/removeLogo?name=${name}`)
+    }
   }
   //#endregion
 

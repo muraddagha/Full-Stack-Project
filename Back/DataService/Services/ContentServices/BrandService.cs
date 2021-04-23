@@ -18,6 +18,7 @@ namespace DataService.Services.ContentServices
         Task<Brand> CreateBrand(Brand brand);
         Task UpdateBrand(int id, Brand brand);
         Task RemoveBrand(int id);
+        void RemoveBrandLogo(int id);
     }
     public class BrandService : IBrandService
     {
@@ -58,17 +59,27 @@ namespace DataService.Services.ContentServices
         public async Task RemoveBrand(int id)
         {
             var brand = await GetBrandById(id);
-            brand.SoftDeleted = true;
+             _context.Brands.Remove(brand);
             await _context.SaveChangesAsync();
         }
 
         public async Task UpdateBrand(int id, Brand brand)
         {
             var updateBrand = await GetBrandById(id);
-            updateBrand.ModifiedDate = DateTime.Now;
             updateBrand.Name = brand.Name;
             updateBrand.SoftDeleted = brand.SoftDeleted;
+            updateBrand.Logo = brand.Logo;
+            updateBrand.FileName = brand.FileName;
+            updateBrand.ModifiedDate = DateTime.Now;
             await _context.SaveChangesAsync();
+        }
+
+        public void  RemoveBrandLogo(int id)
+        {
+            var brand = _context.Brands.Find(id);
+            brand.Logo = "";
+            brand.FileName = "";
+             _context.SaveChanges();
         }
     }
 }

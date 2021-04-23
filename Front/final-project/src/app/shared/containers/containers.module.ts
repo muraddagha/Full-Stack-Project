@@ -6,6 +6,12 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductsSliderContainerComponent } from './products-slider-container/products-slider-container.component';
 import { TopBrandsContainerComponent } from './top-brands-container/top-brands-container.component';
+import { ProductListContainerComponent } from './product-list-container/product-list-container.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+
 
 
 
@@ -14,17 +20,23 @@ import { TopBrandsContainerComponent } from './top-brands-container/top-brands-c
     NewArrivalsContainerComponent,
     ProductsSliderContainerComponent,
     TopBrandsContainerComponent,
+    ProductListContainerComponent,
   ],
   imports: [
     CommonModule,
     ComponentsModule,
     CarouselModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgSelectModule,
+    FormsModule,
+    NgxPaginationModule
+
   ],
   exports: [
     NewArrivalsContainerComponent,
     ProductsSliderContainerComponent,
     TopBrandsContainerComponent,
+    ProductListContainerComponent
   ]
 })
 export class ContainersModule { }

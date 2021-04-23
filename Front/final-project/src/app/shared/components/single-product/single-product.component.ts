@@ -17,4 +17,19 @@ export class SingleProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public starCount(count: number) {
+    let star: number[] = [];
+    for (var i = 1; i <= count; i++) {
+      star.push(i)
+    }
+    return star;
+  }
+  public unratedStarCount(count: number) {
+    let star: number[] = [];
+    for (var i = 1; i <= 5 - count; i++) {
+      star.push(i)
+    }
+    return star;
+  }
+
 }

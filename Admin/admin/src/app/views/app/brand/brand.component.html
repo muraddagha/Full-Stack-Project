@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-lg-12">
             <button class="btn btn-success" data-toggle="modal" data-target="#create">
-                Kolleksiya Yarat
+                Brend Yarat
             </button>
-            <h4 class="text-center">Kolleksiyalar</h4>
+            <h4 class="text-center">Brendlər</h4>
             <table class="table">
                 <thead>
                     <tr>
@@ -76,6 +76,7 @@
                         <div *ngIf="uploadImg.length>0" class="photos">
                             <div *ngFor="let img of uploadImg;let i=index" class="img">
                                 <input type="hidden" name="logo" formControlName="logo">
+                                <input type="hidden" name="fileName" formControlName="fileName">
                                 <img src="{{img.src}}" alt="uploaded-photo">
                                 <a href="#" (click)="removePhoto($event,img.fileName,i)">
                                     <i class=" ml-1 fas fa-trash"></i>
@@ -116,6 +117,27 @@
                             <option value="false">Aktiv</option>
                             <option value="true">Deaktiv</option>
                         </select>
+                    </div>
+                    <div *ngIf="brand?.logo.length==0" class="form-group">
+                        <label for="files" type="button" class="btn btn-secondary mr-2">Logo yüklə</label>
+                        <label> <span class="text-danger">*</span></label>
+                        <input id="files" (change)="upload($event)" type="file" class="d-none" accept="image/*">
+                        <div *ngIf="uploadImg.length>0" class="photos">
+                            <div *ngFor="let img of uploadImg;let i=index" class="img">
+                                <input type="hidden" name="logo" formControlName="logo">
+                                <input type="hidden" name="fileName" formControlName="fileName">
+                                <img src="{{img.src}}" alt="uploaded-photo">
+                                <a href="#" (click)="removePhoto($event,img.fileName,i)">
+                                    <i class=" ml-1 fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="brand?.logo.length>0" class="photos">
+                        <img class="brand-logo-img" src="{{brand?.logo}}" alt="">
+                        <a href="#" (click)="removeBrandLogo($event,brand)">
+                            <i class="ml-1 fas fa-trash"></i>
+                        </a>
                     </div>
                     <button type="submit" class="btn btn-success w-100">Yenilə</button>
                 </form>

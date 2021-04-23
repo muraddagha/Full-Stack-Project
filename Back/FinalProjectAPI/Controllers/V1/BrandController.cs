@@ -1,5 +1,6 @@
 ﻿using DataService.Data.Entities;
 using DataService.Infrastructure.Exceptions;
+using DataService.Services;
 using DataService.Services.ContentServices;
 using FinalProjectAPI.Infrastructure.Filters;
 using FinalProjectAPI.Resource.Brand;
@@ -16,10 +17,12 @@ namespace FinalProjectAPI.Controllers.V1
     public class BrandController : BaseController
     {
         private readonly IBrandService _brandService;
+        private readonly ICloudinaryService _cloudinaryService;
 
-        public BrandController(IBrandService brandService)
+        public BrandController(IBrandService brandService, ICloudinaryService cloudinaryService)
         {
             _brandService = brandService;
+            _cloudinaryService = cloudinaryService;
         }
 
         [HttpGet]
@@ -79,7 +82,7 @@ namespace FinalProjectAPI.Controllers.V1
                 var brand = _mapper.Map<UpdateBrandResource, Brand>(resource);
                 brand.ModifiedBy = _admin.Fullname;
                 await _brandService.UpdateBrand(id, brand);
-                return Ok(new { message = "Brend yeniləndi" });
+                return Ok(brand);
 
             }
             catch (HttpException e)
@@ -87,6 +90,7 @@ namespace FinalProjectAPI.Controllers.V1
                 return StatusCode(e.StatusCode, e.Response);
             }
         }
+    
 
         [HttpDelete]
         [Route("{id}")]
@@ -106,5 +110,22 @@ namespace FinalProjectAPI.Controllers.V1
             }
 
         }
+
+        [HttpDelete]
+        [Route("removeLogo")]
+        [TypeFilter(typeof(AdminAuth))]
+
+
+        public IActionResult RemoveUploadedPhoto([FromQuery] string name, [FromQuery] int? id)
+        {
+            _cloudinaryService.Delete(name);
+            if (id!= null)
+            {
+                _brandService.RemoveBrandLogo((int)id);
+            }
+            return Ok(new { message = "Şəkil silindi" });
+        }
+
+
     }
 }

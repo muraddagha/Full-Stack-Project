@@ -15,5 +15,8 @@ namespace FinalProjectAPI.Resource.Brand
         [Required]
         [MaxLength(200)]
         public string Logo { get; set; }
+
+        [MaxLength(200)]
+        public string FileName { get; set; }
     }
 }

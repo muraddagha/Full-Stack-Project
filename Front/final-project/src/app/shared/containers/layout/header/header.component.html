@@ -30,7 +30,7 @@
                                         <div class="search-btn">
                                             <i class="ti ti-search"></i>
                                         </div>
-                                        <input type="text" placeholder="Search for course, skills and Videos">
+                                        <input type="text" placeholder="Axtarış edin, məsələn Iphone X">
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                                     <span class="menu-icon-bar"></span>
                                     <span class="menu-icon-bar"></span>
                                 </span>
-                                <span> All Categories</span>
+                                <span> Kateqoriyalar</span>
                                 <fa-icon class="chevron" [icon]="chevron"></fa-icon>
                             </div>
                             <div [ngClass]="{'categories-active':category}" class="categories-dropdown">
@@ -87,7 +87,7 @@
                                         </span>
                                         <ul *ngIf="department.categories.length>0" class="categories-sub-menu">
                                             <li *ngFor="let category of department.categories">
-                                                <a [routerLink]="['/app/product',category.id]">
+                                                <a [routerLink]="['/app/category',category.id]">
                                                     {{category.name}}
                                                 </a>
                                             </li>
@@ -98,10 +98,10 @@
                         </div>
                         <div class="menu-content">
                             <ul class="d-flex">
-                                <li><a class="active-menu" [routerLink]="['']">Home</a></li>
+                                <li><a class="active-menu" [routerLink]="['']">Ana Səhifə</a></li>
                                 <li>
                                     <a [routerLink]="['/app/new-arrivals']">
-                                        New Arrivals
+                                        Yeni Gələnlər
                                         <fa-icon class="chevron" [icon]="chevron"></fa-icon>
                                     </a>
                                     <div class="sub-menu content-menu-dropdown">
@@ -173,8 +173,8 @@
                                         </ul>
                                     </div>
                                 </li>
-                                <li><a [routerLink]="['/app/trending']">Trending</a></li>
-                                <li><a [routerLink]="['/app/hot-deals']"> Hot Deals </a></li>
+                                <li><a [routerLink]="['/app/trending']">Trend</a></li>
+                                <li><a [routerLink]="['/app/hot-deals']"> Ən Yaxşı Təkliflər </a></li>
                                 <li>
                                     <a href="">
                                         Pages
@@ -186,10 +186,10 @@
                                         <li><a href="">About</a></li>
                                     </ul>
                                 </li>
-                                <li><a [routerLink]="['/app/contact']">Contact</a></li>
+                                <li><a [routerLink]="['/app/contact']">Əlaqə</a></li>
                             </ul>
                         </div>
-                        <span class="ads">Clearance <span>Up to 30% Off</span></span>
+                        <span class="ads"> Yeni <span>30%-ə qədər endirimlər</span></span>
                         <a href="#" [ngClass]="{'clicked':toggle}" (click)="menuBtn($event)" class="menu-btn">
                             <span class="menu-icon-bar"></span>
                             <span class="menu-icon-bar"></span>
@@ -203,7 +203,7 @@
                                 <div class="search-btn">
                                     <i class="ti ti-search"></i>
                                 </div>
-                                <input type="text" placeholder="Search for course, skills and Videos">
+                                <input type="text" placeholder="Axtarış edin, məsələn Iphone X">
                             </div>
                         </div>
                     </div>
