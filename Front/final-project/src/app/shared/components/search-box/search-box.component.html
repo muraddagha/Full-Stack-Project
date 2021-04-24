@@ -1,0 +1,16 @@
+<div class="search-box d-flex">
+    <div class="search-btn">
+        <i class="ti ti-search"></i>
+    </div>
+    <input (keyup)="search($event)" type="text" placeholder="Axtarış edin, məsələn Iphone X">
+    <ul *ngIf="founded.length>0" class="founded-products">
+        <li *ngFor="let product of founded">
+            <div>
+                <a [routerLink]="['/app/product',this.product.id]">
+                    <img src="{{product.photos[0]}}" alt="Axtarış şəkili">
+                    <span>{{product.name}} </span>
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>

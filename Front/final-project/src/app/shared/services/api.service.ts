@@ -21,6 +21,9 @@ export class ApiService {
   //#endregion
 
   //#region Product
+  public getAllProducts(): Observable<IProductResponse> {
+    return this.http.get<IProductResponse>(environment.apiUrl + `product/products`)
+  }
   public getNewArrivalsProductsByDepartmentId(limit: number, id: any): Observable<IProductResponse> {
     return this.http.get<IProductResponse>(environment.apiUrl + `product/new-arrivalsByDepartment?limit=${limit}&departmentId=${id}`)
   }

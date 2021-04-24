@@ -1,0 +1,6 @@
+<a [routerLink]="['/app/cart']">
+    <div class="icon">
+        <img src="/assets/icons/cart.svg" alt="">
+        <span *ngIf="basket?.length>0" class="count">{{basket.length}}</span>
+    </div>
+</a>

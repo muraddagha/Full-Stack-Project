@@ -15,10 +15,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let item of basket">
                                 <td>
                                     <div class="product-area d-flex align-items-center">
-                                        <a href="#" class="close_icon">
+                                        <a (click)="removeBasketItem($event,item.product.id)" href="#"
+                                            class="close_icon">
                                             <svg id="icon3" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 viewBox="0 0 16 16">
                                                 <path data-name="Path 174" d="M0,0H16V16H0Z" fill="none"></path>
@@ -28,59 +29,30 @@
                                             </svg>
                                         </a>
                                         <div class="product-img">
-                                            <img src="/assets/icons/testp.png" alt="">
+                                            <img src="{{item.product.photos[0]}}" alt="">
                                         </div>
 
-                                        <span> Xbox 360 Joystick</span>
+                                        <span> {{item.product.name}}</span>
                                     </div>
                                 </td>
                                 <td class="product-price ">
-                                    150 ₼
+                                    {{item.product.price}} ₼
                                 </td>
                                 <td>
                                     <div class="quantity">
-                                        <a href="#" class="minus single-item-count"><i class="ti ti-minus"></i></a>
-                                        <input id="quantity-input" class="single-item-count" type="text" value="1">
-                                        <a href="#" class="plus single-item-count"><i class="ti ti-plus"></i></a>
+                                        <a (click)="increase($event,item.product)" href="#"
+                                            class="minus single-item-count"><i class="ti ti-minus"></i></a>
+                                        <input id="quantity-input" class="single-item-count" type="text"
+                                            value="{{item.count}}">
+                                        <a (click)="decrease($event,item.product)" href="#"
+                                            class="plus single-item-count"><i class="ti ti-plus"></i></a>
                                     </div>
                                 </td>
                                 <td class="total-price">
                                     150 ₼
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <div class="product-area d-flex align-items-center">
-                                        <a href="#" class="close_icon">
-                                            <svg id="icon3" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                viewBox="0 0 16 16">
-                                                <path data-name="Path 174" d="M0,0H16V16H0Z" fill="none"></path>
-                                                <path data-name="Path 175"
-                                                    d="M14.95,6l-1-1L9.975,8.973,6,5,5,6,8.973,9.975,5,13.948l1,1,3.973-3.973,3.973,3.973,1-1L10.977,9.975Z"
-                                                    transform="translate(-1.975 -1.975)" fill="#fb1159"></path>
-                                            </svg>
-                                        </a>
-                                        <div class="product-img">
-                                            <img src="/assets/icons/testp.png" alt="">
-                                        </div>
 
-                                        <span> Xbox 360 Joystick</span>
-                                    </div>
-                                </td>
-                                <td class="product-price ">
-                                    150 ₼
-                                </td>
-                                <td>
-                                    <div class="quantity">
-                                        <a href="#" class="minus single-item-count"><i class="ti ti-minus"></i></a>
-                                        <input id="quantity-input" class="single-item-count" type="text" value="1">
-                                        <a href="#" class="plus single-item-count"><i class="ti ti-plus"></i></a>
-                                    </div>
-                                </td>
-                                <td class="total-price">
-                                    150 ₼
-                                </td>
-                            </tr>
                         </tbody>
                         <tfoot>
                             <tr>

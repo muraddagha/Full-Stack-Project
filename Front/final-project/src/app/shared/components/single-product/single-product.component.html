@@ -30,5 +30,5 @@
         </h6>
         <span class="price">{{product?.price}} ₼</span>
     </div>
-    <a class="add-cart-area" href="#">Səbətə At</a>
+    <a (click)="addToBasket($event,product)" class="add-cart-area" href="#">Səbətə At</a>
 </div>

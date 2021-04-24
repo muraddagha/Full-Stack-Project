@@ -26,12 +26,7 @@
                                     </div>
                                 </div>
                                 <div class="search-box-area navbar-search-box">
-                                    <div class="search-box d-flex">
-                                        <div class="search-btn">
-                                            <i class="ti ti-search"></i>
-                                        </div>
-                                        <input type="text" placeholder="Axtarış edin, məsələn Iphone X">
-                                    </div>
+                                    <app-search-box></app-search-box>
                                 </div>
                             </div>
                             <div class="header-actions d-flex ">
@@ -45,12 +40,7 @@
                                     </div>
 
                                 </a>
-                                <a [routerLink]="['/app/cart']">
-                                    <div class="icon">
-                                        <img src="/assets/icons/cart.svg" alt="">
-                                        <span class="count">2</span>
-                                    </div>
-                                </a>
+                                <app-basket></app-basket>
                             </div>
                         </div>
 
@@ -198,14 +188,7 @@
 
                     </div>
                     <div class="search-box-main-top">
-                        <div class="search-box-area">
-                            <div class="search-box d-flex">
-                                <div class="search-btn">
-                                    <i class="ti ti-search"></i>
-                                </div>
-                                <input type="text" placeholder="Axtarış edin, məsələn Iphone X">
-                            </div>
-                        </div>
+                        <app-search-box></app-search-box>
                     </div>
                 </div>
                 <div [ngClass]="{'mobile-active':toggle}" class="mobile-menu">

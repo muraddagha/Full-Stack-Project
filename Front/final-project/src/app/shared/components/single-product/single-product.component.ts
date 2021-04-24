@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { IProduct } from '../../models/product/product.model';
+import { BasketService } from '../../services/basket.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class SingleProductComponent implements OnInit {
   star = faStar;
   @Input() product: IProduct;
 
-  constructor() { }
+  constructor(private basketService: BasketService) { }
 
   ngOnInit(): void {
   }
@@ -30,6 +31,11 @@ export class SingleProductComponent implements OnInit {
       star.push(i)
     }
     return star;
+  }
+
+  public addToBasket($event, product: IProduct): void {
+    $event.preventDefault();
+    this.basketService.addToBasket(product)
   }
 
 }

@@ -519,26 +519,6 @@ ul {
   width: 65%;
   // margin: 0 47px;
   margin-left: 25px;
-  .search-box {
-    border: 1px solid $color-border;
-    height: 50px;
-    align-items: center;
-    border-radius: 5px;
-    .search-btn {
-      padding: 0 6px 0 20px;
-      color: $color-pink;
-    }
-    input {
-      width: 100%;
-      border: none;
-      &:focus {
-        outline: none;
-      }
-      &::-webkit-input-placeholder {
-        font-size: 13px;
-      }
-    }
-  }
 }
 .search-box-main-top {
   display: none;

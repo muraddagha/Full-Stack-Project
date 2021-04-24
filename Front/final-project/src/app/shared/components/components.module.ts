@@ -13,6 +13,8 @@ import { FilterComponent } from './filter/filter.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { FormsModule } from '@angular/forms';
 import { PaginationComponent } from './pagination/pagination.component';
+import { SearchBoxComponent } from './search-box/search-box.component';
+import { BasketComponent } from './basket/basket.component';
 
 
 
@@ -27,6 +29,8 @@ import { PaginationComponent } from './pagination/pagination.component';
     BreadcrumbComponent,
     FilterComponent,
     PaginationComponent,
+    SearchBoxComponent,
+    BasketComponent,
   ],
   imports: [
     CommonModule,
@@ -44,7 +48,9 @@ import { PaginationComponent } from './pagination/pagination.component';
     AdsBannerComponent,
     BreadcrumbComponent,
     FilterComponent,
-    PaginationComponent
+    PaginationComponent,
+    SearchBoxComponent,
+    BasketComponent
   ]
 })
 export class ComponentsModule { }

@@ -1,0 +1,21 @@
+@import "/src/assets/scss/variables";
+
+a {
+  margin: 0 20px;
+  color: white;
+  .icon {
+    position: relative;
+    .count {
+      background-color: $color-pink;
+      border-radius: 50%;
+      width: 15px;
+      flex-shrink: -5px;
+      height: 15px;
+      position: absolute;
+      font-size: 10px;
+      text-align: center;
+      left: 16px;
+      top: -2px;
+    }
+  }
+}
