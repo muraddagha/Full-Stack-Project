@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { IProduct } from 'src/app/shared/models/product/product.model';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-shop-details',
@@ -6,10 +9,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shop-details.component.scss']
 })
 export class ShopDetailsComponent implements OnInit {
-
-  constructor() { }
+  public product: IProduct;
+  constructor(private apiService: ApiService,
+    private activeRoute: ActivatedRoute,
+    private elem: ElementRef
+  ) { }
 
   ngOnInit(): void {
+    this.getProduct();
+  }
+
+  public getProduct(): void {
+    let id = this.activeRoute.snapshot.paramMap.get('id');
+    this.apiService.getProductById(id).subscribe(res => {
+      this.product = res;
+    })
+  }
+
+  public changeColor(element: Renderer2): void {
+
   }
 
 }

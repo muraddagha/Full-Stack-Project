@@ -23,7 +23,6 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     NgSelectModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

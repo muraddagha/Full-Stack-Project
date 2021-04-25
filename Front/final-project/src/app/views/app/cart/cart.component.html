@@ -1,4 +1,4 @@
-<app-breadcrumb></app-breadcrumb>
+<app-breadcrumb [title]=" 'Səbət' "></app-breadcrumb>
 <section id="shopping-cart">
     <div class="container">
         <div class="row">
@@ -40,16 +40,16 @@
                                 </td>
                                 <td>
                                     <div class="quantity">
-                                        <a (click)="increase($event,item.product)" href="#"
+                                        <a *ngIf="item.count>1" (click)="decrease($event,item.product)" href="#"
                                             class="minus single-item-count"><i class="ti ti-minus"></i></a>
-                                        <input id="quantity-input" class="single-item-count" type="text"
+                                        <input disabled class="single-item-count quantity-input" type="text"
                                             value="{{item.count}}">
-                                        <a (click)="decrease($event,item.product)" href="#"
+                                        <a (click)="increase($event,item.product)" href="#"
                                             class="plus single-item-count"><i class="ti ti-plus"></i></a>
                                     </div>
                                 </td>
                                 <td class="total-price">
-                                    150 ₼
+                                    {{item.count |totalProductPrice :item.product.price}} ₼
                                 </td>
                             </tr>
 
@@ -78,7 +78,7 @@
                     <table class="table total-table">
                         <tr>
                             <td>Cəm</td>
-                            <td>$12,000.00</td>
+                            <td>{{basket|totalPrice}} ₼</td>
                         </tr>
                     </table>
                     <button class="btn btn-pink">Sifarişi Göndər</button>

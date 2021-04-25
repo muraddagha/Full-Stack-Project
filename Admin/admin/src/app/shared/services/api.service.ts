@@ -62,7 +62,7 @@ export class ApiService {
     return this.http.get<IProductResponse>(environment.apiUrl + `product/all`)
   }
   public getProductById(id): Observable<IProduct> {
-    return this.http.get<IProduct>(environment.apiUrl + `product/${id}`)
+    return this.http.get<IProduct>(environment.apiUrl + `product/admin/${id}`)
   }
   public createProduct(data: any) {
     return this.http.post(environment.apiUrl + `product/create`, data)

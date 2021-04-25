@@ -40,8 +40,6 @@ export class HeaderComponent implements OnInit {
       }
   }
 
-
-
   public menuBtn($event): void {
     $event.preventDefault();
     this.toggle = !this.toggle;
@@ -49,9 +47,6 @@ export class HeaderComponent implements OnInit {
   ngAfterViewInit(): void {
 
     // this.addDropActive()
-
-
-
     this.fixedNavbar();
   }
   private fixedNavbar(): void {

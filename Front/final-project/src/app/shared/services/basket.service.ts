@@ -37,12 +37,15 @@ export class BasketService {
 
   }
   public removeBasket(id: number): void {
-    this.basket = this.basket.filter(a => a.product.id != id)
-    localStorage.setItem('basket', JSON.stringify(this.basket));
-    if (this.basket.length == 0) {
-      localStorage.removeItem('basket');
+    if (confirm("Əminsinizmi?")) {
+      this.basket = this.basket.filter(a => a.product.id != id)
+      localStorage.setItem('basket', JSON.stringify(this.basket));
+      if (this.basket.length == 0) {
+        localStorage.removeItem('basket');
+      }
+      this.isChanged.next(true);
     }
-    this.isChanged.next(true);
+
   }
 
   public increase(product: IProduct): void {

@@ -22,10 +22,15 @@ import { NewArrivalsComponent } from './new-arrivals/new-arrivals.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { ContainersModule } from 'src/app/shared/containers/containers.module';
+import { TotalPricePipe } from 'src/app/shared/pipes/total-price.pipe';
+import { TotalProductPricePipe } from 'src/app/shared/pipes/total-product-price.pipe';
 
 
 
 @NgModule({
+  providers: [TotalPricePipe,
+    TotalProductPricePipe,
+  ],
   declarations: [
     AppComponent,
     HomeComponent,
@@ -39,7 +44,9 @@ import { ContainersModule } from 'src/app/shared/containers/containers.module';
     TrendingComponent,
     HotDealsComponent,
     NewArrivalsComponent,
-    WishlistComponent
+    WishlistComponent,
+    TotalPricePipe,
+    TotalProductPricePipe
   ],
   imports: [
     CommonModule,

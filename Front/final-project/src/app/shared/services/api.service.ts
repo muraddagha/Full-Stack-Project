@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IProduct } from '../models/product/product.model';
 import { IBrandResponse } from '../models/response/brand-response.model';
 import { IDepartmentResponse } from '../models/response/department-response.model';
 import { IProductResponse } from '../models/response/product-response.model';
@@ -21,6 +22,9 @@ export class ApiService {
   //#endregion
 
   //#region Product
+  public getProductById(id: any): Observable<IProduct> {
+    return this.http.get<IProduct>(environment.apiUrl + `product/${id}`)
+  }
   public getAllProducts(): Observable<IProductResponse> {
     return this.http.get<IProductResponse>(environment.apiUrl + `product/products`)
   }

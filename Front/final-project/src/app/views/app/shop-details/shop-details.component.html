@@ -1,1 +1,68 @@
-<p>shop-details works!</p>
+<app-breadcrumb [title]="product?.name"></app-breadcrumb>
+<section id="product-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="product-photos">
+                    <a href="#">
+                        <img *ngFor="let photos of product?.photos" src="{{photos}}" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="details-content">
+                    <div class="product-details-header">
+                        <span [ngClass]="{'bg-danger':!product?.inStock}" class="my-badge">In Stock</span>
+                        <h3>{{product?.name}}</h3>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(6 rəy)</span>
+                        </div>
+                    </div>
+                    <div class="product-details-body">
+                        <p>
+                            {{product?.description}}
+                        </p>
+                        <div class="product-option" *ngFor="let option of product?.options">
+                            <span class="option-title">{{option.title}}:</span>
+                            <span class="option-value" *ngFor="let item of option.productOptionItems">
+                                <label *ngIf="item.name== 'Rəng' " class="color-filter">
+                                    <input type="radio" name="color-filter">
+                                    <span [ngClass]="{'yellow':item.value=='Sarı','black':item.value=='Qara'}"
+                                        class="checkmark-color"></span>
+                                </label>
+                                <ul *ngIf="item.name== 'Yaddaş' " class="memory">
+                                    <li #memory id="memory" (click)="changeColor(memory)">
+                                        {{item.value}}
+                                    </li>
+                                </ul>
+                            </span>
+                        </div>
+                        <button class="btn btn-pink">Səbətə at</button>
+                        <a href="#" class="favorit">
+                            <i class="far fa-heart">Sevimlilərə əlavə et</i>
+                        </a>
+                    </div>
+                    <div class="product-details-footer">
+                        <div class="detail">
+                            <span class="detail-name">Kateqoriya</span>
+                            <span>{{product?.category.name}}</span>
+                        </div>
+                        <div class="detail">
+                            <span class="detail-name">Sku</span>
+                            <span>{{product?.sku}}</span>
+                        </div>
+                        <div class="detail">
+                            <span class="detail-name">Brend</span>
+                            <span>{{product?.brand.name}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -47,8 +47,9 @@
       }
     }
     .quantity {
-      // border: 1px solid $color-border;
-      // width: 150px;
+      .minus {
+        border-right: 0 !important;
+      }
       .single-item-count {
         width: 40px;
         height: 41px;
@@ -67,7 +68,7 @@
       a {
         text-decoration: none;
       }
-      #quantity-input {
+      .quantity-input {
         cursor: text;
         width: 60px;
         background: #fff;
@@ -76,7 +77,6 @@
         font-family: "Jost", sans-serif;
         font-size: 16px;
         border-right: 0;
-        border-left: 0;
         &:focus {
           outline: none;
         }

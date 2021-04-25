@@ -34,18 +34,4 @@ export class BasketComponent implements OnInit {
     $event.preventDefault();
     this.basketService.removeBasket(id);
   }
-  public increase($event, product: IProduct): void {
-    $event.preventDefault();
-    this.basketService.increase(product)
-    this.basketService.isChanged.next(true);
-    this.getBaskets();
-  }
-
-  public decrease($event, product: IProduct): void {
-    $event.preventDefault();
-    this.basketService.decrease(product)
-    this.basketService.isChanged.next(true);
-    this.getBaskets();
-  }
-
 }
