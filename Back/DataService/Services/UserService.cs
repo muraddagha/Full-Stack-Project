@@ -15,6 +15,7 @@ namespace DataService.Services
         Task<User> Register(User user);
         Task<User> Login(string email, string password);
         Task RecoveryPassword(string forgetPasswordToken,string password);
+        Task<User> CheckToken(string token);
     }
     public class UserService : IUserService
     {
@@ -23,6 +24,12 @@ namespace DataService.Services
         {
             _context = context;
         }
+
+        public async Task<User> CheckToken(string token)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Token == token);
+        }
+
         public async Task<User> Login(string email, string password)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);

@@ -19,5 +19,8 @@ namespace DataService.Data.Entities
         [Required]
         [MaxLength(500)]
         public string Review { get; set; }
+
+        public User User { get; set; }
+        public Product Product { get; set; }
     }
 }

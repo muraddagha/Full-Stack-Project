@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataService.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,5 +13,8 @@ namespace FinalProjectAPI.Resource.AuthResource
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Token { get; set; }
+        public ICollection<UserAdressResource> Adresses { get; set; }
+        public ICollection<OrderListResource> OrderLists { get; set; }
+
     }
 }

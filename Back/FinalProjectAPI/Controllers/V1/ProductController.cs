@@ -32,6 +32,16 @@ namespace FinalProjectAPI.Controllers.V1
         }
 
         [HttpGet]
+        [Route("Products")]
+
+        public async Task<IActionResult> GetProducts()
+        {
+            var products = await _productService.GetProducts();
+            var productResource = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
+            return Ok(new { products = productResource });
+        }
+
+        [HttpGet]
         [Route("All")]
 
         public async Task<IActionResult> GetAllProducts()
@@ -45,6 +55,17 @@ namespace FinalProjectAPI.Controllers.V1
         [Route("{id}")]
 
         public async Task<IActionResult> GetProductById([FromRoute] int id)
+        {
+            var product = await _productService.GetProductById(id);
+            var productResource = _mapper.Map<Product,ProductDetailsResource>(product);
+            return Ok(productResource);
+        }
+
+        [HttpGet]
+        [Route("Admin/{id}")]
+        [TypeFilter(typeof(AdminAuth))]
+
+        public async Task<IActionResult> GetAdminProductById([FromRoute] int id)
         {
             var product = await _productService.GetProductById(id);
             var productResource = _mapper.Map<Product, AdminProductResource>(product);
@@ -198,6 +219,27 @@ namespace FinalProjectAPI.Controllers.V1
         public async Task<IActionResult> GetNewArrivalsProducts([FromQuery] int limit,[FromQuery] ProductListing order)
         {
             var products = await _productService.GetNewArrivalsProducts(limit,order);
+            var productResource = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
+            return Ok(new { products = productResource });
+        }
+
+
+        [HttpGet]
+        [Route("trend")]
+
+        public async Task<IActionResult> GetTrendProducts([FromQuery] int limit, [FromQuery] ProductListing order)
+        {
+            var products = await _productService.GetTrendProducts(limit, order);
+            var productResource = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
+            return Ok(new { products = productResource });
+        }
+
+        [HttpGet]
+        [Route("hot-deal")]
+
+        public async Task<IActionResult> GetHotDealProducts([FromQuery] int limit, [FromQuery] ProductListing order)
+        {
+            var products = await _productService.GetHotDealProducts(limit, order);
             var productResource = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
             return Ok(new { products = productResource });
         }

@@ -47,6 +47,12 @@ namespace FinalProjectAPI.Infrastructure.Mapping
             CreateMap<CreateOptionItemResource, ProductOptionItem>();
             CreateMap<UpdateOptionResource, ProductOption>();
             CreateMap<UpdateOptionItemResource, ProductOptionItem>();
+            CreateMap<CreateProductReviewResource, ProductReview>();
+            CreateMap<ProductReview, ProductReviewResource>().ForMember(d => d.User, opt => opt.MapFrom(user => user.User.Name+" "+user.User.Surname))
+                                                             .ForMember(d=>d.AddedDate,opt=>opt.MapFrom(day=>day.AddedDate.ToString("dd-MM-yyyy")));
+            CreateMap<UserAdress,UserAdressResource>();
+            CreateMap<OrderList, OrderListResource>();
+            CreateMap<OrderItem, OrderItemResource>();
 
             //Categroy
             CreateMap<Category, CategoryResource>();
@@ -58,7 +64,6 @@ namespace FinalProjectAPI.Infrastructure.Mapping
             CreateMap<Department, AdminDepartmentResource>();
             CreateMap<CreateDepartmentResource, Department>();
             CreateMap<UpdateDepartmentResource, Department>();
-
 
             //Brand
             CreateMap<Brand, BrandResource>();

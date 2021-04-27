@@ -83,7 +83,6 @@ namespace FinalProjectAPI.Controllers.V1
                 brand.ModifiedBy = _admin.Fullname;
                 await _brandService.UpdateBrand(id, brand);
                 return Ok(brand);
-
             }
             catch (HttpException e)
             {
@@ -95,8 +94,6 @@ namespace FinalProjectAPI.Controllers.V1
         [HttpDelete]
         [Route("{id}")]
         [TypeFilter(typeof(AdminAuth))]
-
-
         public async Task<IActionResult> RemoveBrand([FromRoute] int id)
         {
             try

@@ -25,6 +25,7 @@ namespace DataService.Services.ShoppingServices
         Task<Product> CreateProduct(Product product);
         Task UpdateProduct(int id,Product product);
         Task RemoveProduct(int id);
+        Task<IEnumerable<Product>> GetProducts();
         void ProductListBy(IEnumerable<Product> products, ProductListing order);
         Task<int> GetProductsCount();
         void RemovePhotoById(int? id);
@@ -115,6 +116,7 @@ namespace DataService.Services.ShoppingServices
                                                   .Include("Brand")
                                                   .Include("Options.ProductOptionItems")
                                                   .Include("Discounts.Discount")
+                                                  .Include("Reviews.User")
                                                   .FirstOrDefaultAsync(p=>p.Id==id);
 
             if (product == null) throw new HttpException(404, "Məhsul tapılmadı");
@@ -216,6 +218,13 @@ namespace DataService.Services.ShoppingServices
             updateProduct.ModifiedDate = DateTime.Now;
 
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Product>> GetProducts()
+        {
+            return await _context.Products.Include("Photos")
+                                          .Where(p => !p.SoftDeleted)
+                                          .ToListAsync();
         }
     }
 }

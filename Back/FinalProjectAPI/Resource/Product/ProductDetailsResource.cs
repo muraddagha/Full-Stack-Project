@@ -14,6 +14,7 @@ namespace FinalProjectAPI.Resource.Product
         public double Price { get; set; }
         public string Sku { get; set; }
         public string Description { get; set; }
+        public double StarCount { get; set; }
         public bool InStock { get; set; }
         public bool IsFeatured { get; set; }
         public bool IsTrend { get; set; }
@@ -24,6 +25,8 @@ namespace FinalProjectAPI.Resource.Product
         public ICollection<DiscountResource> Discounts { get; set; }
         public CategoryResource Category { get; set; }
         public ICollection<string> Photos { get; set; }
+        public ICollection<ProductReviewResource> Reviews { get; set; }
+
 
     }
 }
