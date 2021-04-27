@@ -30,9 +30,20 @@
                                 </div>
                             </div>
                             <div class="header-actions d-flex ">
-                                <a [routerLink]="['/app/account']">
+                                <a class="d-flex align-items-center login" *ngIf="user!=null"
+                                    [routerLink]="['/app/account']">
                                     <img src="/assets/icons/man.svg" alt="">
+                                    <span class="ms-1">{{user.name}}</span>
+                                    <div class="logout">
+                                        <a (click)="logout($event)" href="#">Hesabdan çıxılsın?</a>
+                                    </div>
                                 </a>
+                                <div *ngIf="user==null" class="login-register">
+                                    <a [routerLink]="['/auth/login']">
+                                        Daxil olun
+                                    </a>
+                                </div>
+
                                 <a id="hide-icon" [routerLink]="['/app/wishlist']">
                                     <div class="icon">
                                         <img src="/assets/icons/hert.svg" alt="">

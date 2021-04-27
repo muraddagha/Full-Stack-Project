@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -57,7 +57,7 @@ import { TotalProductPricePipe } from 'src/app/shared/pipes/total-product-price.
     ContainersModule,
     FormsModule,
     NgSelectModule,
-
+    ReactiveFormsModule,
   ]
 })
 export class AppModule { }

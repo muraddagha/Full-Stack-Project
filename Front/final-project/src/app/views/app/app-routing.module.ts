@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/shared/guards/auth.guard';
 import { AboutComponent } from './about/about.component';
 import { AppComponent } from './app.component';
 import { CartComponent } from './cart/cart.component';
@@ -20,7 +21,7 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'about', component: AboutComponent },
-      { path: 'account', loadChildren: () => import('./account/account.module').then(m => m.AccountModule) },
+      { path: 'account', loadChildren: () => import('./account/account.module').then(m => m.AccountModule), canActivate: [AuthGuard] },
       { path: 'cart', component: CartComponent },
       { path: 'category/:id', component: CategoriesComponent },
       { path: 'checkout', component: CheckoutComponent },

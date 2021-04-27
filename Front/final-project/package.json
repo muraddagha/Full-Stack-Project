@@ -23,6 +23,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@ng-select/ng-select": "^6.1.0",
+    "angular-notifier": "^9.0.1",
     "bootstrap": "^5.0.0-beta3",
     "ng5-slider": "^1.2.6",
     "ngx-owl-carousel-o": "^5.0.0",

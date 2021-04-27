@@ -12,23 +12,23 @@
             <div class="col-lg-5">
                 <div class="details-content">
                     <div class="product-details-header">
-                        <span [ngClass]="{'bg-danger':!product?.inStock}" class="my-badge">In Stock</span>
+                        <span *ngIf="product?.inStock" class="my-badge">Stokda</span>
+                        <span *ngIf="!product?.inStock" class="my-badge bg-danger">Bitib</span>
                         <h3>{{product?.name}}</h3>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <span>(6 rəy)</span>
+                        <div class="star mb-2">
+                            <i *ngFor="let star of starCount(product?.starCount)" class="fas fa-star"></i>
+                            <i *ngFor="let star of unratedStarCount(product?.starCount)"
+                                class="fas fa-star unrated"></i>
+                            <span>({{product?.reviews.length}} rəy)</span>
                         </div>
+                        <span class="new-price">{{product?.price}} ₼</span>
                     </div>
                     <div class="product-details-body">
                         <p>
                             {{product?.description}}
                         </p>
                         <div class="product-option" *ngFor="let option of product?.options">
-                            <span class="option-title">{{option.title}}:</span>
+                            <span class="details-title">{{option.title}}:</span>
                             <span class="option-value" *ngFor="let item of option.productOptionItems">
                                 <label *ngIf="item.name== 'Rəng' " class="color-filter">
                                     <input type="radio" name="color-filter">
@@ -36,29 +36,258 @@
                                         class="checkmark-color"></span>
                                 </label>
                                 <ul *ngIf="item.name== 'Yaddaş' " class="memory">
-                                    <li #memory id="memory" (click)="changeColor(memory)">
+                                    <li #memoryLi class="memory-li" (click)="changeColor(memoryLi)">
                                         {{item.value}}
                                     </li>
                                 </ul>
                             </span>
                         </div>
-                        <button class="btn btn-pink">Səbətə at</button>
-                        <a href="#" class="favorit">
-                            <i class="far fa-heart">Sevimlilərə əlavə et</i>
+                        <!-- <div class="quantity">
+                            <a *ngIf="item.count>1" (click)="decrease($event,item.product)" href="#"
+                                class="minus single-item-count"><i class="ti ti-minus"></i></a>
+                            <input disabled class="single-item-count quantity-input" type="text" value="{{item.count}}">
+                            <a (click)="increase($event,item.product)" href="#" class="plus single-item-count"><i
+                                    class="ti ti-plus"></i></a>
+                        </div> -->
+                        <button (click)="addToCart(product)" class="btn btn-pink">Səbətə at</button>
+                        <a href="#" class="favorite">
+                            <i class="far fa-heart"></i>
+                            Sevimlilərə əlavə et
                         </a>
                     </div>
                     <div class="product-details-footer">
                         <div class="detail">
-                            <span class="detail-name">Kateqoriya</span>
-                            <span>{{product?.category.name}}</span>
+                            <span class="details-title">Kateqoriya : </span>
+                            <span class="detail-name">{{product?.category.name}}</span>
                         </div>
                         <div class="detail">
-                            <span class="detail-name">Sku</span>
-                            <span>{{product?.sku}}</span>
+                            <span class="details-title">Sku : </span>
+                            <span class="detail-name">{{product?.sku}}</span>
                         </div>
                         <div class="detail">
-                            <span class="detail-name">Brend</span>
-                            <span>{{product?.brand.name}}</span>
+                            <span class="details-title">Brend : </span>
+                            <span class="detail-name">{{product?.brand.name}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="description-review-area">
+                    <ul class=" tab-buttons nav" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab"
+                                aria-selected="true">Təsvir</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="active" data-bs-toggle="tab" data-bs-target="#review" type="button" role="tab"
+                                aria-selected="false">Rəy (6)</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content mt-4" id="myTabContent">
+                        <div class="tab-pane fade" id="description" role="tabpanel">
+                            <p class="description">
+                                {{product?.description}}
+                            </p>
+                            <h3>Xüsusiyyətləri</h3>
+                            <div class="specs">
+                                <div class="detail">
+                                    <span class="details-title">Kateqoriya : </span>
+                                    <span class="detail-name">{{product?.category.name}}</span>
+                                </div>
+                                <div class="detail">
+                                    <span class="details-title">Sku : </span>
+                                    <span class="detail-name">{{product?.sku}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show active" id="review" role="tabpanel">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h3>Məhsul reytinqi</h3>
+                                        <div class="ratings">
+                                            <div class="rating-score">
+                                                <h4> 4.7</h4>
+                                                <div class="star mb-2">
+                                                    <i *ngFor="let star of starCount(product?.starCount)"
+                                                        class="fas fa-star"></i>
+                                                    <i *ngFor="let star of unratedStarCount(product?.starCount)"
+                                                        class="fas fa-star unrated"></i>
+                                                </div>
+                                            </div>
+                                            <div class="progress-bar-area">
+                                                <div class="single-progress-bar">
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar" style="width: 100%"
+                                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                                        </div>
+                                                    </div>
+                                                    <div class="rating-progress-bar">
+                                                        <div class="star">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <span>100%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="single-progress-bar">
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar" style="width: 80%"
+                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        </div>
+                                                    </div>
+                                                    <div class="rating-progress-bar">
+                                                        <div class="star">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star unrated"></i>
+                                                        </div>
+                                                        <span>80%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="single-progress-bar">
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar" style="width: 60%"
+                                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                                        </div>
+                                                    </div>
+                                                    <div class="rating-progress-bar">
+                                                        <div class="star">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star unrated"></i>
+                                                            <i class="fas fa-star unrated"></i>
+                                                        </div>
+                                                        <span>60%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="single-progress-bar">
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar" style="width: 40%"
+                                                            aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                                        </div>
+                                                    </div>
+                                                    <div class="rating-progress-bar">
+                                                        <div class="star">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star unrated"></i>
+                                                            <i class="fas fa-star unrated"></i>
+                                                            <i class="fas fa-star unrated"></i>
+                                                        </div>
+                                                        <span>40%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="single-progress-bar">
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar" style="width: 20%"
+                                                            aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                                        </div>
+                                                    </div>
+                                                    <div class="rating-progress-bar">
+                                                        <div class="star">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star unrated"></i>
+                                                            <i class="fas fa-star unrated"></i>
+                                                            <i class="fas fa-star unrated"></i>
+                                                            <i class="fas fa-star unrated"></i>
+                                                        </div>
+                                                        <span>20%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="single-progress-bar">
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar" style="width: 0%"
+                                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                                        </div>
+                                                    </div>
+                                                    <div class="rating-progress-bar">
+                                                        <div class="star">
+                                                            <i class="fas fa-star unrated"></i>
+                                                            <i class="fas fa-star unrated"></i>
+                                                            <i class="fas fa-star unrated"></i>
+                                                            <i class="fas fa-star unrated"></i>
+                                                            <i class="fas fa-star unrated"></i>
+                                                        </div>
+                                                        <span>20%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="user!=null" class="offset-lg-1 col-lg-5">
+                                        <h3 class="mb-1">Şərh yaz</h3>
+                                        <form [formGroup]="reviewForm" (ngSubmit)="create()">
+                                            <div class="form-group">
+                                                <div class="starrating risingstar d-flex flex-row-reverse">
+                                                    <input type="radio" id="star5" name="star" formControlName="star"
+                                                        value="5" /><label for="star5" title="5 star"></label>
+                                                    <input type="radio" id="star4" name="star" formControlName="star"
+                                                        value="4" /><label for="star4" title="4 star"></label>
+                                                    <input type="radio" id="star3" name="star" formControlName="star"
+                                                        value="3" /><label for="star3" title="3 star"></label>
+                                                    <input type="radio" id="star2" name="star" formControlName="star"
+                                                        value="2" /><label for="star2" title="2 star"></label>
+                                                    <input type="radio" id="star1" name="star" formControlName="star"
+                                                        value="1" /><label for="star1" title="1 star"></label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class=" mb-2"
+                                                    [ngClass]="{ 'is-invalid': submitted && f.review.errors }">Rəy
+                                                    <span class="text-danger">*</span>
+                                                </label>
+                                                <textarea cols="30" rows="10" class="form-control" name="review"
+                                                    formControlName="review"></textarea>
+                                                <div *ngIf="submitted && f.review.errors" class="text-danger">
+                                                    <div *ngIf="f.review.errors.required">Məhsul boş ola bilməz</div>
+                                                    <!-- <div *ngIf="f.review.errors.maxLenght">Məhsul adı maksimum 50 xarakter olmalıdır</div> -->
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-pink mt-3" type="submit">Göndər</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="review-area">
+                                    <h3>Rəylər</h3>
+                                    <div class="row">
+                                        <div class="col-lg-7">
+                                            <div *ngFor="let review of product?.reviews" class="review-content">
+                                                <div class="user-img">
+                                                    <img src="/assets/icons/user.png" alt="">
+                                                </div>
+                                                <div class="review-body">
+                                                    <h3 class="my-0">{{review.user}}</h3>
+                                                    <div class="star mb-2">
+                                                        <i *ngFor="let star of starCount(review.star)"
+                                                            class="fas fa-star"></i>
+                                                        <i *ngFor="let star of unratedStarCount(review.star )"
+                                                            class="fas fa-star unrated"></i>
+                                                        <span>{{review.addedDate}}</span>
+                                                    </div>
+                                                    <p>{{review.review}}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="also-like mt-5">
+                    <h3 class="main-title mt-5 mb-4">Oxşar Məhsullar</h3>
+                    <div class="row">
+                        <div class="col-md-6 col-xl-3 p-0" *ngFor="let product of products">
+                            <app-single-product [product]="product"></app-single-product>
                         </div>
                     </div>
                 </div>

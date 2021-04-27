@@ -3,7 +3,9 @@ import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/co
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { IDepartment } from 'src/app/shared/models/department.model';
+import { IUser } from 'src/app/shared/models/user.model';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -17,17 +19,24 @@ export class HeaderComponent implements OnInit {
   public category: boolean = false;
   public departments: IDepartment[] = [];
   public isCollapsed = false;
+  public user: IUser;
 
 
-
-  constructor(private elem: ElementRef, private apiService: ApiService) {
+  constructor(private elem: ElementRef, private apiService: ApiService, private authService: AuthService) {
     this.getDepartments();
+    this.authService.currentUser.subscribe(user => {
+      this.user = user;
+    })
   }
 
   ngOnInit(): void {
   }
 
 
+  public logout($event): void {
+    $event.preventDefault();
+    this.authService.logout();
+  }
   private getDepartments(): void {
     this.apiService.getDepartmentsWithCategory().subscribe(res => {
       this.departments = res.departments;

@@ -7,6 +7,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { RecoveryPasswordComponent } from './recovery-password/recovery-password.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { LayoutModule } from 'src/app/shared/containers/layout/layout.module';
 
 
 @NgModule({
@@ -19,7 +22,11 @@ import { RecoveryPasswordComponent } from './recovery-password/recovery-password
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    LayoutModule
   ]
 })
 export class AuthModule { }

@@ -2,6 +2,7 @@ import { IBrand } from "../brand.model";
 import { ICategory } from "../category.model";
 import { IOption } from "./product-option.model";
 import { IPhoto } from "./product-photo.model";
+import { IProductReview } from "./product-review.model";
 
 export interface IProduct {
     id: number;
@@ -20,4 +21,5 @@ export interface IProduct {
     brand: IBrand;
     photos: IPhoto[];
     options: IOption[];
+    reviews: IProductReview[];
 }

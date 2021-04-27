@@ -53,7 +53,6 @@ export class NewArrivalsContainerComponent implements OnInit {
   public getPhones(): void {
     this.apiService.getNewArrivalsProductsByDepartmentId(10, 1).subscribe(res => {
       this.phones = res.products;
-
     }, err => {
 
     },
@@ -61,6 +60,7 @@ export class NewArrivalsContainerComponent implements OnInit {
 
       })
   }
+
   public getLaptops(): void {
     this.apiService.getNewArrivalsProductsByDepartmentId(10, 4).subscribe(res => {
       this.laptops = res.products;
@@ -71,6 +71,7 @@ export class NewArrivalsContainerComponent implements OnInit {
 
       })
   }
+
   public getTvs(): void {
     this.apiService.getNewArrivalsProductsByDepartmentId(10, 2).subscribe(res => {
       this.tvs = res.products;
