@@ -13,7 +13,7 @@ namespace FinalProjectAPI.Resource.AuthResource
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Token { get; set; }
-        public ICollection<UserAdressResource> Adresses { get; set; }
+        public UserAdressResource Adress { get; set; }
         public ICollection<OrderListResource> OrderLists { get; set; }
 
     }

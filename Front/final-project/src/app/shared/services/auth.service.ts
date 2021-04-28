@@ -12,8 +12,8 @@ export class AuthService {
 
   constructor() {
     let user: IUser = null;
-    if (localStorage.getItem("admin") != null) {
-      user = JSON.parse(localStorage.getItem("admin")) as IUser;
+    if (localStorage.getItem("user") != null) {
+      user = JSON.parse(localStorage.getItem("user")) as IUser;
     }
     this.currentUserSubject = new BehaviorSubject<IUser>(user);
     this.currentUser = this.currentUserSubject.asObservable();
@@ -23,12 +23,12 @@ export class AuthService {
   }
 
   login(user: IUser): void {
-    localStorage.setItem('admin', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSubject.next(user);
   }
   logout(): void {
     if (confirm("Əminsiniz?")) {
-      localStorage.removeItem('admin');
+      localStorage.removeItem('user');
       this.currentUserSubject.next(null);
     }
   }

@@ -16,6 +16,7 @@ namespace DataService.Services
         Task<User> Login(string email, string password);
         Task RecoveryPassword(string forgetPasswordToken,string password);
         Task<User> CheckToken(string token);
+        Task<UserAdress> GetUserAdress(int id);
     }
     public class UserService : IUserService
     {
@@ -30,9 +31,18 @@ namespace DataService.Services
             return await _context.Users.FirstOrDefaultAsync(u => u.Token == token);
         }
 
+        public async Task<UserAdress> GetUserAdress(int id)
+        {
+            var user = await _context.Users.Include("Adress").FirstOrDefaultAsync(u => u.Id == id);
+            return user.Adress;
+                                       
+        }
+
         public async Task<User> Login(string email, string password)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            var user = await _context.Users.Include("Adress")
+                                           .Include("OrderLists.OrderList")
+                                           .FirstOrDefaultAsync(u => u.Email == email);
             if (user != null && CryptoHelper.Crypto.VerifyHashedPassword(user.Password, password)) return user;
             throw new HttpException(404, "E-poçt və ya şifrə yanlışdır");
         }
@@ -53,6 +63,7 @@ namespace DataService.Services
             await _context.AddAsync(user);
             await _context.SaveChangesAsync();
             return user;
+
         }
     }
 }

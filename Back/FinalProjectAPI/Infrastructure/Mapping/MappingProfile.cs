@@ -7,6 +7,7 @@ using FinalProjectAPI.Resource.DealOfDays;
 using FinalProjectAPI.Resource.Department;
 using FinalProjectAPI.Resource.Product;
 using FinalProjectAPI.Resource.ShopCollection;
+using FinalProjectAPI.Resource.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace FinalProjectAPI.Infrastructure.Mapping
             //User
             CreateMap<User, UserResource>();
             CreateMap<UserRegisterResource, User>();
+            CreateMap<UserAdress, AdressResource>();
 
             //Admin
             CreateMap<Admin, AdminResource>();

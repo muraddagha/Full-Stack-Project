@@ -32,7 +32,7 @@ namespace DataService.Data.Entities
 
         [MaxLength(200)]
         public string ForgetPasswordToken { get; set; }
-        public ICollection<UserAdress> Adress { get; set; }
+        public UserAdress Adress { get; set; }
         public ICollection<UserOrderList> OrderLists { get; set; }
     }
 }

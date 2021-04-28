@@ -17,6 +17,11 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  //#region User
+  public getUserAdress(): Observable<any> {
+    return this.http.get<any>(environment.apiUrl + `user/userAdress`)
+  }
+  //#endregion
   //#region Auth
   public login(data: any): Observable<IUser> {
     return this.http.post<IUser>(environment.apiUrl + `auth/login`, data);
