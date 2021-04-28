@@ -1,0 +1,118 @@
+@import "/src/assets/scss/variables";
+#checkout {
+  padding: 20px 0;
+  .btn {
+    float: right;
+  }
+  h3 {
+    text-align: center;
+    margin: 20px 0;
+  }
+  .order {
+    .order-list {
+      border-right: 1px dotted #e1e2e6;
+      .order-product-area {
+        .order-product {
+          display: flex;
+          align-items: center;
+          margin-right: 18px;
+          border-bottom: 1px dotted #e1e2e6;
+
+          img {
+            max-width: 100px;
+            margin-right: 20px;
+            margin-bottom: 25px;
+          }
+          .name-price {
+            p:last-child {
+              color: $color-pink-second;
+            }
+          }
+          margin-bottom: 20px;
+        }
+        .total-text {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          font-weight: 600;
+          margin-top: 25px;
+          p {
+            color: $color-pink;
+          }
+        }
+      }
+    }
+  }
+  .user-info-area {
+    margin-top: 30px;
+    border-bottom: 1px solid $color-border;
+    .user-info {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-top: 10px;
+      &:last-child {
+        margin-bottom: 25px;
+        span {
+          align-items: center;
+          p {
+            margin: 0;
+          }
+        }
+      }
+      span {
+        display: flex;
+        align-items: baseline;
+        p {
+          font-weight: 600;
+          font-size: 16px;
+        }
+        i {
+          margin-right: 10px;
+          color: $color-pink-second;
+        }
+      }
+      a {
+        font-weight: 600;
+        text-decoration: none;
+        color: $color-pink-second;
+      }
+    }
+  }
+  .payment-area {
+    display: flex;
+    justify-content: center;
+    .payment {
+      text-decoration: none;
+      color: black;
+      border: 1px solid #d8d8d8;
+      text-align: center;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      transition: 0.3s;
+      &:last-child {
+        border-left: 0;
+        border-top-right-radius: 5px;
+      }
+      &:first-child {
+        border-top-left-radius: 5px;
+        border-right: 0;
+      }
+      i {
+        margin-right: 10px;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+    .payment.active {
+      background-color: #888282;
+      color: white;
+      a {
+        color: white;
+      }
+    }
+  }
+}

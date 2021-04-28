@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IBasket } from 'src/app/shared/models/basket.model';
 import { IProduct } from 'src/app/shared/models/product/product.model';
+import { IUser } from 'src/app/shared/models/user.model';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { BasketService } from 'src/app/shared/services/basket.service';
 
 @Component({
@@ -10,7 +12,13 @@ import { BasketService } from 'src/app/shared/services/basket.service';
 })
 export class CartComponent implements OnInit {
   public basket: IBasket[] = [];
-  constructor(private basketService: BasketService) { }
+  public user: IUser;
+  constructor(private basketService: BasketService,
+    private authService: AuthService) {
+    this.authService.currentUser.subscribe(user => {
+      this.user = user;
+    })
+  }
 
   ngOnInit(): void {
     this.getBaskets();

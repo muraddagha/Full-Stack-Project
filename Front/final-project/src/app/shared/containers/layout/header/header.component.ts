@@ -61,10 +61,10 @@ export class HeaderComponent implements OnInit {
   private fixedNavbar(): void {
     let header = this.elem.nativeElement.querySelector("#header-navbar");
     window.addEventListener("scroll", (e) => {
-      if (window.scrollY > 403) {
+      if (window.scrollY > 140) {
         header.classList.add("header-fixed")
       }
-      else if (window.scrollY < 366) {
+      else if (window.scrollY < 96) {
         header.classList.remove("header-fixed")
       }
     })

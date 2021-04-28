@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/internal/operators';
 import { IUser } from 'src/app/shared/models/user.model';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -15,10 +16,12 @@ export class LoginComponent implements OnInit {
   public submitted: boolean = false;
   public loginForm: FormGroup;
   public user: IUser;
+  public previousUrl;
   constructor(private fb: FormBuilder,
     private apiService: ApiService,
     private authService: AuthService,
-    private router: Router) { }
+    private router: Router) {
+  }
 
   ngOnInit(): void {
     this.generateForm();

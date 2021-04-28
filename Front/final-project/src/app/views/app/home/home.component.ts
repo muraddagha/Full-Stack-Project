@@ -33,7 +33,6 @@ export class HomeComponent implements OnInit {
     nav: false,
   };
 
-
   constructor(private apiService: ApiService) {
 
   }

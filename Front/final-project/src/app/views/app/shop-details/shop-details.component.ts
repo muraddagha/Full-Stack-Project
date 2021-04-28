@@ -78,7 +78,6 @@ export class ShopDetailsComponent implements OnInit {
       })
     })
   }
-
   public changeColor(element): void {
     let ul = this.elem.nativeElement.querySelectorAll(".memory-li");
     ul.forEach(a => {
@@ -86,7 +85,6 @@ export class ShopDetailsComponent implements OnInit {
     })
     element.classList.toggle("active")
   }
-
   public starCount(count: number) {
     let star: number[] = [];
     for (var i = 1; i <= count; i++) {

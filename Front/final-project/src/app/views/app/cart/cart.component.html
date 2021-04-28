@@ -52,7 +52,6 @@
                                     {{item.count |totalProductPrice :item.product.price}} ₼
                                 </td>
                             </tr>
-
                         </tbody>
                         <tfoot>
                             <tr>
@@ -78,10 +77,12 @@
                     <table class="table total-table">
                         <tr>
                             <td>Cəm</td>
-                            <td>{{basket|totalPrice}} ₼</td>
+                            <td *ngIf="basket?.length>0">{{basket|totalPrice}} ₼</td>
                         </tr>
                     </table>
-                    <button class="btn btn-pink">Sifarişi Göndər</button>
+                    <a *ngIf="user!=null" [routerLink]="['/app/checkout']" class="btn btn-pink">Sifarişi Göndər</a>
+                    <a *ngIf="user==null" [routerLink]="['/auth/login']" class="btn btn-pink">Daxil Ol və Sifarişi
+                        rəsmiləşdir</a>
                 </div>
             </div>
         </div>

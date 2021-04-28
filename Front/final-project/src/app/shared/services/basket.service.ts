@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { NotifierService } from 'angular-notifier';
 import { BehaviorSubject } from 'rxjs';
 import { IBasket } from '../models/basket.model';
 import { IProduct } from '../models/product/product.model';
@@ -9,7 +10,7 @@ import { IProduct } from '../models/product/product.model';
 export class BasketService {
   public basket: IBasket[] = [];
   public isChanged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  constructor() { }
+  constructor(private notifier: NotifierService) { }
 
   public getBaskets(): any {
     if (localStorage.getItem('basket') != null) {
@@ -26,6 +27,7 @@ export class BasketService {
       this.basket.push({ count: 1, product: product });
       localStorage.setItem('basket', JSON.stringify(this.basket));
       this.isChanged.next(true);
+      this.notifier.notify("success", "Səbətə əlavə olundu")
     }
 
     if (prdouctIsExsist) {
@@ -33,6 +35,7 @@ export class BasketService {
       basket.map(a => a.count++);
       localStorage.setItem('basket', JSON.stringify(this.basket));
       this.isChanged.next(true);
+      this.notifier.notify("success", "Səbətə əlavə olundu")
     }
 
   }

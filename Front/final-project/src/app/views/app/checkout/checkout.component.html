@@ -1,1 +1,87 @@
-<p>checkout works!</p>
+<app-breadcrumb [title]=" 'Sifariş' "></app-breadcrumb>
+<section id="checkout">
+    <div class="container">
+        <div class="row">
+            <div class="offset-lg-1 col-lg-5">
+                <div class="order">
+                    <h3>Sifarişiniz</h3>
+                    <div class="order-list">
+                        <div class="order-product-area">
+                            <div *ngFor="let item of basket" class="order-product">
+                                <img src="{{item.product.photos[0]}}" alt="">
+                                <div class="name-price">
+                                    <p>{{item.product.name}}</p>
+                                    <p class="price">{{item.product.price}} ₼</p>
+                                </div>
+
+                            </div>
+                            <div class="total-text">
+                                <h6>Cəm</h6>
+                                <p class="price">{{basket|totalPrice}} ₼</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="offset-lg-1 col-lg-5">
+                <h3>Adres</h3>
+                <div class="user-info-area">
+                    <div class="user-info">
+                        <span>
+                            <i class="ti ti-location-pin"></i>
+                            <p>Xırdalan, Kristal Abşeron.</p>
+                        </span>
+                        <a href="#">Yenilə</a>
+                    </div>
+                    <div class="user-info">
+                        <span>
+                            <i class="ti ti-clipboard"></i>
+                            <p>Bu adresə göndəriləcək</p>
+                        </span>
+                        <a href="#">Yenilə</a>
+                    </div>
+                    <div class="user-info">
+                        <span>
+                            <i class="ti ti-headphone-alt"></i>
+                            <p>{{user?.phone}}</p>
+                        </span>
+                        <a href="#">Yenilə</a>
+                    </div>
+                    <div class="user-info">
+                        <span>
+                            <i class="ti ti-email"></i>
+                            <p>{{user?.email}}</p>
+                        </span>
+                        <a href="#">Yenilə</a>
+                    </div>
+                </div>
+                <h3 class="my-4">Ödəniş</h3>
+                <div class="payment-area mb-5">
+                    <label class="payment active">
+                        <input type="radio" name="payment" value="1" checked="">
+                        <span>
+                            <i class="ti ti-truck"></i>
+                            Yerində nağd ödəniş
+                        </span>
+                    </label>
+                    <label class="payment">
+                        <input type="radio" name="payment" value="2" checked="">
+                        <span>
+                            <i class="ti ti-credit-card"></i>
+                            <span>VISA / MASTERCARD</span>
+                        </span>
+                    </label>
+                    <!-- <a href="#" class="payment active">
+                        <i class="ti ti-truck"></i>
+                        <span>Yerində nağd ödəniş</span>
+                    </a> -->
+                    <!-- <a href="#" class="payment">
+                        <i class="ti ti-credit-card"></i>
+                        <span>VISA / MASTERCARD</span>
+                    </a> -->
+                </div>
+                <a href="#" class="btn btn-pink">Ödəniş Et</a>
+            </div>
+        </div>
+    </div>
+</section>
