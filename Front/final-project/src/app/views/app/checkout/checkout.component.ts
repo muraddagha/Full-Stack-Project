@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 import { IBasket } from 'src/app/shared/models/basket.model';
+import { ISaleProduct } from 'src/app/shared/models/product/saleItem.model';
 import { IUser } from 'src/app/shared/models/user.model';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -22,7 +24,8 @@ export class CheckoutComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private basketService: BasketService,
-    private elem: ElementRef) {
+    private elem: ElementRef,
+    private notifier: NotifierService,) {
     this.authService.currentUser.subscribe(user => {
       this.user = user;
     })
@@ -53,7 +56,31 @@ export class CheckoutComponent implements OnInit {
     // })
     // element.classList.toggle("active")
   }
+  public sale(): void {
+    let totalPrice = 0
+    this.basket.map(a => totalPrice += a.count * a.product.price);
+    let saleItemm: any[] = [];
 
+    for (let i = 0; i < this.basket.length; i++) {
+      saleItemm.push({
+        productId: this.basket[i].product.id,
+        count: this.basket[i].count,
+      })
+    }
+    let data = {
+      totalSalePrice: totalPrice,
+      saleItems: saleItemm
+    }
+
+    this.apiService.sale(data).subscribe(res => {
+    }, err => {
+
+    }, () => {
+      this.notifier.notify("success", "Sifarişiniz qəbul edildi")
+      this.basketService.removeBasketAll();
+      this.router.navigate([''])
+    })
+  }
   public getBaskets(): void {
     this.basket = this.basketService.getBaskets()
   }

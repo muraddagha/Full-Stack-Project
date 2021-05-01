@@ -1,0 +1,29 @@
+#account {
+  padding: 90px 0 70px 0;
+  .main-title {
+    margin-bottom: 40px;
+  }
+  .single-account-item {
+    border: 1px solid #f1f1f1;
+    padding: 50px 76px 45px 60px;
+    margin-bottom: 10px;
+    .icon {
+      margin-bottom: 17px;
+      display: flex;
+      align-items: center;
+      h4 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-left: 20px;
+      }
+    }
+
+    a {
+      float: right;
+      font-size: 14px;
+      font-weight: 500;
+      color: #fd1c5e;
+      text-decoration: none;
+    }
+  }
+}

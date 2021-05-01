@@ -32,7 +32,6 @@ export class CartComponent implements OnInit {
     this.basketService.isChanged.next(true);
     this.getBaskets();
   }
-
   public increase($event, product: IProduct): void {
     $event.preventDefault();
     this.basketService.increase(product)

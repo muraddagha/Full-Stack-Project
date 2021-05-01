@@ -17,11 +17,17 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  //#region Sale
+  public sale(data: any) {
+    return this.http.post(environment.apiUrl + `sale`, data);
+  }
+  //#endregion
   //#region User
   public getUserAdress(): Observable<any> {
     return this.http.get<any>(environment.apiUrl + `user/userAdress`)
   }
   //#endregion
+
   //#region Auth
   public login(data: any): Observable<IUser> {
     return this.http.post<IUser>(environment.apiUrl + `auth/login`, data);

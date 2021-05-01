@@ -50,7 +50,11 @@ export class BasketService {
     }
 
   }
-
+  public removeBasketAll(): void {
+    this.basket = []
+    localStorage.removeItem("basket");
+    this.isChanged.next(true);
+  }
   public increase(product: IProduct): void {
     let basket = this.basket.filter(value => value.product.id == product.id)
 
@@ -59,7 +63,6 @@ export class BasketService {
     this.isChanged.next(true);
 
   }
-
   public decrease(product: IProduct): void {
     let basket = this.basket.filter(value => value.product.id == product.id)
 

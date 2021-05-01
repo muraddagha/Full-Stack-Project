@@ -1,1 +1,52 @@
-<p>account works!</p>
+<app-breadcrumb [title]=" 'Hesab' "></app-breadcrumb>
+<section id="account">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h3 class="main-title">Mənim Hesabım</h3>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="single-account-item">
+                            <div class="icon">
+                                <img src="https://res.cloudinary.com/dyqcmbewn/image/upload/v1619693977/infixvuci/account-icon_r71khm.svg"
+                                    alt="order-icon">
+                                <h4>Mənim Sifarişlərim</h4>
+                            </div>
+                            <a [routerLink]="['/app/account/orders']">Sifarişlər »</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="single-account-item">
+                            <div class="icon">
+                                <img src="https://res.cloudinary.com/dyqcmbewn/image/upload/v1619694667/infixvuci/address_lm4vgx.svg"
+                                    alt="adres-icon">
+                                <h4>Adres</h4>
+                            </div>
+                            <a [routerLink]="['/app/account/adress']">Yenilə »</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="single-account-item">
+                            <div class="icon">
+                                <img src="https://res.cloudinary.com/dyqcmbewn/image/upload/v1619694765/infixvuci/account_g7hdot.svg"
+                                    alt="account-icon">
+                                <h4>Hesab məlumatları</h4>
+                            </div>
+                            <a [routerLink]="['/app/account/details']">Yenilə »</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="single-account-item">
+                            <div class="icon">
+                                <img src="https://res.cloudinary.com/dyqcmbewn/image/upload/v1619694854/infixvuci/support_o0yen7.svg"
+                                    alt="account-icon">
+                                <h4>Bizimlə əlaqə</h4>
+                            </div>
+                            <a [routerLink]="['/app/account/adress']">Dəstək mərkəzi »</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

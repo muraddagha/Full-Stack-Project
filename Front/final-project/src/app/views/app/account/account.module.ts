@@ -6,6 +6,8 @@ import { AccountComponent } from './account.component';
 import { AdressComponent } from './adress/adress.component';
 import { OrdersComponent } from './orders/orders.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { ContainersModule } from 'src/app/shared/containers/containers.module';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { AccountDetailsComponent } from './account-details/account-details.compo
   ],
   imports: [
     CommonModule,
-    AccountRoutingModule
+    AccountRoutingModule,
+    ComponentsModule,
+    ContainersModule
   ]
 })
 export class AccountModule { }

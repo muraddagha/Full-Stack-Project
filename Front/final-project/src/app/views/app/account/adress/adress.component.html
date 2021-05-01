@@ -1,1 +1,31 @@
-<p>adress works!</p>
+<app-breadcrumb [title]=" 'Adres' "></app-breadcrumb>
+<section id="adres">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <h3 class="main-title">Mənim Adresim</h3>
+                <div class="notify-text">
+                    <i class="ti-info-alt"></i>
+                    <p>Bu adres sifarişlərinizin göndəriləcək yeridir.</p>
+
+                </div>
+                <div class="user-info">
+                    <span>Ad, Soyad:</span>
+                    <p>{{user?.name +" "+ user.surname}}</p>
+                </div>
+                <div class="user-info">
+                    <span>E-poçt:</span>
+                    <p>{{user?.email}}</p>
+                </div>
+                <div class="user-info">
+                    <span>Telefon:</span>
+                    <p>{{user?.phone}}</p>
+                </div>
+                <div class="user-info">
+                    <span>Telefon:</span>
+                    <p>{{user?.phone}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

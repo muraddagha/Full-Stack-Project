@@ -6,6 +6,7 @@ using FinalProjectAPI.Resource.Category;
 using FinalProjectAPI.Resource.DealOfDays;
 using FinalProjectAPI.Resource.Department;
 using FinalProjectAPI.Resource.Product;
+using FinalProjectAPI.Resource.Sale;
 using FinalProjectAPI.Resource.ShopCollection;
 using FinalProjectAPI.Resource.User;
 using System;
@@ -26,6 +27,10 @@ namespace FinalProjectAPI.Infrastructure.Mapping
 
             //Admin
             CreateMap<Admin, AdminResource>();
+
+            //Sale
+            CreateMap<CreateSaleResource, Sale>();
+            CreateMap<SaleItemResource, SaleItem>();
 
             //Product
             CreateMap<Product, ProductResource>()
