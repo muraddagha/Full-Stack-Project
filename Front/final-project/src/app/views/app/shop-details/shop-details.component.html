@@ -42,13 +42,6 @@
                                 </ul>
                             </span>
                         </div>
-                        <!-- <div class="quantity">
-                            <a *ngIf="item.count>1" (click)="decrease($event,item.product)" href="#"
-                                class="minus single-item-count"><i class="ti ti-minus"></i></a>
-                            <input disabled class="single-item-count quantity-input" type="text" value="{{item.count}}">
-                            <a (click)="increase($event,item.product)" href="#" class="plus single-item-count"><i
-                                    class="ti ti-plus"></i></a>
-                        </div> -->
                         <button (click)="addToCart(product)" class="btn btn-pink">Səbətə at</button>
                         <a href="#" class="favorite">
                             <i class="far fa-heart"></i>
@@ -286,9 +279,12 @@
                 <div class="also-like mt-5">
                     <h3 class="main-title mt-5 mb-4">Oxşar Məhsullar</h3>
                     <div class="row">
-                        <div class="col-md-6 col-xl-3 p-0" *ngFor="let product of products">
-                            <app-single-product [product]="product"></app-single-product>
-                        </div>
+                        <ng-container *ngFor="let related of products">
+                            <div *ngIf="related.id!=product?.id" class="col-md-6 col-xl-3 p-0">
+                                <app-single-product [product]="related"></app-single-product>
+                            </div>
+                        </ng-container>
+
                     </div>
                 </div>
             </div>

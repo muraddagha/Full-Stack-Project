@@ -1,0 +1,75 @@
+<app-breadcrumb [title]=" 'Sifarişlər' "></app-breadcrumb>
+<section id="order-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="details-sidebar">
+                    <h3>Şəxsi Kabinet</h3>
+                    <ul>
+                        <li><a [routerLink]="['/app/account/adress']">Adres</a></li>
+                        <li><a [routerLink]="['/app/account/details']">Hesab Məlumatları</a></li>
+                        <li><a [routerLink]="['/app/contact']">Dəstək</a></li>
+                    </ul>
+                </div>
+                <div class="details-sidebar">
+                    <h3>Sifarişlərim</h3>
+                    <ul class="tab-buttons nav d-block" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="active" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab"
+                                aria-selected="true">Sifariş Məlumatları</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab"
+                                aria-selected="false">Sifarişlərim</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab"
+                                aria-selected="false">Çatmış Sifarişlər</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a data-bs-toggle="tab" data-bs-target="#tab4" type="button" role="tab"
+                                aria-selected="false">Gözləyən Sifarişlər</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                        <h3 class="mb-4 main-title">Sifariş Məlumatları</h3>
+                        <div class="row">
+                            <div class="col-lg-4" *ngFor="let item of orderList?.items">
+                                <div class="order-product-card">
+                                    <div class="img">
+                                        <img src="{{item.product.photos[0]}}" alt="">
+                                    </div>
+                                    <h6>{{item.product.name}}</h6>
+                                    <p>{{item.product.price}} ₼</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 ">
+                                <div class="order-details-info">
+                                    <div class="single-order-detail">
+                                        <span>Cəm: ({{orderList?.items.length}} məhsul)</span>
+                                        <p>{{orderList?.totalSalePrice}} ₼</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="tab2" role="tabpanel">
+                        <h3>Sifarişlər</h3>
+                        <app-order-list></app-order-list>
+                    </div>
+                    <div class="tab-pane fade" id="tab3" role="tabpanel">
+                        <h3>Çatmış Sifarişlər</h3>
+                    </div>
+                    <div class="tab-pane fade" id="tab4" role="tabpanel">
+                        <h3>GözlənilƏn Sifarişlər</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

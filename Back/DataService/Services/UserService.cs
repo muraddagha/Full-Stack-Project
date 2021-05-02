@@ -7,6 +7,7 @@ using DataService.Data.Entities;
 using DataService.Data;
 using Microsoft.EntityFrameworkCore;
 using DataService.Infrastructure.Exceptions;
+using DataService.Enums;
 
 namespace DataService.Services
 {
@@ -17,6 +18,10 @@ namespace DataService.Services
         Task RecoveryPassword(string forgetPasswordToken,string password);
         Task<User> CheckToken(string token);
         Task<UserAdress> GetUserAdress(int id);
+        Task<UserOrderList> AddUserOrderList(UserOrderList userOrderList);
+        Task<IEnumerable<UserOrderList>> GetUserOrderLists(int userId);
+        Task<UserOrderList> GetOrderListById(int userId, int id);
+        Task<IEnumerable<UserOrderList>> GetUserOrderListByStatus(int userId, OrderStatus status);
     }
     public class UserService : IUserService
     {
@@ -26,9 +31,24 @@ namespace DataService.Services
             _context = context;
         }
 
+        public async Task<UserOrderList> AddUserOrderList(UserOrderList userOrderList)
+        {
+            userOrderList.AddedDate = DateTime.Now;
+            await _context.UserOrderLists.AddAsync(userOrderList);
+            await _context.SaveChangesAsync();
+            return userOrderList;
+        }
+
         public async Task<User> CheckToken(string token)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Token == token);
+        }
+
+        public async Task<UserOrderList> GetOrderListById(int userId, int id)
+        {
+            var userOrderList = await _context.UserOrderLists.Include("Items.Product.Photos")
+                                                             .FirstOrDefaultAsync(u => u.UserId == userId && u.Id == id);
+            return userOrderList;
         }
 
         public async Task<UserAdress> GetUserAdress(int id)
@@ -38,10 +58,29 @@ namespace DataService.Services
                                        
         }
 
+        public async Task<IEnumerable<UserOrderList>> GetUserOrderListByStatus(int userId, OrderStatus status)
+        {
+            return await _context.UserOrderLists.Include("Items.Product")
+                                                            .Where(u => u.UserId == userId)
+                                                            .Where(u => u.Status == status)
+                                                            .Where(u=>!u.SoftDeleted)
+                                                            .ToListAsync();
+        }
+
+        public async Task<IEnumerable<UserOrderList>> GetUserOrderLists(int userId)
+        {
+                                           
+            return await _context.UserOrderLists.Include("Items.Product")
+                                                .Where(u => u.UserId == userId)
+                                                .Where(s => !s.SoftDeleted)
+                                                .ToListAsync();
+        }
+
+
+
         public async Task<User> Login(string email, string password)
         {
             var user = await _context.Users.Include("Adress")
-                                           .Include("OrderLists.OrderList")
                                            .FirstOrDefaultAsync(u => u.Email == email);
             if (user != null && CryptoHelper.Crypto.VerifyHashedPassword(user.Password, password)) return user;
             throw new HttpException(404, "E-poçt və ya şifrə yanlışdır");

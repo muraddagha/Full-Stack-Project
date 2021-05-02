@@ -12,6 +12,6 @@ namespace FinalProjectAPI.Resource.AuthResource
         public int OrderNo { get; set; }
         public DateTime OrderDate { get; set; }
         public OrderStatus Status { get; set; }
-        public ICollection<OrderItem> Items { get; set; }
+        public ICollection<UserOrderItem> Items { get; set; }
     }
 }

@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { PaginationComponent } from './pagination/pagination.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { BasketComponent } from './basket/basket.component';
+import { OrderListComponent } from './order-list/order-list.component';
 
 
 
@@ -31,6 +32,7 @@ import { BasketComponent } from './basket/basket.component';
     PaginationComponent,
     SearchBoxComponent,
     BasketComponent,
+    OrderListComponent,
   ],
   imports: [
     CommonModule,
@@ -50,7 +52,8 @@ import { BasketComponent } from './basket/basket.component';
     FilterComponent,
     PaginationComponent,
     SearchBoxComponent,
-    BasketComponent
+    BasketComponent,
+    OrderListComponent
   ]
 })
 export class ComponentsModule { }

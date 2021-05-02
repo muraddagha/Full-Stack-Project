@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from './account.component';
 import { AdressComponent } from './adress/adress.component';
-import { OrdersComponent } from './orders/orders.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { ContainersModule } from 'src/app/shared/containers/containers.module';
@@ -14,7 +13,6 @@ import { ContainersModule } from 'src/app/shared/containers/containers.module';
   declarations: [
     AccountComponent,
     AdressComponent,
-    OrdersComponent,
     AccountDetailsComponent
   ],
   imports: [

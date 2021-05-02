@@ -10,6 +10,7 @@ import { ProductListContainerComponent } from './product-list-container/product-
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -29,14 +30,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FontAwesomeModule,
     NgSelectModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    RouterModule
 
   ],
   exports: [
     NewArrivalsContainerComponent,
     ProductsSliderContainerComponent,
     TopBrandsContainerComponent,
-    ProductListContainerComponent
+    ProductListContainerComponent,
   ]
 })
 export class ContainersModule { }

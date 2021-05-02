@@ -69,8 +69,8 @@ namespace DataService.Services.ShoppingServices
         {
             var products= _context.Products.Include("Photos")
                                             .Include("Category")
-                                           .Include("Discounts.Discount")
-                                           .Where(p => p.IsFeatured);
+                                            .Include("Discounts.Discount")
+                                            .Where(p => p.IsFeatured);
 
             ProductListBy(products, order);
             return await products.Take(limit).ToListAsync();

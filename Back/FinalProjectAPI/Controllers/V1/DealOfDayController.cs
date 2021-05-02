@@ -59,7 +59,7 @@ namespace FinalProjectAPI.Controllers.V1
                 dealOfDayInput.AddedBy = _admin.Fullname;
                 var dealOfDay = await _delaOfDayService.CreateDealOfDay(dealOfDayInput);
 
-                return Ok(new { message = "DealOfday yaradıldı" });
+                return NoContent();
             }
             catch (HttpException e)
             {
@@ -80,7 +80,7 @@ namespace FinalProjectAPI.Controllers.V1
                 var dealOfDay = _mapper.Map<UpdateDealOfDaysResource, DealOfDay>(resource);
                 dealOfDay.ModifiedBy = _admin.Fullname;
                 await _delaOfDayService.UpdateDealOfDay(id, dealOfDay);
-                return Ok(new { message = "DealOfDay yeniləndi" });
+                return NoContent();
 
             }
             catch (HttpException e)
@@ -99,7 +99,7 @@ namespace FinalProjectAPI.Controllers.V1
             try
             {
                 await _delaOfDayService.RemoveDealOfDay(id);
-                return Ok(new { message = "DealOfDay silindi" });
+                return NoContent();
             }
             catch (HttpException e)
             {

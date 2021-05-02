@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   { path: 'details', component: AccountDetailsComponent },
   { path: 'adress', component: AdressComponent },
-  { path: 'orders', component: OrdersComponent },
+  { path: 'orders', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule), }
 ];
 
 @NgModule({

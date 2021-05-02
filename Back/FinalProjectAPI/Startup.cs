@@ -64,7 +64,7 @@ namespace FinalProjectAPI
                    x => x.MigrationsAssembly("DataService")), ServiceLifetime.Transient, ServiceLifetime.Singleton);
 
             services.AddTransient<IFileManager, FileManager>();
-            services.AddSingleton<IUserService, UserService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddSingleton<IAdminService, AdminService>();
             services.AddTransient<IDepartmentService,DepartmentService>();
             services.AddTransient<ICategoryService,CategoryService>();

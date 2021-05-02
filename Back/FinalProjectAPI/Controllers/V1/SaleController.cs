@@ -1,5 +1,6 @@
 ﻿using DataService.Data.Entities;
 using DataService.Infrastructure.Exceptions;
+using DataService.Services;
 using DataService.Services.ShoppingServices;
 using FinalProjectAPI.Infrastructure.Filters;
 using FinalProjectAPI.Resource.Sale;
@@ -17,11 +18,13 @@ namespace FinalProjectAPI.Controllers.V1
     {
         private readonly ISaleService _saleService;
         private readonly IProductService _productService;
+        private readonly IUserService _userService;
 
-        public SaleController(ISaleService saleService,IProductService productService)
+        public SaleController(ISaleService saleService,IProductService productService,IUserService userService)
         {
             _saleService = saleService;
             _productService = productService;
+            _userService = userService;
         }
 
         [HttpPost]
@@ -45,7 +48,7 @@ namespace FinalProjectAPI.Controllers.V1
                 }
                 var sale = await _saleService.Sale(saleInput);
 
-                return Ok(new {message="Sifariş edildi" });
+                return NoContent();
 
             }
             catch (HttpException e)

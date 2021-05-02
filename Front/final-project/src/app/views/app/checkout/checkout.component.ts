@@ -76,9 +76,32 @@ export class CheckoutComponent implements OnInit {
     }, err => {
 
     }, () => {
+      this.addToOrderList();
       this.notifier.notify("success", "Sifarişiniz qəbul edildi")
       this.basketService.removeBasketAll();
       this.router.navigate([''])
+    })
+  }
+  public addToOrderList(): void {
+    let totalPrice = 0
+    this.basket.map(a => totalPrice += a.count * a.product.price);
+    let items: any[] = [];
+
+    for (let i = 0; i < this.basket.length; i++) {
+      items.push({
+        productId: this.basket[i].product.id,
+        count: this.basket[i].count,
+      })
+    }
+    let data = {
+      TotalSalePrice: totalPrice,
+      items: items
+    }
+
+    this.apiService.addToOrderList(data).subscribe(res => {
+    }, err => {
+
+    }, () => {
     })
   }
   public getBaskets(): void {

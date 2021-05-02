@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, Event, NavigationStart, ActivationEnd, ActivationStart } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { IBasket } from 'src/app/shared/models/basket.model';
 import { IProduct } from 'src/app/shared/models/product/product.model';
@@ -28,10 +28,21 @@ export class ShopDetailsComponent implements OnInit {
     private basketService: BasketService,
     private fb: FormBuilder,
     private authService: AuthService,
-    private notifier: NotifierService) {
+    private notifier: NotifierService,
+    private router: Router) {
     this.authService.currentUser.subscribe(user => {
       this.user = user;
-    })
+    });
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof ActivationStart) {
+
+      }
+      if (event instanceof NavigationEnd) {
+        // Hide loading indicator
+        this.getProduct();
+        window.scroll(75, 75);
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -50,7 +61,6 @@ export class ShopDetailsComponent implements OnInit {
       review: ["", [Validators.required]]
     })
   }
-
   public create(): void {
     this.submitted = true;
     if (this.reviewForm.invalid) return;
@@ -66,7 +76,9 @@ export class ShopDetailsComponent implements OnInit {
 
   }
   public getProduct(): void {
-    this.apiService.getProductById(this.id).subscribe(res => {
+    let id = this.activeRoute.snapshot.paramMap.get('id');
+
+    this.apiService.getProductById(id).subscribe(res => {
       this.product = res;
     })
 
@@ -99,7 +111,6 @@ export class ShopDetailsComponent implements OnInit {
     }
     return star;
   }
-
   public addToCart(product: IProduct): void {
     this.basketService.addToBasket(product);
   }

@@ -32,9 +32,8 @@ namespace DataService.Data
         public DbSet<SocialLinks> SocialLinks { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserAdress> UserAdresses { get; set; }
-        public DbSet<OrderList> OrderLists { get; set; }
-        public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<UserOrderList> UserOrderLists { get; set; }
+        public DbSet<UserOrderItem> UserOrderItems { get; set; }
         public DbSet<Sale> Sales { get; set; }
         public DbSet<SaleItem> SaleItems { get; set; }
         

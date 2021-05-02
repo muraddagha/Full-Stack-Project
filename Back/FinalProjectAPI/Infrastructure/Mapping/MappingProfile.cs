@@ -24,6 +24,11 @@ namespace FinalProjectAPI.Infrastructure.Mapping
             CreateMap<User, UserResource>();
             CreateMap<UserRegisterResource, User>();
             CreateMap<UserAdress, AdressResource>();
+            CreateMap<CreateUserOrderListResource, UserOrderList>();
+            CreateMap<CreateUserOrderItemResource, UserOrderItem>();
+            CreateMap<UserOrderList, UserOrderListResource>()
+                                                        .ForMember(d => d.OrderDate, opt => opt.MapFrom(day => day.OrderDate.ToString("dd-MM-yyyy")));
+            CreateMap<UserOrderItem, UserOrderItemResource>();
 
             //Admin
             CreateMap<Admin, AdminResource>();
@@ -58,8 +63,8 @@ namespace FinalProjectAPI.Infrastructure.Mapping
             CreateMap<ProductReview, ProductReviewResource>().ForMember(d => d.User, opt => opt.MapFrom(user => user.User.Name+" "+user.User.Surname))
                                                              .ForMember(d=>d.AddedDate,opt=>opt.MapFrom(day=>day.AddedDate.ToString("dd-MM-yyyy")));
             CreateMap<UserAdress,UserAdressResource>();
-            CreateMap<OrderList, OrderListResource>();
-            CreateMap<OrderItem, OrderItemResource>();
+            CreateMap<UserOrderList, OrderListResource>();
+            CreateMap<UserOrderItem, OrderItemResource>();
 
             //Categroy
             CreateMap<Category, CategoryResource>();

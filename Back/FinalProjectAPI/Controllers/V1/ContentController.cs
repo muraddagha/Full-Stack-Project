@@ -33,6 +33,7 @@ namespace FinalProjectAPI.Controllers.V1
             try
             {
                 var userInput = _mapper.Map<CreateProductReviewResource, ProductReview>(resource);
+                userInput.AddedBy = _user.Name + " " + _user.Surname;
                 var review = await _reviewService.CreateReview(productId, _user.Id, userInput);
                 return Ok(new { message = "Rəy qeydə alındı" });
             }

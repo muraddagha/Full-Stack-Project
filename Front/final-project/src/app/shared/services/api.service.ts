@@ -8,6 +8,8 @@ import { IBrandResponse } from '../models/response/brand-response.model';
 import { IDepartmentResponse } from '../models/response/department-response.model';
 import { IProductResponse } from '../models/response/product-response.model';
 import { IShopCollectionResponse } from '../models/response/shop-collection-response.model';
+import { IUserOrderListResponse } from '../models/response/user-order-list-response.model';
+import { IUserOrderList } from '../models/user-order-list.model';
 import { IUser } from '../models/user.model';
 
 @Injectable({
@@ -25,6 +27,18 @@ export class ApiService {
   //#region User
   public getUserAdress(): Observable<any> {
     return this.http.get<any>(environment.apiUrl + `user/userAdress`)
+  }
+  public addToOrderList(data: any) {
+    return this.http.post(environment.apiUrl + `user/userOrderList`, data);
+  }
+  public getUserOrderLists(): Observable<IUserOrderListResponse> {
+    return this.http.get<IUserOrderListResponse>(environment.apiUrl + `user/userOrderList`);
+  }
+  public getUserOrderListById(id: any): Observable<IUserOrderList> {
+    return this.http.get<IUserOrderList>(environment.apiUrl + `user/${id}`);
+  }
+  public getUserOrderListByStatus(status: any): Observable<IUserOrderListResponse> {
+    return this.http.get<IUserOrderListResponse>(environment.apiUrl + `user/userOrderListByStatus?status=${status}`);
   }
   //#endregion
 
