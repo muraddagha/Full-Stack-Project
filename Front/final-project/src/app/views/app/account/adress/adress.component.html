@@ -1,31 +1,90 @@
-<app-breadcrumb [title]=" 'Adres' "></app-breadcrumb>
+<app-breadcrumb [title]=" 'Ünvan' "></app-breadcrumb>
 <section id="adres">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <h3 class="main-title">Mənim Adresim</h3>
+                <h3 class="main-title">Mənim Ünvanım</h3>
                 <div class="notify-text">
                     <i class="ti-info-alt"></i>
-                    <p>Bu adres sifarişlərinizin göndəriləcək yeridir.</p>
-
+                    <p>Sifarişləriniz bu ünvana göndəriləcək.</p>
                 </div>
-                <div class="user-info">
-                    <span>Ad, Soyad:</span>
-                    <p>{{user?.name +" "+ user.surname}}</p>
-                </div>
-                <div class="user-info">
-                    <span>E-poçt:</span>
-                    <p>{{user?.email}}</p>
-                </div>
-                <div class="user-info">
-                    <span>Telefon:</span>
-                    <p>{{user?.phone}}</p>
-                </div>
-                <div class="user-info">
-                    <span>Telefon:</span>
-                    <p>{{user?.phone}}</p>
+                <div class="user-info-area">
+                    <div class="user-info">
+                        <span>Ad, Soyad:</span>
+                        <p>{{user?.name +" "+ user.surname}}</p>
+                    </div>
+                    <div class="user-info">
+                        <span>E-poçt:</span>
+                        <p>{{user?.email}}</p>
+                    </div>
+                    <div class="user-info">
+                        <span>Telefon:</span>
+                        <p>{{user?.phone}}</p>
+                    </div>
+                    <div class="user-info">
+                        <span>Ünvan:</span>
+                        <p> {{adress?.country}}, {{adress?.city}}, {{adress?.adress1}},
+                            {{adress?.adress2}}, {{adress?.postcode}}
+                        </p>
+                    </div>
+                    <a (click)="updateAdress($event,adress)" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        class="btn btn-pink mt-3" href="#">Yenilə</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Ünvanı Yenilə</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="adressForm" (ngSubmit)="update()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.country.errors }">Ölkə</label>
+                        <input name="country" formControlName="country" type="text" class="form-control mt-2">
+                        <div *ngIf="submitted && f.country.errors" class="text-danger">
+                            <div *ngIf="f.country.errors.required">Ölkə boş ola bilməz</div>
+                            <div *ngIf="f.country.errors.maxLenght">Ölkə maksimum 50 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.city.errors }">Şəhər</label>
+                        <input name="city" formControlName="city" type="text" class="form-control  mt-2">
+                        <div *ngIf="submitted && f.city.errors" class="text-danger">
+                            <div *ngIf="f.city.errors.required">Şəhər boş ola bilməz</div>
+                            <div *ngIf="f.city.errors.maxLenght">Şəhər maksimum 50 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.adress1.errors }">Ünvan 1</label>
+                        <input name="adress1" formControlName="adress1" type="text" class="form-control  mt-2">
+                        <div *ngIf="submitted && f.adress1.errors" class="text-danger">
+                            <div *ngIf="f.adress1.errors.required">Ünvan boş ola bilməz</div>
+                            <div *ngIf="f.adress1.errors.maxLenght">Ünvan maksimum 200 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.adress2.errors }">Ünvan 2</label>
+                        <input name="adress2" formControlName="adress2" type="text" class="form-control  mt-2">
+                        <div *ngIf="submitted && f.adress2.errors" class="text-danger">
+                            <div *ngIf="f.adress2.errors.maxLenght">Ünvan maksimum 200 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.postCode.errors }">Poçt Kodu</label>
+                        <input name="postCode" formControlName="postCode" type="text" class="form-control  mt-2">
+                        <div *ngIf="submitted && f.postCode.errors" class="text-danger">
+                            <div *ngIf="f.postCode.errors.maxLenght">Poçt kodu maksimum 50 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-pink w-100 mt-2">Yenilə</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

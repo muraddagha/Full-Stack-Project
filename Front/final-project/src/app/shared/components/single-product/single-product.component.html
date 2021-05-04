@@ -3,13 +3,8 @@
         <img [src]="product?.photos[0]" alt="">
         <ul class="icons-area">
             <li>
-                <a [routerLink]="['/app/wishlist']">
+                <a href="#" (click)="addToWishlist($event,product)">
                     <i class="ti ti-heart"></i>
-                </a>
-            </li>
-            <li>
-                <a [routerLink]>
-                    <i class=" ti ti-control-shuffle"></i>
                 </a>
             </li>
             <li>

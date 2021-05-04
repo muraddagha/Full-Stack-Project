@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IAdress } from '../models/adress.model';
 import { IProductReview } from '../models/product/product-review.model';
 import { IProduct } from '../models/product/product.model';
 import { IBrandResponse } from '../models/response/brand-response.model';
@@ -27,6 +28,9 @@ export class ApiService {
   //#region User
   public getUserAdress(): Observable<any> {
     return this.http.get<any>(environment.apiUrl + `user/userAdress`)
+  }
+  public updateAdress(data: any): Observable<IAdress> {
+    return this.http.put<IAdress>(environment.apiUrl + `user/userAdressUpdate`, data)
   }
   public addToOrderList(data: any) {
     return this.http.post(environment.apiUrl + `user/userOrderList`, data);
@@ -79,12 +83,14 @@ export class ApiService {
   public getFeaturedProducts(limit: number, order: number): Observable<IProductResponse> {
     return this.http.get<IProductResponse>(environment.apiUrl + `product/featured?limit=${limit}&order=${order}`)
   }
-
   public getTopSellingProducts(limit: number, order: number): Observable<IProductResponse> {
     return this.http.get<IProductResponse>(environment.apiUrl + `product/top-sell?limit=${limit}&order=${order}`)
   }
   public getProductsByCategoryId(id, limit: number, order: number): Observable<IProductResponse> {
     return this.http.get<IProductResponse>(environment.apiUrl + `product?categoryId=${id}&limit=${limit}&order=${order}`)
+  }
+  public getFilteredProduct(departmentid?: any, brandId?: any, minPrice?: any, maxPrice?: any): Observable<IProductResponse> {
+    return this.http.get<IProductResponse>(environment.apiUrl + `product/filter?departmentId=${departmentid} &brandId=${brandId}&minPrice=${minPrice} &maxPrice=${maxPrice}`)
   }
 
   //#endregion

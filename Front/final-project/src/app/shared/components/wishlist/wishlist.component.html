@@ -1,0 +1,7 @@
+<a id="hide-icon" [routerLink]="['/app/wishlist']">
+    <div class="icon">
+        <img src="/assets/icons/hert.svg" alt="">
+        <span *ngIf="wishlist?.length>0" class="count">{{wishlist.length}}</span>
+    </div>
+
+</a>

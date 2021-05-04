@@ -1,6 +1,5 @@
 import { IProduct } from "./product/product.model";
 
-export interface IBasket {
-    count: number;
+export interface IWishlist {
     product: IProduct;
 }

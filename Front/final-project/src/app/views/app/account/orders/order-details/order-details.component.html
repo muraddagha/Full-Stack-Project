@@ -63,9 +63,51 @@
                     </div>
                     <div class="tab-pane fade" id="tab3" role="tabpanel">
                         <h3>Çatmış Sifarişlər</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Çatdırılma Günü</th>
+                                    <th>Vəziyyəti</th>
+                                    <th>Sayı</th>
+                                    <th>Cəm</th>
+                                    <th>Məhsul</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let order of recivedOrders">
+                                    <td>{{order.orderDate}}</td>
+                                    <td *ngIf="order.status==0"><span class="badge1 rounded-pill">Gözləyən</span></td>
+                                    <td *ngIf="order.status==1"><span class="badge2 rounded-pill">Çatıb</span></td>
+                                    <td>{{order.items.length}}</td>
+                                    <td>{{order.totalSalePrice}} ₼</td>
+                                    <td><a [routerLink]="['/app/account/orders/details',order.id]">Məhsula Bax</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="tab-pane fade" id="tab4" role="tabpanel">
                         <h3>GözlənilƏn Sifarişlər</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Çatdırılma Günü</th>
+                                    <th>Vəziyyəti</th>
+                                    <th>Sayı</th>
+                                    <th>Cəm</th>
+                                    <th>Məhsul</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let order of pendingOrders">
+                                    <td>{{order.orderDate}}</td>
+                                    <td *ngIf="order.status==0"><span class="badge1 rounded-pill">Gözləyən</span></td>
+                                    <td *ngIf="order.status==1"><span class="badge2 rounded-pill">Çatıb</span></td>
+                                    <td>{{order.items.length}}</td>
+                                    <td>{{order.totalSalePrice}} ₼</td>
+                                    <td><a [routerLink]="['/app/account/orders/details',order.id]">Məhsula Bax</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

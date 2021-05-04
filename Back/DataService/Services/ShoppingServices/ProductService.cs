@@ -26,6 +26,8 @@ namespace DataService.Services.ShoppingServices
         Task UpdateProduct(int id,Product product);
         Task RemoveProduct(int id);
         Task<IEnumerable<Product>> GetProducts();
+        Task<IEnumerable<Product>> GetFilteredProduct(int? departmentId,int? brandId,  
+                                                      double? minPrice, double? maxPrice);
         void ProductListBy(IEnumerable<Product> products, ProductListing order);
         Task<int> GetProductsCount();
         void RemovePhotoById(int? id);
@@ -225,6 +227,31 @@ namespace DataService.Services.ShoppingServices
             return await _context.Products.Include("Photos")
                                           .Where(p => !p.SoftDeleted)
                                           .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Product>> GetFilteredProduct(int? departmentId, int? brandId,
+                                                                   double? minPrice,double? maxPrice)
+        {
+            if (departmentId == null)
+            {
+                return await _context.Products.Include("Photos")
+                                         .Where(p => p.BrandId == brandId)
+                                         .Where(p => p.Price >= minPrice && p.Price <= maxPrice)
+                                         .ToListAsync();
+            }
+            if (brandId == null)
+            {
+                return await _context.Products.Include("Photos")
+                                          .Where(p => p.Category.DepartmentId == departmentId)
+                                          .Where(p => p.Price >= minPrice && p.Price <= maxPrice)
+                                          .ToListAsync();
+            }
+            return await _context.Products.Include("Photos")
+                                          .Where(p => p.Category.DepartmentId == departmentId)
+                                          .Where(p => p.Price >= minPrice && p.Price <= maxPrice)
+                                          .Where(p=>p.BrandId==brandId)
+                                          .ToListAsync();
+
         }
     }
 }

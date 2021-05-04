@@ -11,11 +11,12 @@ import { AdsBannerComponent } from './ads-banner/ads-banner.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { FilterComponent } from './filter/filter.component';
 import { Ng5SliderModule } from 'ng5-slider';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginationComponent } from './pagination/pagination.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { BasketComponent } from './basket/basket.component';
 import { OrderListComponent } from './order-list/order-list.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 
 
@@ -33,13 +34,15 @@ import { OrderListComponent } from './order-list/order-list.component';
     SearchBoxComponent,
     BasketComponent,
     OrderListComponent,
+    WishlistComponent,
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
     RouterModule,
     Ng5SliderModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     SingleProductComponent,
@@ -53,7 +56,8 @@ import { OrderListComponent } from './order-list/order-list.component';
     PaginationComponent,
     SearchBoxComponent,
     BasketComponent,
-    OrderListComponent
+    OrderListComponent,
+    WishlistComponent
   ]
 })
 export class ComponentsModule { }

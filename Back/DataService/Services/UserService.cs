@@ -18,6 +18,7 @@ namespace DataService.Services
         Task RecoveryPassword(string forgetPasswordToken,string password);
         Task<User> CheckToken(string token);
         Task<UserAdress> GetUserAdress(int id);
+        Task UpdateAdress(int userId, UserAdress userAdress);
         Task<UserOrderList> AddUserOrderList(UserOrderList userOrderList);
         Task<IEnumerable<UserOrderList>> GetUserOrderLists(int userId);
         Task<UserOrderList> GetOrderListById(int userId, int id);
@@ -51,10 +52,10 @@ namespace DataService.Services
             return userOrderList;
         }
 
-        public async Task<UserAdress> GetUserAdress(int id)
+        public async Task<UserAdress> GetUserAdress(int userId)
         {
-            var user = await _context.Users.Include("Adress").FirstOrDefaultAsync(u => u.Id == id);
-            return user.Adress;
+            var userAdress = await _context.UserAdresses.FirstOrDefaultAsync(u =>u.UserId==userId);
+            return userAdress;
                                        
         }
 
@@ -80,8 +81,7 @@ namespace DataService.Services
 
         public async Task<User> Login(string email, string password)
         {
-            var user = await _context.Users.Include("Adress")
-                                           .FirstOrDefaultAsync(u => u.Email == email);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
             if (user != null && CryptoHelper.Crypto.VerifyHashedPassword(user.Password, password)) return user;
             throw new HttpException(404, "E-poçt və ya şifrə yanlışdır");
         }
@@ -103,6 +103,23 @@ namespace DataService.Services
             await _context.SaveChangesAsync();
             return user;
 
+        }
+
+        public async Task UpdateAdress(int userId, UserAdress userAdress)
+        {
+            var updateAdress = await _context.UserAdresses.FirstOrDefaultAsync(u => u.UserId == userId);
+
+            if (userAdress == null) throw new HttpException(404, "İstifadəçi ünvanı tapılmadı");
+
+            updateAdress.Country = userAdress.Country;
+            updateAdress.City = userAdress.City;
+            updateAdress.Adress1 = userAdress.Adress1;
+            updateAdress.Adress2 = userAdress.Adress2;
+            updateAdress.Postcode = userAdress.Postcode;
+            updateAdress.ModifiedDate = DateTime.Now;
+            updateAdress.ModifiedBy = userAdress.ModifiedBy;
+
+            await _context.SaveChangesAsync();
         }
     }
 }

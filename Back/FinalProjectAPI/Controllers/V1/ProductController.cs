@@ -143,9 +143,7 @@ namespace FinalProjectAPI.Controllers.V1
         [HttpPost]
         [Route("Upload")]
         [TypeFilter(typeof(AdminAuth))]
-
-
-        public IActionResult UploadPhoto(IFormFile file,[FromQuery] int? productId,[FromQuery] int? orderBy)
+        public IActionResult UploadPhoto([FromForm] IFormFile file,[FromQuery] int? productId,[FromQuery] int? orderBy)
         {
             var fileName = _fileManager.Upload(file);
             var publicId = _cloudinaryService.Store(fileName);
@@ -204,7 +202,7 @@ namespace FinalProjectAPI.Controllers.V1
 
 
         [HttpGet]
-        [Route("new-arrivalsByDepartment")]
+        [Route("New-arrivalsByDepartment")]
 
         public async Task<IActionResult> GetNewArrivalsProductsByDepartmentId([FromQuery] int limit,[FromQuery]int departmentId)
         {
@@ -214,7 +212,7 @@ namespace FinalProjectAPI.Controllers.V1
         }
 
         [HttpGet]
-        [Route("new-arrivals")]
+        [Route("New-arrivals")]
 
         public async Task<IActionResult> GetNewArrivalsProducts([FromQuery] int limit,[FromQuery] ProductListing order)
         {
@@ -225,7 +223,7 @@ namespace FinalProjectAPI.Controllers.V1
 
 
         [HttpGet]
-        [Route("trend")]
+        [Route("Trend")]
 
         public async Task<IActionResult> GetTrendProducts([FromQuery] int limit, [FromQuery] ProductListing order)
         {
@@ -235,13 +233,24 @@ namespace FinalProjectAPI.Controllers.V1
         }
 
         [HttpGet]
-        [Route("hot-deal")]
+        [Route("Hot-deal")]
 
         public async Task<IActionResult> GetHotDealProducts([FromQuery] int limit, [FromQuery] ProductListing order)
         {
             var products = await _productService.GetHotDealProducts(limit, order);
             var productResource = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
             return Ok(new { products = productResource });
+        }
+
+        [HttpGet]
+        [Route("Filter")]
+
+        public async Task<IActionResult> GetFilteredProduct([FromQuery] int? departmentId, [FromQuery] int? brandId, 
+                                                            [FromQuery] double? minPrice, [FromQuery] double? maxPrice)
+        {
+            var products = await _productService.GetFilteredProduct(departmentId, brandId, minPrice, maxPrice);
+            var productResource = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
+            return Ok(new {products= productResource });
         }
 
 

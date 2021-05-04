@@ -20,17 +20,25 @@
       margin-bottom: 0;
     }
   }
-  .user-info {
-    display: flex;
-    font-size: 16px;
-    font-weight: 600;
-    color: #676e8b;
-    line-height: 1.63;
-    margin-bottom: 17px;
-    align-items: center;
-    p {
-      margin-left: 10px;
-      margin-bottom: 0;
+  .user-info-area {
+    h3 {
+      font-size: 30px;
+      color: #090b17;
+      font-weight: 700;
+      margin-bottom: 26px;
+    }
+    .user-info {
+      display: flex;
+      font-size: 16px;
+      font-weight: 400;
+      color: #676e8b;
+      line-height: 1.63;
+      margin-bottom: 17px;
+      align-items: center;
+      p {
+        margin-left: 10px;
+        margin-bottom: 0;
+      }
     }
   }
 }

@@ -12,268 +12,39 @@
     <span>Filter Categoory</span>
 </div>
 <div class="filter-area">
-    <form action="#">
+    <form [formGroup]="filterForm" (ngSubmit)="filter()">
         <div class="filter-box">
             <h6 class="filter-title">
-                Product categories
+                Kateqoriyaya görə
             </h6>
             <ul>
-                <li>
+                <li *ngFor="let department of departments">
                     <label>
-                        <input type="checkbox">
+                        <input name="department" formControlName="department" type="checkbox" value="{{department.id}}">
                         <span class="checkmark"></span>
-                        <span class="input-name">Beauty & Health</span>
+                        <span class="input-name">{{department.name}}</span>
                     </label>
                 </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        <span class="input-name">Clothing</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        <span class="input-name">Beauty & Health</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        <span class="input-name">Beauty & Health</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        <span class="input-name">Beauty & Health</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        <span class="input-name">Beauty & Health</span>
-                    </label>
-                </li>
+
             </ul>
         </div>
         <div class="filter-box">
             <h6 class="filter-title">
-                Filter by Brands
+                Brendə görə
             </h6>
             <ul>
-                <li>
+                <li *ngFor="let brand of brands">
                     <label>
-                        <input type="checkbox">
+                        <input name="brand" formControlName="brand" type="checkbox" value="{{brand.name}}">
                         <span class="checkmark"></span>
-                        <span class="input-name">Beauty & Health</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        <span class="input-name">Clothing</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        <span class="input-name">Beauty & Health</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        <span class="input-name">Beauty & Health</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        <span class="input-name">Beauty & Health</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        <span class="input-name">Beauty & Health</span>
-                    </label>
-                </li>
-            </ul>
-        </div>
-        <div class="filter-box">
-            <h6 class="filter-title">
-                Filter by Size
-            </h6>
-            <ul>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        <span class="input-name">S</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        <span class="input-name">M</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        <span class="input-name">L</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        <span class="input-name">Beauty & Health</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        <span class="input-name">Beauty & Health</span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        <span class="input-name">Beauty & Health</span>
-                    </label>
-                </li>
-            </ul>
-        </div>
-        <div class="filter-box">
-            <h6 class="filter-title">
-                Filter by Star
-            </h6>
-            <ul>
-                <li>
-                    <div class="star">
-                        <fa-icon [icon]="star"></fa-icon>
-                        <fa-icon [icon]="star"></fa-icon>
-                        <fa-icon [icon]="star"></fa-icon>
-                        <fa-icon [icon]="star"></fa-icon>
-                        <fa-icon [icon]="star"></fa-icon>
-                    </div>
-                </li>
-                <li>
-                    <div class="star">
-                        <fa-icon [icon]="star"></fa-icon>
-                        <fa-icon [icon]="star"></fa-icon>
-                        <fa-icon [icon]="star"></fa-icon>
-                        <fa-icon [icon]="star"></fa-icon>
-                        <fa-icon class="unrated" [icon]="star"></fa-icon>
-                        <span>And Up</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="star">
-                        <fa-icon [icon]="star"></fa-icon>
-                        <fa-icon [icon]="star"></fa-icon>
-                        <fa-icon [icon]="star"></fa-icon>
-                        <fa-icon class="unrated" [icon]="star"></fa-icon>
-                        <fa-icon class="unrated" [icon]="star"></fa-icon>
-                        <span>And Up</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="star">
-                        <fa-icon [icon]="star"></fa-icon>
-                        <fa-icon [icon]="star"></fa-icon>
-                        <fa-icon class="unrated" [icon]="star"></fa-icon>
-                        <fa-icon class="unrated" [icon]="star"></fa-icon>
-                        <fa-icon class="unrated" [icon]="star"></fa-icon>
-                        <span>And Up</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="star">
-                        <fa-icon [icon]="star"></fa-icon>
-                        <fa-icon class="unrated" [icon]="star"></fa-icon>
-                        <fa-icon class="unrated" [icon]="star"></fa-icon>
-                        <fa-icon class="unrated" [icon]="star"></fa-icon>
-                        <fa-icon class="unrated" [icon]="star"></fa-icon>
-                        <span>And Up</span>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="filter-box">
-            <h6 class="filter-title">
-                Filter by Colors
-            </h6>
-            <ul class="d-flex filter-color-area">
-                <li>
-                    <label class="color-filter">
-                        <input type="radio" name="color-filter">
-                        <span class="checkmark-color black"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="color-filter">
-                        <input type="radio" name="color-filter">
-                        <span class="checkmark-color blue"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="color-filter">
-                        <input type="radio" name="color-filter">
-                        <span class="checkmark-color gray"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="color-filter">
-                        <input type="radio" name="color-filter">
-                        <span class="checkmark-color green"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="color-filter">
-                        <input type="radio" name="color-filter">
-                        <span class="checkmark-color brown"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="color-filter">
-                        <input type="radio" name="color-filter">
-                        <span class="checkmark-color purple"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="color-filter">
-                        <input type="radio" name="color-filter">
-                        <span class="checkmark-color"></span>
-                    </label>
-                </li>
-                <li>
-                    <label class="color-filter">
-                        <input type="radio" name="color-filter">
-                        <span class="checkmark-color yellow"></span>
+                        <span class="input-name">{{brand.name}}</span>
                     </label>
                 </li>
             </ul>
         </div>
         <div class="filter-box">
             <h6 class="filter-title mb-0">
-                Filter by Price
+                Qiymətə görə
             </h6>
             <div class="range-slider">
                 <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>

@@ -43,15 +43,12 @@
                                         Daxil olun
                                     </a>
                                 </div>
-
-                                <a id="hide-icon" [routerLink]="['/app/wishlist']">
-                                    <div class="icon">
-                                        <img src="/assets/icons/hert.svg" alt="">
-                                        <span class="count">2</span>
-                                    </div>
-
-                                </a>
-                                <app-basket></app-basket>
+                                <span class="me-3">
+                                    <app-wishlist></app-wishlist>
+                                </span>
+                                <span>
+                                    <app-basket></app-basket>
+                                </span>
                             </div>
                         </div>
 
@@ -103,76 +100,8 @@
                                 <li>
                                     <a [routerLink]="['/app/new-arrivals']">
                                         Yeni Gələnlər
-                                        <!-- <fa-icon class="chevron" [icon]="chevron"></fa-icon> -->
                                     </a>
-                                    <!-- <div class="sub-menu content-menu-dropdown">
-                                        <ul>
-                                            <li>
-                                                <h6><a href=""> Laptops & Compters </a></h6>
-                                            </li>
-                                            <li>
-                                                <a href="">Desktop Computers</a>
-                                            </li>
-                                            <li>
-                                                <a href="">Desktop Computers</a>
-                                            </li>
-                                            <li>
-                                                <a href="">Desktop Computers</a>
-                                            </li>
-                                        </ul>
-                                        <ul>
-                                            <li>
-                                                <h6><a href=""> Computers </a></h6>
-                                            </li>
-                                            <li>
-                                                <a href="">Desktop Computers</a>
-                                            </li>
-                                            <li>
-                                                <a href="">Desktop Computers</a>
-                                            </li>
-                                            <li>
-                                                <a href="">Desktop Computers</a>
-                                            </li>
-                                        </ul>
-                                        <ul>
-                                            <li>
-                                                <h6><a href=""> Phones </a></h6>
-                                            </li>
-                                            <li>
-                                                <a href="">Desktop Computers</a>
-                                            </li>
-                                            <li>
-                                                <a href="">Desktop Computers</a>
-                                            </li>
-                                            <li>
-                                                <a href="">Desktop Computers</a>
-                                            </li>
-                                        </ul>
-                                        <ul>
-                                            <li>
-                                                <h6><a href=""> Music Phones </a></h6>
-                                            </li>
-                                            <li>
-                                                <a href="">Desktop Computers</a>
-                                            </li>
-                                            <li>
-                                                <a href="">Desktop Computers</a>
-                                            </li>
-                                            <li>
-                                                <a href="">Desktop Computers</a>
-                                            </li>
-                                        </ul>
-                                        <ul class="img-area">
-                                            <li>
-                                                <h5>PREMIUM SUPPLEMENTS</h5>
-                                            </li>
-                                            <li>
-                                                <h4>Wooden Minimalistic <br>
-                                                    Chairs for Home.</h4>
-                                            </li>
-                                            <li><a class="btn-pink-small" href="">Shop Now »</a></li>
-                                        </ul>
-                                    </div> -->
+
                                 </li>
                                 <li><a [routerLink]="['/app/trending']">Trend</a></li>
                                 <li><a [routerLink]="['/app/hot-deals']"> Ən Yaxşı Təkliflər </a></li>

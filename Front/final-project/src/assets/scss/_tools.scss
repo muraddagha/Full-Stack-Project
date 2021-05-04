@@ -294,6 +294,56 @@ a {
     }
   }
 }
+
+@import "/src/assets/scss/variables";
+table {
+  thead {
+    th {
+      font-size: 16px;
+      font-weight: 500;
+      color: #090b17;
+      border-top: 0;
+      border-bottom: 0;
+      padding: 10px 10px 10px 30px;
+      font-family: "Jost", sans-serif;
+      border-bottom: 1px solid #f1f1f1;
+      padding-left: 0;
+    }
+  }
+  tbody {
+    td {
+      color: #676e8b;
+      font-size: 16px;
+      vertical-align: middle;
+      padding: 20px 30px 20px 0;
+      white-space: nowrap;
+      font-weight: 400;
+      border-bottom: 1px solid #f1f1f1;
+      padding-left: 0;
+      a {
+        color: $color-pink-second;
+      }
+    }
+  }
+}
+.badge1 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  display: inline-block;
+  background: #fd1c5e;
+  border-radius: 30px;
+  padding: 4.5px 15px;
+}
+.badge2 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  display: inline-block;
+  background: #33c922;
+  border-radius: 30px;
+  padding: 4.5px 15px;
+}
 //responsive
 @media only screen and (min-width: 1400px) {
   .container {

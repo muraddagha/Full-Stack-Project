@@ -24,6 +24,7 @@ namespace FinalProjectAPI.Infrastructure.Mapping
             CreateMap<User, UserResource>();
             CreateMap<UserRegisterResource, User>();
             CreateMap<UserAdress, AdressResource>();
+            CreateMap<UpdateAdressResource, UserAdress>();
             CreateMap<CreateUserOrderListResource, UserOrderList>();
             CreateMap<CreateUserOrderItemResource, UserOrderItem>();
             CreateMap<UserOrderList, UserOrderListResource>()

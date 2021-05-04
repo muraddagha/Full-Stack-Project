@@ -7,6 +7,7 @@ import { AdressComponent } from './adress/adress.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { ContainersModule } from 'src/app/shared/containers/containers.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { ContainersModule } from 'src/app/shared/containers/containers.module';
     CommonModule,
     AccountRoutingModule,
     ComponentsModule,
-    ContainersModule
+    ContainersModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AccountModule { }

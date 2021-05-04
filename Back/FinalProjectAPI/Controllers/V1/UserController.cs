@@ -32,6 +32,28 @@ namespace FinalProjectAPI.Controllers.V1
             return Ok(userAdressResource);
         }
 
+        [HttpPut]
+        [Route("UserAdressUpdate")]
+        [TypeFilter(typeof(UserAuth))]
+
+        public async Task<IActionResult> UpdateAdress([FromBody] UpdateAdressResource resource)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            try
+            {
+                var userInput = _mapper.Map<UpdateAdressResource, UserAdress>(resource);
+                userInput.ModifiedBy = _user.Name + " " + _user.Surname;
+                await _userService.UpdateAdress(_user.Id, userInput);
+                return Ok(new {message= "Ünvan yeniləndi" });
+
+            }
+            catch (HttpException e)
+            {
+                return StatusCode(e.StatusCode, e.Response);
+            }
+        }
+
         [HttpPost]
         [Route("UserOrderList")]
         [TypeFilter(typeof(UserAuth))]
