@@ -143,7 +143,7 @@ namespace FinalProjectAPI.Controllers.V1
         [HttpPost]
         [Route("Upload")]
         [TypeFilter(typeof(AdminAuth))]
-        public IActionResult UploadPhoto([FromForm] IFormFile file,[FromQuery] int? productId,[FromQuery] int? orderBy)
+        public IActionResult UploadPhoto(IFormFile file,[FromQuery] int? productId,[FromQuery] int? orderBy)
         {
             var fileName = _fileManager.Upload(file);
             var publicId = _cloudinaryService.Store(fileName);
@@ -242,10 +242,21 @@ namespace FinalProjectAPI.Controllers.V1
             return Ok(new { products = productResource });
         }
 
+
+        [HttpGet]
+        [Route("Department/{id}")]
+
+        public async Task<IActionResult> GetProductsByDepartmentId([FromRoute] int id)
+        {
+            var products = await _productService.GetProductsByDepartmentId(id);
+            var productsResource = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
+            return Ok(new { products = productsResource });
+        }
+
         [HttpGet]
         [Route("Filter")]
 
-        public async Task<IActionResult> GetFilteredProduct([FromQuery] int? departmentId, [FromQuery] int? brandId, 
+        public async Task<IActionResult> GetFilteredProduct([FromQuery] int[] departmentId, [FromQuery] int[] brandId, 
                                                             [FromQuery] double? minPrice, [FromQuery] double? maxPrice)
         {
             var products = await _productService.GetFilteredProduct(departmentId, brandId, minPrice, maxPrice);

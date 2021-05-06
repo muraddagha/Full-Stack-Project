@@ -1,8 +1,8 @@
 <app-breadcrumb [title]=" 'Səbət' "></app-breadcrumb>
-<section id="shopping-cart">
+<section id="shopping-cart-wishlist">
     <div class="container">
         <div class="row">
-            <div class="offset-1 col-xl-10">
+            <div *ngIf="basket!=null" class="offset-1 col-xl-10">
                 <div class="table-product-area">
                     <h4 class="title">Səbət</h4>
                     <table class="table cart-item-list">
@@ -83,6 +83,12 @@
                     <a *ngIf="user!=null" [routerLink]="['/app/checkout']" class="btn btn-pink">Sifarişi Göndər</a>
                     <a *ngIf="user==null" [routerLink]="['/auth/login']" class="btn btn-pink">Daxil Ol və Sifarişi
                         rəsmiləşdir</a>
+                </div>
+            </div>
+            <div class="offset-1 col-xl-10">
+                <div *ngIf="basket==null" class="empty d-flex justify-content-center align-items-center">
+                    <h4 class="text-center me-4">Səbətdə məhsul yoxdur</h4>
+                    <a class="btn btn-pink" [routerLink]="['']">Ana səhifəyə dön</a>
                 </div>
             </div>
         </div>

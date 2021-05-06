@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IProduct } from 'src/app/shared/models/product/product.model';
 import { ApiService } from 'src/app/shared/services/api.service';
 
@@ -9,6 +9,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 })
 export class NewArrivalsComponent implements OnInit {
   public products: IProduct[] = [];
+  public productsByDepartment: ViewChild
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {

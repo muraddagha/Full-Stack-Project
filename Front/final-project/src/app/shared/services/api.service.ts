@@ -92,6 +92,9 @@ export class ApiService {
   public getFilteredProduct(departmentid?: any, brandId?: any, minPrice?: any, maxPrice?: any): Observable<IProductResponse> {
     return this.http.get<IProductResponse>(environment.apiUrl + `product/filter?departmentId=${departmentid} &brandId=${brandId}&minPrice=${minPrice} &maxPrice=${maxPrice}`)
   }
+  public getProductsByDepartmentId(id: any) {
+    return this.http.get<IProductResponse>(environment.apiUrl + `product/department/${id}`)
+  }
 
   //#endregion
 

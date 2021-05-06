@@ -26,8 +26,9 @@ namespace DataService.Services.ShoppingServices
         Task UpdateProduct(int id,Product product);
         Task RemoveProduct(int id);
         Task<IEnumerable<Product>> GetProducts();
-        Task<IEnumerable<Product>> GetFilteredProduct(int? departmentId,int? brandId,  
+        Task<IEnumerable<Product>> GetFilteredProduct(int[] departmentId,int[] brandId,  
                                                       double? minPrice, double? maxPrice);
+        Task<IEnumerable<Product>> GetProductsByDepartmentId(int departmentId);
         void ProductListBy(IEnumerable<Product> products, ProductListing order);
         Task<int> GetProductsCount();
         void RemovePhotoById(int? id);
@@ -228,30 +229,57 @@ namespace DataService.Services.ShoppingServices
                                           .Where(p => !p.SoftDeleted)
                                           .ToListAsync();
         }
-
-        public async Task<IEnumerable<Product>> GetFilteredProduct(int? departmentId, int? brandId,
+        
+        public async Task<IEnumerable<Product>> GetFilteredProduct(int[] departmentId, int[] brandId,
                                                                    double? minPrice,double? maxPrice)
         {
-            if (departmentId == null)
-            {
-                return await _context.Products.Include("Photos")
-                                         .Where(p => p.BrandId == brandId)
-                                         .Where(p => p.Price >= minPrice && p.Price <= maxPrice)
-                                         .ToListAsync();
-            }
-            if (brandId == null)
-            {
-                return await _context.Products.Include("Photos")
-                                          .Where(p => p.Category.DepartmentId == departmentId)
-                                          .Where(p => p.Price >= minPrice && p.Price <= maxPrice)
-                                          .ToListAsync();
-            }
-            return await _context.Products.Include("Photos")
-                                          .Where(p => p.Category.DepartmentId == departmentId)
-                                          .Where(p => p.Price >= minPrice && p.Price <= maxPrice)
-                                          .Where(p=>p.BrandId==brandId)
-                                          .ToListAsync();
+            var products = _context.Products.Include("Photos").Where(p=>p.Price >=minPrice).Where(p=>p.Price <=maxPrice);
+            List<Product> pro = new List<Product>();
 
+            if(departmentId.Length==0 && brandId.Length == 0)
+            {
+                return await products.ToListAsync();
+            }
+
+            if (departmentId.Length == 0)
+            {
+                for (int i = 0; i < brandId.Length; i++)
+                {
+                    pro.AddRange(await products.Where(p => p.BrandId == brandId[i])
+                                               .ToListAsync());
+                }
+            }
+
+            if (brandId.Length == 0)
+            {
+                for (int i = 0; i < departmentId.Length; i++)
+                {
+                    pro.AddRange(await products.Where(p => p.Category.DepartmentId == departmentId[i])
+                                            .ToListAsync());
+                }
+            }
+
+            for (int i = 0; i < departmentId.Length; i++)
+            {
+                for (int j = 0; j < brandId.Length; j++)
+                {
+                    pro.AddRange(await products.Where(p => p.Category.DepartmentId == departmentId[i])
+                                            .Where(p => p.BrandId == brandId[j])
+                                            .ToListAsync());
+                }
+            }
+            return pro;
+
+
+
+        }
+
+        public async Task<IEnumerable<Product>> GetProductsByDepartmentId(int departmentId)
+        {
+            return await _context.Products.Include("Photos")
+                                          .Where(a => a.Category.DepartmentId == departmentId)
+                                          .Where(a => !a.SoftDeleted)
+                                          .ToListAsync();
         }
     }
 }

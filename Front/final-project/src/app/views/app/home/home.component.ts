@@ -39,14 +39,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getShopCollections();
-    // this.getUserAdress();
   }
 
-  // getUserAdress(): void {
-  //   this.apiService.getUserAdress().subscribe(res => {
-  //     console.log(res);
-  //   })
-  // }
   getShopCollections(): void {
     this.apiService.getShopCollections(3).subscribe(res => {
       this.collections = res.shopCollections;

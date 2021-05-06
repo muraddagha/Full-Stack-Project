@@ -1,9 +1,10 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { Options } from 'ng5-slider';
 import { IBrand } from '../../models/brand.model';
 import { IDepartment } from '../../models/department.model';
+import { IProduct } from '../../models/product/product.model';
 import { ApiService } from '../../services/api.service';
 
 
@@ -23,6 +24,7 @@ export class FilterComponent implements OnInit {
   public filterForm: FormGroup
   public departments: IDepartment[] = [];
   public brands: IBrand[] = [];
+  @Output() productsByDepartment: IProduct[] = [];
 
   constructor(private elem: ElementRef,
     private apiService: ApiService,
@@ -40,6 +42,11 @@ export class FilterComponent implements OnInit {
     })
   }
 
+  public filterByDepartmentId(id: any) {
+    this.apiService.getProductsByDepartmentId(id).subscribe(res => {
+      this.productsByDepartment = res.products;
+    })
+  }
   private getDepartments(): void {
     this.apiService.getDepartmentsWithCategory().subscribe(res => {
       this.departments = res.departments;

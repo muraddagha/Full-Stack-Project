@@ -14,6 +14,7 @@ namespace FinalProjectAPI.Resource.Product
         public double Price { get; set; }
         public double StarCount { get; set; }
         public string Sku { get; set; }
+        public bool InStock { get; set; }
         public CategoryResource Category { get; set; }
         public ICollection<string> Photos { get; set; }
     }

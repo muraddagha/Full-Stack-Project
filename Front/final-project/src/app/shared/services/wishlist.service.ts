@@ -31,4 +31,16 @@ export class WishlistService {
     }
     if (prdouctIsExsist) return;
   }
+
+  public removeWishlistItem(id: number): void {
+    if (confirm("Əminsinizmi?")) {
+      this.wishlist = this.wishlist.filter(a => a.product.id != id)
+      localStorage.setItem('wishlist', JSON.stringify(this.wishlist));
+      if (this.wishlist.length == 0) {
+        localStorage.removeItem('wishlist');
+      }
+      this.isChanged.next(true);
+    }
+
+  }
 }

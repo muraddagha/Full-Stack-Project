@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IWishlist } from 'src/app/shared/models/wishlist.model';
+import { WishlistService } from 'src/app/shared/services/wishlist.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wishlist.component.scss']
 })
 export class WishlistComponent implements OnInit {
-
-  constructor() { }
+  public wishlist: IWishlist[] = [];
+  constructor(private wishlistService: WishlistService) { }
 
   ngOnInit(): void {
+    this.getWishlist();
+  }
+
+  private getWishlist(): void {
+    this.wishlist = this.wishlistService.getWishlist();
+  }
+
+  public removeWishlistItem($event, id: any): void {
+    $event.preventDefault();
+    this.wishlistService.removeWishlistItem(id);
+    this.getWishlist();
   }
 
 }
