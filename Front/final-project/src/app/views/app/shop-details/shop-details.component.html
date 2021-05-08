@@ -208,7 +208,7 @@
                                                             <i class="fas fa-star unrated"></i>
                                                             <i class="fas fa-star unrated"></i>
                                                         </div>
-                                                        <span>20%</span>
+                                                        <span>0%</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -239,8 +239,7 @@
                                                 <textarea cols="30" rows="10" class="form-control" name="review"
                                                     formControlName="review"></textarea>
                                                 <div *ngIf="submitted && f.review.errors" class="text-danger">
-                                                    <div *ngIf="f.review.errors.required">Məhsul boş ola bilməz</div>
-                                                    <!-- <div *ngIf="f.review.errors.maxLenght">Məhsul adı maksimum 50 xarakter olmalıdır</div> -->
+                                                    <div *ngIf="f.review.errors.required">Şərh boş ola bilməz</div>
                                                 </div>
                                             </div>
                                             <button class="btn btn-pink mt-3" type="submit">Göndər</button>
@@ -260,7 +259,7 @@
                                                     <div class="star mb-2">
                                                         <i *ngFor="let star of starCount(review.star)"
                                                             class="fas fa-star"></i>
-                                                        <i *ngFor="let star of unratedStarCount(review.star )"
+                                                        <i *ngFor="let star of unratedStarCount(review.star)"
                                                             class="fas fa-star unrated"></i>
                                                         <span>{{review.addedDate}}</span>
                                                     </div>

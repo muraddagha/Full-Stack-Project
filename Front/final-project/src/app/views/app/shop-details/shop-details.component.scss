@@ -206,9 +206,10 @@
         .review-content {
           display: flex;
           align-items: center;
+          padding-top: 56px;
           &:not(:last-child) {
             border-bottom: 1px solid $color-border;
-            padding: 56px 0 40px 0;
+            padding-bottom: 40px;
           }
           .user-img {
             margin-right: 40px;

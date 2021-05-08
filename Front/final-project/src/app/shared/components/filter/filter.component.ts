@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { Options } from 'ng5-slider';
+import { BehaviorSubject } from 'rxjs';
 import { IBrand } from '../../models/brand.model';
 import { IDepartment } from '../../models/department.model';
 import { IProduct } from '../../models/product/product.model';
@@ -24,7 +25,10 @@ export class FilterComponent implements OnInit {
   public filterForm: FormGroup
   public departments: IDepartment[] = [];
   public brands: IBrand[] = [];
-  @Output() productsByDepartment: IProduct[] = [];
+  public brandsValue: number[] = [];
+  public departmentsValue: number[] = [];
+  public otP: BehaviorSubject<IProduct[]> = new BehaviorSubject<IProduct[]>([]);
+
 
   constructor(private elem: ElementRef,
     private apiService: ApiService,
@@ -42,24 +46,40 @@ export class FilterComponent implements OnInit {
     })
   }
 
-  public filterByDepartmentId(id: any) {
-    this.apiService.getProductsByDepartmentId(id).subscribe(res => {
-      this.productsByDepartment = res.products;
-    })
-  }
   private getDepartments(): void {
     this.apiService.getDepartmentsWithCategory().subscribe(res => {
       this.departments = res.departments;
     })
   }
+
   private getBrands(): void {
     this.apiService.getBrands(10).subscribe(res => {
       this.brands = res.brands;
     })
   }
-  public filter() {
-    console.log(this.filterForm.value);
 
+  public filter() {
+    this.apiService.getFilteredProduct(this.departmentsValue, this.brandsValue, this.minValue, this.maxValue).subscribe(res => {
+      this.otP.next(res.products)
+    })
+  }
+
+  public departmentValue(id: any) {
+    if (this.departmentsValue.find(i => i == id)) {
+      this.departmentsValue = this.departmentsValue.filter(a => a != id)
+    }
+    else if (!this.departmentsValue.find(i => i == id)) {
+      this.departmentsValue.push(id);
+    }
+  }
+
+  public brandValue(id: any) {
+    if (this.brandsValue.find(i => i == id)) {
+      this.brandsValue = this.brandsValue.filter(i => i != id)
+    }
+    else if (!this.brandsValue.find(i => i == id)) {
+      this.brandsValue.push(id);
+    }
   }
 
 }

@@ -33,7 +33,6 @@ namespace FinalProjectAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers()
                     .AddNewtonsoftJson(options => options.SerializerSettings
                                                         .ReferenceLoopHandling = Newtonsoft.Json
@@ -42,6 +41,8 @@ namespace FinalProjectAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FinalProjectAPI", Version = "v1" });
             });
+
+            
 
             services.AddCors(options =>
             {
@@ -88,13 +89,13 @@ namespace FinalProjectAPI
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FinalProjectAPI v1"));
             }
 
+            app.UseAuthentication();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseCors(AllowSpecificOrigins);
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

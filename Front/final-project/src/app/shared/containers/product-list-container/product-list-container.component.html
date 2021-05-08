@@ -6,8 +6,11 @@
             </div>
             <div class="col-lg-8">
                 <div class="list-header">
-                    <h4>
+                    <h4 *ngIf="!filtered">
                         Göstəriləcək məhsul sayı {{products.length}}
+                    </h4>
+                    <h4 *ngIf="filtered">
+                        Göstəriləcək məhsul sayı {{outputProducts.length}}
                     </h4>
                     <div class="selectbox">
                         <ng-select [(ngModel)]="selectedSimpleItem">>
@@ -19,10 +22,18 @@
                 </div>
                 <div class="products-area">
                     <div class="row">
-                        <div class="col-xl-4 col-md-6"
-                            *ngFor="let product of products  | paginate: { itemsPerPage: 9, currentPage: page,totalItems:products.length}">
-                            <app-single-product [product]="product"></app-single-product>
-                        </div>
+                        <ng-container *ngIf="!filtered">
+                            <div class="col-xl-4 col-md-6"
+                                *ngFor="let product of products  | paginate: { itemsPerPage: 9, currentPage: page,totalItems:products.length}">
+                                <app-single-product [product]="product"></app-single-product>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="filtered">
+                            <div class="col-xl-4 col-md-6"
+                                *ngFor="let product of outputProducts  | paginate: { itemsPerPage: 9, currentPage: page,totalItems:outputProducts.length}">
+                                <app-single-product [product]="product"></app-single-product>
+                            </div>
+                        </ng-container>
                     </div>
                 </div>
                 <pagination-controls (pageChange)="page = $event" previousLabel="Əvvəlki" nextLabel="Növbəti">

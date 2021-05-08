@@ -23,9 +23,31 @@ namespace DataService.Services.ContentServices
         }
         public async Task<ProductReview> CreateReview(int productId, int userId, ProductReview productReview)
         {
+            double starCount = 0;
+            double totalStar = 0;
+            var productReviews = await _context.ProductReviews.Where(p => p.ProductId == productId).ToListAsync();
+            var product = await _context.Products.FindAsync(productId);
+
+            if (productReviews.Count > 0)
+            {
+                foreach (var item in productReviews)
+                {
+                    starCount += item.Star;
+                }
+
+                totalStar = starCount / productReviews.Count;
+
+            }
+            else
+            {
+                starCount = productReview.Star;
+                totalStar = starCount;
+            }
+
             productReview.AddedDate = DateTime.Now;
             productReview.ProductId = productId;
             productReview.UserId = userId;
+            product.StarCount = Math.Round(totalStar);
             await _context.ProductReviews.AddAsync(productReview);
             await _context.SaveChangesAsync();
             return productReview;

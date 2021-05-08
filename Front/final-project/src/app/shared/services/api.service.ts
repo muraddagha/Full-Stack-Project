@@ -89,8 +89,15 @@ export class ApiService {
   public getProductsByCategoryId(id, limit: number, order: number): Observable<IProductResponse> {
     return this.http.get<IProductResponse>(environment.apiUrl + `product?categoryId=${id}&limit=${limit}&order=${order}`)
   }
-  public getFilteredProduct(departmentid?: any, brandId?: any, minPrice?: any, maxPrice?: any): Observable<IProductResponse> {
-    return this.http.get<IProductResponse>(environment.apiUrl + `product/filter?departmentId=${departmentid} &brandId=${brandId}&minPrice=${minPrice} &maxPrice=${maxPrice}`)
+  public getFilteredProduct(departmentid: any[], brandId: any[], minPrice?: any, maxPrice?: any): Observable<IProductResponse> {
+    return this.http.get<IProductResponse>(environment.apiUrl + `product/filter`, {
+      params: {
+        departmentid,
+        brandId,
+        maxPrice,
+        minPrice
+      }
+    })
   }
   public getProductsByDepartmentId(id: any) {
     return this.http.get<IProductResponse>(environment.apiUrl + `product/department/${id}`)

@@ -80,6 +80,8 @@ export class ShopDetailsComponent implements OnInit {
 
     this.apiService.getProductById(id).subscribe(res => {
       this.product = res;
+      console.log(res);
+
     })
 
   }

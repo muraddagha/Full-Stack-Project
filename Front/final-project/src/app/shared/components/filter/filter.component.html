@@ -20,8 +20,9 @@
             <ul>
                 <li *ngFor="let department of departments">
                     <label>
-                        <input name="department" formControlName="department" type="checkbox"
-                            ng-true-value="{{department.id}}" value="{{department.id}}">
+                        <input (ngModelChange)="departmentValue(department.id)" name="department"
+                            formControlName="department" type="checkbox" ng-true-value="{{department.id}}"
+                            value="{{department.id}}">
                         <span class="checkmark"></span>
                         <span class="input-name">{{department.name}}</span>
                     </label>
@@ -36,7 +37,8 @@
             <ul>
                 <li *ngFor="let brand of brands">
                     <label>
-                        <input name="brand" formControlName="brand" type="checkbox" value="{{brand.name}}">
+                        <input (ngModelChange)="brandValue(brand.id)" name="brand" formControlName="brand"
+                            type="checkbox" value="{{brand.name}}">
                         <span class="checkmark"></span>
                         <span class="input-name">{{brand.name}}</span>
                     </label>
