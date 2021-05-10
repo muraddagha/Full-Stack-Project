@@ -111,5 +111,27 @@ namespace FinalProjectAPI.Controllers.V1
             var userOrderListsResource = _mapper.Map<IEnumerable<UserOrderList>, IEnumerable<UserOrderListResource>>(userOrderLists);
             return Ok(new {userOrderLists= userOrderListsResource });
         }
+
+        [HttpPost]
+        [Route("CreateAdress")]
+        [TypeFilter(typeof(UserAuth))]
+
+        public async Task<IActionResult> CreateUserAdress([FromBody] CreateUserAdressResource resource)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            try
+            {
+                var input = _mapper.Map<CreateUserAdressResource, UserAdress>(resource);
+                input.UserId = _user.Id;
+                input.AddedBy = _user.Name + " " + _user.Surname;
+                var userAdress = await _userService.CreateUserAdress(input);
+                return Ok(userAdress);
+            }
+            catch (HttpException e)
+            {
+                return StatusCode(e.StatusCode, e.Response);
+            }
+        }
     }
 }

@@ -131,7 +131,7 @@ namespace FinalProjectAPI.Controllers.V1
             try
             {
                 await _productService.RemoveProduct(id);
-                return Ok(new { message = "Məhsul silindi" });
+                return Ok(new { message = "Məhsul deaktiv edildi" });
             }
             catch (HttpException e)
             {

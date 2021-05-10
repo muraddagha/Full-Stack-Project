@@ -9,6 +9,9 @@ namespace FinalProjectAPI.Resource.DealOfDays
 {
     public class UpdateDealOfDaysResource
     {
+        [Required]
+        public int ProductId { get; set; }
+
         [MaxLength(100)]
         public string Subtitle { get; set; }
 
@@ -19,8 +22,6 @@ namespace FinalProjectAPI.Resource.DealOfDays
         [Required]
         [MaxLength(50)]
         public string BackgroundColor { get; set; }
-
-        public ProductResource Product { get; set; }
 
         public bool SoftDeleted { get; set; }
     }

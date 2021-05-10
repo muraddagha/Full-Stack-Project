@@ -64,6 +64,21 @@ export class AdressComponent implements OnInit {
         this.getAdress();
         this.element.nativeElement.querySelector(".btn-close").click();
         this.notifier.notify("success", "Ünvan yeniləndi");
+        this.submitted = false;
+      })
+  }
+
+  public create(): void {
+    this.submitted = true;
+    if (this.adressForm.invalid) return;
+    this.apiService.createUserAdress(this.adressForm.value).subscribe(res => {
+
+    }, err => { },
+      () => {
+        this.getAdress();
+        this.submitted = false;
+        this.notifier.notify("success", "Ünvan əlavə edildi");
+        this.adressForm.reset();
       })
   }
 

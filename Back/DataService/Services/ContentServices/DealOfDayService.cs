@@ -13,7 +13,7 @@ namespace DataService.Services.ContentServices
     public interface IDealOfDayService
     {
         Task<IEnumerable<DealOfDay>> GetDealOfDaysAll();
-        Task<IEnumerable<DealOfDay>> GetDealOfDays(int limit);
+        Task<DealOfDay> GetDealOfDay();
         Task<DealOfDay> GetDealOfDayById(int id);
         Task<DealOfDay> CreateDealOfDay(DealOfDay dealOfDay);
         Task UpdateDealOfDay(int id, DealOfDay dealOfDay);
@@ -42,12 +42,10 @@ namespace DataService.Services.ContentServices
             return dealOfDay;
         }
 
-        public async Task<IEnumerable<DealOfDay>> GetDealOfDays(int limit)
+        public async Task<DealOfDay> GetDealOfDay()
         {
             return await _context.DealOfDays.Include("Product.Photos")
-                                                 .Where(s => !s.SoftDeleted)
-                                                 .Take(limit)
-                                                 .ToListAsync();
+                                            .FirstOrDefaultAsync(s => !s.SoftDeleted);
         }
 
         public async Task<IEnumerable<DealOfDay>> GetDealOfDaysAll()

@@ -95,6 +95,7 @@ namespace DataService.Services.ShoppingServices
             var products = _context.Products.Include("Photos")
                                             .Include("Category")
                                             .Include("Discounts.Discount")
+                                            .Where(p=>!p.SoftDeleted)
                                             .Where(p=>p.Category.DepartmentId==departmentId)
                                             .Where(p => p.AddedDate > DateTime.Now.AddDays(-7));
 
@@ -106,6 +107,7 @@ namespace DataService.Services.ShoppingServices
             var products = _context.Products.Include("Photos")
                                             .Include("Category")
                                             .Include("Discounts.Discount")
+                                            .Where(p => !p.SoftDeleted)
                                             .Where(p => p.AddedDate > DateTime.Now.AddDays(-7));
 
             ProductListBy(products, order);
@@ -131,6 +133,7 @@ namespace DataService.Services.ShoppingServices
         {
             var products = _context.Products.Include("Photos")
                                             .Include("Discounts.Discount")
+                                            .Where(p=>!p.SoftDeleted)
                                             .Where(p => p.CategoryId == categoryId);
 
 
@@ -151,6 +154,7 @@ namespace DataService.Services.ShoppingServices
             var products = _context.Products.Include("Photos")
                                             .Include("Category")
                                             .Include("Discounts.Discount")
+                                            .Where(p => !p.SoftDeleted)
                                             .Where(p => p.IsTopSell);
 
             ProductListBy(products, order);
@@ -161,7 +165,8 @@ namespace DataService.Services.ShoppingServices
         {
             var products = _context.Products.Include("Photos")
                                             .Include("Discounts.Discount")
-                                           .Where(p => p.IsTrend);
+                                            .Where(p => !p.SoftDeleted)
+                                            .Where(p => p.IsTrend);
 
             ProductListBy(products, order);
             return await products.Take(limit).ToListAsync();
@@ -199,7 +204,6 @@ namespace DataService.Services.ShoppingServices
             await _context.SaveChangesAsync();
         }
 
-
         public async Task UpdateProduct(int id,Product product)
         {
             var updateProduct = await GetProductById(id);
@@ -210,7 +214,6 @@ namespace DataService.Services.ShoppingServices
             updateProduct.Description = product.Description;
             updateProduct.Price = product.Price;
             updateProduct.Sku = product.Sku;
-            updateProduct.StarCount = product.StarCount;
             updateProduct.InStock = product.InStock;
             updateProduct.IsTrend = product.IsTrend;
             updateProduct.IsFeatured = product.IsFeatured;
@@ -233,7 +236,7 @@ namespace DataService.Services.ShoppingServices
         public async Task<IEnumerable<Product>> GetFilteredProduct(int[] departmentId, int[] brandId,
                                                                    double? minPrice,double? maxPrice)
         {
-            var products = _context.Products.Include("Photos").Where(p=>p.Price >=minPrice).Where(p=>p.Price <=maxPrice);
+            var products = _context.Products.Include("Photos").Where(p => p.Price >= minPrice).Where(p => p.Price <= maxPrice).Where(p => !p.SoftDeleted);
             List<Product> pro = new List<Product>();
 
             if(departmentId.Length==0 && brandId.Length == 0)

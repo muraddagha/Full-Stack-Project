@@ -8,6 +8,7 @@ namespace FinalProjectAPI.Resource.DealOfDays
 {
     public class AdminDealOfDaysResource
     {
+        public int Id { get; set; }
         public string Subtitle { get; set; }
         public string Title { get; set; }
         public string BackgroundColor { get; set; }

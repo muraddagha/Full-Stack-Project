@@ -1,7 +1,8 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
+import { IAdress } from 'src/app/shared/models/adress.model';
 import { IBasket } from 'src/app/shared/models/basket.model';
 import { ISaleProduct } from 'src/app/shared/models/product/saleItem.model';
 import { IUser } from 'src/app/shared/models/user.model';
@@ -19,13 +20,17 @@ export class CheckoutComponent implements OnInit {
   public billingForm: FormGroup;
   public user: IUser;
   public basket: IBasket[] = [];
+  public adress: IAdress;
+  public adressForm: FormGroup
 
   constructor(private apiService: ApiService,
     private router: Router,
     private authService: AuthService,
     private basketService: BasketService,
     private elem: ElementRef,
-    private notifier: NotifierService,) {
+    private notifier: NotifierService,
+    private fb: FormBuilder
+  ) {
     this.authService.currentUser.subscribe(user => {
       this.user = user;
     })
@@ -33,12 +38,29 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBaskets();
-    this.changeMehtod();
+    this.generateForm();
+    this.getUserAdress();
   }
 
+  ngAfterViewInit(): void {
+    window.addEventListener("load", () => {
+      this.changeMehtod();
+    })
+  }
+  generateForm(): void {
+    this.adressForm = this.fb.group({
+      country: ["", [Validators.required, Validators.maxLength(50)]],
+      city: ["", [Validators.required, Validators.maxLength(50)]],
+      adress1: ["", [Validators.required, Validators.maxLength(200)]],
+      adress2: ["", [Validators.maxLength(200)]],
+      postCode: ["", [Validators.maxLength(50)]],
+    })
+  }
+  get f() {
+    return this.adressForm.controls;
+  }
   private changeMehtod(): void {
-    let payment = this.elem.nativeElement.querySelectorAll(".payment")
-
+    let payment = this.elem.nativeElement.querySelectorAll(".payment ")
     payment.forEach(e => {
       e.addEventListener("click", (a) => {
         a.preventDefault();
@@ -50,11 +72,6 @@ export class CheckoutComponent implements OnInit {
         }
       })
     })
-    // let ul = this.elem.nativeElement.querySelectorAll(".payment");
-    // ul.forEach(a => {
-    //   a.classList.remove("active")
-    // })
-    // element.classList.toggle("active")
   }
   public sale(): void {
     let totalPrice = 0
@@ -106,6 +123,22 @@ export class CheckoutComponent implements OnInit {
   }
   public getBaskets(): void {
     this.basket = this.basketService.getBaskets()
+  }
+  public getUserAdress(): void {
+    this.apiService.getUserAdress().subscribe(res => {
+      this.adress = res;
+    })
+  }
+  public create(): void {
+    this.submitted = true;
+    if (this.adressForm.invalid) return;
+    this.apiService.createUserAdress(this.adressForm.value).subscribe(res => {
+    }, err => { },
+      () => {
+        this.getUserAdress();
+        this.notifier.notify("success", "Ünvan əlavə edildi");
+        this.adressForm.reset();
+      })
   }
 
 }

@@ -50,7 +50,6 @@ export class ProductComponent implements OnInit {
         name: new FormControl(''),
         value: new FormControl('')
       })]),
-      // modifiedBy: [this.adminName, [Validators.required, Validators.maxLength(50)]]
     })
   }
   get f() {
@@ -87,7 +86,7 @@ export class ProductComponent implements OnInit {
 
         },
         () => {
-          this.notifier.notify("success", "Məhsul silindi")
+          this.notifier.notify("error", "Məhsul dekativ edildi")
           this.getproducts();
         })
     }

@@ -17,6 +17,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { BasketComponent } from './basket/basket.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { DealOfDayComponent } from './deal-of-day/deal-of-day.component';
 
 
 
@@ -35,6 +36,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     BasketComponent,
     OrderListComponent,
     WishlistComponent,
+    DealOfDayComponent,
   ],
   imports: [
     CommonModule,
@@ -57,7 +59,8 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     SearchBoxComponent,
     BasketComponent,
     OrderListComponent,
-    WishlistComponent
+    WishlistComponent,
+    DealOfDayComponent
   ]
 })
 export class ComponentsModule { }

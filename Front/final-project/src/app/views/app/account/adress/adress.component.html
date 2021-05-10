@@ -8,7 +8,7 @@
                     <i class="ti-info-alt"></i>
                     <p>Sifarişləriniz bu ünvana göndəriləcək.</p>
                 </div>
-                <div class="user-info-area">
+                <div *ngIf="adress!=null" class="user-info-area">
                     <div class="user-info">
                         <span>Ad, Soyad:</span>
                         <p>{{user?.name +" "+ user.surname}}</p>
@@ -30,6 +30,47 @@
                     <a (click)="updateAdress($event,adress)" data-bs-toggle="modal" data-bs-target="#exampleModal"
                         class="btn btn-pink mt-3" href="#">Yenilə</a>
                 </div>
+                <form *ngIf="adress==null" [formGroup]="adressForm" (ngSubmit)="create()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.country.errors }">Ölkə</label>
+                        <input name="country" formControlName="country" type="text">
+                        <div *ngIf="submitted && f.country.errors" class="text-danger">
+                            <div *ngIf="f.country.errors.required">Ölkə boş ola bilməz</div>
+                            <div *ngIf="f.country.errors.maxLenght">Ölkə maksimum 50 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.city.errors }">Şəhər</label>
+                        <input name="city" formControlName="city" type="text">
+                        <div *ngIf="submitted && f.city.errors" class="text-danger">
+                            <div *ngIf="f.city.errors.required">Şəhər boş ola bilməz</div>
+                            <div *ngIf="f.city.errors.maxLenght">Şəhər maksimum 50 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.adress1.errors }">Ünvan 1</label>
+                        <input name="adress1" formControlName="adress1" type="text">
+                        <div *ngIf="submitted && f.adress1.errors" class="text-danger">
+                            <div *ngIf="f.adress1.errors.required">Ünvan boş ola bilməz</div>
+                            <div *ngIf="f.adress1.errors.maxLenght">Ünvan maksimum 200 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.adress2.errors }">Ünvan 2</label>
+                        <input name="adress2" formControlName="adress2" type="text">
+                        <div *ngIf="submitted && f.adress2.errors" class="text-danger">
+                            <div *ngIf="f.adress2.errors.maxLenght">Ünvan maksimum 200 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.postCode.errors }">Poçt Kodu</label>
+                        <input name="postCode" formControlName="postCode" type="text">
+                        <div *ngIf="submitted && f.postCode.errors" class="text-danger">
+                            <div *ngIf="f.postCode.errors.maxLenght">Poçt kodu maksimum 50 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-pink w-100 mt-2">Yarat</button>
+                </form>
             </div>
         </div>
     </div>

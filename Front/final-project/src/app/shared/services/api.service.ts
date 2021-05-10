@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IAdress } from '../models/adress.model';
+import { IDealOfDay } from '../models/deal-of-deay.model';
 import { IProductReview } from '../models/product/product-review.model';
 import { IProduct } from '../models/product/product.model';
 import { IBrandResponse } from '../models/response/brand-response.model';
@@ -25,6 +26,7 @@ export class ApiService {
     return this.http.post(environment.apiUrl + `sale`, data);
   }
   //#endregion
+
   //#region User
   public getUserAdress(): Observable<any> {
     return this.http.get<any>(environment.apiUrl + `user/userAdress`)
@@ -43,6 +45,9 @@ export class ApiService {
   }
   public getUserOrderListByStatus(status: any): Observable<IUserOrderListResponse> {
     return this.http.get<IUserOrderListResponse>(environment.apiUrl + `user/userOrderListByStatus?status=${status}`);
+  }
+  public createUserAdress(data: any) {
+    return this.http.post(environment.apiUrl + `user/createAdress`, data)
   }
   //#endregion
 
@@ -114,6 +119,9 @@ export class ApiService {
   }
   public postReview(data: any, id) {
     return this.http.post(environment.apiUrl + `content/create?productId=${id}`, data)
+  }
+  public getDealOfDay(): Observable<IDealOfDay> {
+    return this.http.get<IDealOfDay>(environment.apiUrl + `dealOfDay`)
   }
   //#endregion
 }

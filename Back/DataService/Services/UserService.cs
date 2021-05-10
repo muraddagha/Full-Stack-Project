@@ -18,7 +18,8 @@ namespace DataService.Services
         Task RecoveryPassword(string forgetPasswordToken,string password);
         Task<User> CheckToken(string token);
         Task<UserAdress> GetUserAdress(int id);
-        Task UpdateAdress(int userId, UserAdress userAdress);
+        Task<UserAdress> CreateUserAdress(UserAdress userAdress);
+        Task UpdateAdress(int userId,UserAdress userAdress);
         Task<UserOrderList> AddUserOrderList(UserOrderList userOrderList);
         Task<IEnumerable<UserOrderList>> GetUserOrderLists(int userId);
         Task<UserOrderList> GetOrderListById(int userId, int id);
@@ -43,6 +44,14 @@ namespace DataService.Services
         public async Task<User> CheckToken(string token)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Token == token);
+        }
+
+        public async Task<UserAdress> CreateUserAdress(UserAdress userAdress)
+        {
+            userAdress.AddedDate = DateTime.Now;
+            await _context.UserAdresses.AddAsync(userAdress);
+            await _context.SaveChangesAsync();
+            return userAdress;
         }
 
         public async Task<UserOrderList> GetOrderListById(int userId, int id)

@@ -41,4 +41,25 @@
       }
     }
   }
+  .form-group {
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #373737;
+      display: block;
+      margin: 14px 0;
+      line-height: 1;
+    }
+    input {
+      height: 50px;
+      border: 1px solid #e1e2e6;
+      font-family: "Jost", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #090b17;
+      padding: 15px 20px;
+      width: 100%;
+      box-shadow: none !important;
+    }
+  }
 }

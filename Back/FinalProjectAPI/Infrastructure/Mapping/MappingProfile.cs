@@ -30,6 +30,7 @@ namespace FinalProjectAPI.Infrastructure.Mapping
             CreateMap<UserOrderList, UserOrderListResource>()
                                                         .ForMember(d => d.OrderDate, opt => opt.MapFrom(day => day.OrderDate.ToString("dd-MM-yyyy")));
             CreateMap<UserOrderItem, UserOrderItemResource>();
+            CreateMap<CreateUserAdressResource, UserAdress>();
 
             //Admin
             CreateMap<Admin, AdminResource>();
@@ -47,7 +48,7 @@ namespace FinalProjectAPI.Infrastructure.Mapping
                                                 .ForMember(d => d.Discounts, opt => opt.MapFrom(src => src.Discounts
                                                                                        .Where(d => d.Discount.StartDate <= DateTime.Now && d.Discount.EndDate >= DateTime.Now)
                                                                                        .OrderByDescending(d => d.AddedDate)
-                                                                                       .FirstOrDefault().Discount));
+                                                                                       .FirstOrDefault().Discount))
             CreateMap<Product, AdminProductResource>();
             CreateMap<ProductPhoto, AdminProductPhotoResource>();
             CreateMap<AdminProductPhotoResource, ProductPhoto>();

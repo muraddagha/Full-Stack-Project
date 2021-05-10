@@ -7,6 +7,7 @@ import { IBrand } from '../models/brand/brand.model';
 import { IProduct } from '../models/product/product.model';
 import { IBrandResponse } from '../models/response/brand-response.model';
 import { ICategoryResponse } from '../models/response/category-response.model';
+import { IDealOfDayResponse } from '../models/response/deal-of-day-response.model';
 import { IDepartmentResponse } from '../models/response/department-response.model';
 import { IOptionResponse } from '../models/response/product-option-response.model';
 import { IProductResponse } from '../models/response/product-response.model';
@@ -55,7 +56,6 @@ export class ApiService {
     return this.http.delete(environment.apiUrl + `category/${id}`)
   }
   //#endregion
-
 
   //#region Product
   public getProducts(): Observable<IProductResponse> {
@@ -114,7 +114,6 @@ export class ApiService {
   }
   //#endregion
 
-
   //#region Brand
   public getBrands(): Observable<IBrandResponse> {
     return this.http.get<IBrandResponse>(environment.apiUrl + `brand/all`)
@@ -138,8 +137,8 @@ export class ApiService {
   //#endregion
 
   //#region DealOfDay
-  public getDealOfDays(): Observable<IBrandResponse> {
-    return this.http.get<IBrandResponse>(environment.apiUrl + `dealOfDay/all`)
+  public getDealOfDays(): Observable<IDealOfDayResponse> {
+    return this.http.get<IDealOfDayResponse>(environment.apiUrl + `dealOfDay/all`)
   }
   public createDealOfDay(data: any) {
     return this.http.post(environment.apiUrl + `dealOfDay/create`, data)

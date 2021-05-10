@@ -1,0 +1,77 @@
+@import "/src/assets/scss/variables";
+
+#deal-of-day {
+  padding: 25px 46px 47px;
+  .deal-product-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    .deal-content {
+      padding: 30px;
+      margin-top: 30px;
+      margin-left: 10px;
+      padding-left: 100px;
+      h6 {
+        font-size: 14px;
+        font-weight: 600;
+        color: $color-pink-second;
+        text-transform: uppercase;
+      }
+      h1 {
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1.21;
+        margin: 17px 0 38px 0;
+      }
+    }
+    .deal-product {
+      text-align: right;
+      a {
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .deal-content {
+    padding-left: 30px !important;
+    h1 {
+      font-size: 45px !important;
+    }
+  }
+}
+@media only screen and(max-width:1050px) {
+  .deal-content {
+    padding-right: 0 !important;
+  }
+}
+@media only screen and(max-width:992px) {
+  .deal-product {
+    a {
+      img {
+        max-height: 450px;
+      }
+    }
+  }
+  .deal-content {
+    h1 {
+      font-size: 34px !important;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  #deal-of-day {
+    display: none !important;
+  }
+  .deal-content {
+    h1 {
+      font-size: 24px !important;
+    }
+  }
+}

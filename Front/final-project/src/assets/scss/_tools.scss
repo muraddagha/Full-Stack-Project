@@ -294,6 +294,31 @@ a {
     }
   }
 }
+.price {
+  margin-bottom: 35px;
+  .old-price {
+    font-size: 16px;
+    font-weight: 400;
+    color: #090b17;
+    text-decoration: line-through;
+    display: inline-block;
+    margin-right: 15px;
+  }
+  .new-price {
+    font-size: 36px;
+    font-weight: 700;
+    color: $color-pink-second;
+    margin-bottom: 0;
+    position: relative;
+    sup {
+      font-size: 16px;
+      font-weight: 500;
+      position: absolute;
+      right: -37px;
+      top: 13px;
+    }
+  }
+}
 
 @import "/src/assets/scss/variables";
 table {
@@ -497,11 +522,31 @@ table {
   .container {
     max-width: 1440px !important;
   }
+  .price {
+    span {
+      font-size: 30px !important;
+    }
+  }
 }
 @media only screen and(max-width:992px) {
   .main-title {
     text-align: center !important;
     margin-bottom: 10px !important;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .price {
+    span {
+      font-size: 28px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  .price {
+    span {
+      font-size: 26px !important;
+    }
   }
 }
 

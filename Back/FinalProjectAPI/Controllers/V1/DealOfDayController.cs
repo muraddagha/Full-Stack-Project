@@ -36,11 +36,11 @@ namespace FinalProjectAPI.Controllers.V1
         [HttpGet]
         [Route("")]
 
-        public async Task<IActionResult> GetDealOfDays([FromQuery] int limit)
+        public async Task<IActionResult> GetDealOfDay()
         {
-            var dealOfDays = await _delaOfDayService.GetDealOfDays(limit);
-            var dealOfDaysResource = _mapper.Map<IEnumerable<DealOfDay>, IEnumerable<DealOfDaysResource>>(dealOfDays);
-            return Ok(new { dealOfDays = dealOfDaysResource });
+            var dealOfDay = await _delaOfDayService.GetDealOfDay();
+            var dealOfDayResource = _mapper.Map<DealOfDay, DealOfDaysResource>(dealOfDay);
+            return Ok(dealOfDayResource);
 
         }
 

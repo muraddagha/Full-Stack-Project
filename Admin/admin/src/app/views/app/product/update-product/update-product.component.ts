@@ -59,8 +59,6 @@ export class UpdateProductComponent implements OnInit {
 
   public update(): void {
     this.submitted = true;
-    console.log(this.updateForm.value);
-
     if (this.updateForm.invalid) return
     this.apiService.updateProduct(this.product.id, this.updateForm.value).subscribe(res => {
 

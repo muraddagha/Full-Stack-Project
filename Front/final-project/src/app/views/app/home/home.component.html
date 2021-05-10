@@ -110,38 +110,7 @@
     </div>
 </section>
 <app-new-arrivals-container></app-new-arrivals-container>
-<section id="deal-of-day" class="mt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div style="background-color: #F6F6F8;" class="deal-of-day-area">
-                    <div class="deal-product-content">
-                        <div class="row">
-                            <div class="order-2 order-sm-1 col-sm-6 col-lg-7">
-                                <div class="deal-content collection-content">
-                                    <h6>DEAL of the day</h6>
-                                    <h1>Apple's all in a completely <br> refreshed design. </h1>
-                                    <div class="price">
-                                        <del class="old-price">$325.00</del>
-                                        <span class="new-price">$299<sup>.99</sup></span>
-                                    </div>
-                                    <app-countdown></app-countdown>
-                                </div>
-                            </div>
-                            <div class="order-1 order-sm-2 col-sm-6 col-lg-5">
-                                <div class="deal-product">
-                                    <a [routerLink]="['/app/product']">
-                                        <img src="/assets/icons/iphone.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<app-deal-of-day></app-deal-of-day>
 <section id="featured-products" class="pb-5">
     <app-products-slider-container [featured]="true" [title]=" 'Seçilən Məhsullar' "></app-products-slider-container>
 </section>

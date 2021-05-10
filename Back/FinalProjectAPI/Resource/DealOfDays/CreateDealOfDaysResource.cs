@@ -9,6 +9,9 @@ namespace FinalProjectAPI.Resource.DealOfDays
 {
     public class CreateDealOfDaysResource
     {
+        [Required]
+        public int ProductId { get; set; }
+
         [MaxLength(100)]
         public string Subtitle { get; set; }
 
@@ -20,6 +23,5 @@ namespace FinalProjectAPI.Resource.DealOfDays
         [MaxLength(50)]
         public string BackgroundColor { get; set; }
 
-        public ProductResource Product { get; set; }
     }
 }
