@@ -104,11 +104,11 @@
             <div class="modal-body">
                 <form [formGroup]="updateForm" (ngSubmit)="update()">
                     <div class="form-group">
-                        <label [ngClass]="{ 'is-invalid': submitted && f.name.errors }">Adı</label>
+                        <label [ngClass]="{ 'is-invalid': submitted && u.name.errors }">Adı</label>
                         <input name="name" formControlName="name" type="text" class="form-control">
-                        <div *ngIf="submitted && f.name.errors" class="text-danger">
-                            <div *ngIf="f.name.errors.required">Ad boş ola bilməz</div>
-                            <div *ngIf="f.name.errors.maxLenght">Ad maksimum 50 xarakter olmalıdır</div>
+                        <div *ngIf="submitted && u.name.errors" class="text-danger">
+                            <div *ngIf="u.name.errors.required">Ad boş ola bilməz</div>
+                            <div *ngIf="u.name.errors.maxLenght">Ad maksimum 50 xarakter olmalıdır</div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -120,22 +120,19 @@
                     </div>
                     <div *ngIf="brand?.logo.length==0" class="form-group">
                         <label for="files" type="button" class="btn btn-secondary mr-2">Logo yüklə</label>
-                        <label> <span class="text-danger">*</span></label>
                         <input id="files" (change)="upload($event)" type="file" class="d-none" accept="image/*">
-                        <div *ngIf="uploadImg.length>0" class="photos">
-                            <div *ngFor="let img of uploadImg;let i=index" class="img">
-                                <input type="hidden" name="logo" formControlName="logo">
-                                <input type="hidden" name="fileName" formControlName="fileName">
-                                <img src="{{img.src}}" alt="uploaded-photo">
-                                <a href="#" (click)="removePhoto($event,img.fileName,i)">
-                                    <i class=" ml-1 fas fa-trash"></i>
-                                </a>
-                            </div>
+                        <div *ngIf="brand?.logo.length>0" class="photos">
+                            <input type="hidden" name="logo" formControlName="logo">
+                            <input type="hidden" name="fileName" formControlName="fileName">
+                            <img src="{{brand?.logo}}" alt="uploaded-photo">
+                            <a href="#" (click)="removePhoto($event,brand?.fileName,i)">
+                                <i class=" ml-1 fas fa-trash"></i>
+                            </a>
                         </div>
                     </div>
                     <div *ngIf="brand?.logo.length>0" class="photos">
                         <img class="brand-logo-img" src="{{brand?.logo}}" alt="">
-                        <a href="#" (click)="removeBrandLogo($event,brand)">
+                        <a href="#" (click)="removeBrandLogo($event,setting)">
                             <i class="ml-1 fas fa-trash"></i>
                         </a>
                     </div>

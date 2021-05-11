@@ -68,7 +68,6 @@ export class BrandComponent implements OnInit {
   }
   public create(): void {
     this.submitted = true;
-    console.log(this.createForm.value);
     if (this.createForm.invalid) return;
     this.apiService.createBrand(this.createForm.value).subscribe(res => {
     },
@@ -85,16 +84,11 @@ export class BrandComponent implements OnInit {
   }
   public update(): void {
     this.submitted = true;
-    console.log(this.updateForm.value);
-
     if (this.updateForm.invalid) return;
 
     this.apiService.updateBrand(this.brandId, this.updateForm.value).subscribe(res => {
     },
       err => {
-        console.log(err);
-
-        ///..
       },
       () => {
         this.element.nativeElement.querySelector(".close-update").click();
@@ -112,8 +106,17 @@ export class BrandComponent implements OnInit {
     }, () => {
       this.uploadImg = this.uploadImg.filter(a => a.fileName != name);
       this.createForm.patchValue({
-        logo: ''
+        logo: null,
+        fileName: null,
       })
+      this.updateForm.patchValue({
+        logo: null,
+        fileName: null,
+      })
+      if (this.brand != undefined) {
+        this.brand.logo = "";
+        this.brand.fileName = "";
+      }
     })
   }
   public upload($event): void {
@@ -121,6 +124,7 @@ export class BrandComponent implements OnInit {
       var formData = new FormData();
       formData.append('file', $event.target.files[0])
       this.uploadPhoto(formData)
+      $event.target.value = ""
     }
   }
   public getBrands(): void {
@@ -146,6 +150,10 @@ export class BrandComponent implements OnInit {
   private uploadPhoto(data: any): void {
     this.apiService.uploadPhoto(data).subscribe(res => {
       this.uploadImg.push(res);
+      if (this.brand != undefined) {
+        this.brand.logo = res.src;
+        this.brand.fileName = res.fileName;
+      }
       this.createForm.patchValue({
         logo: res["src"],
         fileName: res["fileName"]
@@ -161,14 +169,17 @@ export class BrandComponent implements OnInit {
   public removeBrandLogo($event, brand: IBrand) {
     $event.preventDefault();
     if (confirm("Əminsinizmi?")) {
-      this.apiService.removeBrandLogo(brand.fileName, brand.id,).subscribe(res => {
+      this.apiService.removeBrandLogo(this.brand.fileName, this.brand.id,).subscribe(res => {
       }, err => {
 
       }, () => {
         this.getBrands();
+        this.updateForm.patchValue({
+          logo: "",
+          fileName: ""
+        })
         this.brand.logo = "";
         this.brand.fileName = "";
-        console.log(brand.logo.length);
       })
     }
   }

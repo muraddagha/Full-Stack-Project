@@ -8,13 +8,13 @@
                     <div class="logo-adress">
                         <div class="logo">
                             <a [routerLink]="['']">
-                                <img src="/assets/icons/logo.png" alt="">
+                                <img src="{{setting?.logo}}" alt="">
                             </a>
                         </div>
-                        <p><span>Address:</span> No 40 Baria Sreet 133/2 <br> NewYork City, Newyork, United States.</p>
+                        <p><span>Ünvan:</span> {{setting?.adress}}</p>
                         <p></p>
-                        <p><span>Call Us:</span> (+084) 123.456.789</p>
-                        <p><span>Email:</span> contactinfo@InfixVuci.com</p>
+                        <p><span>Bizə Zəng et:</span> {{setting?.phone}}</p>
+                        <p><span>E-poçt:</span> {{setting?.email}}</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">

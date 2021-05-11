@@ -1,8 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace DataService.Data.Entities
+namespace FinalProjectAPI.Resource.Setting
 {
-    public class Setting:BaseEntity
+    public class CreateSettingResource
     {
         [MaxLength(100)]
         public string Adress { get; set; }

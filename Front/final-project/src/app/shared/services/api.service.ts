@@ -11,6 +11,7 @@ import { IDepartmentResponse } from '../models/response/department-response.mode
 import { IProductResponse } from '../models/response/product-response.model';
 import { IShopCollectionResponse } from '../models/response/shop-collection-response.model';
 import { IUserOrderListResponse } from '../models/response/user-order-list-response.model';
+import { ISetting } from '../models/setting.model';
 import { IUserOrderList } from '../models/user-order-list.model';
 import { IUser } from '../models/user.model';
 
@@ -122,6 +123,9 @@ export class ApiService {
   }
   public getDealOfDay(): Observable<IDealOfDay> {
     return this.http.get<IDealOfDay>(environment.apiUrl + `dealOfDay`)
+  }
+  public getSetting(): Observable<ISetting> {
+    return this.http.get<ISetting>(environment.apiUrl + `setting`)
   }
   //#endregion
 }

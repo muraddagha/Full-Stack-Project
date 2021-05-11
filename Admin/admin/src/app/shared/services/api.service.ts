@@ -11,6 +11,7 @@ import { IDealOfDayResponse } from '../models/response/deal-of-day-response.mode
 import { IDepartmentResponse } from '../models/response/department-response.model';
 import { IOptionResponse } from '../models/response/product-option-response.model';
 import { IProductResponse } from '../models/response/product-response.model';
+import { ISettingResponse } from '../models/response/setting-response.model';
 import { IShopCollectionResponse } from '../models/response/shop-collection-response.model';
 
 
@@ -127,7 +128,7 @@ export class ApiService {
   public removeBrand(id: any) {
     return this.http.delete(environment.apiUrl + `brand/${id}`)
   }
-  public removeBrandLogo(name: string, id: any) {
+  public removeBrandLogo(name: string, id?: any) {
     if (id != null) {
       return this.http.delete(environment.apiUrl + `brand/removeLogo?name=${name}&id=${id}`)
     } else {
@@ -148,6 +149,43 @@ export class ApiService {
   }
   public removeDealOfDay(id: any) {
     return this.http.delete(environment.apiUrl + `dealOfDay/${id}`)
+  }
+  //#endregion
+
+  //#region Setting
+  public getSettings(): Observable<ISettingResponse> {
+    return this.http.get<ISettingResponse>(environment.apiUrl + `setting/all`)
+  }
+  public createSetting(data: any) {
+    return this.http.post(environment.apiUrl + `setting/create`, data)
+  }
+  public updateSetting(id: any, data: any) {
+    return this.http.put(environment.apiUrl + `setting/${id}`, data)
+  }
+  public removeSetting(id: any) {
+    return this.http.delete(environment.apiUrl + `setting/${id}`)
+  }
+  public removeSettingLogo(name: string, id?: any) {
+    if (id != null) {
+      return this.http.delete(environment.apiUrl + `setting/removeLogo?name=${name}&id=${id}`)
+    } else {
+      return this.http.delete(environment.apiUrl + `setting/removeLogo?name=${name}`)
+    }
+  }
+  //#endregion
+
+  //#region Setting
+  public getSocialLinks(): Observable<any> {
+    return this.http.get<any>(environment.apiUrl + `setting/socialLinksAll`)
+  }
+  public createSocialLink(data: any) {
+    return this.http.post(environment.apiUrl + `setting/createSocialLink`, data)
+  }
+  public updateSocialLink(id: any, data: any) {
+    return this.http.put(environment.apiUrl + `setting/socialLink/${id}`, data)
+  }
+  public removeSocialLink(id: any) {
+    return this.http.delete(environment.apiUrl + `setting/socialLink/${id}`)
   }
   //#endregion
 

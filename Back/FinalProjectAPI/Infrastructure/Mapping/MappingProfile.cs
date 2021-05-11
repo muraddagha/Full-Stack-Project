@@ -7,6 +7,7 @@ using FinalProjectAPI.Resource.DealOfDays;
 using FinalProjectAPI.Resource.Department;
 using FinalProjectAPI.Resource.Product;
 using FinalProjectAPI.Resource.Sale;
+using FinalProjectAPI.Resource.Setting;
 using FinalProjectAPI.Resource.ShopCollection;
 using FinalProjectAPI.Resource.User;
 using System;
@@ -48,7 +49,7 @@ namespace FinalProjectAPI.Infrastructure.Mapping
                                                 .ForMember(d => d.Discounts, opt => opt.MapFrom(src => src.Discounts
                                                                                        .Where(d => d.Discount.StartDate <= DateTime.Now && d.Discount.EndDate >= DateTime.Now)
                                                                                        .OrderByDescending(d => d.AddedDate)
-                                                                                       .FirstOrDefault().Discount))
+                                                                                       .FirstOrDefault().Discount));
             CreateMap<Product, AdminProductResource>();
             CreateMap<ProductPhoto, AdminProductPhotoResource>();
             CreateMap<AdminProductPhotoResource, ProductPhoto>();
@@ -96,6 +97,16 @@ namespace FinalProjectAPI.Infrastructure.Mapping
             CreateMap<DealOfDay, AdminDealOfDaysResource>();
             CreateMap<CreateDealOfDaysResource, DealOfDay>();
             CreateMap<UpdateDealOfDaysResource, DealOfDay>();
+
+            //Setting
+            CreateMap<Setting, SettingResource>();
+            CreateMap<Setting, AdminSettingResource>();
+            CreateMap<CreateSettingResource, Setting>();
+            CreateMap<UpdateSettingResource, Setting>();
+            CreateMap<SocialLinks, SocialLinkResource>();
+            CreateMap<SocialLinks, AdminSocialLinkResource>();
+            CreateMap<CreateSocialLinkResource, SocialLinks>();
+            CreateMap<UpdateSocialLinkResource, SocialLinks>();
         }
     }
 }

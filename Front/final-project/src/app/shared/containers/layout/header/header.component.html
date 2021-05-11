@@ -10,7 +10,7 @@
                                 <span class="menu-icon-bar"></span>
                                 <span class="menu-icon-bar"></span>
                             </a>
-                            <a [routerLink]="['']"><img src="/assets/icons/logo.png" alt=""></a>
+                            <a [routerLink]="['']"><img src="{{setting.logo}}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-9 col-lg-10 col-md-9 col-6">
@@ -21,8 +21,8 @@
                                         <img src="/assets/icons/headset.svg" alt="">
                                     </div>
                                     <div class="number">
-                                        <p>CALL US</p>
-                                        <h4>+88 0184 1136251</h4>
+                                        <p>BIZƏ ZƏNG ET</p>
+                                        <h4>{{setting?.phone}}</h4>
                                     </div>
                                 </div>
                                 <div class="search-box-area navbar-search-box">

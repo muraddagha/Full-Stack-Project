@@ -3,6 +3,7 @@ import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/co
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { IDepartment } from 'src/app/shared/models/department.model';
+import { ISetting } from 'src/app/shared/models/setting.model';
 import { IUser } from 'src/app/shared/models/user.model';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit {
   public departments: IDepartment[] = [];
   public isCollapsed = false;
   public user: IUser;
+  public setting: ISetting;
 
 
   constructor(private elem: ElementRef, private apiService: ApiService, private authService: AuthService) {
@@ -30,9 +32,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getSetting();
   }
-
-
   public logout($event): void {
     $event.preventDefault();
     this.authService.logout();
@@ -48,7 +49,6 @@ export class HeaderComponent implements OnInit {
 
       }
   }
-
   public menuBtn($event): void {
     $event.preventDefault();
     this.toggle = !this.toggle;
@@ -112,4 +112,9 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+  private getSetting(): void {
+    this.apiService.getSetting().subscribe(res => {
+      this.setting = res;
+    })
+  }
 }

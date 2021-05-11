@@ -1,1 +1,167 @@
-<p>settings works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <button class="btn btn-success" data-toggle="modal" data-target="#create">
+                Parametr yarat
+            </button>
+            <h4 class="text-center">Parametrlər</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Logo</th>
+                        <th>Ünvan</th>
+                        <th>Telefon</th>
+                        <th>E-poçt</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let setting of settings | paginate: { itemsPerPage: 10, currentPage: page,totalItems:settings.length}">
+                        <td>{{setting.id}}</td>
+                        <td><img src="{{setting.logo}}" alt=""></td>
+                        <td>{{setting.adress}}</td>
+                        <td>{{setting.phone}}</td>
+                        <td>{{setting.email}}</td>
+                        <td class="d-flex justify-content-between align-items-center">
+                            <span *ngIf="setting.softDeleted" class="badge badge-danger">Deaktiv</span>
+                            <span *ngIf="!setting.softDeleted" class="badge badge-success">Aktiv</span>
+                            <span class="settings">
+                                <a (click)="updateSetting(setting)" data-toggle="modal" data-target="#update"
+                                    class="btn btn-warning rounded-circle mr-3" href="#">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a (click)="removeSetting($event,setting.id)" class="btn btn-danger rounded-circle"
+                                    href="#">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <pagination-controls (pageChange)="page = $event" previousLabel="Əvvəlki" nextLabel="Növbəti"></pagination-controls>
+</div>
+
+<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Kateqoriya Yarat</h5>
+                <button type="button" class="close-create close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="createForm" (ngSubmit)="create()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.adress.errors }">Ünvan</label>
+                        <input name="adress" formControlName="adress" type="text" class="form-control">
+                        <div *ngIf="submitted && f.adress.errors" class="text-danger">
+                            <div *ngIf="f.adress.errors.maxLenght">Ünvan maksimum 100 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">Telefon</label>
+                        <input name="phone" formControlName="phone" type="text" class="form-control">
+                        <div *ngIf="submitted && f.phone.errors" class="text-danger">
+                            <div *ngIf="f.phone.errors.maxLenght">Telefon maksimum 50 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.email.errors }">E-poçt</label>
+                        <input name="email" formControlName="email" type="text" class="form-control">
+                        <div *ngIf="submitted && f.email.errors" class="text-danger">
+                            <div *ngIf="f.email.errors.maxLenght">E-poçt maksimum 50 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-4">
+                        <label for="files" type="button" class="btn btn-secondary mr-2">Logo yüklə</label>
+                        <input id="files" (change)="upload($event)" type="file" class="d-none" accept="image/*">
+
+                        <div *ngIf="uploadImg.length>0" class="photos">
+                            <div *ngFor="let img of uploadImg;let i=index" class="img">
+                                <input type="hidden" name="logo" formControlName="logo">
+                                <input type="hidden" name="fileName" formControlName="fileName">
+                                <img src="{{img.src}}" alt="uploaded-photo">
+                                <a href="#" (click)="removePhoto($event,img.fileName,i)">
+                                    <i class=" ml-1 fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Yarat</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Kateqoriya Yarat</h5>
+                <button type="button" class="close-update close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="updateForm" (ngSubmit)="update()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.adress.errors }">Ünvan</label>
+                        <input name="adress" formControlName="adress" type="text" class="form-control">
+                        <div *ngIf="submitted && u.adress.errors" class="text-danger">
+                            <div *ngIf="u.adress.errors.maxLenght">Ünvan maksimum 100 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.phone.errors }">Telefon</label>
+                        <input name="phone" formControlName="phone" type="text" class="form-control">
+                        <div *ngIf="submitted && u.phone.errors" class="text-danger">
+                            <div *ngIf="u.phone.errors.maxLenght">Telefon maksimum 50 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.email.errors }">E-poçt</label>
+                        <input name="email" formControlName="email" type="text" class="form-control">
+                        <div *ngIf="submitted && u.email.errors" class="text-danger">
+                            <div *ngIf="u.email.errors.maxLenght">E-poçt maksimum 50 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select name="softDeleted" formControlName="softDeleted" class="form-control form-control-sm">
+                            <option value="false">Aktiv</option>
+                            <option value="true">Deaktiv</option>
+                        </select>
+                    </div>
+                    <div *ngIf="setting?.logo==null" class="form-group">
+                        <label for="files" type="button" class="btn btn-secondary mr-2">Logo yüklə</label>
+                        <input id="files" (change)="upload($event)" type="file" class="d-none" accept="image/*">
+                        <div *ngIf="setting?.logo!=null" class="photos">
+                            <input type="hidden" name="logo" formControlName="logo">
+                            <input type="hidden" name="fileName" formControlName="fileName">
+                            <img src="{{setting?.logo}}" alt="uploaded-photo">
+                            <a href="#" (click)="removePhoto($event,setting?.fileName,i)">
+                                <i class=" ml-1 fas fa-trash"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div *ngIf="setting?.logo!=null" class="photos">
+                        <img class="brand-logo-img" src="{{setting?.logo}}" alt="">
+                        <a href="#" (click)="removeLogo($event,setting)">
+                            <i class="ml-1 fas fa-trash"></i>
+                        </a>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Yenilə</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
