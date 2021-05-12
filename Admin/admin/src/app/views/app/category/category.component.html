@@ -11,7 +11,6 @@
                         <th>Id</th>
                         <th>Şöbəsi</th>
                         <th>Adı</th>
-                        <th>Populyar?</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -21,9 +20,6 @@
                         <td>{{category.id}}</td>
                         <td>{{category.department.name}}</td>
                         <td>{{category.name}}</td>
-                        <td><span *ngIf="category.isPopular" class="badge badge-info">Aktiv</span>
-                            <span *ngIf="!category.isPopular" class="badge badge-danger">Deaktiv</span>
-                        </td>
                         <td class="d-flex justify-content-between align-items-center">
                             <span *ngIf="category.softDeleted" class="badge badge-danger">Deaktiv</span>
                             <span *ngIf="!category.softDeleted" class="badge badge-success">Aktiv</span>
@@ -84,13 +80,6 @@
                             <div *ngIf="f.departmentId.errors.required">Şöbə boş ola bilməz</div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Populyardır?</label>
-                        <select name="isPopular" formControlName="isPopular" class="form-control">
-                            <option value="false">Deaktiv</option>
-                            <option value="true">Aktiv</option>
-                        </select>
-                    </div>
                     <button type="submit" class="btn btn-success w-100">Yarat</button>
                 </form>
             </div>
@@ -132,14 +121,6 @@
                             <div *ngIf="f.departmentId.errors.required">Şöbə boş ola bilməz</div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Populyar ? </label>
-                        <select name="isPopular" formControlName="isPopular" class="form-control">
-                            <option value="false">Deaktiv</option>
-                            <option value="true">Aktiv</option>
-                        </select>
-                    </div>
-
                     <div class="form-group">
                         <label>Status </label>
                         <select name="softDeleted" formControlName="softDeleted" class="form-control">

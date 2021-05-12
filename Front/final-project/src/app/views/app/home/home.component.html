@@ -58,54 +58,16 @@
         <h3>Populyar Kateqoriyalar</h3>
         <div class="container">
             <owl-carousel-o [options]="options">
-                <ng-template carouselSlide>
+                <ng-template *ngFor="let department of popularDepartments" carouselSlide>
                     <div class="categories-slider-item">
                         <div class="category-img">
-                            <img src="/assets/icons/cat1.png" alt="">
+                            <img src="{{department.logo}}" alt="">
                         </div>
-                        <h6>Televisons</h6>
+                        <h6>{{department.name}}</h6>
                         <span>24 Products</span>
                     </div>
                 </ng-template>
-                <ng-template carouselSlide>
-                    <div class="categories-slider-item">
-                        <div class="category-img">
-                            <img src="/assets/icons/cat1.png" alt="">
-                        </div>
-                        <h6>Televisons</h6>
-                        <span>24 Products</span>
-                    </div>
-                </ng-template>
-                <ng-template carouselSlide>
-                    <div class="categories-slider-item">
-                        <div class="category-img">
-                            <img src="/assets/icons/cat1.png" alt="">
-                        </div>
-                        <h6>Televisons</h6>
-                        <span>24 Products</span>
-                    </div>
-                </ng-template>
-                <ng-template carouselSlide>
-                    <div class="categories-slider-item">
-                        <div class="category-img">
-                            <img src="/assets/icons/cat1.png" alt="">
-                        </div>
-                        <h6>Televisons</h6>
-                        <span>24 Products</span>
-                    </div>
-                </ng-template>
-                <ng-template carouselSlide>
-                    <div class="categories-slider-item">
-                        <div class="category-img">
-                            <img src="/assets/icons/cat1.png" alt="">
-                        </div>
-                        <h6>Televisons</h6>
-                        <span>24 Products</span>
-                    </div>
-                </ng-template>
-
             </owl-carousel-o>
-
         </div>
     </div>
 </section>

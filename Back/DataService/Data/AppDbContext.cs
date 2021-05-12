@@ -22,7 +22,6 @@ namespace DataService.Data
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<Favoruite> Favoruites { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductDiscount> ProductDiscounts { get; set; }
         public DbSet<ProductOption> ProductOptions { get; set; }
         public DbSet<ProductOptionItem> ProductOptionItems { get; set; }
         public DbSet<ProductPhoto> ProductPhotos { get; set; }

@@ -11,9 +11,13 @@
                                     <h1>{{dealOfDay?.title}}</h1>
                                     <div class="price">
                                         <del class="old-price">{{dealOfDay?.product.price}} ₼</del>
-                                        <span class="new-price">$299<sup>.99</sup></span>
+                                        <span class="new-price">
+                                            {{dealOfDay?.product.price|discountPrice:dealOfDay?.product.discount.precentage}}
+                                            <sup>.{{99}}</sup> ₼</span>
                                     </div>
-                                    <app-countdown></app-countdown>
+
+                                    <app-countdown *ngIf="dealOfDay" [endDate]="dealOfDay.product.discount.endDate">
+                                    </app-countdown>
                                 </div>
                             </div>
                             <div class="order-1 order-sm-2 col-sm-6 col-lg-5">

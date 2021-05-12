@@ -11,6 +11,9 @@ namespace FinalProjectAPI.Resource.Department
         public string Name { get; set; }
         public string Icon { get; set; }
         public bool SoftDeleted { get; set; }
+        public bool IsPopular { get; set; }
+        public string Logo { get; set; }
+        public string FileName { get; set; }
 
     }
 }

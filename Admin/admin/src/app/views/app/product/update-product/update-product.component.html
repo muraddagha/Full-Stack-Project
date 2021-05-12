@@ -21,6 +21,14 @@
             </select>
         </div>
         <div class="form-group">
+            <label>Endirim <span class="text-danger">*</span> </label>
+            <select name="discountId" formControlName="discountId" class="form-control">
+                <option *ngFor="let discount of discounts" value="{{discount.id}}">
+                    {{discount.name}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
             <label [ngClass]="{ 'is-invalid': submitted && f.name.errors }">Məhsul adı <span
                     class="text-danger">*</span></label>
             <input name="name" formControlName="name" type="text" class="form-control">
@@ -89,6 +97,12 @@
                 <select name="softDeleted" formControlName="softDeleted" class="form-control form-control-sm">
                     <option value="false">Aktiv</option>
                     <option value="true">Deaktiv</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select name="isNewArrival" formControlName="isNewArrival" class="form-control form-control-sm">
+                    <option value="true">New Arrival</option>
+                    <option value="false">Not New Arrival</option>
                 </select>
             </div>
         </div>

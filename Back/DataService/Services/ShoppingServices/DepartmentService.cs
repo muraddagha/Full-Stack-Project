@@ -14,10 +14,12 @@ namespace DataService.Services.ShoppingServices
     {
         Task<IEnumerable<Department>> GetDepartmentsWithCategory();
         Task<IEnumerable<Department>> GetDepartments();
+        Task<IEnumerable<Department>> GetPopularDepartments();
         Task<Department> CreateDepartment(Department department);
         Task UpdateDepartment(int id,Department department);
         Task RemoveDepartment(int id);
         Task<Department> GetDepartmentById(int id);
+        void RemoveLogo(int id);
     }
     public class DepartmentService : IDepartmentService
     {
@@ -35,7 +37,6 @@ namespace DataService.Services.ShoppingServices
             await _context.SaveChangesAsync();
             return department;
         }
-
         public async Task<Department> GetDepartmentById(int id)
         {
             var department= await _context.Departments.FindAsync(id);
@@ -43,19 +44,22 @@ namespace DataService.Services.ShoppingServices
             return department;
 
         }
-
         public async Task<IEnumerable<Department>> GetDepartments()
         {
             return await _context.Departments.ToListAsync();
         }
-
         public async Task<IEnumerable<Department>> GetDepartmentsWithCategory()
         {
             return await _context.Departments.Include(d=>d.Categories.Where(c=>!c.SoftDeleted))
                                              .Where(s => !s.SoftDeleted)
                                              .ToListAsync();
         }
-
+        public async Task<IEnumerable<Department>> GetPopularDepartments()
+        {
+            return await _context.Departments.Where(d => !d.SoftDeleted)
+                                             .Where(d => d.IsPopular)
+                                             .ToListAsync();
+        }
         public async Task RemoveDepartment(int id)
         {
             var department = await GetDepartmentById(id);
@@ -63,12 +67,21 @@ namespace DataService.Services.ShoppingServices
             await _context.SaveChangesAsync();
 
         }
-
+        public void RemoveLogo(int id)
+        {
+            var department = _context.Departments.Find(id);
+            department.Logo = null;
+            department.FileName = null;
+            _context.SaveChangesAsync();
+        }
         public async Task UpdateDepartment(int id,Department department)
         {
             var updateDepartment = await GetDepartmentById(id);
             updateDepartment.Name = department.Name;
             updateDepartment.Icon = department.Icon;
+            updateDepartment.Logo = department.Logo;
+            updateDepartment.FileName = department.FileName;
+            updateDepartment.IsPopular = department.IsPopular;
             updateDepartment.SoftDeleted = department.SoftDeleted;
             updateDepartment.ModifiedBy = department.ModifiedBy;
             updateDepartment.ModifiedDate = DateTime.Now;

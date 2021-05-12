@@ -5,6 +5,7 @@ using FinalProjectAPI.Resource.Brand;
 using FinalProjectAPI.Resource.Category;
 using FinalProjectAPI.Resource.DealOfDays;
 using FinalProjectAPI.Resource.Department;
+using FinalProjectAPI.Resource.Discount;
 using FinalProjectAPI.Resource.Product;
 using FinalProjectAPI.Resource.Sale;
 using FinalProjectAPI.Resource.Setting;
@@ -14,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DiscountResource = FinalProjectAPI.Resource.Discount.DiscountResource;
 
 namespace FinalProjectAPI.Infrastructure.Mapping
 {
@@ -42,14 +44,15 @@ namespace FinalProjectAPI.Infrastructure.Mapping
 
             //Product
             CreateMap<Product, ProductResource>()
+                                                //.ForMember(d => d.Discount.EndDate, opt => opt.MapFrom(day => day.Discount.EndDate.ToString("dd-MM-yyyy")))
                                                 .ForMember(d => d.Photos, opt => opt.MapFrom(src => src.Photos.OrderBy(p => p.OrderBy).Select(p => p.Img)));
 
             CreateMap<Product, ProductDetailsResource>()
-                                                .ForMember(d => d.Photos, opt => opt.MapFrom(src => src.Photos.OrderBy(p => p.OrderBy).Select(p => p.Img)))
-                                                .ForMember(d => d.Discounts, opt => opt.MapFrom(src => src.Discounts
-                                                                                       .Where(d => d.Discount.StartDate <= DateTime.Now && d.Discount.EndDate >= DateTime.Now)
-                                                                                       .OrderByDescending(d => d.AddedDate)
-                                                                                       .FirstOrDefault().Discount));
+                                                .ForMember(d => d.Photos, opt => opt.MapFrom(src => src.Photos.OrderBy(p => p.OrderBy).Select(p => p.Img)));
+                                                //.ForMember(d => d.Discounts, opt => opt.MapFrom(src => src.Discount
+                                                //                                       .Where(d => d.Discount.StartDate <= DateTime.Now && d.Discount.EndDate >= DateTime.Now)
+                                                //                                       .OrderByDescending(d => d.AddedDate)
+                                                //                                       .FirstOrDefault().Discount));
             CreateMap<Product, AdminProductResource>();
             CreateMap<ProductPhoto, AdminProductPhotoResource>();
             CreateMap<AdminProductPhotoResource, ProductPhoto>();
@@ -107,6 +110,16 @@ namespace FinalProjectAPI.Infrastructure.Mapping
             CreateMap<SocialLinks, AdminSocialLinkResource>();
             CreateMap<CreateSocialLinkResource, SocialLinks>();
             CreateMap<UpdateSocialLinkResource, SocialLinks>();
+
+            //Discount
+            CreateMap<Discount, DiscountResource>();
+            CreateMap<Discount, AdminDiscountResource>()
+                                .ForMember(d => d.StartDate, opt => opt.MapFrom(day => day.StartDate.ToString("dd-MM-yyyy")))
+                                .ForMember(d => d.EndDate, opt => opt.MapFrom(day => day.EndDate.ToString("dd-MM-yyyy")));
+
+            CreateMap<CreateDiscountResource, Discount>();
+            CreateMap<UpdateDiscountResource, Discount>();
+
         }
     }
 }

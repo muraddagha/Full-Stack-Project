@@ -14,8 +14,6 @@ namespace DataService.Data.Entities
         [MaxLength(50)]
         public string Name { get; set; }
 
-        public bool IsPopular { get; set; }
-
         public Department Department { get; set; }
     }
 }

@@ -9,6 +9,7 @@ namespace DataService.Data.Entities
         public int CategoryId { get; set; }
 
         public int BrandId { get; set; }
+        public int? DiscountId { get; set; }
 
         [Required]
         [MaxLength(100)]
@@ -34,11 +35,12 @@ namespace DataService.Data.Entities
         public bool IsTrend { get; set; }
         public bool IsTopSell { get; set; }
         public bool IsHotDeal { get; set; }
+        public bool IsNewArrival { get; set; }
         public Category Category { get; set; }
         public Brand Brand { get; set; }
+        public Discount Discount { get; set; }
         public ICollection<ProductPhoto> Photos { get; set; }
         public ICollection<ProductOption> Options { get; set; }
-        public ICollection<ProductDiscount> Discounts  { get; set; }
         public ICollection<ProductReview> Reviews { get; set; }
         public ICollection<Favoruite> Favoruites { get; set; }
 

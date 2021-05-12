@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { IBrand } from 'src/app/shared/models/brand/brand.model';
 import { ICategory } from 'src/app/shared/models/category.model';
+import { IDiscount } from 'src/app/shared/models/discount.model';
 import { IProduct } from 'src/app/shared/models/product/product.model';
 import { IUploadImage } from 'src/app/shared/models/upload-image.model';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -21,6 +22,7 @@ export class UpdateProductComponent implements OnInit {
   public adminName: string;
   public categories: ICategory[] = [];
   public brands: IBrand[] = [];
+  public discounts: IDiscount[] = [];
   public uploadImg: IUploadImage[] = [];
   public order: any = 1;
   constructor(private formBuilder: FormBuilder,
@@ -34,6 +36,7 @@ export class UpdateProductComponent implements OnInit {
     this.getProduct();
     this.getCategories();
     this.getBrands();
+    this.getDiscounts();
     this.generateForm();
   }
   get f() {
@@ -44,6 +47,7 @@ export class UpdateProductComponent implements OnInit {
     this.updateForm = this.formBuilder.group({
       categoryId: ["", [Validators.required]],
       brandId: [""],
+      discountId: [""],
       name: ["", [Validators.required, Validators.maxLength(50)]],
       description: ["", [Validators.required, Validators.maxLength(500)]],
       price: ["", [Validators.required]],
@@ -53,6 +57,7 @@ export class UpdateProductComponent implements OnInit {
       isTrend: [""],
       isTopSell: [""],
       isHotDeal: [""],
+      isNewArrival: [""],
       softDeleted: [""],
     })
   }
@@ -90,7 +95,6 @@ export class UpdateProductComponent implements OnInit {
       this.getProduct();
     })
   }
-
   private getCategories(): void {
     this.apiService.getCategories().subscribe(res => {
       this.categories = res.categories;
@@ -101,13 +105,17 @@ export class UpdateProductComponent implements OnInit {
       this.brands = res.brands;
     })
   }
+  private getDiscounts(): void {
+    this.apiService.getDiscounts().subscribe(res => {
+      this.discounts = res.discounts;
+    })
+  }
   private getProduct(): void {
     let id = this.activeRoute.snapshot.paramMap.get('id');
     this.apiService.getProductById(id).subscribe(res => {
       this.product = res;
       this.updateForm.patchValue({
         categoryId: res.category.id,
-        brandId: res.brand.id,
         name: this.product["name"],
         description: res["description"],
         price: res["price"],
@@ -117,8 +125,20 @@ export class UpdateProductComponent implements OnInit {
         isTrend: res["isTrend"],
         isTopSell: res["isTopSell"],
         isHotDeal: res["isHotDeal"],
+        isNewArrival: res["isNewArrival"],
         softDeleted: res["softDeleted"]
       })
+      if (res.brand != null) {
+        this.updateForm.patchValue({
+          brandId: res.brand.id,
+        })
+      }
+      if (res.discount != null) {
+        this.updateForm.patchValue({
+          discountId: res.discount["id"],
+        })
+      }
+
     })
   }
 }

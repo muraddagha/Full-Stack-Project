@@ -19,7 +19,6 @@ export class DealOfDayComponent implements OnInit {
   private getDealOfDay(): void {
     this.apiService.getDealOfDay().subscribe(res => {
       this.dealOfDay = res;
-      console.log(res);
     })
   }
 

@@ -18,6 +18,8 @@ import { BasketComponent } from './basket/basket.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { DealOfDayComponent } from './deal-of-day/deal-of-day.component';
+import { DiscountPricePipe } from '../pipes/discount-price.pipe';
+import { PipesModule } from '../pipes/pipes.module';
 
 
 
@@ -45,6 +47,7 @@ import { DealOfDayComponent } from './deal-of-day/deal-of-day.component';
     Ng5SliderModule,
     FormsModule,
     ReactiveFormsModule,
+    PipesModule
   ],
   exports: [
     SingleProductComponent,

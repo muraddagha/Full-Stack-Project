@@ -9,6 +9,7 @@ import { IBrandResponse } from '../models/response/brand-response.model';
 import { ICategoryResponse } from '../models/response/category-response.model';
 import { IDealOfDayResponse } from '../models/response/deal-of-day-response.model';
 import { IDepartmentResponse } from '../models/response/department-response.model';
+import { IDiscountResponse } from '../models/response/discount-response.model';
 import { IOptionResponse } from '../models/response/product-option-response.model';
 import { IProductResponse } from '../models/response/product-response.model';
 import { ISettingResponse } from '../models/response/setting-response.model';
@@ -40,6 +41,13 @@ export class ApiService {
   }
   public removeDepartment(id: any) {
     return this.http.delete(environment.apiUrl + `department/${id}`)
+  }
+  public removeDepartmentLogo(name: string, id?: any) {
+    if (id != null) {
+      return this.http.delete(environment.apiUrl + `department/removeLogo?name=${name}&id=${id}`)
+    } else {
+      return this.http.delete(environment.apiUrl + `department/removeLogo?name=${name}`)
+    }
   }
   //#endregion
 
@@ -174,7 +182,7 @@ export class ApiService {
   }
   //#endregion
 
-  //#region Setting
+  //#region SocialLinks
   public getSocialLinks(): Observable<any> {
     return this.http.get<any>(environment.apiUrl + `setting/socialLinksAll`)
   }
@@ -201,6 +209,21 @@ export class ApiService {
   }
   public removeShopCollection(id: any) {
     return this.http.delete(environment.apiUrl + `shopCollection/${id}`)
+  }
+  //#endregion
+
+  //#region Discount
+  public getDiscounts(): Observable<IDiscountResponse> {
+    return this.http.get<IDiscountResponse>(environment.apiUrl + `discount/all`)
+  }
+  public createDiscount(data: any) {
+    return this.http.post(environment.apiUrl + `discount/create`, data)
+  }
+  public updateDiscount(id: any, data: any) {
+    return this.http.put(environment.apiUrl + `discount/${id}`, data)
+  }
+  public removeDiscount(id: any) {
+    return this.http.delete(environment.apiUrl + `discount/${id}`)
   }
   //#endregion
 }

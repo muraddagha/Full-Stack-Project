@@ -1,5 +1,6 @@
 ﻿using DataService.Data.Entities;
 using DataService.Infrastructure.Exceptions;
+using DataService.Services;
 using DataService.Services.ShoppingServices;
 using FinalProjectAPI.Infrastructure.Filters;
 using FinalProjectAPI.Resource.Department;
@@ -16,9 +17,11 @@ namespace FinalProjectAPI.Controllers.V1
     public class DepartmentController : BaseController
     {
         private readonly IDepartmentService _departmentService;
-        public DepartmentController(IDepartmentService departmentService)
+        private readonly ICloudinaryService _cloudinaryService;
+        public DepartmentController(IDepartmentService departmentService, ICloudinaryService cloudinaryService)
         {
             _departmentService = departmentService;
+            _cloudinaryService = cloudinaryService;
         }
 
         [HttpGet]
@@ -98,6 +101,28 @@ namespace FinalProjectAPI.Controllers.V1
             {
                 return StatusCode(e.StatusCode, e.Response);
             }
+        }
+   
+        [HttpGet]
+        [Route("Popular")]
+        public async Task<IActionResult> GetPopularDepartments()
+        {
+            var departments = await _departmentService.GetPopularDepartments();
+            var departmentsResource = _mapper.Map<IEnumerable<Department>, IEnumerable<DepartmentResource>>(departments);
+            return Ok(new { departments=departmentsResource});
+        }
+
+        [HttpDelete]
+        [Route("removeLogo")]
+        [TypeFilter(typeof(AdminAuth))]
+        public IActionResult RemoveUploadedPhoto([FromQuery] string name, [FromQuery] int? id)
+        {
+            _cloudinaryService.Delete(name);
+            if (id != null)
+            {
+                _departmentService.RemoveLogo((int)id);
+            }
+            return Ok(new { message = "Logo silindi" });
         }
     }
 

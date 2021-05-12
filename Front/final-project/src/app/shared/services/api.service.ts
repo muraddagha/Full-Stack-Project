@@ -65,6 +65,9 @@ export class ApiService {
   public getDepartmentsWithCategory(): Observable<IDepartmentResponse> {
     return this.http.get<IDepartmentResponse>(environment.apiUrl + `department`)
   }
+  public getPopularDepartments(): Observable<IDepartmentResponse> {
+    return this.http.get<IDepartmentResponse>(environment.apiUrl + `department/popular`)
+  }
   //#endregion
 
   //#region Product

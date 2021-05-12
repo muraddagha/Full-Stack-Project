@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { IDepartment } from 'src/app/shared/models/department.model';
 import { IShopCollection } from 'src/app/shared/models/shop-collection.model';
 import { ApiService } from 'src/app/shared/services/api.service';
 
@@ -11,6 +12,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class HomeComponent implements OnInit {
   public isCollapsed = false;
   public collections: IShopCollection[] = [];
+  public popularDepartments: IDepartment[] = [];
   options: OwlOptions = {
     loop: true,
     items: 5,
@@ -39,11 +41,19 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getShopCollections();
+    this.getPopularDepartments();
   }
 
   getShopCollections(): void {
     this.apiService.getShopCollections(3).subscribe(res => {
       this.collections = res.shopCollections;
+    }, err => { },
+      () => { })
+  }
+
+  getPopularDepartments(): void {
+    this.apiService.getPopularDepartments().subscribe(res => {
+      this.popularDepartments = res.departments;
     }, err => { },
       () => { })
   }

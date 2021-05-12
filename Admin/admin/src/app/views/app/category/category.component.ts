@@ -16,7 +16,6 @@ export class CategoryComponent implements OnInit {
   public categories: ICategory[] = [];
   public totalCount: number;
   page: number = 1;
-  public adminName;
   public createForm: FormGroup;
   public updateForm: FormGroup;
   public categoryId: any;
@@ -45,7 +44,6 @@ export class CategoryComponent implements OnInit {
     this.createForm = this.formBuilder.group({
       name: ["", [Validators.required, Validators.maxLength(50)]],
       departmentId: ["", [Validators.required]],
-      isPopular: ["false"],
     })
   }
 
@@ -53,7 +51,6 @@ export class CategoryComponent implements OnInit {
     this.updateForm = this.formBuilder.group({
       name: ["", [Validators.required, Validators.maxLength(50)]],
       departmentId: ["", [Validators.required]],
-      isPopular: ["false"],
       softDeleted: [""],
     })
   }
@@ -63,16 +60,13 @@ export class CategoryComponent implements OnInit {
     this.updateForm.patchValue({
       name: category['name'],
       departmentId: category["departmentId"],
-      isPopular: category["isPopular"],
       softDeleted: category["softDeleted"]
     })
   }
   public create(): void {
     this.submitted = true;
-    console.log(this.f);
     if (this.createForm.invalid) return;
     this.apiService.createCategory(this.createForm.value).subscribe(res => {
-      console.log(res);
     },
       err => {
 
@@ -115,7 +109,6 @@ export class CategoryComponent implements OnInit {
     $event.preventDefault();
     if (confirm("Əminsinizmi?")) {
       this.apiService.removeCategory(id).subscribe(res => {
-        console.log(res);
       }, err => {
 
       }, () => {

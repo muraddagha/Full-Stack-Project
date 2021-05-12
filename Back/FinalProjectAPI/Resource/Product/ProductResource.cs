@@ -1,5 +1,6 @@
 ﻿using FinalProjectAPI.Resource.Brand;
 using FinalProjectAPI.Resource.Category;
+using FinalProjectAPI.Resource.Discount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace FinalProjectAPI.Resource.Product
         public string Sku { get; set; }
         public bool InStock { get; set; }
         public CategoryResource Category { get; set; }
+        public DiscountResource Discount { get; set; }
         public ICollection<string> Photos { get; set; }
     }
 }

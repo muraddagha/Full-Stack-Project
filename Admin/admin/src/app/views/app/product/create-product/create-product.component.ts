@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { IBrand } from 'src/app/shared/models/brand/brand.model';
 import { ICategory } from 'src/app/shared/models/category.model';
+import { IDiscount } from 'src/app/shared/models/discount.model';
 import { IUploadImage } from 'src/app/shared/models/upload-image.model';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -19,6 +20,7 @@ export class CreateProductComponent implements OnInit {
   public adminName: string;
   public categories: ICategory[] = [];
   public brands: IBrand[] = [];
+  public discounts: IDiscount[] = [];
   public uploadImg: IUploadImage[] = [];
   public order = 0;
   constructor(private formBuilder: FormBuilder,
@@ -30,6 +32,7 @@ export class CreateProductComponent implements OnInit {
   ngOnInit(): void {
     this.getCategories();
     this.getBrands();
+    this.getDiscounts();
     this.generateForm();
     this.photoss.removeAt(0)
   }
@@ -41,6 +44,7 @@ export class CreateProductComponent implements OnInit {
     this.createForm = this.formBuilder.group({
       categoryId: ["", [Validators.required]],
       brandId: [""],
+      discountId: [""],
       name: ["", [Validators.required, Validators.maxLength(50)]],
       description: ["", [Validators.required, Validators.maxLength(500)]],
       price: ["", [Validators.required]],
@@ -50,6 +54,7 @@ export class CreateProductComponent implements OnInit {
       isTrend: ["false"],
       isTopSell: ["false"],
       isHotDeal: ["false"],
+      isNewArrival: ["false"],
       photos: new FormArray([new FormGroup({
         img: new FormControl(''),
         orderBy: new FormControl('')
@@ -109,6 +114,11 @@ export class CreateProductComponent implements OnInit {
   private getBrands(): void {
     this.apiService.getBrands().subscribe(res => {
       this.brands = res.brands;
+    })
+  }
+  private getDiscounts(): void {
+    this.apiService.getDiscounts().subscribe(res => {
+      this.discounts = res.discounts;
     })
   }
   private uploadPhoto(data: any): void {

@@ -45,6 +45,7 @@ namespace DataService.Services.ContentServices
         public async Task<DealOfDay> GetDealOfDay()
         {
             return await _context.DealOfDays.Include("Product.Photos")
+                                            .Include("Product.Discount")
                                             .FirstOrDefaultAsync(s => !s.SoftDeleted);
         }
 

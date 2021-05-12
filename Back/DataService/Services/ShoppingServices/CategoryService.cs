@@ -66,7 +66,6 @@ namespace DataService.Services.ShoppingServices
             var updateCategory = await GetCategoryById(id);
             updateCategory.Name = category.Name;
             updateCategory.DepartmentId = category.DepartmentId;
-            updateCategory.IsPopular = category.IsPopular;
             updateCategory.SoftDeleted = category.SoftDeleted;
             updateCategory.ModifiedBy = category.ModifiedBy;
             updateCategory.ModifiedDate = DateTime.Now;

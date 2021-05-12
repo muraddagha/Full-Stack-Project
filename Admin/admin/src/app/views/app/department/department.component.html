@@ -8,24 +8,30 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>Logo</th>
                         <th>İkon</th>
                         <th>Adı</th>
                         <th>Id</th>
+                        <th>Populyar</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr
                         *ngFor="let department of departments | paginate: { itemsPerPage: 10, currentPage: page,totalItems:totalCount }">
-                        <td>{{department.icon}}</td>
+                        <td><img src="{{department.logo}}" alt=""></td>
+                        <td><i class="{{department.icon}}"></i></td>
                         <td>{{department.name}}</td>
                         <td>{{department.id}}</td>
+                        <td><span *ngIf="department.isPopular" class="badge badge-info">Aktiv</span>
+                            <span *ngIf="!department.isPopular" class="badge badge-danger">Deaktiv</span>
+                        </td>
                         <td class="d-flex justify-content-between align-items-center">
                             <span *ngIf="department.softDeleted" class="badge badge-danger">Deaktiv</span>
                             <span *ngIf="!department.softDeleted" class="badge badge-success">Aktiv</span>
                             <span class="settings">
-                                <a (click)="updateDepartment($event,department)" data-toggle="modal"
-                                    data-target="#update" class="btn btn-warning rounded-circle mr-3" href="#">
+                                <a (click)="updateDepartment(department)" data-toggle="modal" data-target="#update"
+                                    class="btn btn-warning rounded-circle mr-3" href="#">
                                     <i class="far fa-edit"></i>
                                 </a>
                                 <a (click)="removeDepartment($event,department.id)"
@@ -70,9 +76,31 @@
                     </div>
                     <div class="form-group">
                         <label [ngClass]="{ 'is-invalid': submitted && f.icon.errors }">İkon </label>
-                        <input name="icon" formControlName="icon" type="text" class="form-control" placeholder="İkon">
+                        <input name="icon" formControlName="icon" type="text" class="form-control"
+                            placeholder="ti ti-desktop">
                         <div *ngIf="submitted && f.icon.errors" class="text-danger">
                             <div *ngIf="f.icon.errors.maxLenght">İkon maksimum 150 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Populyardır?</label>
+                        <select name="isPopular" formControlName="isPopular" class="form-control form-control-sm">
+                            <option value="false">Deaktiv</option>
+                            <option value="true">Aktiv</option>
+                        </select>
+                    </div>
+                    <div class="form-group mt-4">
+                        <label for="files" type="button" class="btn btn-secondary mr-2">Logo yüklə</label>
+                        <input id="files" (change)="upload($event)" type="file" class="d-none" accept="image/*">
+                        <div *ngIf="uploadImg.length>0" class="photos">
+                            <div *ngFor="let img of uploadImg;let i=index" class="img">
+                                <input type="hidden" name="logo" formControlName="logo">
+                                <input type="hidden" name="fileName" formControlName="fileName">
+                                <img src="{{img.src}}" alt="uploaded-photo">
+                                <a href="#" (click)="removePhoto($event,img.fileName,i)">
+                                    <i class=" ml-1 fas fa-trash"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success w-100">Yarat</button>
@@ -106,10 +134,18 @@
                     </div>
                     <div class="form-group">
                         <label [ngClass]="{ 'is-invalid': submitted && u.icon.errors }">İkon </label>
-                        <input name="icon" formControlName="icon" type="text" class="form-control" placeholder="İkon">
+                        <input name="icon" formControlName="icon" type="text" class="form-control"
+                            placeholder="ti ti-desktop">
                         <div *ngIf="submitted && u.icon.errors" class="text-danger">
                             <div *ngIf="u.icon.errors.maxLenght">İkon maksimum 150 xarakter olmalıdır</div>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Populyardır?</label>
+                        <select name="isPopular" formControlName="isPopular" class="form-control form-control-sm">
+                            <option value="false">Deaktiv</option>
+                            <option value="true">Aktiv</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Status </label>
@@ -118,7 +154,25 @@
                             <option value="true">Deaktiv</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-warning w-100">Yenilə</button>
+                    <div *ngIf="department?.logo==null" class="form-group">
+                        <label for="files" type="button" class="btn btn-secondary mr-2">Logo yüklə</label>
+                        <input id="files" (change)="upload($event)" type="file" class="d-none" accept="image/*">
+                        <div *ngIf="department?.logo!=null" class="photos">
+                            <input type="hidden" name="logo" formControlName="logo">
+                            <input type="hidden" name="fileName" formControlName="fileName">
+                            <img src="{{department?.logo}}" alt="uploaded-photo">
+                            <a href="#" (click)="removePhoto($event,department?.fileName,i)">
+                                <i class=" ml-1 fas fa-trash"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div *ngIf="department?.logo!=null" class="photos">
+                        <img class="update-img" src="{{department?.logo}}" alt="">
+                        <a href="#" (click)="removeLogo($event,department)">
+                            <i class="ml-1 fas fa-trash"></i>
+                        </a>
+                    </div>
+                    <button type="submit" class="btn btn-warning w-100 mt-3">Yenilə</button>
                 </form>
             </div>
         </div>

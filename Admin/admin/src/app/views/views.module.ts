@@ -7,7 +7,7 @@ import { ViewsComponent } from './views.component';
 
 @NgModule({
   declarations: [
-    ViewsComponent
+    ViewsComponent,
   ],
   imports: [
     CommonModule,

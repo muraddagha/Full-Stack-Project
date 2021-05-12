@@ -7,9 +7,9 @@ import { Subscription, interval } from 'rxjs';
   styleUrls: ['./countdown.component.scss']
 })
 export class CountdownComponent implements OnInit {
-  @Input() endDate: Date
+  @Input() endDate: Date;
   public dateNow = new Date();
-  public dDay = new Date('04 15 2021 00:00:00');
+  public dDay = new Date();
   milliSecondsInASecond = 1000;
   hoursInADay = 24;
   minutesInAnHour = 60;
@@ -22,9 +22,6 @@ export class CountdownComponent implements OnInit {
   public daysToDday;
 
   constructor() {
-    if (this.endDate != null) {
-      this.dDay = new Date(this.endDate)
-    }
   }
   private subscription: Subscription;
 
@@ -44,6 +41,8 @@ export class CountdownComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dDay = new Date(this.endDate)
+
     this.subscription = interval(1000)
       .subscribe(x => { this.getTimeDifference(); });
   }

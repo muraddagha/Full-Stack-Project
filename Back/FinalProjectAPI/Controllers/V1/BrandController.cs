@@ -99,7 +99,7 @@ namespace FinalProjectAPI.Controllers.V1
             try
             {
                 await _brandService.RemoveBrand(id);
-                return Ok(new { message = "Brend silindi" });
+                return Ok(new { message = "Brend deaktiv edildi" });
             }
             catch (HttpException e)
             {

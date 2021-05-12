@@ -1,0 +1,160 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <button class="btn btn-success" data-toggle="modal" data-target="#create">
+                Endirim yarat
+            </button>
+            <h4 class="text-center">Endirimlər</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Adı</th>
+                        <th>Başlanğıc vaxtı</th>
+                        <th>Bitmə vaxtı</th>
+                        <th>Endirim</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let discount of discounts | paginate: { itemsPerPage: 10, currentPage: page,totalItems:discounts.length }">
+                        <td>{{discount.id}}</td>
+                        <td>{{discount.name}}</td>
+                        <td>{{discount.startDate}}</td>
+                        <td>{{discount.endDate}}</td>
+                        <td>{{discount.precentage}}%</td>
+                        <td class="d-flex justify-content-between align-items-center">
+                            <span *ngIf="discount.softDeleted" class="badge badge-danger">Deaktiv</span>
+                            <span *ngIf="!discount.softDeleted" class="badge badge-success">Aktiv</span>
+                            <span class="settings">
+                                <a (click)="updateDiscount(discount)" data-toggle="modal" data-target="#update"
+                                    class="btn btn-warning rounded-circle mr-3" href="#">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a (click)="removeDiscount($event,discount.id)" class="btn btn-danger rounded-circle"
+                                    href="#">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <pagination-controls (pageChange)="page = $event" previousLabel="Əvvəlki" nextLabel="Növbəti"></pagination-controls>
+</div>
+
+<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Kateqoriya Yarat</h5>
+                <button type="button" class="close-create close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="createForm" (ngSubmit)="create()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.name.errors }">Endirim adı <span
+                                class="text-danger">*</span></label>
+                        <input name="name" formControlName="name" type="text" class="form-control">
+                        <div *ngIf="submitted && f.name.errors" class="text-danger">
+                            <div *ngIf="f.name.errors.required">Endirim adı boş ola bilməz</div>
+                            <div *ngIf="f.name.errors.maxLenght">Endirim adı maksimum 50 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }">Başlanğıc vaxtı <span
+                                class="text-danger">*</span></label>
+                        <input name="startDate" formControlName="startDate" type="date" class="form-control">
+                        <div *ngIf="submitted && f.startDate.errors" class="text-danger">
+                            <div *ngIf="f.startDate.errors.required">Başlanğıc vaxtı boş ola bilməz</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }">Bitmə vaxtı <span
+                                class="text-danger">*</span></label>
+                        <input name="endDate" formControlName="endDate" type="date" class="form-control">
+                        <div *ngIf="submitted && f.endDate.errors" class="text-danger">
+                            <div *ngIf="f.endDate.errors.required">Bitmə vaxtı boş ola bilməz</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }">Endirim faizi <span
+                                class="text-danger">*</span></label>
+                        <input name="precentage" formControlName="precentage" type="text" class="form-control">
+                        <div *ngIf="submitted && f.precentage.errors" class="text-danger">
+                            <div *ngIf="f.precentage.errors.required">Endirim faizi boş ola bilməz</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Yarat</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Kateqoriya Yarat</h5>
+                <button type="button" class="close-update close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="updateForm" (ngSubmit)="update()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.name.errors }">Endirim adı <span
+                                class="text-danger">*</span></label>
+                        <input name="name" formControlName="name" type="text" class="form-control">
+                        <div *ngIf="submitted && u.name.errors" class="text-danger">
+                            <div *ngIf="u.name.errors.required">Endirim adı boş ola bilməz</div>
+                            <div *ngIf="u.name.errors.maxLenght">Endirim adı maksimum 50 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.startDate.errors }">Başlanğıc vaxtı <span
+                                class="text-danger">*</span></label>
+                        <input type="text" value="{{discount?.startDate}}" class="form-control mb-1" disabled>
+                        <input name="startDate" formControlName="startDate" type="date" class="form-control">
+                        <div *ngIf="submitted && u.startDate.errors" class="text-danger">
+                            <div *ngIf="u.startDate.errors.required">Başlanğıc vaxtı boş ola bilməz</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.startDate.errors }">Bitmə vaxtı <span
+                                class="text-danger">*</span></label>
+                        <input type="text" value="{{discount?.endDate}}" class="form-control mb-1" disabled>
+                        <input name="endDate" formControlName="endDate" type="date" class="form-control">
+                        <div *ngIf="submitted && u.endDate.errors" class="text-danger">
+                            <div *ngIf="u.endDate.errors.required">Bitmə vaxtı boş ola bilməz</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.precentage.errors }">Endirim faizi <span
+                                class="text-danger">*</span></label>
+                        <input name="precentage" formControlName="precentage" type="text" class="form-control">
+                        <div *ngIf="submitted && u.precentage.errors" class="text-danger">
+                            <div *ngIf="u.precentage.errors.required">Endirim faizi boş ola bilməz</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Status </label>
+                        <select name="softDeleted" formControlName="softDeleted" class="form-control">
+                            <option value="false">Aktiv</option>
+                            <option value="true">Deaktiv</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Yarat</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

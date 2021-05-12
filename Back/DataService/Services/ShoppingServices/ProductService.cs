@@ -63,7 +63,7 @@ namespace DataService.Services.ShoppingServices
             return await _context.Products.Include("Category")
                                            .Include("Photos")
                                            .Include("Options.ProductOptionItems")
-                                           .Include("Discounts.Discount")
+                                           .Include("Discount")
                                            .ToListAsync();
 
         }
@@ -72,7 +72,7 @@ namespace DataService.Services.ShoppingServices
         {
             var products= _context.Products.Include("Photos")
                                             .Include("Category")
-                                            .Include("Discounts.Discount")
+                                            .Include("Discount")
                                             .Where(p => p.IsFeatured);
 
             ProductListBy(products, order);
@@ -83,7 +83,7 @@ namespace DataService.Services.ShoppingServices
         public async Task<IEnumerable<Product>> GetHotDealProducts(int limit, ProductListing order)
         {
             var products = _context.Products.Include("Photos")
-                                            .Include("Discounts.Discount")
+                                            .Include("Discount")
                                            .Where(p => p.IsHotDeal);
 
             ProductListBy(products, order);
@@ -94,10 +94,10 @@ namespace DataService.Services.ShoppingServices
         {
             var products = _context.Products.Include("Photos")
                                             .Include("Category")
-                                            .Include("Discounts.Discount")
-                                            .Where(p=>!p.SoftDeleted)
-                                            .Where(p=>p.Category.DepartmentId==departmentId)
-                                            .Where(p => p.AddedDate > DateTime.Now.AddDays(-7));
+                                            .Include("Discount")
+                                            .Where(p => !p.SoftDeleted)
+                                            .Where(p => p.Category.DepartmentId == departmentId)
+                                            .Where(p => p.IsNewArrival);
 
             return await products.Take(limit).ToListAsync();
         }
@@ -106,9 +106,9 @@ namespace DataService.Services.ShoppingServices
         {
             var products = _context.Products.Include("Photos")
                                             .Include("Category")
-                                            .Include("Discounts.Discount")
+                                            .Include("Discount")
                                             .Where(p => !p.SoftDeleted)
-                                            .Where(p => p.AddedDate > DateTime.Now.AddDays(-7));
+                                            .Where(p => p.IsNewArrival);
 
             ProductListBy(products, order);
             return await products.Take(limit).ToListAsync();
@@ -120,7 +120,7 @@ namespace DataService.Services.ShoppingServices
                                                   .Include("Photos")
                                                   .Include("Brand")
                                                   .Include("Options.ProductOptionItems")
-                                                  .Include("Discounts.Discount")
+                                                  .Include("Discount")
                                                   .Include("Reviews.User")
                                                   .FirstOrDefaultAsync(p=>p.Id==id);
 
@@ -132,7 +132,7 @@ namespace DataService.Services.ShoppingServices
         public async Task<IEnumerable<Product>> GetProductsByCategoryId(int categoryId,int limit, ProductListing order)
         {
             var products = _context.Products.Include("Photos")
-                                            .Include("Discounts.Discount")
+                                            .Include("Discount")
                                             .Where(p=>!p.SoftDeleted)
                                             .Where(p => p.CategoryId == categoryId);
 
@@ -153,7 +153,7 @@ namespace DataService.Services.ShoppingServices
         {
             var products = _context.Products.Include("Photos")
                                             .Include("Category")
-                                            .Include("Discounts.Discount")
+                                            .Include("Discount")
                                             .Where(p => !p.SoftDeleted)
                                             .Where(p => p.IsTopSell);
 
@@ -164,7 +164,7 @@ namespace DataService.Services.ShoppingServices
         public async Task<IEnumerable<Product>> GetTrendProducts(int limit, ProductListing order)
         {
             var products = _context.Products.Include("Photos")
-                                            .Include("Discounts.Discount")
+                                            .Include("Discount")
                                             .Where(p => !p.SoftDeleted)
                                             .Where(p => p.IsTrend);
 
@@ -210,6 +210,7 @@ namespace DataService.Services.ShoppingServices
 
             updateProduct.CategoryId = product.CategoryId;
             updateProduct.BrandId = product.BrandId;
+            updateProduct.DiscountId = product.DiscountId;
             updateProduct.Name = product.Name;
             updateProduct.Description = product.Description;
             updateProduct.Price = product.Price;
@@ -219,6 +220,7 @@ namespace DataService.Services.ShoppingServices
             updateProduct.IsFeatured = product.IsFeatured;
             updateProduct.IsTopSell = product.IsTopSell;
             updateProduct.IsHotDeal = product.IsHotDeal;
+            updateProduct.IsNewArrival = product.IsNewArrival;
             updateProduct.ModifiedBy = product.ModifiedBy;
             updateProduct.SoftDeleted = product.SoftDeleted;
             updateProduct.ModifiedDate = DateTime.Now;

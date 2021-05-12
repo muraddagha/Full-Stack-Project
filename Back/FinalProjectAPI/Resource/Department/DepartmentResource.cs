@@ -11,6 +11,8 @@ namespace FinalProjectAPI.Resource.Department
         public int Id { get; set; }
         public string Name { get; set; }
         public string Icon { get; set; }
+        public bool IsPopular { get; set; }
+        public string Logo { get; set; }
         public ICollection<CategoryResource> Categories { get; set; }
     }
 }

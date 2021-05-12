@@ -1,5 +1,6 @@
 ﻿using FinalProjectAPI.Resource.Brand;
 using FinalProjectAPI.Resource.Category;
+using FinalProjectAPI.Resource.Discount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace FinalProjectAPI.Resource.Product
         public bool IsHotDeal { get; set; }
         public BrandResource Brand { get; set; }
         public ICollection<ProductOptionResource> Options { get; set; }
-        public ICollection<DiscountResource> Discounts { get; set; }
+        public DiscountResource Discount { get; set; }
         public CategoryResource Category { get; set; }
         public ICollection<string> Photos { get; set; }
         public ICollection<ProductReviewResource> Reviews { get; set; }

@@ -6,6 +6,7 @@ import { CategoryComponent } from './category/category.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DealOfDayComponent } from './deal-of-day/deal-of-day.component';
 import { DepartmentComponent } from './department/department.component';
+import { DiscountComponent } from './discount/discount.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ShopCollectionComponent } from './shop-collection/shop-collection.component';
 import { SocialLinksComponent } from './social-links/social-links.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'deal-of-day', component: DealOfDayComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'social-links', component: SocialLinksComponent },
+      { path: 'discount', component: DiscountComponent },
 
     ]
   }

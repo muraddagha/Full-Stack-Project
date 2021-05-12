@@ -17,6 +17,7 @@ import { BrandComponent } from './brand/brand.component';
 import { DealOfDayComponent } from './deal-of-day/deal-of-day.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SocialLinksComponent } from './social-links/social-links.component';
+import { DiscountComponent } from './discount/discount.component';
 
 
 
@@ -35,6 +36,7 @@ import { SocialLinksComponent } from './social-links/social-links.component';
     DealOfDayComponent,
     SettingsComponent,
     SocialLinksComponent,
+    DiscountComponent,
 
   ],
   imports: [

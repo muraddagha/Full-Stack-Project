@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { NotifierModule } from 'angular-notifier';
+import { DiscountPricePipe } from './shared/pipes/discount-price.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,7 @@ import { NotifierModule } from 'angular-notifier';
     NotifierModule
   ],
   bootstrap: [AppComponent],
-  providers: [
+  providers: [DiscountPricePipe,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
 })

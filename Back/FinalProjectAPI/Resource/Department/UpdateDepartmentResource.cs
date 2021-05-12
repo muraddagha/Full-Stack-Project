@@ -15,5 +15,12 @@ namespace FinalProjectAPI.Resource.Department
         [MaxLength(150)]
         public string Icon { get; set; }
         public bool SoftDeleted { get; set; }
+        public bool IsPopular { get; set; }
+
+        [MaxLength(200)]
+        public string Logo { get; set; }
+
+        [MaxLength(200)]
+        public string FileName { get; set; }
     }
 }

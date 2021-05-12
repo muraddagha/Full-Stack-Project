@@ -20,6 +20,5 @@ namespace DataService.Data.Entities
         [Required]
         public double Precentage { get; set; }
 
-        public ICollection<ProductDiscount> Products { get; set; }
     }
 }

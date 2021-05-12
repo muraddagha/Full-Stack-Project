@@ -5,6 +5,7 @@ import { NotifierService } from 'angular-notifier';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IAdmin } from 'src/app/shared/models/admin/admin.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { IUploadImage } from 'src/app/shared/models/upload-image.model';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class DepartmentComponent implements OnInit {
   public createForm: FormGroup;
   public updateForm: FormGroup;
   public departments: IDepartment[] = [];
-  public admin: IAdmin;
+  public uploadImg: IUploadImage[] = [];
+  public department: IDepartment;
   private departmentId: any;
   constructor(private apiService: ApiService,
     private notifier: NotifierService,
@@ -44,37 +46,44 @@ export class DepartmentComponent implements OnInit {
     this.createForm = this.formBuilder.group({
       name: ["", [Validators.required, Validators.maxLength(100)]],
       icon: ["", [Validators.maxLength(150)]],
+      logo: ["", [Validators.maxLength(200)]],
+      fileName: ["", [Validators.maxLength(200)]],
+      isPopular: [""]
     })
   }
   private generateUpdateForm() {
     this.updateForm = this.formBuilder.group({
       name: ["", [Validators.required, Validators.maxLength(100)]],
       icon: ["", [Validators.maxLength(150)]],
+      logo: ["", [Validators.maxLength(200)]],
+      fileName: ["", [Validators.maxLength(200)]],
+      isPopular: [""],
       softDeleted: [""],
     })
   }
-  public updateDepartment($event, department: IDepartment) {
+  public updateDepartment(department: IDepartment) {
     this.departmentId = department.id;
-    console.log(department.name);
+    this.department = department;
 
     this.updateForm.patchValue({
       name: department['name'],
       icon: department['icon'],
+      logo: department["logo"],
+      fileName: department["fileName"],
+      isPopular: department["isPopular"],
       softDeleted: department['softDeleted']
     })
   }
-
   public create(): void {
     this.submitted = true;
-    console.log(this.f);
     if (this.createForm.invalid) return;
     this.apiService.createDepartment(this.createForm.value).subscribe(res => {
-      console.log(res);
     },
       err => {
 
       },
       () => {
+        this.submitted = false;
         this.element.nativeElement.querySelector(".close-create").click();
         this.notifier.notify("success", "Şöbə yaradldı");
         this.createForm.reset();
@@ -82,21 +91,16 @@ export class DepartmentComponent implements OnInit {
       })
   }
   public update(): void {
-
     this.submitted = true;
-    console.log(this.updateForm.value);
-
     if (this.updateForm.invalid) return;
 
     this.apiService.updateDepartment(this.departmentId, this.updateForm.value).subscribe(res => {
 
     },
       err => {
-        console.log(err);
-
-        ///..
       },
       () => {
+        this.submitted = false;
         this.element.nativeElement.querySelector(".close-update").click();
         this.notifier.notify("success", "Şöbə yeniləndi")
         this.updateForm.reset();
@@ -138,6 +142,72 @@ export class DepartmentComponent implements OnInit {
       }, () => {
         this.notifier.notify("error", "Şöbə deaktiv edildi")
         this.getDepartments();
+      })
+    }
+  }
+
+  private uploadPhoto(data: any): void {
+    this.apiService.uploadPhoto(data).subscribe(res => {
+      this.uploadImg.push(res);
+      if (this.department != undefined) {
+        this.department.logo = res.src;
+        this.department.fileName = res.fileName;
+      }
+      this.createForm.patchValue({
+        logo: res["src"],
+        fileName: res["fileName"]
+      })
+      this.updateForm.patchValue({
+        logo: res["src"],
+        fileName: res["fileName"]
+      })
+    },
+      error => {
+      }, () => { })
+  }
+  public removePhoto($event, name: string, i): void {
+    $event.preventDefault();
+    this.apiService.removeUploadPhoto(name).subscribe(res => {
+    }, err => {
+
+    }, () => {
+      this.uploadImg = this.uploadImg.filter(a => a.fileName != name);
+      this.createForm.patchValue({
+        logo: '',
+        fileName: ''
+      })
+      this.updateForm.patchValue({
+        logo: null,
+        fileName: null,
+      })
+      if (this.department != undefined) {
+        this.department.logo = null;
+        this.department.fileName = null;
+      }
+    })
+  }
+  public upload($event): void {
+    if ($event.target.files && $event.target.files[0]) {
+      var formData = new FormData();
+      formData.append('file', $event.target.files[0])
+      this.uploadPhoto(formData)
+      $event.target.value = ""
+    }
+  }
+  public removeLogo($event, department: IDepartment) {
+    $event.preventDefault();
+    if (confirm("Əminsinizmi?")) {
+      this.apiService.removeDepartmentLogo(department.fileName, department.id,).subscribe(res => {
+      }, err => {
+
+      }, () => {
+        this.getDepartments();
+        this.updateForm.patchValue({
+          logo: null,
+          fileName: null
+        })
+        this.department.logo = null;
+        this.department.fileName = null;
       })
     }
   }

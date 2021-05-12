@@ -135,8 +135,11 @@
       margin-bottom: 60px;
     }
     .categories-slider-item {
+      min-height: 150px;
       .category-img {
+        max-height: 80px;
         margin-bottom: 20px;
+        min-height: 80px;
         img {
           width: auto !important;
           display: inline-block !important;

@@ -24,6 +24,7 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { ContainersModule } from 'src/app/shared/containers/containers.module';
 import { TotalPricePipe } from 'src/app/shared/pipes/total-price.pipe';
 import { TotalProductPricePipe } from 'src/app/shared/pipes/total-product-price.pipe';
+import { DiscountPricePipe } from 'src/app/shared/pipes/discount-price.pipe';
 
 
 
@@ -46,7 +47,7 @@ import { TotalProductPricePipe } from 'src/app/shared/pipes/total-product-price.
     NewArrivalsComponent,
     WishlistComponent,
     TotalPricePipe,
-    TotalProductPricePipe
+    TotalProductPricePipe,
   ],
   imports: [
     CommonModule,

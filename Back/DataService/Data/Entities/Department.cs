@@ -14,6 +14,14 @@ namespace DataService.Data.Entities
         [MaxLength(150)]
         public string Icon { get; set; }
 
+        public bool IsPopular { get; set; }
+
+        [MaxLength(200)]
+        public string Logo { get; set; }
+
+        [MaxLength(200)]
+        public string FileName { get; set; }
+
         public ICollection<Category> Categories { get; set; }
     }
 }

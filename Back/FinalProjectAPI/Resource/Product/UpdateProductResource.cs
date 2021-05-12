@@ -12,6 +12,8 @@ namespace FinalProjectAPI.Resource.Product
         public int CategoryId { get; set; }
 
         public int BrandId { get; set; }
+        public int DiscountId { get; set; }
+
 
         [Required]
         [MaxLength(100)]
@@ -37,6 +39,8 @@ namespace FinalProjectAPI.Resource.Product
         public bool IsTrend { get; set; }
         public bool IsTopSell { get; set; }
         public bool IsHotDeal { get; set; }
+        public bool IsNewArrival { get; set; }
+
 
         [Required]
         public bool SoftDeleted { get; set; }

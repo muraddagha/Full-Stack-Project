@@ -10,7 +10,6 @@ namespace FinalProjectAPI.Resource.Category
     {
         public int Id { get; set; }
         public int DepartmentId { get; set; }
-        public bool IsPopular { get; set; }
         public string Name { get; set; }
         public AdminDepartmentResource Department { get; set; }
     }

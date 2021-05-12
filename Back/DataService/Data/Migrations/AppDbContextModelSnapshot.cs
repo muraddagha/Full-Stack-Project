@@ -131,9 +131,6 @@ namespace DataService.Data.Migrations
                     b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsPopular")
-                        .HasColumnType("bit");
-
                     b.Property<string>("ModifiedBy")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -218,9 +215,20 @@ namespace DataService.Data.Migrations
                     b.Property<DateTime>("AddedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("FileName")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<string>("Icon")
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
+
+                    b.Property<bool>("IsPopular")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Logo")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("ModifiedBy")
                         .HasMaxLength(50)
@@ -349,6 +357,9 @@ namespace DataService.Data.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<int?>("DiscountId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("InStock")
                         .HasColumnType("bit");
 
@@ -356,6 +367,9 @@ namespace DataService.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsHotDeal")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsNewArrival")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsTopSell")
@@ -396,46 +410,9 @@ namespace DataService.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("DataService.Data.Entities.ProductDiscount", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AddedBy")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime>("AddedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("DiscountId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("SoftDeleted")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
                     b.HasIndex("DiscountId");
 
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductDiscounts");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("DataService.Data.Entities.ProductOption", b =>
@@ -1110,28 +1087,15 @@ namespace DataService.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("DataService.Data.Entities.Discount", "Discount")
+                        .WithMany()
+                        .HasForeignKey("DiscountId");
+
                     b.Navigation("Brand");
 
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("DataService.Data.Entities.ProductDiscount", b =>
-                {
-                    b.HasOne("DataService.Data.Entities.Discount", "Discount")
-                        .WithMany("Products")
-                        .HasForeignKey("DiscountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DataService.Data.Entities.Product", "Product")
-                        .WithMany("Discounts")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.Navigation("Discount");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("DataService.Data.Entities.ProductOption", b =>
@@ -1269,15 +1233,8 @@ namespace DataService.Data.Migrations
                     b.Navigation("Categories");
                 });
 
-            modelBuilder.Entity("DataService.Data.Entities.Discount", b =>
-                {
-                    b.Navigation("Products");
-                });
-
             modelBuilder.Entity("DataService.Data.Entities.Product", b =>
                 {
-                    b.Navigation("Discounts");
-
                     b.Navigation("Favoruites");
 
                     b.Navigation("Options");
