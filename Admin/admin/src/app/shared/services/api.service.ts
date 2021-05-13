@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { IAdmin } from '../models/admin/admin.model';
 import { IBrand } from '../models/brand/brand.model';
 import { IProduct } from '../models/product/product.model';
+import { IBannerResponse } from '../models/response/banner-response.model';
 import { IBrandResponse } from '../models/response/brand-response.model';
 import { ICategoryResponse } from '../models/response/category-response.model';
 import { IDealOfDayResponse } from '../models/response/deal-of-day-response.model';
@@ -12,6 +13,7 @@ import { IDepartmentResponse } from '../models/response/department-response.mode
 import { IDiscountResponse } from '../models/response/discount-response.model';
 import { IOptionResponse } from '../models/response/product-option-response.model';
 import { IProductResponse } from '../models/response/product-response.model';
+import { IServiceResponse } from '../models/response/service-response.model';
 import { ISettingResponse } from '../models/response/setting-response.model';
 import { IShopCollectionResponse } from '../models/response/shop-collection-response.model';
 
@@ -224,6 +226,44 @@ export class ApiService {
   }
   public removeDiscount(id: any) {
     return this.http.delete(environment.apiUrl + `discount/${id}`)
+  }
+  //#endregion
+
+
+  //#region Banner
+  public getBanners(): Observable<IBannerResponse> {
+    return this.http.get<IBannerResponse>(environment.apiUrl + `banner/all`)
+  }
+  public createBanner(data: any) {
+    return this.http.post(environment.apiUrl + `banner/create`, data)
+  }
+  public updateBanner(id: any, data: any) {
+    return this.http.put(environment.apiUrl + `banner/${id}`, data)
+  }
+  public removeBanner(id: any) {
+    return this.http.delete(environment.apiUrl + `banner/${id}`)
+  }
+  public removeBannerLogo(name: string, id?: any) {
+    if (id != null) {
+      return this.http.delete(environment.apiUrl + `banner/removeLogo?name=${name}&id=${id}`)
+    } else {
+      return this.http.delete(environment.apiUrl + `banner/removeLogo?name=${name}`)
+    }
+  }
+  //#endregion
+
+  //#region Service
+  public getServices(): Observable<IServiceResponse> {
+    return this.http.get<IServiceResponse>(environment.apiUrl + `service/all`)
+  }
+  public createService(data: any) {
+    return this.http.post(environment.apiUrl + `service/create`, data)
+  }
+  public updateService(id: any, data: any) {
+    return this.http.put(environment.apiUrl + `service/${id}`, data)
+  }
+  public removeService(id: any) {
+    return this.http.delete(environment.apiUrl + `service/${id}`)
   }
   //#endregion
 }

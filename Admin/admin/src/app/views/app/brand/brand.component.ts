@@ -137,13 +137,11 @@ export class BrandComponent implements OnInit {
     $event.preventDefault();
     if (confirm("Əminsinizmi?")) {
       this.apiService.removeBrand(id).subscribe(res => {
-        console.log(res);
       }, err => {
 
       }, () => {
         this.notifier.notify("error", "Brend deaktiv edildi")
         this.getBrands();
-
       })
     }
   }

@@ -1,0 +1,241 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <button class="btn btn-success" data-toggle="modal" data-target="#create">
+                Banner Yarat
+            </button>
+            <h4 class="text-center">Bannerlər</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Şəkil</th>
+                        <th>Başlıq</th>
+                        <th>Yarımbaşlıq</th>
+                        <th class="text-center">Mətn</th>
+                        <th>Növ</th>
+                        <th>Status</th>
+                        <th>Ayarlar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let banner of banners | paginate: { itemsPerPage: 10, currentPage: page,totalItems:banners.length }">
+                        <td>
+                            <img src="{{banner.image}}" alt="">
+                        </td>
+                        <td>
+                            {{banner.title}}
+                        </td>
+                        <td>
+                            {{banner.subtitle}}
+                        </td>
+                        <td class="text-center">
+                            {{banner.text}}
+                        </td>
+                        <td>
+                            <span *ngIf="banner.isBigBanner" class="badge badge-info">Böyük</span>
+                            <span *ngIf="banner.isMediumBanner" class="badge badge-info">Orta</span>
+                            <span *ngIf="banner.isSmallBanner" class="badge badge-info">Balaca</span>
+                        </td>
+                        <td>
+                            <span *ngIf="banner.softDeleted" class="badge badge-danger">Deaktiv</span>
+                            <span *ngIf="!banner.softDeleted" class="badge badge-success">Aktiv</span>
+                        </td>
+                        <td>
+                            <span class="settings d-flex justify-content-between align-items-center">
+                                <a (click)="updateBanner(banner)" data-toggle="modal" data-target="#update"
+                                    class="btn btn-warning rounded-circle mr-3" href="#">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a (click)="removeBanner($event,banner.id)" class="btn btn-danger rounded-circle"
+                                    href="#">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <pagination-controls (pageChange)="page = $event" previousLabel="Əvvəlki" nextLabel="Növbəti"></pagination-controls>
+</div>
+
+<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Brend Yarat</h5>
+                <button type="button" class="close-create close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="createForm" (ngSubmit)="create()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.title.errors }">Başlıq</label>
+                        <label> <span class="text-danger ml-1">*</span></label>
+                        <input name="title" formControlName="title" type="text" class="form-control">
+                        <div *ngIf="submitted && f.title.errors" class="text-danger">
+                            <div *ngIf="f.title.errors.required">Başlıq boş ola bilməz</div>
+                            <div *ngIf="f.title.errors.maxLenght">Başlıq maksimum 200 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.subtitle.errors }">Yarımbaşlıq</label>
+                        <label> <span class="text-danger ml-1">*</span></label>
+                        <input name="subtitle" formControlName="subtitle" type="text" class="form-control">
+                        <div *ngIf="submitted && f.subtitle.errors" class="text-danger">
+                            <div *ngIf="f.subtitle.errors.required">Yarımbaşlıq boş ola bilməz</div>
+                            <div *ngIf="f.subtitle.errors.maxLenght">Yarımbaşlıq maksimum 200 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && f.text.errors }">Mətn</label>
+                        <input name="text" formControlName="text" type="text" class="form-control">
+                        <div *ngIf="submitted && f.text.errors" class="text-danger">
+                            <div *ngIf="f.text.errors.required">Mətn boş ola bilməz</div>
+                            <div *ngIf="f.text.errors.maxLenght">Mətn maksimum 200 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                        <div class="form-group mr-2">
+                            <select name="isBigBanner" formControlName="isBigBanner"
+                                class="form-control form-control-sm">
+                                <option value="true">BigBanner</option>
+                                <option value="false">NotBigBanner</option>
+                            </select>
+                        </div>
+                        <div class="form-group mr-2">
+                            <select name="isMediumBanner" formControlName="isMediumBanner"
+                                class="form-control form-control-sm">
+                                <option value="true">MediumBanner</option>
+                                <option value="false">NotMediumBanner</option>
+                            </select>
+                        </div>
+                        <div class="form-group mr-2">
+                            <select name="isSmallBanner" formControlName="isSmallBanner"
+                                class="form-control form-control-sm">
+                                <option value="true">SmallBanner</option>
+                                <option value="false">NotSmallBanner</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group mt-4">
+                        <div *ngIf="uploadImg.length <1" class="upload">
+                            <label for="files" type="button" class="btn btn-secondary mr-2">Şəkil yüklə</label>
+                            <label> <span class="text-danger">*</span></label>
+                            <input id="files" (change)="upload($event)" type="file" class="d-none" accept="image/*">
+                        </div>
+
+                        <div *ngIf="uploadImg.length>0" class="photos">
+                            <div *ngFor="let img of uploadImg;let i=index" class="img">
+                                <input type="hidden" name="image" formControlName="image">
+                                <input type="hidden" name="fileName" formControlName="fileName">
+                                <img src="{{img.src}}" alt="uploaded-photo">
+                                <a href="#" (click)="removePhoto($event,img.fileName)">
+                                    <i class=" ml-1 fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Yarat</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Brend Yarat</h5>
+                <button type="button" class="close-update close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="updateForm" (ngSubmit)="update()">
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.title.errors }">Başlıq</label>
+                        <label> <span class="text-danger ml-1">*</span></label>
+                        <input name="title" formControlName="title" type="text" class="form-control">
+                        <div *ngIf="submitted && u.title.errors" class="text-danger">
+                            <div *ngIf="u.title.errors.required">Başlıq boş ola bilməz</div>
+                            <div *ngIf="u.title.errors.maxLenght">Başlıq maksimum 200 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.subtitle.errors }">Yarımbaşlıq</label>
+                        <label> <span class="text-danger ml-1">*</span></label>
+                        <input name="subtitle" formControlName="subtitle" type="text" class="form-control">
+                        <div *ngIf="submitted && u.subtitle.errors" class="text-danger">
+                            <div *ngIf="u.subtitle.errors.required">Yarımbaşlıq boş ola bilməz</div>
+                            <div *ngIf="u.subtitle.errors.maxLenght">Yarımbaşlıq maksimum 200 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label [ngClass]="{ 'is-invalid': submitted && u.text.errors }">Mətn</label>
+                        <input name="text" formControlName="text" type="text" class="form-control">
+                        <div *ngIf="submitted && u.text.errors" class="text-danger">
+                            <div *ngIf="u.text.errors.required">Mətn boş ola bilməz</div>
+                            <div *ngIf="u.text.errors.maxLenght">Mətn maksimum 200 xarakter olmalıdır</div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                        <div class="form-group mr-2">
+                            <select name="isBigBanner" formControlName="isBigBanner"
+                                class="form-control form-control-sm">
+                                <option value="true">BigBanner</option>
+                                <option value="false">NotBigBanner</option>
+                            </select>
+                        </div>
+                        <div class="form-group mr-2">
+                            <select name="isMediumBanner" formControlName="isMediumBanner"
+                                class="form-control form-control-sm">
+                                <option value="true">MediumBanner</option>
+                                <option value="false">NotMediumBanner</option>
+                            </select>
+                        </div>
+                        <div class="form-group mr-2">
+                            <select name="isSmallBanner" formControlName="isSmallBanner"
+                                class="form-control form-control-sm">
+                                <option value="true">SmallBanner</option>
+                                <option value="false">NotSmallBanner</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select name="softDeleted" formControlName="softDeleted" class="form-control form-control-sm">
+                            <option value="false">Aktiv</option>
+                            <option value="true">Deaktiv</option>
+                        </select>
+                    </div>
+                    <div *ngIf="banner?.image.length==0" class="form-group">
+                        <label for="files" type="button" class="btn btn-secondary mr-2">Şəkil yüklə</label>
+                        <input id="files" (change)="upload($event)" type="file" class="d-none" accept="image/*">
+                        <div *ngIf="banner?.image.length>0" class="photos">
+                            <input type="hidden" name="image" formControlName="image">
+                            <input type="hidden" name="fileName" formControlName="fileName">
+                            <img src="{{banner?.image}}" alt="uploaded-photo">
+                            <a href="#" (click)="removePhoto($event,banner?.fileName)">
+                                <i class=" ml-1 fas fa-trash"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div *ngIf="banner?.image.length>0" class="photos">
+                        <img class="brand-logo-img" src="{{banner?.image}}" alt="">
+                        <a href="#" (click)="removePhoto($event,banner?.fileName,banner?.id)">
+                            <i class="ml-1 fas fa-trash"></i>
+                        </a>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Yenilə</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

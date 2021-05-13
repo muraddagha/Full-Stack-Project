@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DataService.Data.Entities;
 using FinalProjectAPI.Resource.AuthResource;
+using FinalProjectAPI.Resource.Banner;
 using FinalProjectAPI.Resource.Brand;
 using FinalProjectAPI.Resource.Category;
 using FinalProjectAPI.Resource.DealOfDays;
@@ -8,6 +9,7 @@ using FinalProjectAPI.Resource.Department;
 using FinalProjectAPI.Resource.Discount;
 using FinalProjectAPI.Resource.Product;
 using FinalProjectAPI.Resource.Sale;
+using FinalProjectAPI.Resource.Service;
 using FinalProjectAPI.Resource.Setting;
 using FinalProjectAPI.Resource.ShopCollection;
 using FinalProjectAPI.Resource.User;
@@ -119,6 +121,19 @@ namespace FinalProjectAPI.Infrastructure.Mapping
 
             CreateMap<CreateDiscountResource, Discount>();
             CreateMap<UpdateDiscountResource, Discount>();
+
+            //Service
+            CreateMap<Service, ServiceResource>();
+            CreateMap<Service, AdminServiceResource>();
+            CreateMap<CreateServiceResource, Service>();
+            CreateMap<UpdateServiceResource, Service>();
+
+            //Banner
+            CreateMap<Banner, BannerResource>();
+            CreateMap<Banner, AdminBannerResource>();
+            CreateMap<CreateBannerResource, Banner>();
+            CreateMap<UpdateBannerResource, Banner>();
+
 
         }
     }

@@ -18,6 +18,8 @@ import { DealOfDayComponent } from './deal-of-day/deal-of-day.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SocialLinksComponent } from './social-links/social-links.component';
 import { DiscountComponent } from './discount/discount.component';
+import { ServiceComponent } from './service/service.component';
+import { BannerComponent } from './banner/banner.component';
 
 
 
@@ -37,6 +39,8 @@ import { DiscountComponent } from './discount/discount.component';
     SettingsComponent,
     SocialLinksComponent,
     DiscountComponent,
+    ServiceComponent,
+    BannerComponent,
 
   ],
   imports: [

@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { BannerComponent } from './banner/banner.component';
 import { BrandComponent } from './brand/brand.component';
 import { CategoryComponent } from './category/category.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DealOfDayComponent } from './deal-of-day/deal-of-day.component';
 import { DepartmentComponent } from './department/department.component';
 import { DiscountComponent } from './discount/discount.component';
+import { ServiceComponent } from './service/service.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ShopCollectionComponent } from './shop-collection/shop-collection.component';
 import { SocialLinksComponent } from './social-links/social-links.component';
@@ -25,6 +27,8 @@ const routes: Routes = [
       { path: 'settings', component: SettingsComponent },
       { path: 'social-links', component: SocialLinksComponent },
       { path: 'discount', component: DiscountComponent },
+      { path: 'service', component: ServiceComponent },
+      { path: 'banner', component: BannerComponent },
 
     ]
   }

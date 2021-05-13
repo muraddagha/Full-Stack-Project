@@ -79,6 +79,8 @@ namespace FinalProjectAPI
             services.AddTransient<ISaleService,SaleService>();
             services.AddTransient<ISettingService,SettingService>();
             services.AddTransient<IDiscountService,DiscountService>();
+            services.AddTransient<IServicesService,ServicesService>();
+            services.AddTransient<IBannerService,BannerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

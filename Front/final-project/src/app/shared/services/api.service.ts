@@ -3,12 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IAdress } from '../models/adress.model';
+import { IBanner } from '../models/banner.model';
 import { IDealOfDay } from '../models/deal-of-deay.model';
 import { IProductReview } from '../models/product/product-review.model';
 import { IProduct } from '../models/product/product.model';
 import { IBrandResponse } from '../models/response/brand-response.model';
 import { IDepartmentResponse } from '../models/response/department-response.model';
 import { IProductResponse } from '../models/response/product-response.model';
+import { IServiceResponse } from '../models/response/service-response.model';
 import { IShopCollectionResponse } from '../models/response/shop-collection-response.model';
 import { IUserOrderListResponse } from '../models/response/user-order-list-response.model';
 import { ISetting } from '../models/setting.model';
@@ -129,6 +131,18 @@ export class ApiService {
   }
   public getSetting(): Observable<ISetting> {
     return this.http.get<ISetting>(environment.apiUrl + `setting`)
+  }
+  public getBigBanner(): Observable<IBanner> {
+    return this.http.get<IBanner>(environment.apiUrl + `banner/big`)
+  }
+  public getMediumBanner(): Observable<IBanner> {
+    return this.http.get<IBanner>(environment.apiUrl + `banner/medium`)
+  }
+  public getSmallBanner(): Observable<IBanner> {
+    return this.http.get<IBanner>(environment.apiUrl + `banner/small`)
+  }
+  public getServices(limit: any): Observable<IServiceResponse> {
+    return this.http.get<IServiceResponse>(environment.apiUrl + `service?limit=${limit}`)
   }
   //#endregion
 }

@@ -35,6 +35,8 @@ namespace DataService.Data
         public DbSet<UserOrderItem> UserOrderItems { get; set; }
         public DbSet<Sale> Sales { get; set; }
         public DbSet<SaleItem> SaleItems { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<Banner> Banners { get; set; }
         
 
     }

@@ -59,7 +59,7 @@ namespace DataService.Services.ContentServices
         public async Task RemoveBrand(int id)
         {
             var brand = await GetBrandById(id);
-             _context.Brands.Remove(brand);
+            brand.SoftDeleted = true;
             await _context.SaveChangesAsync();
         }
 
