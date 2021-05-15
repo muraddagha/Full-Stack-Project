@@ -12,7 +12,7 @@ namespace FinalProjectAPI.Resource.Product
         public int CategoryId { get; set; }
 
         public int BrandId { get; set; }
-        public int DiscountId { get; set; }
+        public int? DiscountId { get; set; }
 
         [Required]
         [MaxLength(100)]

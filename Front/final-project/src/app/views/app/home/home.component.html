@@ -1,7 +1,7 @@
 <section id="shop-collection">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-xl-8">
                 <div [ngStyle]='{"background-color": collections[0]?.backgroundColor}' class="big-shop-collection">
                     <div class="collection-content">
                         <h6>{{collections[0]?.subtitle}}</h6>
@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-xl-4">
                 <div class="small-collection-area">
                     <div [ngStyle]='{"background-color": collections[1]?.backgroundColor}'
                         class="small-shop-collection colect-1">
@@ -31,7 +31,7 @@
                                 class="btn-pink-small">{{collections[1]?.btnText}} »</a>
                         </div>
                         <div class="small-collection-product">
-                            <img class="mw-200" src="{{collections[1]?.product.photos[0]}}" alt="">
+                            <img class="mw-200" src="{{collections[1]?.product.photos[4]}}" alt="">
                         </div>
                     </div>
                     <div [ngStyle]='{"background-color": collections[2]?.backgroundColor}'
@@ -45,7 +45,7 @@
                                 class="btn-pink-small">{{collections[2]?.btnText}} »</a>
                         </div>
                         <div class="small-collection-product">
-                            <img class="mw-200" src="{{collections[2]?.product.photos[0]}}" alt="">
+                            <img class="mw-200" src="{{collections[2]?.product.photos[2]}}" alt="">
                         </div>
                     </div>
                 </div>
@@ -57,23 +57,28 @@
     <div class="categories-slider-area">
         <h3>Populyar Kateqoriyalar</h3>
         <div class="container">
-            <owl-carousel-o [options]="options">
-                <ng-template *ngFor="let department of popularDepartments" carouselSlide>
-                    <div class="categories-slider-item">
-                        <div class="category-img">
-                            <img src="{{department.logo}}" alt="">
-                        </div>
-                        <h6>{{department.name}}</h6>
-                        <span>24 Products</span>
-                    </div>
-                </ng-template>
-            </owl-carousel-o>
+            <ng-container *ngIf="popularDepartments.length">
+                <owl-carousel-o [options]="options">
+                    <ng-container *ngFor="let department of popularDepartments">
+                        <ng-template carouselSlide>
+                            <div class="categories-slider-item">
+                                <div class="category-img">
+                                    <img src="{{department.logo}}" alt="">
+                                </div>
+                                <h6>{{department.name}}</h6>
+                                <span>24 Products</span>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                </owl-carousel-o>
+            </ng-container>
         </div>
     </div>
 </section>
 <app-new-arrivals-container></app-new-arrivals-container>
 <app-deal-of-day></app-deal-of-day>
 <section id="featured-products" class="pb-5">
+
     <app-products-slider-container [featured]="true" [title]=" 'Seçilən Məhsullar' "></app-products-slider-container>
 </section>
 <section id="small-banner">
@@ -104,19 +109,3 @@
     <app-products-slider-container [topSell]="true" [title]="'Çox Satılan Məhsullar'"></app-products-slider-container>
 </section>
 <app-top-brands-container></app-top-brands-container>
-<!-- <section id="blog">
-    <div class="container">
-        <h4 class="main-title">Form Our Blog</h4>
-        <div class="row">
-            <div class="col-lg-4">
-                <app-blog></app-blog>
-            </div>
-            <div class="col-lg-4">
-                <app-blog></app-blog>
-            </div>
-            <div class="col-lg-4">
-                <app-blog></app-blog>
-            </div>
-        </div>
-    </div>
-</section> -->

@@ -1,6 +1,7 @@
 using DataService.Data;
 using DataService.Services;
 using DataService.Services.ContentServices;
+using DataService.Services.Rest;
 using DataService.Services.ShoppingServices;
 using FinalProjectAPI.Libs;
 using Microsoft.AspNetCore.Builder;
@@ -81,6 +82,7 @@ namespace FinalProjectAPI
             services.AddTransient<IDiscountService,DiscountService>();
             services.AddTransient<IServicesService,ServicesService>();
             services.AddTransient<IBannerService,BannerService>();
+            services.AddTransient<IEmailService,EmailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

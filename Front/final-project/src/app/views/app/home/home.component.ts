@@ -73,8 +73,6 @@ export class HomeComponent implements OnInit {
   getOffers(): void {
     this.apiService.getServices(4).subscribe(res => {
       this.offers = res.services;
-      console.log(res);
-
     })
   }
 

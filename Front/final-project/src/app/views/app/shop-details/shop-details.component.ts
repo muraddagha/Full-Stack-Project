@@ -8,6 +8,7 @@ import { IUser } from 'src/app/shared/models/user.model';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { BasketService } from 'src/app/shared/services/basket.service';
+import { WishlistService } from 'src/app/shared/services/wishlist.service';
 
 @Component({
   selector: 'app-shop-details',
@@ -29,7 +30,8 @@ export class ShopDetailsComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private notifier: NotifierService,
-    private router: Router) {
+    private router: Router,
+    private wishlistService: WishlistService) {
     this.authService.currentUser.subscribe(user => {
       this.user = user;
     });
@@ -80,8 +82,6 @@ export class ShopDetailsComponent implements OnInit {
 
     this.apiService.getProductById(id).subscribe(res => {
       this.product = res;
-      console.log(res);
-
     })
 
   }
@@ -115,6 +115,11 @@ export class ShopDetailsComponent implements OnInit {
   }
   public addToCart(product: IProduct): void {
     this.basketService.addToBasket(product);
+  }
+  public addToWishlist($event, product: IProduct): void {
+    $event.preventDefault();
+    $event.target.classList.add("active")
+    this.wishlistService.addToWishlist(product);
   }
 
 }

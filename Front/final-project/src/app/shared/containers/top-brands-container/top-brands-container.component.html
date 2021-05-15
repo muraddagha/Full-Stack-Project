@@ -8,13 +8,15 @@
                 </div>
             </div>
             <div class="col-lg-12">
-                <owl-carousel-o [options]="options">
-                    <ng-template carouselSlide *ngFor="let brand of brands">
-                        <div class="brand">
-                            <img src="{{brand.logo}}" alt="">
-                        </div>
-                    </ng-template>
-                </owl-carousel-o>
+                <ng-container *ngIf="brands.length">
+                    <owl-carousel-o [options]="options">
+                        <ng-template carouselSlide *ngFor="let brand of brands">
+                            <div class="brand">
+                                <img src="{{brand.logo}}" alt="">
+                            </div>
+                        </ng-template>
+                    </owl-carousel-o>
+                </ng-container>
             </div>
             <div class="bottom-border"></div>
         </div>

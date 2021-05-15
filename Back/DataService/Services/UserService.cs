@@ -8,6 +8,7 @@ using DataService.Data;
 using Microsoft.EntityFrameworkCore;
 using DataService.Infrastructure.Exceptions;
 using DataService.Enums;
+using DataService.Services.Rest;
 
 namespace DataService.Services
 {
@@ -16,7 +17,9 @@ namespace DataService.Services
         Task<User> Register(User user);
         Task<User> Login(string email, string password);
         Task RecoveryPassword(string forgetPasswordToken,string password);
+        Task ForgetPassword(string email);
         Task<User> CheckToken(string token);
+        Task<bool> CheckForgetToken(string forgetToken);
         Task<UserAdress> GetUserAdress(int id);
         Task<UserAdress> CreateUserAdress(UserAdress userAdress);
         Task UpdateAdress(int userId,UserAdress userAdress);
@@ -28,9 +31,11 @@ namespace DataService.Services
     public class UserService : IUserService
     {
         private readonly AppDbContext _context;
-        public UserService(AppDbContext context)
+        private readonly IEmailService _emailService;
+        public UserService(AppDbContext context,IEmailService emailService)
         {
             _context = context;
+            _emailService = emailService;
         }
 
         public async Task<UserOrderList> AddUserOrderList(UserOrderList userOrderList)
@@ -39,6 +44,14 @@ namespace DataService.Services
             await _context.UserOrderLists.AddAsync(userOrderList);
             await _context.SaveChangesAsync();
             return userOrderList;
+        }
+
+        public async Task<bool> CheckForgetToken(string forgetToken)
+        {
+            bool check = await _context.Users.AnyAsync(u => u.ForgetPasswordToken == forgetToken);
+            if (!check) throw new HttpException(404, "Token tapılmadı");
+
+            return true;
         }
 
         public async Task<User> CheckToken(string token)
@@ -52,6 +65,23 @@ namespace DataService.Services
             await _context.UserAdresses.AddAsync(userAdress);
             await _context.SaveChangesAsync();
             return userAdress;
+        }
+
+        public async Task ForgetPassword(string email)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            var userFullname = user.Name + " " + user.Surname;
+            if (user == null) throw new HttpException(404, "E-poçt tapılmadı");
+            user.ForgetPasswordToken = Guid.NewGuid().ToString();
+            await _context.SaveChangesAsync();
+            await _emailService.SendAsync(email, userFullname, "d-67c3fa18d271401ca3d5a5d21f10ac7e", new
+            {
+                subject = "Şifrə bərpası",
+                fullname = userFullname,
+                btnText = "Şifrəni yenilə",
+                text = "Hesabınızın şifrəsini yeniləmək istədiyiniz barədə e-poçt aldıq. Hesabınızda bir dəyişiklik baş verməyib. Şifrənizi yeniləmək üçün klik edin. ",
+                btnUrl = $"http://localhost:4210/auth/recovery-password?token={user.ForgetPasswordToken}"
+            });
         }
 
         public async Task<UserOrderList> GetOrderListById(int userId, int id)
@@ -95,9 +125,14 @@ namespace DataService.Services
             throw new HttpException(404, "E-poçt və ya şifrə yanlışdır");
         }
 
-        public Task RecoveryPassword(string forgetPasswordToken, string password)
+        public async Task RecoveryPassword(string forgetPasswordToken, string password)
         {
-            throw new NotImplementedException();
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.ForgetPasswordToken == forgetPasswordToken);
+            if (user == null) throw new HttpException(404, "Token tapılmadı");
+            user.Password = CryptoHelper.Crypto.HashPassword(password);
+            user.ForgetPasswordToken = null;
+            user.ModifiedDate = DateTime.Now;
+            await _context.SaveChangesAsync();
         }
 
         public async Task<User> Register(User user)

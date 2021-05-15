@@ -32,7 +32,7 @@ export class NewArrivalsContainerComponent implements OnInit {
         items: 3
       },
       1000: {
-        items: 4
+        items: 4,
       }
     },
   };

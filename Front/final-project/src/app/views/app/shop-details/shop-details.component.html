@@ -30,11 +30,6 @@
                         <div class="product-option" *ngFor="let option of product?.options">
                             <span class="details-title">{{option.title}}:</span>
                             <span class="option-value" *ngFor="let item of option.productOptionItems">
-                                <label *ngIf="item.name== 'Rəng' " class="color-filter">
-                                    <input type="radio" name="color-filter">
-                                    <span [ngClass]="{'yellow':item.value=='Sarı','black':item.value=='Qara'}"
-                                        class="checkmark-color"></span>
-                                </label>
                                 <ul *ngIf="item.name== 'Yaddaş' " class="memory">
                                     <li #memoryLi class="memory-li" (click)="changeColor(memoryLi)">
                                         {{item.value}}
@@ -43,7 +38,7 @@
                             </span>
                         </div>
                         <button (click)="addToCart(product)" class="btn btn-pink">Səbətə at</button>
-                        <a href="#" class="favorite">
+                        <a href="#" (click)="addToWishlist($event,product)" class="favorite">
                             <i class="far fa-heart"></i>
                             Sevimlilərə əlavə et
                         </a>
@@ -81,17 +76,6 @@
                             <p class="description">
                                 {{product?.description}}
                             </p>
-                            <h3>Xüsusiyyətləri</h3>
-                            <div class="specs">
-                                <div class="detail">
-                                    <span class="details-title">Kateqoriya : </span>
-                                    <span class="detail-name">{{product?.category.name}}</span>
-                                </div>
-                                <div class="detail">
-                                    <span class="details-title">Sku : </span>
-                                    <span class="detail-name">{{product?.sku}}</span>
-                                </div>
-                            </div>
                         </div>
                         <div class="tab-pane fade show active" id="review" role="tabpanel">
                             <div class="row">

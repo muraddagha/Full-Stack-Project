@@ -20,53 +20,36 @@
                         <a data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab"
                             aria-selected="false">Televizorlar</a>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <a data-bs-toggle="tab" data-bs-target="#tab4" type="button" role="tab"
-                            aria-selected="false">Məişət Texnikası</a>
-                    </li>
                 </ul>
             </div>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="tab1" role="tabpanel">
-                    <owl-carousel-o [options]="options">
-                        <ng-template carouselSlide *ngFor="let phone of phones">
-                            <app-single-product [product]="phone"></app-single-product>
-                        </ng-template>
-                    </owl-carousel-o>
+                    <ng-container *ngIf="phones.length">
+                        <owl-carousel-o [options]="options">
+                            <ng-template carouselSlide *ngFor="let phone of phones">
+                                <app-single-product [product]="phone"></app-single-product>
+                            </ng-template>
+                        </owl-carousel-o>
+                    </ng-container>
                 </div>
                 <div class="tab-pane fade" id="tab2" role="tabpanel">
-                    <owl-carousel-o [options]="options">
-                        <ng-template carouselSlide *ngFor="let laptop of laptops">
-                            <app-single-product [product]="laptop"></app-single-product>
-                        </ng-template>
-                    </owl-carousel-o>
+                    <ng-container *ngIf="laptops.length">
+                        <owl-carousel-o [options]="options">
+                            <ng-template carouselSlide *ngFor="let laptop of laptops">
+                                <app-single-product [product]="laptop"></app-single-product>
+                            </ng-template>
+                        </owl-carousel-o>
+                    </ng-container>
                 </div>
                 <div class="tab-pane fade" id="tab3" role="tabpanel">
-                    <owl-carousel-o [options]="options">
-                        <ng-template carouselSlide *ngFor="let tv of tvs">
-                            <app-single-product [product]="tv"></app-single-product>
-                        </ng-template>
-                    </owl-carousel-o>
+                    <ng-container *ngIf="tvs.length">
+                        <owl-carousel-o [options]="options">
+                            <ng-template carouselSlide *ngFor="let tv of tvs">
+                                <app-single-product [product]="tv"></app-single-product>
+                            </ng-template>
+                        </owl-carousel-o>
+                    </ng-container>
                 </div>
-                <!-- <div class="tab-pane fade" id="tab4" role="tabpanel">
-                    <owl-carousel-o [options]="options">
-                        <ng-template carouselSlide>
-                            <app-single-product></app-single-product>
-                        </ng-template>
-                        <ng-template carouselSlide>
-                            <app-single-product></app-single-product>
-                        </ng-template>
-                        <ng-template carouselSlide>
-                            <app-single-product></app-single-product>
-                        </ng-template>
-                        <ng-template carouselSlide>
-                            <app-single-product></app-single-product>
-                        </ng-template>
-                        <ng-template carouselSlide>
-                            <app-single-product></app-single-product>
-                        </ng-template>
-                    </owl-carousel-o>
-                </div> -->
             </div>
         </div>
     </div>

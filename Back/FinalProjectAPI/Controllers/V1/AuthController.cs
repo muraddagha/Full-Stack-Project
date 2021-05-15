@@ -58,5 +58,57 @@ namespace FinalProjectAPI.Controllers.V1
                 return StatusCode(e.StatusCode, e.Response);
             }
         }
+        [HttpPost]
+        [Route("forget-password")]
+
+        public async Task<IActionResult> ForgetPassword([FromBody] UserForgetPasswordResource resource)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            try
+            {
+                await _userService.ForgetPassword(resource.Email);
+                return Ok();
+            }
+            catch (HttpException e)
+            {
+                return StatusCode(e.StatusCode, e.Response);
+            }
+        }
+
+        [HttpPost]
+        [Route("recovery-password")]
+
+        public async Task<IActionResult> RecoveryPassword([FromBody] UserRecoveryPasswordResource resource)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            try
+            {
+                await _userService.RecoveryPassword(resource.ForgetPasswordToken, resource.Password);
+                return Ok();
+            }
+            catch (HttpException e)
+            {
+                return StatusCode(e.StatusCode, e.Response);
+            }
+        }
+
+        [HttpGet]
+        [Route("forget-token")]
+
+        public async Task<IActionResult> CheckPasswordToken([FromQuery] string token)
+        {
+            try
+            {
+                await _userService.CheckForgetToken(token);
+
+                return Ok();
+            }
+            catch (HttpException e)
+            {
+                return StatusCode(e.StatusCode, e.Response);
+            }
+        }
     }
 }

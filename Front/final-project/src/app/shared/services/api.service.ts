@@ -61,6 +61,22 @@ export class ApiService {
   public register(data: any): Observable<IUser> {
     return this.http.post<IUser>(environment.apiUrl + `auth/register`, data);
   }
+
+  public forgetPassword(data: any): Observable<any> {
+    return this.http.post<any>(environment.apiUrl + `auth/forget-password`, data)
+  }
+
+  public recoveryPassword(data: any): Observable<any> {
+    return this.http.post<any>(environment.apiUrl + `auth/recovery-password`, data)
+  }
+
+  public checkToken(token: string): Observable<any> {
+    return this.http.get<any>(environment.apiUrl + `auth/forget-token`, {
+      params: {
+        token,
+      }
+    })
+  }
   //#endregion
 
   //#region Department

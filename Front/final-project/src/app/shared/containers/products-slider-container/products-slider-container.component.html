@@ -3,17 +3,19 @@
         {{title}}
     </h4>
     <div class="slider-area">
-        <owl-carousel-o [options]="options">
-            <ng-container *ngIf="featured">
+        <ng-container *ngIf="featuredProducts.length && featured">
+            <owl-carousel-o [options]="options">
                 <ng-template carouselSlide *ngFor="let featured of featuredProducts">
                     <app-single-product [product]="featured"></app-single-product>
                 </ng-template>
-            </ng-container>
-            <ng-container *ngIf="topSell">
+            </owl-carousel-o>
+        </ng-container>
+        <ng-container *ngIf="topSellProducts.length && topSell">
+            <owl-carousel-o [options]="options">
                 <ng-template carouselSlide *ngFor="let topSell of topSellProducts">
                     <app-single-product [product]="topSell"></app-single-product>
                 </ng-template>
-            </ng-container>
-        </owl-carousel-o>
+            </owl-carousel-o>
+        </ng-container>
     </div>
 </div>
