@@ -1,0 +1,33 @@
+@import "/src/assets/scss/variables";
+#contact {
+  .map {
+    padding: 100px 0 94px 0;
+  }
+  .contact-info {
+    margin-bottom: 20px;
+    h6 {
+      text-transform: uppercase;
+      color: $color-pink-second;
+      margin-bottom: 10px;
+    }
+    h3 {
+      font-size: 30px;
+      font-weight: 700;
+      color: #090b17;
+    }
+  }
+  .single-adress {
+    display: flex;
+    span {
+      font-size: 16px;
+      font-weight: 700;
+      color: #090b17;
+    }
+    p {
+      font-size: 14px;
+      font-weight: 400;
+      color: #676e8b;
+      margin-left: 20px;
+    }
+  }
+}

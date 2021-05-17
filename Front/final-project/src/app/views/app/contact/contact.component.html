@@ -1,1 +1,43 @@
-<p>contact works!</p>
+<app-breadcrumb [title]=" 'Əlaqə' "></app-breadcrumb>
+<section id="contact">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.8629276006063!2d49.838268115355035!3d40.389730479368225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d76a65a1923%3A0x85613cd7a27e581b!2zQmFrxLF4YW5vdiBLw7zDp8mZc2ksIEJha8SxLCBBemVyYmFpamFu!5e0!3m2!1sen!2s!4v1621246617792!5m2!1sen!2s"
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="contact-info">
+                                    <h6>Əlaqə</h6>
+                                    <h3>Məlumat</h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="single-adress">
+                                    <span>Ünvan:</span>
+                                    <p>{{setting?.adress}}
+                                    </p>
+                                </div>
+                                <div class="single-adress">
+                                    <span>Telefon:</span>
+                                    <p>{{setting?.phone}}
+                                    </p>
+                                </div>
+                                <div class="single-adress">
+                                    <span>E-poçt:</span>
+                                    <p>{{setting?.email}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
