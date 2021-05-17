@@ -25,6 +25,7 @@ import { ContainersModule } from 'src/app/shared/containers/containers.module';
 import { TotalPricePipe } from 'src/app/shared/pipes/total-price.pipe';
 import { TotalProductPricePipe } from 'src/app/shared/pipes/total-product-price.pipe';
 import { DiscountPricePipe } from 'src/app/shared/pipes/discount-price.pipe';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 
 
@@ -59,6 +60,7 @@ import { DiscountPricePipe } from 'src/app/shared/pipes/discount-price.pipe';
     FormsModule,
     NgSelectModule,
     ReactiveFormsModule,
+    PipesModule
   ]
 })
 export class AppModule { }

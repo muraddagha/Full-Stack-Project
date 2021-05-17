@@ -6,10 +6,20 @@
                     <div class="collection-content">
                         <h6>{{collections[0]?.subtitle}}</h6>
                         <h1>{{collections[0]?.title}}</h1>
-                        <div class="price">
-                            <del class="old-price">{{collections[0]?.product.price}} ₼</del>
-                            <span class="new-price">$299<sup>.99</sup></span>
-                        </div>
+                        <ng-container *ngIf="collections[0]?.product.discount!=null">
+                            <div class="price">
+                                <del class="old-price">{{collections[0]?.product.price}} ₼</del>
+                                <span
+                                    class="new-price">{{collections[0]?.product.price|discountPrice:collections[0]?.product.discount.precentage}}
+                                    ₼</span>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="collections[0]?.product.discount==null">
+                            <div class="price">
+                                <span class="new-price">{{collections[0]?.product.price}} ₼</span>
+                            </div>
+                        </ng-container>
+
                         <a [routerLink]="['/app/product',collections[0]?.product.id]"
                             class="btn btn-pink">{{collections[0]?.btnText}}</a>
                     </div>
@@ -66,7 +76,6 @@
                                     <img src="{{department.logo}}" alt="">
                                 </div>
                                 <h6>{{department.name}}</h6>
-                                <span>24 Products</span>
                             </div>
                         </ng-template>
                     </ng-container>
@@ -78,7 +87,6 @@
 <app-new-arrivals-container></app-new-arrivals-container>
 <app-deal-of-day></app-deal-of-day>
 <section id="featured-products" class="pb-5">
-
     <app-products-slider-container [featured]="true" [title]=" 'Seçilən Məhsullar' "></app-products-slider-container>
 </section>
 <section id="small-banner">

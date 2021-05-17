@@ -19,19 +19,19 @@ const routes: Routes = [
   {
     path: '', component: AppComponent,
     children: [
-      { path: '', component: HomeComponent },
+      { path: '', component: HomeComponent, data: { title: 'Infixvuci' } },
       { path: 'about', component: AboutComponent },
-      { path: 'account', loadChildren: () => import('./account/account.module').then(m => m.AccountModule), canActivate: [AuthGuard] },
-      { path: 'cart', component: CartComponent },
-      { path: 'category/:id', component: CategoriesComponent },
-      { path: 'checkout', component: CheckoutComponent },
-      { path: 'contact', component: ContactComponent },
+      { path: 'account', loadChildren: () => import('./account/account.module').then(m => m.AccountModule), canActivate: [AuthGuard], data: { title: 'Hesab' } },
+      { path: 'cart', component: CartComponent, data: { title: 'Səbət' } },
+      { path: 'category/:id', component: CategoriesComponent, data: { title: 'Kateqoriya' } },
+      { path: 'checkout', component: CheckoutComponent, data: { title: 'Sifariş' } },
+      { path: 'contact', component: ContactComponent, data: { title: 'Əlaqə' } },
       { path: 'faq', component: FaqComponent },
-      { path: 'hot-deals', component: HotDealsComponent },
-      { path: 'new-arrivals', component: NewArrivalsComponent },
-      { path: 'product/:id', component: ShopDetailsComponent },
-      { path: 'trending', component: TrendingComponent },
-      { path: 'wishlist', component: WishlistComponent },
+      { path: 'hot-deals', component: HotDealsComponent, data: { title: 'Ən Yaxşı Təklif' } },
+      { path: 'new-arrivals', component: NewArrivalsComponent, data: { title: 'Yeni Gələnlər' } },
+      { path: 'product/:id', component: ShopDetailsComponent, data: { title: 'Məhsul' } },
+      { path: 'trending', component: TrendingComponent, data: { title: 'Trend' } },
+      { path: 'wishlist', component: WishlistComponent, data: { title: 'Sevimlilər' } },
     ]
   }
 ];

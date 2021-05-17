@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router, Event, NavigationStart, ActivationEnd, ActivationStart } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { IBasket } from 'src/app/shared/models/basket.model';
@@ -31,7 +32,8 @@ export class ShopDetailsComponent implements OnInit {
     private authService: AuthService,
     private notifier: NotifierService,
     private router: Router,
-    private wishlistService: WishlistService) {
+    private wishlistService: WishlistService,
+    private titleService: Title) {
     this.authService.currentUser.subscribe(user => {
       this.user = user;
     });
@@ -51,6 +53,7 @@ export class ShopDetailsComponent implements OnInit {
     this.getProduct();
     this.getProductsByCategoryId();
     this.generateForm();
+
   }
 
   get f() {
@@ -82,6 +85,7 @@ export class ShopDetailsComponent implements OnInit {
 
     this.apiService.getProductById(id).subscribe(res => {
       this.product = res;
+
     })
 
   }
