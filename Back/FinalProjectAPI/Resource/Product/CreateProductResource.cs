@@ -10,7 +10,6 @@ namespace FinalProjectAPI.Resource.Product
     {
         [Required]
         public int CategoryId { get; set; }
-
         public int BrandId { get; set; }
         public int? DiscountId { get; set; }
 

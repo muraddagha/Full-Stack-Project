@@ -72,6 +72,7 @@ export class CategoryComponent implements OnInit {
 
       },
       () => {
+        this.submitted = false;
         this.element.nativeElement.querySelector(".close-create").click();
         this.notifier.notify("success", "Kateqoriya yaradldı");
         this.createForm.reset();
@@ -92,6 +93,7 @@ export class CategoryComponent implements OnInit {
         ///..
       },
       () => {
+        this.submitted = false;
         this.element.nativeElement.querySelector(".close-update").click();
         this.notifier.notify("success", "Kateqoriya yeniləndi")
         this.updateForm.reset();
